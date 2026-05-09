@@ -295,12 +295,12 @@
       <div class="card">
         <div class="card-label">✅ Karla Kapanan</div>
         <div class="card-value pos">${k.win_sayi||0} işlem</div>
-        <div class="card-sub pos">${tl(k.win_tl)} kâr · ${tl0(k.win_yatirim)} yatırım · ort. ${pct(k.ort_kazanc,1)}</div>
+        <div class="card-sub pos">${tl(k.win_tl)} kâr · ${tl0(k.win_yatirim)} yatırım · ort. ${pct(k.ort_kazanc,1)} · ${k.win_ort_sure}G</div>
       </div>
       <div class="card">
         <div class="card-label">❌ Zararla Kapanan</div>
         <div class="card-value neg">${k.los_sayi||0} işlem</div>
-        <div class="card-sub neg">${tl(k.los_tl)} zarar · ${tl0(k.los_yatirim)} yatırım · ort. ${pct(k.ort_kayip,1)}</div>
+        <div class="card-sub neg">${tl(k.los_tl)} zarar · ${tl0(k.los_yatirim)} yatırım · ort. ${pct(k.ort_kayip,1)} · ${k.los_ort_sure}G</div>
       </div>
       ${(()=>{
         const net = (k.kapanan_net_tl||0) + (k.yuzen_pnl_tl||0);
