@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum Portföy</title>
+  <style>
+    :root {
+      --bg:       #0b0b10;
+      --surface:  #111118;
+      --surface2: #18181f;
+      --border:   #1e1e2a;
+      --text:     #e4e6eb;
+      --muted:    #5a6070;
+      --green:    #22c55e;
+      --green2:   #16a34a;
+      --red:      #ef4444;
+      --blue:     #60a5fa;
+      --gold:     #f59e0b;
+      --silver:   #94a3b8;
+      --bronze:   #c97c4a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+    }
+    .logo-title { font-size: 15px; font-weight: 700; letter-spacing: -.3px; }
+    .logo-sub   { font-size: 11px; color: var(--muted); }
+
+    .header-meta {
+      display: flex; align-items: center; gap: 20px;
+      font-size: 12px; color: var(--muted);
+    }
+    .live-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,.1);
+      border: 1px solid rgba(34,197,94,.25);
+      padding: 4px 10px; border-radius: 20px;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* ── Layout ── */
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+
+    /* ── Stats row ── */
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 22px; }
+    @media(max-width:720px){ .stats{ grid-template-columns: repeat(2,1fr); } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .card-label {
+      font-size: 10px; font-weight: 600; letter-spacing: .9px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .card-value {
+      font-size: 26px; font-weight: 700; line-height: 1; margin-bottom: 5px;
+      font-variant-numeric: tabular-nums;
+    }
+    .card-sub { font-size: 12px; color: var(--muted); }
+
+    /* ── Section ── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .section-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .section-title { font-size: 13px; font-weight: 600; }
+    .pill {
+      font-size: 11px; padding: 3px 10px; border-radius: 20px;
+      background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+    }
+
+    /* ── Table ── */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+
+    thead th {
+      padding: 10px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: .7px;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap; cursor: pointer; user-select: none;
+      transition: color .15s;
+    }
+    thead th:hover { color: var(--text); }
+    thead th.active { color: var(--blue); }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .1s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface2); }
+
+    td {
+      padding: 11px 14px;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Symbol cell ── */
+    .sym { display: flex; align-items: center; gap: 8px; }
+    .sym-name { font-weight: 700; font-size: 14px; letter-spacing: .2px; }
+    .cat { font-size: 14px; line-height: 1; }
+
+    /* ── PnL colors ── */
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+    .neu { color: var(--muted); }
+
+    .pnl-big { font-size: 15px; font-weight: 700; }
+
+    /* ── Day badge ── */
+    .day-badge {
+      display: inline-block; font-size: 11px; padding: 2px 8px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 5px; color: var(--muted);
+    }
+
+    /* ── Status badges ── */
+    .badges { display: flex; gap: 4px; }
+    .badge {
+      font-size: 10px; font-weight: 700; padding: 2px 7px;
+      border-radius: 4px; letter-spacing: .3px;
+    }
+    .b-tp1 {
+      background: rgba(34,197,94,.12);
+      color: #86efac;
+      border: 1px solid rgba(34,197,94,.3);
+    }
+    .b-tp2 {
+      background: rgba(34,197,94,.22);
+      color: #4ade80;
+      border: 1px solid rgba(34,197,94,.5);
+    }
+    .b-kal {
+      background: rgba(96,165,250,.13);
+      color: #93c5fd;
+      border: 1px solid rgba(96,165,250,.3);
+    }
+
+    /* ── Stop price ── */
+    .stop { font-size: 12px; color: var(--muted); }
+
+    /* ── Closed reason ── */
+    .r-stop { color: #f87171; font-size: 11px; }
+    .r-tp   { color: #86efac; font-size: 11px; }
+    .r-at   { color: #93c5fd; font-size: 11px; }
+    .r-kor  { color: #fdba74; font-size: 11px; }
+    .r-def  { color: var(--muted); font-size: 11px; }
+
+    /* ── Loading / Empty ── */
+    .empty {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; padding: 48px; color: var(--muted);
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border); border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; color: var(--muted); font-size: 11px;
+      padding: 20px; margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">📈</div>
+    <div>
+      <div class="logo-title">Momentum Portföy</div>
+      <div class="logo-sub">BIST · Anlık Takip</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span id="ts" style="font-size:12px"></span>
+    <div class="live-pill">
+      <div class="dot"></div>
+      <span id="live-label">Yükleniyor</span>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- Stats -->
+  <div class="stats" id="stats">
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- Portfolio table -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Açık Pozisyonlar</span>
+      <span class="pill" id="portfoy-pill">—</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead id="portfoy-head">
+          <tr>
+            <th data-k="sembol"  data-t="s">Hisse</th>
+            <th data-k="gun"     data-t="n">Süre</th>
+            <th data-k="alis"    data-t="n">Alış</th>
+            <th data-k="guncel"  data-t="n">Güncel</th>
+            <th data-k="pnl_yuzde" data-t="n" class="active">P&L %</th>
+            <th data-k="pnl_tl"  data-t="n">P&L ₺</th>
+            <th data-k="max_pnl" data-t="n">Zirve %</th>
+            <th data-k="stop"    data-t="n">Stop</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody id="portfoy-body">
+          <tr><td colspan="9"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Closed trades -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-title">Son Kapananlar</span>
+      <span class="pill" id="kapanan-pill">son 20</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Hisse</th>
+            <th>Tarih</th>
+            <th>P&L %</th>
+            <th>P&L ₺</th>
+            <th>Sebep</th>
+          </tr>
+        </thead>
+        <tbody id="kapanan-body">
+          <tr><td colspan="5"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  Veriler yaklaşık 10 dk gecikmeli güncellenir &nbsp;·&nbsp; Yatırım tavsiyesi değildir
+</footer>
+
+<script>
+  const CAT = { 3:'🥇', 2:'🥈', 1:'🥉' };
+
+  let data      = null;
+  let sortKey   = 'pnl_yuzde';
+  let sortDir   = -1;
+
+  /* ── Formatters ── */
+  const pct = (v, dec=2) => v == null ? '-' : (v>=0?'+':'')+v.toFixed(dec)+'%';
+  const tl  = v => v == null ? '-' : (v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+  const cls = v => v > 0 ? 'pos' : v < 0 ? 'neg' : 'neu';
+
+  function sebepClass(s){
+    if(!s) return 'r-def';
+    if(/stop loss/i.test(s))   return 'r-stop';
+    if(/tp2|tp1/i.test(s))     return 'r-tp';
+    if(/alphatrend/i.test(s))  return 'r-at';
+    if(/koruma|maliyet/i.test(s)) return 'r-kor';
+    return 'r-def';
+  }
+  function sebepLabel(s){
+    if(!s) return '—';
+    if(/stop loss.*7/i.test(s))    return '🛑 Stop -%7';
+    if(/tp2/i.test(s))             return '🎯 TP2 Hedef';
+    if(/tp1/i.test(s))             return '✅ TP1 Hedef';
+    if(/alphatrend/i.test(s))      return '📉 AT Kırılımı';
+    if(/koruma.*maliyet/i.test(s)) return '🛡 Koruma Stopu';
+    if(/manuel/i.test(s))          return '✋ Manuel';
+    return s.length > 24 ? s.slice(0,24)+'…' : s;
+  }
+
+  /* ── Stats ── */
+  function renderStats(d){
+    const k = d.kasa;
+    document.getElementById('stats').innerHTML = `
+      <div class="card">
+        <div class="card-label">Açık Pozisyon</div>
+        <div class="card-value blue">${k.acik_sayi}</div>
+        <div class="card-sub">aktif hisse</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Yüzen P&L</div>
+        <div class="card-value ${cls(k.yuzen_pnl_tl)}">${tl(k.yuzen_pnl_tl)}</div>
+        <div class="card-sub ${cls(k.yuzen_pnl_yuzde)}">${pct(k.yuzen_pnl_yuzde)} portföy getirisi</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Kapanan İşlem</div>
+        <div class="card-value">${k.kapanan_toplam}</div>
+        <div class="card-sub">toplam işlem</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Realizasyon</div>
+        <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
+        <div class="card-sub">net kâr/zarar</div>
+      </div>
+    `;
+  }
+
+  /* ── Portfolio ── */
+  function renderPortfoy(list){
+    document.getElementById('portfoy-pill').textContent = list.length + ' hisse';
+    const sorted = [...list].sort((a,b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if(typeof av === 'string') return sortDir * av.localeCompare(bv);
+      return sortDir * ((av||0)-(bv||0));
+    });
+
+    document.getElementById('portfoy-body').innerHTML = sorted.map(p => {
+      const badges = [];
+      if(p.tp2)    badges.push('<span class="badge b-tp2">TP2</span>');
+      else if(p.tp1) badges.push('<span class="badge b-tp1">TP1</span>');
+      if(p.kalkan) badges.push('<span class="badge b-kal">🛡 Kalkan</span>');
+      return `<tr>
+        <td><div class="sym">
+          <span class="cat">${CAT[p.kategori]||'🥉'}</span>
+          <span class="sym-name">${p.sembol}</span>
+        </div></td>
+        <td><span class="day-badge">${p.gun}G</span></td>
+        <td>${p.alis.toFixed(2)}</td>
+        <td><b>${p.guncel.toFixed(2)}</b></td>
+        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde,2)}</td>
+        <td class="${cls(p.pnl_tl)}">${tl(p.pnl_tl)}</td>
+        <td class="pos" style="opacity:.65">${pct(p.max_pnl,2)}</td>
+        <td class="stop">${p.stop ? p.stop.toFixed(2) : '—'}</td>
+        <td><div class="badges">${badges.join('')}</div></td>
+      </tr>`;
+    }).join('');
+
+    // Highlight sorted column
+    document.querySelectorAll('#portfoy-head th').forEach(th => {
+      th.classList.toggle('active', th.dataset.k === sortKey);
+    });
+  }
+
+  /* ── Sort click ── */
+  document.getElementById('portfoy-head').addEventListener('click', e => {
+    const th = e.target.closest('th[data-k]');
+    if(!th || !data) return;
+    const k = th.dataset.k;
+    if(k === sortKey) sortDir *= -1;
+    else { sortKey = k; sortDir = th.dataset.t === 's' ? 1 : -1; }
+    renderPortfoy(data.portfoy);
+  });
+
+  /* ── Closed trades ── */
+  function renderKapananlar(list){
+    document.getElementById('kapanan-pill').textContent = 'son '+list.length;
+    document.getElementById('kapanan-body').innerHTML = list.map(k => `<tr>
+      <td><b>${k.sembol}</b></td>
+      <td class="neu">${k.tarih}</td>
+      <td class="${cls(k.pnl_yuzde)}">${pct(k.pnl_yuzde,2)}</td>
+      <td class="${cls(k.pnl_tl)}">${tl(k.pnl_tl)}</td>
+      <td class="${sebepClass(k.sebep)}">${sebepLabel(k.sebep)}</td>
+    </tr>`).join('');
+  }
+
+  /* ── Fetch ── */
+  async function load(){
+    try {
+      const res = await fetch('./data.json?t='+Date.now());
+      if(!res.ok) throw new Error(res.status);
+      data = await res.json();
+
+      document.getElementById('live-label').textContent = 'Canlı';
+      document.getElementById('ts').textContent = 'Son güncelleme: ' + data.son_guncelleme;
+
+      renderStats(data);
+      renderPortfoy(data.portfoy);
+      renderKapananlar(data.son_kapananlar);
+    } catch(err) {
+      document.getElementById('live-label').textContent = 'Bağlanamadı';
+      console.error(err);
+    }
+  }
+
+  load();
+  setInterval(load, 10*60*1000); // 10 dakikada bir yenile
+</script>
+</body>
+</html>
