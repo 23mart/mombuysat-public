@@ -6,229 +6,117 @@
   <title>Momentum Portföy</title>
   <style>
     :root {
-      --bg:       #0b0b10;
-      --surface:  #111118;
-      --surface2: #18181f;
-      --border:   #1e1e2a;
-      --text:     #e4e6eb;
-      --muted:    #5a6070;
-      --green:    #22c55e;
-      --green2:   #16a34a;
-      --red:      #ef4444;
-      --blue:     #60a5fa;
-      --gold:     #f59e0b;
-      --silver:   #94a3b8;
-      --bronze:   #c97c4a;
+      --bg:      #0b0b10;
+      --surface: #111118;
+      --s2:      #18181f;
+      --border:  #1e1e2a;
+      --text:    #e4e6eb;
+      --muted:   #5a6070;
+      --green:   #22c55e;
+      --green2:  #16a34a;
+      --red:     #ef4444;
+      --blue:    #60a5fa;
+      --gold:    #f59e0b;
+      --orange:  #fb923c;
     }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; line-height:1.5; min-height:100vh; }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 13px;
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-
-    /* ── Header ── */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 28px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo-mark {
-      width: 34px; height: 34px;
-      background: linear-gradient(135deg, var(--green), var(--green2));
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 17px;
-    }
-    .logo-title { font-size: 15px; font-weight: 700; letter-spacing: -.3px; }
-    .logo-sub   { font-size: 11px; color: var(--muted); }
-
-    .header-meta {
-      display: flex; align-items: center; gap: 20px;
-      font-size: 12px; color: var(--muted);
-    }
-    .live-pill {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(34,197,94,.1);
-      border: 1px solid rgba(34,197,94,.25);
-      padding: 4px 10px; border-radius: 20px;
-    }
-    .dot {
-      width: 7px; height: 7px;
-      background: var(--green); border-radius: 50%;
-      animation: blink 2s ease-in-out infinite;
-    }
+    /* Header */
+    .header { position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); padding:0 28px; height:56px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark { width:34px; height:34px; background:linear-gradient(135deg,var(--green),var(--green2)); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; }
+    .logo-title { font-size:15px; font-weight:700; letter-spacing:-.3px; }
+    .logo-sub   { font-size:11px; color:var(--muted); }
+    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--muted); }
+    .upd-pill { display:flex; align-items:center; gap:6px; background:rgba(34,197,94,.1); border:1px solid rgba(34,197,94,.25); padding:4px 12px; border-radius:20px; color:#86efac; font-size:12px; }
+    .dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:blink 2s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
 
-    /* ── Layout ── */
-    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    /* Page */
+    .page { max-width:1440px; margin:0 auto; padding:24px 28px; }
 
-    /* ── Stats row ── */
-    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 22px; }
-    @media(max-width:720px){ .stats{ grid-template-columns: repeat(2,1fr); } }
+    /* Stats grid — 4 per row, 2 rows */
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+    @media(max-width:900px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+    .card-label { font-size:10px; font-weight:600; letter-spacing:.9px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .card-value { font-size:24px; font-weight:700; line-height:1; margin-bottom:4px; font-variant-numeric:tabular-nums; }
+    .card-sub   { font-size:11px; color:var(--muted); }
+    .card-sub.pos { color:var(--green); }
+    .card-sub.neg { color:var(--red); }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-    }
-    .card-label {
-      font-size: 10px; font-weight: 600; letter-spacing: .9px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
-    }
-    .card-value {
-      font-size: 26px; font-weight: 700; line-height: 1; margin-bottom: 5px;
-      font-variant-numeric: tabular-nums;
-    }
-    .card-sub { font-size: 12px; color: var(--muted); }
+    /* Özet row */
+    .ozet-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+    @media(max-width:700px){ .ozet-grid{ grid-template-columns:1fr; } }
+    .ozet-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+    .ozet-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin-bottom:14px; }
 
-    /* ── Section ── */
-    .section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 22px;
-    }
-    .section-head {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-    }
-    .section-head:hover { background: var(--surface2); }
-    .section-title { font-size: 13px; font-weight: 600; }
-    .pill {
-      font-size: 11px; padding: 3px 10px; border-radius: 20px;
-      background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
-    }
-    .toggle-icon {
-      font-size: 11px; color: var(--muted); margin-left: 10px;
-      transition: transform .2s;
-    }
-    .section.collapsed .toggle-icon { transform: rotate(-90deg); }
-    .section.collapsed .section-body { display: none; }
+    /* Kategori bar */
+    .kat-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .kat-row:last-child { margin-bottom:0; }
+    .kat-label { width:130px; font-size:12px; display:flex; align-items:center; gap:5px; }
+    .kat-bar-wrap { flex:1; height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+    .kat-bar { height:100%; border-radius:3px; transition:width .4s; }
+    .bar-gold   { background:var(--gold); }
+    .bar-silver { background:var(--blue); }
+    .bar-bronze { background:var(--orange); }
+    .kat-meta { width:110px; text-align:right; font-size:12px; font-variant-numeric:tabular-nums; }
 
-    /* ── Table ── */
-    .tbl-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; }
+    /* Durum pills */
+    .durum-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px; }
+    .durum-item { background:var(--s2); border:1px solid var(--border); border-radius:8px; padding:10px 12px; text-align:center; }
+    .durum-val  { font-size:22px; font-weight:700; line-height:1; margin-bottom:3px; }
+    .durum-lbl  { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+    .kapanan-ozet { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
 
-    thead th {
-      padding: 10px 14px;
-      font-size: 10px; font-weight: 700; letter-spacing: .7px;
-      text-transform: uppercase; color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap; cursor: pointer; user-select: none;
-      transition: color .15s;
-    }
-    thead th:hover { color: var(--text); }
-    thead th.active { color: var(--blue); }
+    /* Section */
+    .section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+    .section-head { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; }
+    .section-head:hover { background:var(--s2); }
+    .section-title { font-size:13px; font-weight:600; }
+    .pill { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--s2); border:1px solid var(--border); color:var(--muted); }
+    .head-right { display:flex; align-items:center; gap:10px; }
+    .toggle { font-size:11px; color:var(--muted); transition:transform .2s; }
+    .section.collapsed .toggle { transform:rotate(-90deg); }
+    .section.collapsed .section-body { display:none; }
 
-    tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background .1s;
-    }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: var(--surface2); }
+    /* Table */
+    .tbl-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { padding:9px 14px; font-size:10px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; }
+    thead th:hover { color:var(--text); }
+    thead th.active { color:var(--blue); }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:var(--s2); }
+    td { padding:10px 14px; white-space:nowrap; font-variant-numeric:tabular-nums; }
 
-    td {
-      padding: 11px 14px;
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
+    /* Cells */
+    .sym { display:flex; align-items:center; gap:7px; }
+    .sym-name { font-weight:700; font-size:14px; }
+    .cat { font-size:14px; }
+    .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--muted); }
+    .pnl-big { font-size:15px; font-weight:700; }
+    .day-badge { font-size:11px; padding:2px 8px; background:var(--s2); border:1px solid var(--border); border-radius:5px; color:var(--muted); }
+    .stop { font-size:12px; color:var(--muted); }
+    .badges { display:flex; gap:4px; }
+    .badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; letter-spacing:.3px; }
+    .b-tp1 { background:rgba(34,197,94,.12); color:#86efac; border:1px solid rgba(34,197,94,.3); }
+    .b-tp2 { background:rgba(34,197,94,.22); color:#4ade80; border:1px solid rgba(34,197,94,.5); }
+    .b-kal { background:rgba(96,165,250,.13); color:#93c5fd; border:1px solid rgba(96,165,250,.3); }
 
-    /* ── Symbol cell ── */
-    .sym { display: flex; align-items: center; gap: 8px; }
-    .sym-name { font-weight: 700; font-size: 14px; letter-spacing: .2px; }
-    .cat { font-size: 14px; line-height: 1; }
+    /* Kapanan sebep */
+    .r-stop { color:#f87171; font-size:11px; } .r-tp { color:#86efac; font-size:11px; }
+    .r-at   { color:#93c5fd; font-size:11px; } .r-kor { color:#fdba74; font-size:11px; }
+    .r-def  { color:var(--muted); font-size:11px; }
 
-    /* ── PnL colors ── */
-    .pos { color: var(--green); }
-    .neg { color: var(--red); }
-    .neu { color: var(--muted); }
+    /* Empty / loading */
+    .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:44px; color:var(--muted); }
+    .spinner { width:18px; height:18px; border:2px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
 
-    .pnl-big { font-size: 15px; font-weight: 700; }
-
-    /* ── Day badge ── */
-    .day-badge {
-      display: inline-block; font-size: 11px; padding: 2px 8px;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 5px; color: var(--muted);
-    }
-
-    /* ── Status badges ── */
-    .badges { display: flex; gap: 4px; }
-    .badge {
-      font-size: 10px; font-weight: 700; padding: 2px 7px;
-      border-radius: 4px; letter-spacing: .3px;
-    }
-    .b-tp1 {
-      background: rgba(34,197,94,.12);
-      color: #86efac;
-      border: 1px solid rgba(34,197,94,.3);
-    }
-    .b-tp2 {
-      background: rgba(34,197,94,.22);
-      color: #4ade80;
-      border: 1px solid rgba(34,197,94,.5);
-    }
-    .b-kal {
-      background: rgba(96,165,250,.13);
-      color: #93c5fd;
-      border: 1px solid rgba(96,165,250,.3);
-    }
-
-    /* ── Stop price ── */
-    .stop { font-size: 12px; color: var(--muted); }
-
-    /* ── Closed reason ── */
-    .r-stop { color: #f87171; font-size: 11px; }
-    .r-tp   { color: #86efac; font-size: 11px; }
-    .r-at   { color: #93c5fd; font-size: 11px; }
-    .r-kor  { color: #fdba74; font-size: 11px; }
-    .r-def  { color: var(--muted); font-size: 11px; }
-
-    /* ── Loading / Empty ── */
-    .empty {
-      display: flex; align-items: center; justify-content: center;
-      gap: 12px; padding: 48px; color: var(--muted);
-    }
-    .spinner {
-      width: 18px; height: 18px;
-      border: 2px solid var(--border); border-top-color: var(--blue);
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Footer ── */
-    .footer {
-      text-align: center; color: var(--muted); font-size: 11px;
-      padding: 20px; margin-top: 8px;
-      border-top: 1px solid var(--border);
-    }
-    .footer a { color: var(--muted); text-decoration: none; }
-    .footer a:hover { color: var(--text); }
+    .footer { text-align:center; color:var(--muted); font-size:11px; padding:20px; border-top:1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -238,51 +126,59 @@
     <div class="logo-mark">📈</div>
     <div>
       <div class="logo-title">Momentum Portföy</div>
-      <div class="logo-sub">BIST · Anlık Takip</div>
+      <div class="logo-sub">BIST · Takip</div>
     </div>
   </div>
   <div class="header-meta">
-    <span id="ts" style="font-size:12px"></span>
-    <div class="live-pill">
-      <div class="dot"></div>
-      <span id="live-label">Yükleniyor</span>
-    </div>
+    <span id="ts"></span>
+    <div class="upd-pill"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
   </div>
 </header>
 
 <main class="page">
 
-  <!-- Stats -->
+  <!-- Stats: 8 kart, 2 sıra -->
   <div class="stats" id="stats">
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
   </div>
 
-  <!-- Portfolio table -->
+  <!-- Özet: Kategori + Durum -->
+  <div class="ozet-grid" id="ozet-grid">
+    <div class="ozet-card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="ozet-card"><div class="empty"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- Portföy tablosu -->
   <div class="section">
     <div class="section-head">
       <span class="section-title">Açık Pozisyonlar</span>
       <span class="pill" id="portfoy-pill">—</span>
     </div>
-    <div class="tbl-wrap">
+    <div class="section-body tbl-wrap">
       <table>
         <thead id="portfoy-head">
           <tr>
-            <th data-k="sembol"  data-t="s">Hisse</th>
-            <th data-k="gun"     data-t="n">Süre</th>
-            <th data-k="alis"    data-t="n">Alış</th>
-            <th data-k="guncel"  data-t="n">Güncel</th>
+            <th data-k="sembol"     data-t="s">Hisse</th>
+            <th data-k="gun"        data-t="n">Süre</th>
+            <th data-k="alis"       data-t="n">Alış</th>
+            <th data-k="guncel"     data-t="n">Güncel</th>
             <th data-k="pnl_yuzde" data-t="n" class="active">P&L %</th>
-            <th data-k="pnl_tl"  data-t="n">P&L ₺</th>
-            <th data-k="max_pnl" data-t="n">Zirve %</th>
-            <th data-k="stop"    data-t="n">Stop</th>
+            <th data-k="pnl_tl"    data-t="n">P&L ₺</th>
+            <th data-k="yatirim"   data-t="n">Yatırım</th>
+            <th data-k="max_pnl"   data-t="n">Zirve %</th>
+            <th data-k="stop"      data-t="n">Stop</th>
             <th>Durum</th>
           </tr>
         </thead>
         <tbody id="portfoy-body">
-          <tr><td colspan="9"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
+          <tr><td colspan="10"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
         </tbody>
       </table>
     </div>
@@ -295,25 +191,15 @@
         <span class="section-title">Son Alınanlar</span>
         <span class="pill" id="alinan-pill">—</span>
       </div>
-      <span class="toggle-icon">▼</span>
+      <span class="toggle">▼</span>
     </div>
     <div class="section-body tbl-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Hisse</th>
-            <th>Alış Tarihi</th>
-            <th>Alış</th>
-            <th>Güncel</th>
-            <th>P&L %</th>
-            <th>P&L ₺</th>
-            <th>Yatırım</th>
-            <th>Durum</th>
-          </tr>
-        </thead>
-        <tbody id="alinan-body">
-          <tr><td colspan="8"><div class="empty">—</div></td></tr>
-        </tbody>
+        <thead><tr>
+          <th>Hisse</th><th>Alış Tarihi</th><th>Alış</th><th>Güncel</th>
+          <th>P&L %</th><th>P&L ₺</th><th>Yatırım</th><th>Durum</th>
+        </tr></thead>
+        <tbody id="alinan-body"><tr><td colspan="8"><div class="empty">—</div></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -325,158 +211,177 @@
         <span class="section-title">Son Kapananlar</span>
         <span class="pill" id="kapanan-pill">—</span>
       </div>
-      <span class="toggle-icon">▼</span>
+      <span class="toggle">▼</span>
     </div>
     <div class="section-body tbl-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Hisse</th>
-            <th>Tarih</th>
-            <th>P&L %</th>
-            <th>P&L ₺</th>
-            <th>Sebep</th>
-          </tr>
-        </thead>
-        <tbody id="kapanan-body">
-          <tr><td colspan="5"><div class="empty">—</div></td></tr>
-        </tbody>
+        <thead><tr><th>Hisse</th><th>Tarih</th><th>P&L %</th><th>P&L ₺</th><th>Sebep</th></tr></thead>
+        <tbody id="kapanan-body"><tr><td colspan="5"><div class="empty">—</div></td></tr></tbody>
       </table>
     </div>
   </div>
 
 </main>
-
-<footer class="footer">
-  Veriler yaklaşık 10 dk gecikmeli güncellenir &nbsp;·&nbsp; Yatırım tavsiyesi değildir
-</footer>
+<footer class="footer">Veriler yaklaşık 10 dk gecikmeli güncellenir &nbsp;·&nbsp; Yatırım tavsiyesi değildir</footer>
 
 <script>
-  const CAT = { 3:'🥇', 2:'🥈', 1:'🥉' };
+  const CAT = {3:'🥇',2:'🥈',1:'🥉'};
+  let portfoyData = [], sortKey = 'pnl_yuzde', sortDir = -1;
 
-  let data      = null;
-  let sortKey   = 'pnl_yuzde';
-  let sortDir   = -1;
+  const pct = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d)+'%';
+  const tl  = v => v==null?'-':(v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+  const tl0 = v => Math.round(v||0).toLocaleString('tr-TR')+' ₺';
+  const cls = v => v>0?'pos':v<0?'neg':'neu';
 
-  /* ── Formatters ── */
-  const pct = (v, dec=2) => v == null ? '-' : (v>=0?'+':'')+v.toFixed(dec)+'%';
-  const tl  = v => v == null ? '-' : (v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
-  const cls = v => v > 0 ? 'pos' : v < 0 ? 'neg' : 'neu';
+  function sebepClass(s){ if(!s)return'r-def'; if(/stop loss/i.test(s))return'r-stop'; if(/tp2|tp1/i.test(s))return'r-tp'; if(/alphatrend/i.test(s))return'r-at'; if(/koruma|maliyet/i.test(s))return'r-kor'; return'r-def'; }
+  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop -%7'; if(/tp2/i.test(s))return'🎯 TP2'; if(/tp1/i.test(s))return'✅ TP1'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; if(/manuel/i.test(s))return'✋ Manuel'; return s.length>22?s.slice(0,22)+'…':s; }
 
-  function sebepClass(s){
-    if(!s) return 'r-def';
-    if(/stop loss/i.test(s))   return 'r-stop';
-    if(/tp2|tp1/i.test(s))     return 'r-tp';
-    if(/alphatrend/i.test(s))  return 'r-at';
-    if(/koruma|maliyet/i.test(s)) return 'r-kor';
-    return 'r-def';
-  }
-  function sebepLabel(s){
-    if(!s) return '—';
-    if(/stop loss.*7/i.test(s))    return '🛑 Stop -%7';
-    if(/tp2/i.test(s))             return '🎯 TP2 Hedef';
-    if(/tp1/i.test(s))             return '✅ TP1 Hedef';
-    if(/alphatrend/i.test(s))      return '📉 AT Kırılımı';
-    if(/koruma.*maliyet/i.test(s)) return '🛡 Koruma Stopu';
-    if(/manuel/i.test(s))          return '✋ Manuel';
-    return s.length > 24 ? s.slice(0,24)+'…' : s;
-  }
-
-  /* ── Stats ── */
-  function renderStats(d){
-    const k = d.kasa;
+  /* ── Stats 8 kart ── */
+  function renderStats(k){
     document.getElementById('stats').innerHTML = `
       <div class="card">
         <div class="card-label">Açık Pozisyon</div>
-        <div class="card-value blue">${k.acik_sayi}</div>
-        <div class="card-sub">aktif hisse</div>
+        <div class="card-value" style="color:var(--blue)">${k.acik_sayi}</div>
+        <div class="card-sub">ort. ${k.ort_sure}G tutma</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Toplam Yatırım</div>
+        <div class="card-value">${tl0(k.toplam_yatirim)}</div>
+        <div class="card-sub">açık pozisyonlarda</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Portföy Değeri</div>
+        <div class="card-value ${cls(k.portfoy_degeri - k.toplam_yatirim)}">${tl0(k.portfoy_degeri)}</div>
+        <div class="card-sub ${cls(k.yuzen_pnl_yuzde)}">${pct(k.yuzen_pnl_yuzde)} getiri</div>
       </div>
       <div class="card">
         <div class="card-label">Yüzen P&L</div>
         <div class="card-value ${cls(k.yuzen_pnl_tl)}">${tl(k.yuzen_pnl_tl)}</div>
-        <div class="card-sub ${cls(k.yuzen_pnl_yuzde)}">${pct(k.yuzen_pnl_yuzde)} portföy getirisi</div>
+        <div class="card-sub">gerçekleşmemiş kâr/zarar</div>
       </div>
       <div class="card">
         <div class="card-label">Kapanan İşlem</div>
         <div class="card-value">${k.kapanan_toplam}</div>
-        <div class="card-sub">toplam işlem</div>
+        <div class="card-sub">toplam</div>
       </div>
       <div class="card">
         <div class="card-label">Realizasyon</div>
         <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
-        <div class="card-sub">net kâr/zarar</div>
+        <div class="card-sub">gerçekleşen net</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Başarı Oranı</div>
+        <div class="card-value ${k.win_rate>=50?'pos':'neg'}">${k.win_rate}%</div>
+        <div class="card-sub ${cls(k.ort_kazanc)}">ort. kazanç ${pct(k.ort_kazanc,1)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ort. Kayıp</div>
+        <div class="card-value neg">${pct(k.ort_kayip,1)}</div>
+        <div class="card-sub">zarar eden işlemlerde</div>
       </div>
     `;
   }
 
-  /* ── Portfolio ── */
-  function renderPortfoy(list){
-    document.getElementById('portfoy-pill').textContent = list.length + ' hisse';
-    const sorted = [...list].sort((a,b) => {
-      const av = a[sortKey], bv = b[sortKey];
-      if(typeof av === 'string') return sortDir * av.localeCompare(bv);
-      return sortDir * ((av||0)-(bv||0));
-    });
+  /* ── Özet: kategori + durum ── */
+  function renderOzet(k){
+    const kats = k.kategoriler;
+    const maxSayi = Math.max(kats['3'].sayi, kats['2'].sayi, kats['1'].sayi, 1);
+    const katRows = [
+      ['3','🥇 VIP (Hacim+ADR)','bar-gold'],
+      ['2','🥈 Hacim Onaylı','bar-silver'],
+      ['1','🥉 Standart','bar-bronze'],
+    ].map(([id,lbl,barCls]) => {
+      const s = kats[id]; const w = Math.round(s.sayi/maxSayi*100);
+      const pnlCls = s.ort_pnl>=0?'pos':'neg';
+      return `<div class="kat-row">
+        <span class="kat-label">${lbl}</span>
+        <div class="kat-bar-wrap"><div class="kat-bar ${barCls}" style="width:${w}%"></div></div>
+        <span class="kat-meta ${pnlCls}">${s.sayi} hisse · ${pct(s.ort_pnl,1)}</span>
+      </div>`;
+    }).join('');
 
+    const toplam = k.acik_sayi || 1;
+    document.getElementById('ozet-grid').innerHTML = `
+      <div class="ozet-card">
+        <div class="ozet-title">Kategori Dağılımı</div>
+        ${katRows}
+      </div>
+      <div class="ozet-card">
+        <div class="ozet-title">Portföy Durumu</div>
+        <div class="durum-grid">
+          <div class="durum-item">
+            <div class="durum-val" style="color:var(--blue)">${k.kalkan_sayi}</div>
+            <div class="durum-lbl">🛡 Kalkan Aktif</div>
+          </div>
+          <div class="durum-item">
+            <div class="durum-val" style="color:var(--green)">${k.tp1_sayi}</div>
+            <div class="durum-lbl">✅ TP1 Vuran</div>
+          </div>
+          <div class="durum-item">
+            <div class="durum-val" style="color:#4ade80">${k.tp2_sayi}</div>
+            <div class="durum-lbl">🎯 TP2 Vuran</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:8px">
+          Kalkan: %${Math.round(k.kalkan_sayi/toplam*100)} · TP1+: %${Math.round(k.tp1_sayi/toplam*100)} · TP2+: %${Math.round(k.tp2_sayi/toplam*100)} açık pozisyonlarda
+        </div>
+      </div>
+    `;
+  }
+
+  /* ── Portföy tablosu ── */
+  function renderPortfoy(list){
+    portfoyData = list;
+    document.getElementById('portfoy-pill').textContent = list.length+' hisse';
+    drawPortfoy();
+  }
+  function drawPortfoy(){
+    const sorted = [...portfoyData].sort((a,b) => {
+      const av=a[sortKey], bv=b[sortKey];
+      return typeof av==='string' ? sortDir*av.localeCompare(bv) : sortDir*((av||0)-(bv||0));
+    });
     document.getElementById('portfoy-body').innerHTML = sorted.map(p => {
-      const badges = [];
-      if(p.tp2)    badges.push('<span class="badge b-tp2">TP2</span>');
+      const badges=[];
+      if(p.tp2) badges.push('<span class="badge b-tp2">TP2</span>');
       else if(p.tp1) badges.push('<span class="badge b-tp1">TP1</span>');
-      if(p.kalkan) badges.push('<span class="badge b-kal">🛡 Kalkan</span>');
+      if(p.kalkan) badges.push('<span class="badge b-kal">🛡</span>');
       return `<tr>
-        <td><div class="sym">
-          <span class="cat">${CAT[p.kategori]||'🥉'}</span>
-          <span class="sym-name">${p.sembol}</span>
-        </div></td>
+        <td><div class="sym"><span class="cat">${CAT[p.kategori]||'🥉'}</span><span class="sym-name">${p.sembol}</span></div></td>
         <td><span class="day-badge">${p.gun}G</span></td>
         <td>${p.alis.toFixed(2)}</td>
         <td><b>${p.guncel.toFixed(2)}</b></td>
-        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde,2)}</td>
+        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde)}</td>
         <td class="${cls(p.pnl_tl)}">${tl(p.pnl_tl)}</td>
-        <td class="pos" style="opacity:.65">${pct(p.max_pnl,2)}</td>
-        <td class="stop">${p.stop ? p.stop.toFixed(2) : '—'}</td>
+        <td class="neu">${Math.round(p.yatirim).toLocaleString('tr-TR')} ₺</td>
+        <td class="pos" style="opacity:.65">${pct(p.max_pnl)}</td>
+        <td class="stop">${p.stop?p.stop.toFixed(2):'—'}</td>
         <td><div class="badges">${badges.join('')}</div></td>
       </tr>`;
     }).join('');
-
-    // Highlight sorted column
-    document.querySelectorAll('#portfoy-head th').forEach(th => {
-      th.classList.toggle('active', th.dataset.k === sortKey);
-    });
+    document.querySelectorAll('#portfoy-head th').forEach(th => th.classList.toggle('active', th.dataset.k===sortKey));
   }
-
-  /* ── Sort click ── */
   document.getElementById('portfoy-head').addEventListener('click', e => {
     const th = e.target.closest('th[data-k]');
-    if(!th || !data) return;
+    if(!th || !portfoyData.length) return;
     const k = th.dataset.k;
-    if(k === sortKey) sortDir *= -1;
-    else { sortKey = k; sortDir = th.dataset.t === 's' ? 1 : -1; }
-    renderPortfoy(data.portfoy);
+    if(k===sortKey) sortDir*=-1; else { sortKey=k; sortDir=th.dataset.t==='s'?1:-1; }
+    drawPortfoy();
   });
-
-  /* ── Accordion toggle ── */
-  function toggle(id){
-    document.getElementById(id).classList.toggle('collapsed');
-  }
 
   /* ── Son Alınanlar ── */
   function renderAlinanlar(list){
     document.getElementById('alinan-pill').textContent = 'son '+list.length;
     document.getElementById('alinan-body').innerHTML = list.map(p => {
-      const badges = [];
-      if(p.tp2)    badges.push('<span class="badge b-tp2">TP2</span>');
+      const badges=[];
+      if(p.tp2) badges.push('<span class="badge b-tp2">TP2</span>');
       else if(p.tp1) badges.push('<span class="badge b-tp1">TP1</span>');
       if(p.kalkan) badges.push('<span class="badge b-kal">🛡</span>');
       return `<tr>
-        <td><div class="sym">
-          <span class="cat">${CAT[p.kategori]||'🥉'}</span>
-          <span class="sym-name">${p.sembol}</span>
-        </div></td>
+        <td><div class="sym"><span class="cat">${CAT[p.kategori]||'🥉'}</span><span class="sym-name">${p.sembol}</span></div></td>
         <td class="neu">${p.alis_tarihi}</td>
         <td>${p.alis.toFixed(2)}</td>
         <td><b>${p.guncel.toFixed(2)}</b></td>
-        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde,2)}</td>
+        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde)}</td>
         <td class="${cls(p.pnl_tl)}">${tl(p.pnl_tl)}</td>
         <td class="neu">${Math.round(p.yatirim).toLocaleString('tr-TR')} ₺</td>
         <td><div class="badges">${badges.join('')}</div></td>
@@ -490,34 +395,34 @@
     document.getElementById('kapanan-body').innerHTML = list.map(k => `<tr>
       <td><b>${k.sembol}</b></td>
       <td class="neu">${k.tarih}</td>
-      <td class="${cls(k.pnl_yuzde)}">${pct(k.pnl_yuzde,2)}</td>
+      <td class="${cls(k.pnl_yuzde)}">${pct(k.pnl_yuzde)}</td>
       <td class="${cls(k.pnl_tl)}">${tl(k.pnl_tl)}</td>
       <td class="${sebepClass(k.sebep)}">${sebepLabel(k.sebep)}</td>
     </tr>`).join('');
   }
+
+  /* ── Accordion ── */
+  function toggle(id){ document.getElementById(id).classList.toggle('collapsed'); }
 
   /* ── Fetch ── */
   async function load(){
     try {
       const res = await fetch('./data.json?t='+Date.now());
       if(!res.ok) throw new Error(res.status);
-      data = await res.json();
-
-      document.getElementById('live-label').textContent = 'Güncellendi';
-      document.getElementById('ts').textContent = 'Son güncelleme: ' + data.son_guncelleme;
-
-      renderStats(data);
+      const data = await res.json();
+      document.getElementById('upd-label').textContent = 'Güncellendi';
+      document.getElementById('ts').textContent = data.son_guncelleme;
+      renderStats(data.kasa);
+      renderOzet(data.kasa);
       renderPortfoy(data.portfoy);
-      renderAlinanlar(data.son_alinanlar || []);
+      renderAlinanlar(data.son_alinanlar||[]);
       renderKapananlar(data.son_kapananlar);
-    } catch(err) {
-      document.getElementById('live-label').textContent = 'Bağlanamadı';
-      console.error(err);
+    } catch(e) {
+      document.getElementById('upd-label').textContent = 'Bağlanamadı';
     }
   }
-
   load();
-  setInterval(load, 10*60*1000); // 10 dakikada bir yenile
+  setInterval(load, 10*60*1000);
 </script>
 </body>
 </html>
