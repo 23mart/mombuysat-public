@@ -294,13 +294,13 @@
       </div>
       <div class="card">
         <div class="card-label">✅ Karla Kapanan</div>
-        <div class="card-value pos">${k.win_sayi||0}</div>
-        <div class="card-sub pos">ort. ${pct(k.ort_kazanc,1)} kazanç</div>
+        <div class="card-value pos">${k.win_sayi||0} işlem</div>
+        <div class="card-sub pos">${tl(k.win_tl)} · ort. ${pct(k.ort_kazanc,1)}</div>
       </div>
       <div class="card">
         <div class="card-label">❌ Zararla Kapanan</div>
-        <div class="card-value neg">${k.los_sayi||0}</div>
-        <div class="card-sub neg">ort. ${pct(k.ort_kayip,1)} kayıp</div>
+        <div class="card-value neg">${k.los_sayi||0} işlem</div>
+        <div class="card-sub neg">${tl(k.los_tl)} · ort. ${pct(k.ort_kayip,1)}</div>
       </div>
     `;
   }
