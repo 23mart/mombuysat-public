@@ -1,11 +1,34 @@
 {
-  "son_guncelleme": "2026-05-09 17:24",
+  "son_guncelleme": "2026-05-09 17:38",
   "kasa": {
     "acik_sayi": 122,
+    "toplam_yatirim": 749583.0,
+    "portfoy_degeri": 799153.0,
     "yuzen_pnl_tl": 49570.0,
     "yuzen_pnl_yuzde": 6.61,
     "kapanan_toplam": 74,
-    "kapanan_net_tl": -9618.0
+    "kapanan_net_tl": -9618.0,
+    "win_rate": 35.1,
+    "ort_kazanc": 4.83,
+    "ort_kayip": -4.37,
+    "ort_sure": 4.5,
+    "kalkan_sayi": 76,
+    "tp1_sayi": 32,
+    "tp2_sayi": 7,
+    "kategoriler": {
+      "3": {
+        "sayi": 2,
+        "ort_pnl": 0.76
+      },
+      "2": {
+        "sayi": 14,
+        "ort_pnl": 6.48
+      },
+      "1": {
+        "sayi": 106,
+        "ort_pnl": 7.52
+      }
+    }
   },
   "portfoy": [
     {
