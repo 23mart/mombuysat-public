@@ -432,7 +432,7 @@
       if(!res.ok) throw new Error(res.status);
       data = await res.json();
 
-      document.getElementById('live-label').textContent = 'Canlı';
+      document.getElementById('live-label').textContent = 'Güncellendi';
       document.getElementById('ts').textContent = 'Son güncelleme: ' + data.son_guncelleme;
 
       renderStats(data);
