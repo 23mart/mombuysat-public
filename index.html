@@ -459,7 +459,7 @@
 
     const labels = gecmis.map(g => g.tarih.slice(5));
     const gunluk = gecmis.map(g => g.gunluk_pnl);
-    const kumul  = gecmis.map(g => g.kumulatif_pnl);
+    const yuzen  = gecmis.map(g => g.yuzen_pnl ?? null);
 
     if(chartObj){ chartObj.destroy(); }
     chartObj = new Chart(document.getElementById('chart'), {
@@ -467,7 +467,7 @@
         labels,
         datasets: [
           {
-            type:'bar', label:'Günlük',
+            type:'bar', label:'Günlük Realize',
             data: gunluk,
             backgroundColor: gunluk.map(v => v>=0 ? 'rgba(34,197,94,.55)' : 'rgba(239,68,68,.55)'),
             borderColor:     gunluk.map(v => v>=0 ? '#22c55e' : '#ef4444'),
@@ -475,12 +475,14 @@
             yAxisID:'yG',
           },
           {
-            type:'line', label:'Kasa',
-            data: kumul,
+            type:'line', label:'Yüzen',
+            data: yuzen,
             borderColor:'#60a5fa', borderWidth:2,
-            pointRadius:0, pointHoverRadius:4,
+            pointRadius: yuzen.map((v,i) => v!==null && (i===yuzen.length-1||yuzen[i-1]===null||yuzen[i+1]===null) ? 3 : 0),
+            pointBackgroundColor:'#60a5fa',
+            pointHoverRadius:4,
             pointHoverBackgroundColor:'#60a5fa',
-            fill:false, tension:0.3,
+            fill:false, tension:0.3, spanGaps:false,
             yAxisID:'yK',
           }
         ]
@@ -497,8 +499,12 @@
             callbacks:{
               title: items => items[0].label,
               label: ctx => {
+                if(ctx.raw===null) return null;
                 const v=ctx.raw, s=v>=0?'+':'';
-                const lbl = ctx.dataset.label==='Günlük' ? 'Günlük' : 'Kasa';
+                const lbl = {
+                  'Günlük Realize':'Realize',
+                  'Yüzen':'Yüzen',
+                }[ctx.dataset.label] || ctx.dataset.label;
                 return ` ${lbl}: ${s}${Math.round(v).toLocaleString('tr-TR')} ₺`;
               }
             }
