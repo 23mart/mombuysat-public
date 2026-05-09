@@ -119,13 +119,25 @@
     .footer { text-align:center; color:var(--muted); font-size:11px; padding:20px; border-top:1px solid var(--border); }
 
     /* Grafik bölümü */
-    .grafik-ozet { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+    .grafik-ozet { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:14px; }
+    @media(max-width:700px){ .grafik-ozet { grid-template-columns:1fr 1fr; } }
     .gk { background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
     .gk-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
     .gk-val { font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.15; }
     .gk-sub { font-size:11px; color:var(--muted); margin-top:2px; }
     .chart-wrap { position:relative; height:160px; }
     @media(min-width:600px){ .chart-wrap { height:210px; } }
+
+    /* Yaş dağılımı */
+    .yas-bar-wrap { display:flex; height:8px; border-radius:4px; overflow:hidden; margin:8px 0 6px; gap:2px; }
+    .yas-seg { height:100%; border-radius:2px; transition:width .4s; }
+    .yas-kisa { background:var(--green); }
+    .yas-orta { background:var(--gold); }
+    .yas-uzun { background:var(--red); }
+    .yas-legend { display:flex; gap:12px; }
+    .yas-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+    .yas-dot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+
     @media(max-width:480px){ .page{padding:16px 14px;} .grafik-ozet{gap:8px;} .gk{padding:10px 12px;} .gk-val{font-size:16px;} }
   </style>
 </head>
@@ -312,6 +324,26 @@
           <div class="card-sub ${cls(net)}">${pct(yuz,2)} · ${tl0(dep)} toplam sermaye</div>
         </div>`;
       })()}
+      <div class="card" style="${k.stop_yakin_sayi>0?'border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.05)':''}">
+        <div class="card-label">⚠️ Stop'a Yakın</div>
+        <div class="card-value ${k.stop_yakin_sayi>0?'neg':'neu'}">${k.stop_yakin_sayi||0}</div>
+        <div class="card-sub">stop'a ≤%2 mesafede</div>
+      </div>
+      <div class="card">
+        <div class="card-label">🏆 En İyi Açık</div>
+        <div class="card-value pos">${k.en_iyi_sembol||'-'}</div>
+        <div class="card-sub pos">${pct(k.en_iyi_pnl,1)} · ${tl(k.en_iyi_tl)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">📉 En Kötü Açık</div>
+        <div class="card-value neg">${k.en_kotu_sembol||'-'}</div>
+        <div class="card-sub neg">${pct(k.en_kotu_pnl,1)} · ${tl(k.en_kotu_tl)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">📅 Bugün Açılan</div>
+        <div class="card-value" style="color:var(--blue)">${k.bugun_acilan_sayi||0}</div>
+        <div class="card-sub">yeni pozisyon</div>
+      </div>
     `;
   }
 
@@ -329,11 +361,13 @@
       return `<div class="kat-row">
         <span class="kat-label">${lbl}</span>
         <div class="kat-bar-wrap"><div class="kat-bar ${barCls}" style="width:${w}%"></div></div>
-        <span class="kat-meta ${pnlCls}">${s.sayi} hisse · ${pct(s.ort_pnl,1)}</span>
+        <span class="kat-meta ${pnlCls}">${s.sayi} · ${pct(s.ort_pnl,1)} · <span style="font-variant-numeric:tabular-nums">${tl(s.yuzen_tl)}</span></span>
       </div>`;
     }).join('');
 
     const toplam = k.acik_sayi || 1;
+    const yasTop = (k.yas_kisa||0) + (k.yas_orta||0) + (k.yas_uzun||0) || 1;
+    const pw = n => Math.round(n/yasTop*100);
     document.getElementById('ozet-grid').innerHTML = `
       <div class="ozet-card">
         <div class="ozet-title">Kategori Dağılımı</div>
@@ -344,19 +378,29 @@
         <div class="durum-grid">
           <div class="durum-item">
             <div class="durum-val" style="color:var(--blue)">${k.kalkan_sayi}</div>
-            <div class="durum-lbl">🛡 Kalkan Aktif</div>
+            <div class="durum-lbl">🛡 Kalkan</div>
           </div>
           <div class="durum-item">
             <div class="durum-val" style="color:var(--green)">${k.tp1_sayi}</div>
-            <div class="durum-lbl">✅ TP1 Vuran</div>
+            <div class="durum-lbl">✅ TP1</div>
           </div>
           <div class="durum-item">
             <div class="durum-val" style="color:#4ade80">${k.tp2_sayi}</div>
-            <div class="durum-lbl">🎯 TP2 Vuran</div>
+            <div class="durum-lbl">🎯 TP2</div>
           </div>
         </div>
-        <div style="font-size:11px;color:var(--muted);margin-top:8px">
-          Kalkan: %${Math.round(k.kalkan_sayi/toplam*100)} · TP1+: %${Math.round(k.tp1_sayi/toplam*100)} · TP2+: %${Math.round(k.tp2_sayi/toplam*100)} açık pozisyonlarda
+        <div style="margin-top:14px">
+          <div class="ozet-title" style="margin-bottom:8px">Pozisyon Yaşı</div>
+          <div class="yas-bar-wrap">
+            <div class="yas-seg yas-kisa" style="width:${pw(k.yas_kisa)}%"></div>
+            <div class="yas-seg yas-orta" style="width:${pw(k.yas_orta)}%"></div>
+            <div class="yas-seg yas-uzun" style="width:${pw(k.yas_uzun)}%"></div>
+          </div>
+          <div class="yas-legend">
+            <span class="yas-item"><span class="yas-dot" style="background:var(--green)"></span>0–3G · ${k.yas_kisa||0}</span>
+            <span class="yas-item"><span class="yas-dot" style="background:var(--gold)"></span>4–7G · ${k.yas_orta||0}</span>
+            <span class="yas-item"><span class="yas-dot" style="background:var(--red)"></span>7G+ · ${k.yas_uzun||0}</span>
+          </div>
         </div>
       </div>
     `;
@@ -443,6 +487,16 @@
         <div class="gk-lbl">Bugün · Realize</div>
         <div class="gk-val ${c(k.bugun_pnl_tl)}">${fmt(k.bugun_pnl_tl)}</div>
         <div class="gk-sub">${k.bugun_islem_sayi||0} işlem kapandı</div>
+      </div>
+      <div class="gk">
+        <div class="gk-lbl">Bu Hafta · Realize</div>
+        <div class="gk-val ${c(k.bu_hafta_pnl_tl)}">${fmt(k.bu_hafta_pnl_tl)}</div>
+        <div class="gk-sub">${k.bu_hafta_islem_sayi||0} işlem</div>
+      </div>
+      <div class="gk">
+        <div class="gk-lbl">Geçen Hafta · Realize</div>
+        <div class="gk-val ${c(k.gecen_hafta_pnl_tl)}">${fmt(k.gecen_hafta_pnl_tl)}</div>
+        <div class="gk-sub">${k.gecen_hafta_islem_sayi||0} işlem</div>
       </div>
       <div class="gk">
         <div class="gk-lbl">Kasa · Toplam Realize</div>
