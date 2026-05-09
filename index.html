@@ -118,12 +118,15 @@
 
     .footer { text-align:center; color:var(--muted); font-size:11px; padding:20px; border-top:1px solid var(--border); }
 
-    /* Dönem özeti (grafik üstü) */
-    .donem-bar { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
-    .donem-item { flex:1; min-width:140px; background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; display:flex; flex-direction:column; gap:4px; }
-    .donem-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); }
-    .donem-val { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.1; }
-    .donem-cnt { font-size:11px; color:var(--muted); }
+    /* Grafik bölümü */
+    .grafik-ozet { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+    .gk { background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
+    .gk-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+    .gk-val { font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.15; }
+    .gk-sub { font-size:11px; color:var(--muted); margin-top:2px; }
+    .chart-wrap { position:relative; height:160px; }
+    @media(min-width:600px){ .chart-wrap { height:210px; } }
+    @media(max-width:480px){ .page{padding:16px 14px;} .grafik-ozet{gap:8px;} .gk{padding:10px 12px;} .gk-val{font-size:16px;} }
   </style>
 </head>
 <body>
@@ -164,17 +167,18 @@
 
   <!-- Grafik -->
   <div class="section" id="sec-grafik">
-    <div class="section-head" onclick="toggle('sec-grafik')">
+    <div class="section-head" style="cursor:default">
       <div style="display:flex;align-items:center;gap:10px">
-        <span class="section-title">Günlük Getiri Geçmişi</span>
+        <span class="section-title">Getiri Geçmişi</span>
         <span class="pill" id="grafik-pill">—</span>
       </div>
-      <span class="toggle">▼</span>
     </div>
-    <div class="section-body" style="padding:20px">
-      <div class="donem-bar" id="donem-bar"></div>
-      <canvas id="chart" style="min-height:260px"></canvas>
-      <div id="grafik-empty" class="empty" style="display:none">Henüz yeterli kapanan işlem yok</div>
+    <div class="section-body" style="padding:16px 18px 18px">
+      <div class="grafik-ozet" id="grafik-ozet"></div>
+      <div class="chart-wrap">
+        <canvas id="chart"></canvas>
+      </div>
+      <div id="grafik-empty" class="empty" style="display:none">Henüz kapanan işlem yok</div>
     </div>
   </div>
 
@@ -425,38 +429,37 @@
     </tr>`).join('');
   }
 
-  /* ── Dönem özeti ── */
+  /* ── Grafik özet kartları ── */
   function renderDonemOzet(k){
-    const items = [
-      { lbl: 'Bugün',        val: k.bugun_pnl_tl,       cnt: k.bugun_islem_sayi },
-      { lbl: 'Geçen Hafta',  val: k.gecen_hafta_pnl_tl, cnt: k.gecen_hafta_islem_sayi },
-    ];
-    document.getElementById('donem-bar').innerHTML = items.map(it => {
-      const c = it.val > 0 ? 'pos' : it.val < 0 ? 'neg' : 'neu';
-      const sign = it.val > 0 ? '+' : '';
-      const valStr = sign + Math.round(it.val).toLocaleString('tr-TR') + ' ₺';
-      const cntStr = it.cnt ? it.cnt + ' işlem' : '—';
-      return `<div class="donem-item">
-        <span class="donem-lbl">${it.lbl}</span>
-        <span class="donem-val ${c}">${valStr}</span>
-        <span class="donem-cnt">${cntStr}</span>
+    const fmt = v => (v>0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+    const c   = v => v>0?'pos':v<0?'neg':'neu';
+    document.getElementById('grafik-ozet').innerHTML = `
+      <div class="gk">
+        <div class="gk-lbl">Bugün · Realize</div>
+        <div class="gk-val ${c(k.bugun_pnl_tl)}">${fmt(k.bugun_pnl_tl)}</div>
+        <div class="gk-sub">${k.bugun_islem_sayi||0} işlem kapandı</div>
+      </div>
+      <div class="gk">
+        <div class="gk-lbl">Kasa · Toplam Realize</div>
+        <div class="gk-val ${c(k.kapanan_net_tl)}">${fmt(k.kapanan_net_tl)}</div>
+        <div class="gk-sub">${k.kapanan_toplam} işlem · %${k.win_rate} başarı</div>
       </div>`;
-    }).join('');
   }
 
   /* ── Grafik ── */
   let chartObj = null;
   function renderGrafik(gecmis){
-    const el = document.getElementById('grafik-empty');
-    if(!gecmis || gecmis.length === 0){ el.style.display='flex'; return; }
-    el.style.display = 'none';
-    document.getElementById('grafik-pill').textContent = gecmis.length + ' gün';
+    const empty = document.getElementById('grafik-empty');
+    const wrap  = document.querySelector('.chart-wrap');
+    if(!gecmis || !gecmis.length){
+      empty.style.display='flex'; wrap.style.display='none'; return;
+    }
+    empty.style.display='none'; wrap.style.display='';
+    document.getElementById('grafik-pill').textContent = gecmis.length+' gün';
 
-    const labels    = gecmis.map(g => g.tarih.slice(5));   // MM-DD
-    const gunluk    = gecmis.map(g => g.gunluk_pnl);
-    const kumulatif = gecmis.map(g => g.kumulatif_pnl);
-    const barColors = gunluk.map(v => v >= 0 ? 'rgba(34,197,94,.75)' : 'rgba(239,68,68,.75)');
-    const barBorder = gunluk.map(v => v >= 0 ? '#22c55e' : '#ef4444');
+    const labels = gecmis.map(g => g.tarih.slice(5));
+    const gunluk = gecmis.map(g => g.gunluk_pnl);
+    const kumul  = gecmis.map(g => g.kumulatif_pnl);
 
     if(chartObj){ chartObj.destroy(); }
     chartObj = new Chart(document.getElementById('chart'), {
@@ -464,69 +467,59 @@
         labels,
         datasets: [
           {
-            type: 'bar',
-            label: 'Günlük P&L (₺)',
+            type:'bar', label:'Günlük',
             data: gunluk,
-            backgroundColor: barColors,
-            borderColor: barBorder,
-            borderWidth: 1,
-            borderRadius: 3,
-            yAxisID: 'y1',
+            backgroundColor: gunluk.map(v => v>=0 ? 'rgba(34,197,94,.55)' : 'rgba(239,68,68,.55)'),
+            borderColor:     gunluk.map(v => v>=0 ? '#22c55e' : '#ef4444'),
+            borderWidth: 0, borderRadius: 4, borderSkipped: false,
+            yAxisID:'yG',
           },
           {
-            type: 'line',
-            label: 'Kümülatif (₺)',
-            data: kumulatif,
-            borderColor: '#60a5fa',
-            backgroundColor: 'rgba(96,165,250,.08)',
-            borderWidth: 2.5,
-            pointRadius: gecmis.length < 30 ? 4 : 0,
-            pointBackgroundColor: '#60a5fa',
-            fill: true,
-            tension: 0.35,
-            yAxisID: 'y2',
+            type:'line', label:'Kasa',
+            data: kumul,
+            borderColor:'#60a5fa', borderWidth:2,
+            pointRadius:0, pointHoverRadius:4,
+            pointHoverBackgroundColor:'#60a5fa',
+            fill:false, tension:0.3,
+            yAxisID:'yK',
           }
         ]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: {
-            labels: { color: '#94a3b8', font: { size: 12 }, boxWidth: 12, padding: 16 }
-          },
-          tooltip: {
-            backgroundColor: '#18181f',
-            borderColor: '#1e1e2a',
-            borderWidth: 1,
-            titleColor: '#e4e6eb',
-            bodyColor: '#94a3b8',
-            callbacks: {
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        interaction:{ mode:'index', intersect:false },
+        plugins:{
+          legend:{ display:false },
+          tooltip:{
+            backgroundColor:'#111118', borderColor:'#1e1e2a', borderWidth:1,
+            titleColor:'#94a3b8', bodyColor:'#e4e6eb',
+            padding:10, cornerRadius:8,
+            callbacks:{
+              title: items => items[0].label,
               label: ctx => {
-                const v = ctx.raw;
-                const sign = v >= 0 ? '+' : '';
-                return ` ${ctx.dataset.label}: ${sign}${Math.round(v).toLocaleString('tr-TR')} ₺`;
+                const v=ctx.raw, s=v>=0?'+':'';
+                const lbl = ctx.dataset.label==='Günlük' ? 'Günlük' : 'Kasa';
+                return ` ${lbl}: ${s}${Math.round(v).toLocaleString('tr-TR')} ₺`;
               }
             }
           }
         },
-        scales: {
-          x: {
-            ticks: { color: '#5a6070', font: { size: 11 }, maxRotation: 45 },
-            grid:  { color: '#1e1e2a' }
+        scales:{
+          x:{
+            ticks:{ color:'#3d4455', font:{size:10}, maxRotation:0, maxTicksLimit:8 },
+            grid:{ color:'#151520' }, border:{display:false}
           },
-          y1: {
-            type: 'linear', position: 'left',
-            ticks: { color: '#5a6070', font: { size: 11 },
-              callback: v => (v>=0?'+':'')+Math.round(v/1000)+'K ₺' },
-            grid: { color: '#1e1e2a' }
+          yG:{
+            type:'linear', position:'left',
+            ticks:{ color:'#3d4455', font:{size:10}, maxTicksLimit:4,
+              callback: v => Math.round(v/1000)+'K' },
+            grid:{ color:'#151520' }, border:{display:false}
           },
-          y2: {
-            type: 'linear', position: 'right',
-            ticks: { color: '#60a5fa', font: { size: 11 },
-              callback: v => (v>=0?'+':'')+Math.round(v/1000)+'K ₺' },
-            grid: { drawOnChartArea: false }
+          yK:{
+            type:'linear', position:'right',
+            ticks:{ color:'#3b5f9e', font:{size:10}, maxTicksLimit:4,
+              callback: v => Math.round(v/1000)+'K' },
+            grid:{ drawOnChartArea:false }, border:{display:false}
           }
         }
       }
