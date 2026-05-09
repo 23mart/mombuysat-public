@@ -321,7 +321,7 @@
         return `<div class="card">
           <div class="card-label">🏦 Şimdi Kapatsak</div>
           <div class="card-value ${cls(net)}">${tl(net)}</div>
-          <div class="card-sub ${cls(net)}">${pct(yuz,2)} · ${tl0(dep)} toplam sermaye</div>
+          <div class="card-sub ${cls(net)}">${pct(yuz,2)} · ${k.toplam_gun||0} işlem gününde · ${tl0(dep)} sermaye</div>
         </div>`;
       })()}
       <div class="card" style="${k.stop_yakin_sayi>0?'border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.05)':''}">
