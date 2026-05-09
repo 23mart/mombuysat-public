@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-05-09 17:38",
+  "son_guncelleme": "2026-05-09 18:25",
   "kasa": {
     "acik_sayi": 122,
     "toplam_yatirim": 749583.0,
@@ -15,6 +15,10 @@
     "kalkan_sayi": 76,
     "tp1_sayi": 32,
     "tp2_sayi": 7,
+    "bugun_pnl_tl": 0,
+    "bugun_islem_sayi": 0,
+    "gecen_hafta_pnl_tl": 0,
+    "gecen_hafta_islem_sayi": 0,
     "kategoriler": {
       "3": {
         "sayi": 2,
@@ -2446,6 +2450,20 @@
       "pnl_tl": 48.0,
       "sebep": "Koruma Stopu (Maliyet)",
       "tarih": "2026-05-07"
+    }
+  ],
+  "gecmis": [
+    {
+      "tarih": "2026-05-07",
+      "gunluk_pnl": -8057.0,
+      "kumulatif_pnl": -8057.0,
+      "islem_sayi": 57
+    },
+    {
+      "tarih": "2026-05-08",
+      "gunluk_pnl": -1561.0,
+      "kumulatif_pnl": -9618.0,
+      "islem_sayi": 17
     }
   ]
 }
