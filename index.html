@@ -113,12 +113,21 @@
       padding: 14px 20px;
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
     }
+    .section-head:hover { background: var(--surface2); }
     .section-title { font-size: 13px; font-weight: 600; }
     .pill {
       font-size: 11px; padding: 3px 10px; border-radius: 20px;
       background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
     }
+    .toggle-icon {
+      font-size: 11px; color: var(--muted); margin-left: 10px;
+      transition: transform .2s;
+    }
+    .section.collapsed .toggle-icon { transform: rotate(-90deg); }
+    .section.collapsed .section-body { display: none; }
 
     /* ── Table ── */
     .tbl-wrap { overflow-x: auto; }
@@ -279,13 +288,46 @@
     </div>
   </div>
 
-  <!-- Closed trades -->
-  <div class="section">
-    <div class="section-head">
-      <span class="section-title">Son Kapananlar</span>
-      <span class="pill" id="kapanan-pill">son 20</span>
+  <!-- Son Alınanlar -->
+  <div class="section collapsed" id="sec-alinan">
+    <div class="section-head" onclick="toggle('sec-alinan')">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Son Alınanlar</span>
+        <span class="pill" id="alinan-pill">—</span>
+      </div>
+      <span class="toggle-icon">▼</span>
     </div>
-    <div class="tbl-wrap">
+    <div class="section-body tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Hisse</th>
+            <th>Alış Tarihi</th>
+            <th>Alış</th>
+            <th>Güncel</th>
+            <th>P&L %</th>
+            <th>P&L ₺</th>
+            <th>Yatırım</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody id="alinan-body">
+          <tr><td colspan="8"><div class="empty">—</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Son Kapananlar -->
+  <div class="section collapsed" id="sec-kapanan">
+    <div class="section-head" onclick="toggle('sec-kapanan')">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Son Kapananlar</span>
+        <span class="pill" id="kapanan-pill">—</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="section-body tbl-wrap">
       <table>
         <thead>
           <tr>
@@ -297,7 +339,7 @@
           </tr>
         </thead>
         <tbody id="kapanan-body">
-          <tr><td colspan="5"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
+          <tr><td colspan="5"><div class="empty">—</div></td></tr>
         </tbody>
       </table>
     </div>
@@ -413,7 +455,36 @@
     renderPortfoy(data.portfoy);
   });
 
-  /* ── Closed trades ── */
+  /* ── Accordion toggle ── */
+  function toggle(id){
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  /* ── Son Alınanlar ── */
+  function renderAlinanlar(list){
+    document.getElementById('alinan-pill').textContent = 'son '+list.length;
+    document.getElementById('alinan-body').innerHTML = list.map(p => {
+      const badges = [];
+      if(p.tp2)    badges.push('<span class="badge b-tp2">TP2</span>');
+      else if(p.tp1) badges.push('<span class="badge b-tp1">TP1</span>');
+      if(p.kalkan) badges.push('<span class="badge b-kal">🛡</span>');
+      return `<tr>
+        <td><div class="sym">
+          <span class="cat">${CAT[p.kategori]||'🥉'}</span>
+          <span class="sym-name">${p.sembol}</span>
+        </div></td>
+        <td class="neu">${p.alis_tarihi}</td>
+        <td>${p.alis.toFixed(2)}</td>
+        <td><b>${p.guncel.toFixed(2)}</b></td>
+        <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde,2)}</td>
+        <td class="${cls(p.pnl_tl)}">${tl(p.pnl_tl)}</td>
+        <td class="neu">${Math.round(p.yatirim).toLocaleString('tr-TR')} ₺</td>
+        <td><div class="badges">${badges.join('')}</div></td>
+      </tr>`;
+    }).join('');
+  }
+
+  /* ── Son Kapananlar ── */
   function renderKapananlar(list){
     document.getElementById('kapanan-pill').textContent = 'son '+list.length;
     document.getElementById('kapanan-body').innerHTML = list.map(k => `<tr>
@@ -437,6 +508,7 @@
 
       renderStats(data);
       renderPortfoy(data.portfoy);
+      renderAlinanlar(data.son_alinanlar || []);
       renderKapananlar(data.son_kapananlar);
     } catch(err) {
       document.getElementById('live-label').textContent = 'Bağlanamadı';
