@@ -302,7 +302,7 @@
       <div class="card">
         <div class="card-label">Realizasyon</div>
         <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
-        <div class="card-sub">${k.kapanan_toplam} işlem · %${k.win_rate} başarı</div>
+        <div class="card-sub">${k.kapanan_toplam} kapanan · ${(k.kapanan_toplam||0)+(k.acik_sayi||0)} toplam işlem · %${k.win_rate} başarı</div>
       </div>
       <div class="card">
         <div class="card-label">✅ Karla Kapanan</div>
