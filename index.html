@@ -288,24 +288,19 @@
         <div class="card-sub">gerçekleşmemiş kâr/zarar</div>
       </div>
       <div class="card">
-        <div class="card-label">Kapanan İşlem</div>
-        <div class="card-value">${k.kapanan_toplam}</div>
-        <div class="card-sub">toplam</div>
-      </div>
-      <div class="card">
         <div class="card-label">Realizasyon</div>
         <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
-        <div class="card-sub">gerçekleşen net</div>
+        <div class="card-sub">${k.kapanan_toplam} işlem · %${k.win_rate} başarı</div>
       </div>
       <div class="card">
-        <div class="card-label">Başarı Oranı</div>
-        <div class="card-value ${k.win_rate>=50?'pos':'neg'}">${k.win_rate}%</div>
-        <div class="card-sub ${cls(k.ort_kazanc)}">ort. kazanç ${pct(k.ort_kazanc,1)}</div>
+        <div class="card-label">✅ Karla Kapanan</div>
+        <div class="card-value pos">${k.win_sayi||0}</div>
+        <div class="card-sub pos">ort. ${pct(k.ort_kazanc,1)} kazanç</div>
       </div>
       <div class="card">
-        <div class="card-label">Ort. Kayıp</div>
-        <div class="card-value neg">${pct(k.ort_kayip,1)}</div>
-        <div class="card-sub">zarar eden işlemlerde</div>
+        <div class="card-label">❌ Zararla Kapanan</div>
+        <div class="card-value neg">${k.los_sayi||0}</div>
+        <div class="card-sub neg">ort. ${pct(k.ort_kayip,1)} kayıp</div>
       </div>
     `;
   }
