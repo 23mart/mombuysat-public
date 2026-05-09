@@ -302,6 +302,16 @@
         <div class="card-value neg">${k.los_sayi||0} işlem</div>
         <div class="card-sub neg">${tl(k.los_tl)} zarar · ${tl0(k.los_yatirim)} yatırım · ort. ${pct(k.ort_kayip,1)}</div>
       </div>
+      ${(()=>{
+        const net = (k.kapanan_net_tl||0) + (k.yuzen_pnl_tl||0);
+        const dep = (k.win_yatirim||0) + (k.los_yatirim||0) + (k.toplam_yatirim||0);
+        const yuz = dep ? (net/dep*100) : 0;
+        return `<div class="card">
+          <div class="card-label">🏦 Şimdi Kapatsak</div>
+          <div class="card-value ${cls(net)}">${tl(net)}</div>
+          <div class="card-sub ${cls(net)}">${pct(yuz,2)} · ${tl0(dep)} toplam sermaye</div>
+        </div>`;
+      })()}
     `;
   }
 
