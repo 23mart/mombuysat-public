@@ -28,7 +28,7 @@
     .logo-mark { width:34px; height:34px; background:linear-gradient(135deg,var(--green),var(--green2)); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; }
     .logo-title { font-size:15px; font-weight:700; letter-spacing:-.3px; }
     .logo-sub   { font-size:11px; color:var(--muted); }
-    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--muted); }
+    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--text); }
     .upd-pill { display:flex; align-items:center; gap:6px; background:rgba(34,197,94,.1); border:1px solid rgba(34,197,94,.25); padding:4px 12px; border-radius:20px; color:#86efac; font-size:12px; }
     .dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:blink 2s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
@@ -339,11 +339,21 @@
         <div class="card-value neg">${k.en_kotu_sembol||'-'}</div>
         <div class="card-sub neg">${pct(k.en_kotu_pnl,1)} · ${tl(k.en_kotu_tl)}</div>
       </div>
-      <div class="card">
-        <div class="card-label">📅 Bugün Açılan</div>
-        <div class="card-value" style="color:var(--blue)">${k.bugun_acilan_sayi||0}</div>
-        <div class="card-sub">yeni pozisyon</div>
-      </div>
+      ${(()=>{
+        const bl = k._bugun_list||[];
+        const vip  = bl.filter(p=>p.kategori==3).length;
+        const hac  = bl.filter(p=>p.kategori==2).length;
+        const std  = bl.filter(p=>p.kategori==1).length;
+        const parts = [];
+        if(vip)  parts.push(`<span style="color:var(--gold)">🥇 VIP ×${vip}</span>`);
+        if(hac)  parts.push(`<span style="color:var(--blue)">🥈 Hacim ×${hac}</span>`);
+        if(std)  parts.push(`<span style="color:var(--orange)">🥉 Std ×${std}</span>`);
+        return `<div class="card">
+          <div class="card-label">📅 Bugün Açılan</div>
+          <div class="card-value" style="color:var(--blue)">${bl.length||k.bugun_acilan_sayi||0}</div>
+          <div class="card-sub">${parts.length?parts.join(' &nbsp;'):'yeni pozisyon yok'}</div>
+        </div>`;
+      })()}
     `;
   }
 
@@ -602,6 +612,8 @@
       const data = await res.json();
       document.getElementById('upd-label').textContent = 'Güncellendi';
       document.getElementById('ts').textContent = data.son_guncelleme;
+      const bugun = data.son_guncelleme.slice(0,10);
+      data.kasa._bugun_list = (data.portfoy||[]).filter(p => p.alis_tarihi === bugun);
       renderStats(data.kasa);
       renderOzet(data.kasa);
       renderDonemOzet(data.kasa);
