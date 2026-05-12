@@ -434,7 +434,7 @@
       if(p.kalkan) badges.push('<span class="badge b-kal">🛡</span>');
       return `<tr>
         <td><div class="sym"><span class="cat">${CAT[p.kategori]||'🥉'}</span><span class="sym-name">${p.sembol}</span></div></td>
-        <td><span class="day-badge">${p.gun}G</span></td>
+        <td><span class="day-badge">${p.gun != null ? p.gun+'G' : '—'}</span></td>
         <td>${p.alis.toFixed(2)}</td>
         <td><b>${p.guncel.toFixed(2)}</b></td>
         <td class="${cls(p.pnl_yuzde)} pnl-big">${pct(p.pnl_yuzde)}</td>
