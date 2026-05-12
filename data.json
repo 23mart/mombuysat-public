@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-05-12 09:18",
+  "son_guncelleme": "2026-05-12 09:56",
   "kasa": {
     "acik_sayi": 134,
     "toplam_yatirim": 817500.0,
-    "portfoy_degeri": 872476.0,
-    "yuzen_pnl_tl": 54976.0,
-    "yuzen_pnl_yuzde": 6.72,
+    "portfoy_degeri": 872559.0,
+    "yuzen_pnl_tl": 55059.0,
+    "yuzen_pnl_yuzde": 6.74,
     "kapanan_toplam": 92,
     "kapanan_net_tl": -10408.0,
     "win_rate": 39.1,
@@ -49,8 +49,8 @@
       },
       "2": {
         "sayi": 15,
-        "ort_pnl": 6.52,
-        "yuzen_tl": 5447.0
+        "ort_pnl": 6.63,
+        "yuzen_tl": 5530.0
       },
       "1": {
         "sayi": 117,
@@ -1909,6 +1909,27 @@
       "gun": 5
     },
     {
+      "sembol": "CCOLA",
+      "kategori": 2,
+      "alis_tarihi": "2026-05-06",
+      "alis_saati": "",
+      "_sort_key": [
+        "2026-05-06",
+        ""
+      ],
+      "alis": 86.8,
+      "guncel": 87.75,
+      "pnl_yuzde": 1.09,
+      "pnl_tl": 55.0,
+      "yatirim": 5000,
+      "stop": 80.72,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 2.65,
+      "gun": 6
+    },
+    {
       "sembol": "KBORU",
       "kategori": 1,
       "alis_tarihi": null,
@@ -2108,8 +2129,8 @@
       ],
       "alis": 51.05,
       "guncel": 51.05,
-      "pnl_yuzde": -0.0,
-      "pnl_tl": -0.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 47.48,
       "kalkan": false,
@@ -2129,8 +2150,8 @@
       ],
       "alis": 43.6,
       "guncel": 43.6,
-      "pnl_yuzde": -0.0,
-      "pnl_tl": -0.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 40.55,
       "kalkan": false,
@@ -2150,8 +2171,8 @@
       ],
       "alis": 37.98,
       "guncel": 37.98,
-      "pnl_yuzde": -0.0,
-      "pnl_tl": -0.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 35.32,
       "kalkan": false,
@@ -2178,7 +2199,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 1.45,
       "gun": 1
     },
     {
@@ -2199,7 +2220,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 1.88,
       "gun": 1
     },
     {
@@ -2222,27 +2243,6 @@
       "tp2": false,
       "max_pnl": 2.08,
       "gun": 8
-    },
-    {
-      "sembol": "CCOLA",
-      "kategori": 2,
-      "alis_tarihi": "2026-05-06",
-      "alis_saati": "",
-      "_sort_key": [
-        "2026-05-06",
-        ""
-      ],
-      "alis": 86.8,
-      "guncel": 86.32,
-      "pnl_yuzde": -0.55,
-      "pnl_tl": -28.0,
-      "yatirim": 5000,
-      "stop": 80.72,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 2.65,
-      "gun": 6
     },
     {
       "sembol": "ALCTL",
@@ -2894,7 +2894,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 1.45,
       "gun": 1
     },
     {
@@ -2915,7 +2915,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 1.88,
       "gun": 1
     },
     {
@@ -3055,8 +3055,8 @@
       ],
       "alis": 37.98,
       "guncel": 37.98,
-      "pnl_yuzde": -0.0,
-      "pnl_tl": -0.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 35.32,
       "kalkan": false,
@@ -3160,8 +3160,8 @@
       ],
       "alis": 43.6,
       "guncel": 43.6,
-      "pnl_yuzde": -0.0,
-      "pnl_tl": -0.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 40.55,
       "kalkan": false,
@@ -3501,7 +3501,7 @@
       "gunluk_pnl": 0,
       "kumulatif_pnl": -10408.0,
       "islem_sayi": 0,
-      "yuzen_pnl": 54976.0
+      "yuzen_pnl": 55059.0
     }
   ]
 }
