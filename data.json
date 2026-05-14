@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-05-13 18:11",
+  "son_guncelleme": "2026-05-14 09:55",
   "kasa": {
-    "acik_sayi": 81,
-    "toplam_yatirim": 447500.0,
-    "portfoy_degeri": 494446.0,
+    "acik_sayi": 82,
+    "toplam_yatirim": 457500.0,
+    "portfoy_degeri": 504446.0,
     "yuzen_pnl_tl": 46946.0,
-    "yuzen_pnl_yuzde": 10.49,
+    "yuzen_pnl_yuzde": 10.26,
     "kapanan_toplam": 191,
     "kapanan_net_tl": -21857.0,
     "win_rate": 38.7,
@@ -19,22 +19,22 @@
     "los_ort_sure": 2.9,
     "ort_kazanc": 2.1,
     "ort_kayip": -3.77,
-    "ort_sure": 4.5,
+    "ort_sure": 5.5,
     "kalkan_sayi": 56,
     "tp1_sayi": 37,
     "tp2_sayi": 10,
-    "bugun_pnl_tl": -5429.0,
-    "bugun_islem_sayi": 55,
+    "bugun_pnl_tl": 0,
+    "bugun_islem_sayi": 0,
     "gecen_hafta_pnl_tl": -9618.0,
     "gecen_hafta_islem_sayi": 74,
     "bu_hafta_pnl_tl": -12239.0,
     "bu_hafta_islem_sayi": 117,
-    "toplam_gun": 10,
+    "toplam_gun": 11,
     "stop_yakin_sayi": 7,
-    "bugun_acilan_sayi": 13,
-    "yas_kisa": 31,
-    "yas_orta": 10,
-    "yas_uzun": 20,
+    "bugun_acilan_sayi": 1,
+    "yas_kisa": 32,
+    "yas_orta": 3,
+    "yas_uzun": 27,
     "en_iyi_sembol": "OZATD",
     "en_iyi_pnl": 158.79,
     "en_iyi_tl": 10586.0,
@@ -48,8 +48,8 @@
         "yuzen_tl": 267.0
       },
       "2": {
-        "sayi": 15,
-        "ort_pnl": 4.23,
+        "sayi": 16,
+        "ort_pnl": 3.97,
         "yuzen_tl": 2212.0
       },
       "1": {
@@ -163,7 +163,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 51.1,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "ATSYH",
@@ -205,7 +205,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 41.43,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "PKART",
@@ -268,7 +268,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 24.77,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "EUPWR",
@@ -310,7 +310,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 19.98,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "ASTOR",
@@ -331,7 +331,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 23.32,
-      "gun": 13
+      "gun": 14
     },
     {
       "sembol": "ACSEL",
@@ -352,7 +352,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 27.66,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "SDTTR",
@@ -373,7 +373,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 27.12,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "NETCD",
@@ -394,7 +394,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 26.48,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "ELITE",
@@ -415,7 +415,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 21.51,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "TRHOL",
@@ -436,7 +436,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 15.89,
-      "gun": 5
+      "gun": 6
     },
     {
       "sembol": "BESTE",
@@ -457,7 +457,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 23.98,
-      "gun": 13
+      "gun": 14
     },
     {
       "sembol": "TARKM",
@@ -478,7 +478,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 22.25,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "AHSGY",
@@ -520,7 +520,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 20.78,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "PCILT",
@@ -562,7 +562,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 20.43,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "EMPAE",
@@ -583,7 +583,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.28,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "ATATP",
@@ -604,7 +604,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 21.54,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "DGATE",
@@ -625,7 +625,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 22.99,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "BVSAN",
@@ -646,7 +646,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 32.93,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "KUVVA",
@@ -667,7 +667,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 15.27,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "TCKRC",
@@ -688,7 +688,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 13.21,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "MANAS",
@@ -730,7 +730,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 11.77,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "DGGYO",
@@ -751,7 +751,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 8.03,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "AKENR",
@@ -772,7 +772,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 15.12,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "EREGL",
@@ -793,7 +793,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 16.09,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "KARTN",
@@ -814,7 +814,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 17.36,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "SAYAS",
@@ -877,7 +877,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 15.29,
-      "gun": 13
+      "gun": 14
     },
     {
       "sembol": "ISKPL",
@@ -940,7 +940,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 8.23,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "MOGAN",
@@ -982,7 +982,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 13.15,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "CWENE",
@@ -1024,7 +1024,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 4.64,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "IZINV",
@@ -1066,7 +1066,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 7.79,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "KRDMA",
@@ -1087,7 +1087,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 15.68,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "MIATK",
@@ -1108,7 +1108,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 17.96,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "BRLSM",
@@ -1129,7 +1129,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 3.41,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "OZSUB",
@@ -1171,7 +1171,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.71,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "KTLEV",
@@ -1192,7 +1192,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 3.61,
-      "gun": 5
+      "gun": 6
     },
     {
       "sembol": "BAKAB",
@@ -1213,7 +1213,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 13.64,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "ANELE",
@@ -1234,7 +1234,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.18,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "AKFYE",
@@ -1255,7 +1255,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 7.94,
-      "gun": 9
+      "gun": 10
     },
     {
       "sembol": "ANGEN",
@@ -1276,7 +1276,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 1.04,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "TEHOL",
@@ -1297,7 +1297,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.9,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "PATEK",
@@ -1318,7 +1318,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 23.61,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "MAGEN",
@@ -1339,7 +1339,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.66,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "ALKA",
@@ -1360,7 +1360,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.07,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "AHGAZ",
@@ -1381,7 +1381,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.82,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "ULUSE",
@@ -1402,7 +1402,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "GSDDE",
@@ -1423,7 +1423,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "SUMAS",
@@ -1444,7 +1444,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "ODINE",
@@ -1461,6 +1461,27 @@
       "pnl_tl": 0.0,
       "yatirim": 5000,
       "stop": 1157.85,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 1
+    },
+    {
+      "sembol": "RGYAS",
+      "kategori": 2,
+      "alis_tarihi": "2026-05-14",
+      "alis_saati": "09:55",
+      "_sort_key": [
+        "2026-05-14",
+        "09:55"
+      ],
+      "alis": 189.0,
+      "guncel": 189.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 10000,
+      "stop": 175.77,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
@@ -1486,7 +1507,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.49,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "ALCTL",
@@ -1507,7 +1528,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 1.75,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "KARSN",
@@ -1528,7 +1549,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.93,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "GEREL",
@@ -1549,7 +1570,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.42,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "VANGD",
@@ -1570,7 +1591,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.62,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "LMKDC",
@@ -1591,7 +1612,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.67,
-      "gun": 5
+      "gun": 6
     },
     {
       "sembol": "CCOLA",
@@ -1612,7 +1633,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.65,
-      "gun": 7
+      "gun": 8
     },
     {
       "sembol": "NTGAZ",
@@ -1633,7 +1654,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.95,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "TRENJ",
@@ -1654,7 +1675,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.57,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "KNFRT",
@@ -1675,7 +1696,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.66,
-      "gun": 2
+      "gun": 3
     },
     {
       "sembol": "BIGTK",
@@ -1696,7 +1717,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.1,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "KZGYO",
@@ -1717,7 +1738,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.51,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "AYGAZ",
@@ -1759,10 +1780,31 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.34,
-      "gun": 1
+      "gun": 2
     }
   ],
   "son_alinanlar": [
+    {
+      "sembol": "RGYAS",
+      "kategori": 2,
+      "alis_tarihi": "2026-05-14",
+      "alis_saati": "09:55",
+      "_sort_key": [
+        "2026-05-14",
+        "09:55"
+      ],
+      "alis": 189.0,
+      "guncel": 189.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 10000,
+      "stop": 175.77,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 0
+    },
     {
       "sembol": "ODINE",
       "kategori": 1,
@@ -1782,7 +1824,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "TEHOL",
@@ -1803,7 +1845,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.9,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "ALKA",
@@ -1824,7 +1866,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.07,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "ANGEN",
@@ -1845,7 +1887,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 1.04,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "VANGD",
@@ -1866,7 +1908,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.62,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "KARSN",
@@ -1887,7 +1929,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.93,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "ANELE",
@@ -1908,7 +1950,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.18,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "SUMAS",
@@ -1929,7 +1971,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "KZGYO",
@@ -1950,7 +1992,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.51,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "BIGTK",
@@ -1971,7 +2013,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.1,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "BRLSM",
@@ -1992,7 +2034,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 3.41,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "GSDDE",
@@ -2013,7 +2055,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "ULUSE",
@@ -2034,7 +2076,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "MAGEN",
@@ -2055,7 +2097,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.66,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "COSMO",
@@ -2076,7 +2118,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 2.34,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "ONCSM",
@@ -2097,7 +2139,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 7.79,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "DGGYO",
@@ -2118,7 +2160,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 8.03,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "EMPAE",
@@ -2139,7 +2181,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.28,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "AKENR",
@@ -2160,28 +2202,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 15.12,
-      "gun": 1
-    },
-    {
-      "sembol": "DOGUB",
-      "kategori": 1,
-      "alis_tarihi": "2026-05-12",
-      "alis_saati": "12:00",
-      "_sort_key": [
-        "2026-05-12",
-        "12:00"
-      ],
-      "alis": 115.5,
-      "guncel": 121.7,
-      "pnl_yuzde": 5.37,
-      "pnl_tl": 268.0,
-      "yatirim": 5000,
-      "stop": 116.08,
-      "kalkan": true,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 8.23,
-      "gun": 1
+      "gun": 2
     }
   ],
   "son_kapananlar": [
@@ -2393,8 +2414,15 @@
     {
       "tarih": "2026-05-13",
       "gunluk_pnl": -5429.0,
-      "kumulatif_pnl": -21858.0,
+      "kumulatif_pnl": -2371.0,
       "islem_sayi": 55,
+      "yuzen_pnl": 19487.0
+    },
+    {
+      "tarih": "2026-05-14",
+      "gunluk_pnl": 0,
+      "kumulatif_pnl": -21858.0,
+      "islem_sayi": 0,
       "yuzen_pnl": 46946.0
     }
   ]
