@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kombo 1 · İz Stop</title>
+  <style>
+    :root {
+      --bg:      #0b0b10;
+      --surface: #111118;
+      --s2:      #18181f;
+      --border:  #ffffff;
+      --text:    #e4e6eb;
+      --muted:   #5a6070;
+      --green:   #22c55e;
+      --green2:  #16a34a;
+      --red:     #ef4444;
+      --blue:    #60a5fa;
+      --gold:    #f59e0b;
+      --orange:  #fb923c;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; line-height:1.5; min-height:100vh; }
+
+    /* Header */
+    .header { position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); padding:0 28px; height:56px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark { width:34px; height:34px; background:linear-gradient(135deg,#f59e0b,#d97706); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; }
+    .logo-title { font-size:15px; font-weight:700; letter-spacing:-.3px; }
+    .logo-sub   { font-size:11px; color:var(--text); }
+    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--text); }
+    .header-meta a { color:var(--gold); text-decoration:none; font-size:12px; }
+    .header-meta a:hover { text-decoration:underline; }
+    .upd-pill { display:flex; align-items:center; gap:6px; background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.25); padding:4px 12px; border-radius:20px; color:#fcd34d; font-size:12px; }
+    .dot { width:7px; height:7px; background:var(--gold); border-radius:50%; animation:blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* Page */
+    .page { max-width:1440px; margin:0 auto; padding:24px 28px; }
+
+    /* Section header */
+    .sec-header { margin-bottom:12px; }
+    .sec-header h2 { font-size:14px; font-weight:700; letter-spacing:-.2px; color:var(--text); }
+    .sec-header p  { font-size:11px; color:var(--muted); margin-top:2px; }
+
+    /* Stats grid */
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+    @media(max-width:900px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+    .card-label { font-size:10px; font-weight:600; letter-spacing:.9px; text-transform:uppercase; color:var(--text); margin-bottom:8px; }
+    .card-value { font-size:24px; font-weight:700; line-height:1; margin-bottom:4px; font-variant-numeric:tabular-nums; }
+    .card-sub   { font-size:11px; color:var(--text); }
+    .card-sub.pos { color:var(--green); }
+    .card-sub.neg { color:var(--red); }
+
+    /* Section */
+    .section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+    .section-head { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; }
+    .section-head:hover { background:var(--s2); }
+    .section-title { font-size:13px; font-weight:600; }
+    .pill { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--s2); border:1px solid var(--border); color:var(--text); }
+    .head-right { display:flex; align-items:center; gap:10px; }
+    .toggle { font-size:11px; color:var(--text); transition:transform .2s; }
+    .section.collapsed .toggle { transform:rotate(-90deg); }
+    .section.collapsed .section-body { display:none; }
+
+    /* Table */
+    .tbl-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { padding:9px 14px; font-size:10px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; color:var(--text); border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; }
+    thead th:hover { color:var(--text); }
+    thead th.active { color:var(--gold); }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:var(--s2); }
+    td { padding:10px 14px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+    /* Cells */
+    .sym { display:flex; align-items:center; gap:7px; }
+    .sym-name { font-weight:700; font-size:14px; }
+    .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--text); }
+    .pnl-big { font-size:15px; font-weight:700; }
+    .day-badge { font-size:11px; padding:2px 8px; background:var(--s2); border:1px solid var(--border); border-radius:5px; color:var(--text); }
+    .badges { display:flex; gap:4px; }
+    .badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; letter-spacing:.3px; }
+    .b-tp1 { background:rgba(34,197,94,.12); color:#86efac; border:1px solid rgba(34,197,94,.3); }
+    .b-tp2 { background:rgba(34,197,94,.22); color:#4ade80; border:1px solid rgba(34,197,94,.5); }
+    .b-kal { background:rgba(96,165,250,.13); color:#93c5fd; border:1px solid rgba(96,165,250,.3); }
+    .iz-tetik { color:var(--orange); font-size:14px; margin-left:4px; }
+
+    /* Kapanan sebep */
+    .r-stop { color:#f87171; font-size:11px; } .r-tp { color:#86efac; font-size:11px; }
+    .r-at   { color:#93c5fd; font-size:11px; } .r-kor { color:#fdba74; font-size:11px; }
+    .r-def  { color:var(--text); font-size:11px; }
+
+    /* Empty / loading */
+    .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:44px; color:var(--text); }
+    .spinner { width:18px; height:18px; border:2px solid var(--border); border-top-color:var(--gold); border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+
+    .bekleniyor { text-align:center; color:var(--muted); font-size:13px; padding:32px 20px; }
+
+    /* Grafik */
+    .grafik-ozet { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:14px; }
+    @media(max-width:700px){ .grafik-ozet { grid-template-columns:1fr 1fr; } }
+    .gk { background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
+    .gk-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--text); margin-bottom:5px; }
+    .gk-val { font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.15; }
+    .gk-sub { font-size:11px; color:var(--text); margin-top:2px; }
+    .chart-wrap { position:relative; height:160px; }
+    @media(min-width:600px){ .chart-wrap { height:210px; } }
+
+    .footer { text-align:center; color:var(--text); font-size:11px; padding:20px; border-top:1px solid var(--border); }
+
+    @media(max-width:480px){ .page{padding:16px 14px;} }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">🎯</div>
+    <div>
+      <div class="logo-title">Kombo 1 · İz Stop</div>
+      <div class="logo-sub">BIST · streak≥3 · haftalık&gt;%10 · macd 0~1</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <a href="./index.html">← Ana Portföy</a>
+    <span id="ts"></span>
+    <div class="upd-pill"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- Bölüm A: İz Durdurucu Simülasyonu -->
+  <div class="sec-header">
+    <h2>İZ DURDURUCU SİMÜLASYONU</h2>
+    <p>Aktif pozisyonlar üzerinde %3 iz stop uygulanmış simülasyon</p>
+  </div>
+
+  <div class="stats" id="iz-stats">
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+  </div>
+
+  <div class="section" id="sec-iz-portfoy">
+    <div class="section-head" style="cursor:default">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">İz Stop Durumu · Tüm Pozisyonlar</span>
+        <span class="pill" id="iz-pill">—</span>
+      </div>
+    </div>
+    <div class="section-body tbl-wrap">
+      <table>
+        <thead id="iz-head">
+          <tr>
+            <th data-k="sembol"   data-t="s">Hisse</th>
+            <th data-k="gun"      data-t="n">Süre</th>
+            <th data-k="alis"     data-t="n">Alış</th>
+            <th data-k="guncel"   data-t="n">Güncel</th>
+            <th data-k="pnl_yuzde" data-t="n">P&L %</th>
+            <th data-k="max_pnl"  data-t="n">Zirve %</th>
+            <th data-k="iz_sev"   data-t="n">İz Sev</th>
+            <th data-k="iz_kz"    data-t="n" class="active">İz K/Z %</th>
+            <th data-k="iz_tl"    data-t="n">İz K/Z ₺</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody id="iz-body">
+          <tr><td colspan="10"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bölüm B: Kombo 1 Geçmişi -->
+  <div class="sec-header" style="margin-top:8px">
+    <h2>KOMBO 1 GEÇMİŞİ (İZ STOP UYGULANMIŞ)</h2>
+    <p>XU100 streak≥3, haftalık artış&gt;%10, MACD histogram 0~1 filtresiyle alınan ve kapanan işlemler</p>
+  </div>
+
+  <div class="stats" id="k1-stats">
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- Grafik -->
+  <div class="section" id="sec-k1-grafik">
+    <div class="section-head" style="cursor:default">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Kombo 1 Kapanan İşlemler · İz Stop ile</span>
+        <span class="pill" id="k1-grafik-pill">—</span>
+      </div>
+    </div>
+    <div class="section-body" style="padding:16px 18px 18px">
+      <div id="k1-grafik-ozet" class="grafik-ozet"></div>
+      <div class="chart-wrap">
+        <canvas id="k1-chart"></canvas>
+      </div>
+      <div id="k1-grafik-empty" class="empty" style="display:none">Henüz kapanan işlem yok</div>
+    </div>
+  </div>
+
+  <!-- Son Kapananlar -->
+  <div class="section collapsed" id="sec-k1-kapanan">
+    <div class="section-head" onclick="toggle('sec-k1-kapanan')">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Son Kapananlar (Kombo 1)</span>
+        <span class="pill" id="k1-kapanan-pill">—</span>
+      </div>
+      <span class="toggle">▼</span>
+    </div>
+    <div class="section-body tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>Hisse</th><th>Tarih</th><th>P&L %</th><th>P&L ₺</th><th>Sebep</th>
+        </tr></thead>
+        <tbody id="k1-kapanan-body">
+          <tr><td colspan="5"><div class="empty">—</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+<footer class="footer">Veriler yaklaşık 10 dk gecikmeli güncellenir &nbsp;·&nbsp; Yatırım tavsiyesi değildir</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+  const CAT = {3:'🥇',2:'🥈',1:'🥉'};
+  let izData = [], izSortKey = 'iz_kz', izSortDir = -1;
+
+  const pct  = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d)+'%';
+  const tl   = v => v==null?'-':(v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+  const tl0  = v => Math.round(v||0).toLocaleString('tr-TR')+' ₺';
+  const cls  = v => v>0?'pos':v<0?'neg':'neu';
+
+  function sebepClass(s){ if(!s)return'r-def'; if(/stop loss/i.test(s))return'r-stop'; if(/tp2|tp1/i.test(s))return'r-tp'; if(/alphatrend/i.test(s))return'r-at'; if(/koruma|maliyet/i.test(s))return'r-kor'; return'r-def'; }
+  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop -%7'; if(/tp2/i.test(s))return'🎯 TP2'; if(/tp1/i.test(s))return'✅ TP1'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; if(/manuel/i.test(s))return'✋ Manuel'; return s.length>22?s.slice(0,22)+'…':s; }
+
+  /* ── Bölüm A: İz Stop ── */
+  function renderIzStop(d) {
+    if (!d) {
+      document.getElementById('iz-stats').innerHTML = '<div class="card" style="grid-column:1/-1"><div class="bekleniyor">Veri bekleniyor — bir sonraki scan\'de güncellenir</div></div>';
+      document.getElementById('iz-body').innerHTML = '<tr><td colspan="10"><div class="bekleniyor">Veri bekleniyor — bir sonraki scan\'de güncellenir</div></td></tr>';
+      return;
+    }
+
+    // Stat kartları
+    document.getElementById('iz-stats').innerHTML = `
+      <div class="card">
+        <div class="card-label">Açık Pozisyon</div>
+        <div class="card-value" style="color:var(--blue)">${d.acik_sayi}</div>
+        <div class="card-sub">iz stop simülasyonunda</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Gerçek Net</div>
+        <div class="card-value ${cls(d.gercek_net_tl)}">${tl(d.gercek_net_tl)}</div>
+        <div class="card-sub">gerçek yüzen P&L</div>
+      </div>
+      <div class="card">
+        <div class="card-label">İz Stop ile Net</div>
+        <div class="card-value ${cls(d.iz_net_tl)}">${tl(d.iz_net_tl)}</div>
+        <div class="card-sub">tetiklenmeli durumda</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ek Kazanım</div>
+        <div class="card-value ${cls(d.kazanim_tl)}">${tl(d.kazanim_tl)}</div>
+        <div class="card-sub">${d.tetiklenen} pozisyon iz stop altında</div>
+      </div>
+    `;
+
+    document.getElementById('iz-pill').textContent = d.acik_sayi + ' hisse';
+    izData = d.portfoy || [];
+    drawIzTable();
+  }
+
+  function drawIzTable() {
+    const sorted = [...izData].sort((a, b) => {
+      const av = a[izSortKey], bv = b[izSortKey];
+      return typeof av === 'string' ? izSortDir * av.localeCompare(bv) : izSortDir * ((av||0) - (bv||0));
+    });
+    document.getElementById('iz-body').innerHTML = sorted.map(p => {
+      const badges = [];
+      if (p.tp2)   badges.push('<span class="badge b-tp2">TP2</span>');
+      else if (p.tp1) badges.push('<span class="badge b-tp1">TP1</span>');
+      if (p.kalkan) badges.push('<span class="badge b-kal">🛡</span>');
+      const tetikHtml = p.iz_tetik ? '<span class="iz-tetik">⚡</span>' : '';
+      const rowStyle  = p.iz_tetik ? ' style="background:rgba(251,146,60,.07)"' : '';
+      const tdFirst   = p.iz_tetik ? ' style="border-left:3px solid #fb923c"' : '';
+      const izSevHtml = p.iz_sev != null ? `<span style="color:var(--green);opacity:.7">+${p.iz_sev.toFixed(2)}%</span>` : '—';
+      return `<tr${rowStyle}>
+        <td${tdFirst}><div class="sym"><span class="sym-name">${p.sembol}</span></div></td>
+        <td><span class="day-badge">${p.gun != null ? p.gun+'G' : '—'}</span></td>
+        <td>${p.alis != null ? p.alis.toFixed(2) : '—'}</td>
+        <td><b>${p.guncel != null ? p.guncel.toFixed(2) : '—'}</b></td>
+        <td class="${cls(p.pnl_yuzde)}">${pct(p.pnl_yuzde)}</td>
+        <td class="pos" style="opacity:.65">${pct(p.max_pnl)}</td>
+        <td>${izSevHtml}</td>
+        <td class="${cls(p.iz_kz)} pnl-big"><b>${pct(p.iz_kz)}</b></td>
+        <td class="${cls(p.iz_tl)}">${tl(p.iz_tl)}</td>
+        <td><div class="badges">${badges.join('')}${tetikHtml}</div></td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="10"><div class="empty">Pozisyon yok</div></td></tr>';
+
+    document.querySelectorAll('#iz-head th').forEach(th => th.classList.toggle('active', th.dataset.k === izSortKey));
+  }
+
+  document.getElementById('iz-head').addEventListener('click', e => {
+    const th = e.target.closest('th[data-k]');
+    if (!th || !izData.length) return;
+    const k = th.dataset.k;
+    if (k === izSortKey) izSortDir *= -1; else { izSortKey = k; izSortDir = th.dataset.t === 's' ? 1 : -1; }
+    drawIzTable();
+  });
+
+  /* ── Bölüm B: Kombo 1 ── */
+  let k1ChartObj = null;
+
+  function renderKombo1(d) {
+    if (!d) {
+      document.getElementById('k1-stats').innerHTML = '<div class="card" style="grid-column:1/-1"><div class="bekleniyor">Veri bekleniyor — bir sonraki scan\'de güncellenir</div></div>';
+      document.getElementById('k1-grafik-empty').style.display = 'flex';
+      document.querySelector('.chart-wrap').style.display = 'none';
+      return;
+    }
+
+    const k = d.kasa;
+
+    // Stat kartları
+    document.getElementById('k1-stats').innerHTML = `
+      <div class="card">
+        <div class="card-label">Kapanan İşlem</div>
+        <div class="card-value" style="color:var(--gold)">${k.kapanan_toplam}</div>
+        <div class="card-sub">kombo 1 filtresiyle</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Net Realizasyon</div>
+        <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
+        <div class="card-sub">iz stop uygulanmış</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Win Rate</div>
+        <div class="card-value ${k.win_rate >= 50 ? 'pos' : 'neg'}">${k.win_rate}%</div>
+        <div class="card-sub">${k.win_sayi} kazanan · ${k.los_sayi} kaybeden</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Kazanan / Kaybeden</div>
+        <div class="card-value" style="font-size:18px">
+          <span class="pos">${k.win_sayi} K</span>
+          <span style="color:var(--muted);font-size:14px"> / </span>
+          <span class="neg">${k.los_sayi} K</span>
+        </div>
+        <div class="card-sub">
+          <span class="pos">${tl(k.win_tl)}</span>
+          <span style="color:var(--muted)"> / </span>
+          <span class="neg">${tl(k.los_tl)}</span>
+        </div>
+      </div>
+    `;
+
+    // Grafik
+    const gecmis = d.gecmis || [];
+    const emptyEl = document.getElementById('k1-grafik-empty');
+    const wrapEl  = document.querySelector('.chart-wrap');
+    if (!gecmis.length) {
+      emptyEl.style.display = 'flex'; wrapEl.style.display = 'none';
+    } else {
+      emptyEl.style.display = 'none'; wrapEl.style.display = '';
+      document.getElementById('k1-grafik-pill').textContent = gecmis.length + ' gün';
+
+      const labels  = gecmis.map(g => g.tarih.slice(5));
+      const gunluk  = gecmis.map(g => g.gunluk_pnl);
+      const kumul   = gecmis.map(g => g.kumulatif_pnl);
+
+      if (k1ChartObj) { k1ChartObj.destroy(); }
+      k1ChartObj = new Chart(document.getElementById('k1-chart'), {
+        data: {
+          labels,
+          datasets: [
+            {
+              type: 'bar', label: 'Günlük Realize',
+              data: gunluk,
+              backgroundColor: gunluk.map(v => v >= 0 ? 'rgba(34,197,94,.55)' : 'rgba(239,68,68,.55)'),
+              borderColor:     gunluk.map(v => v >= 0 ? '#22c55e' : '#ef4444'),
+              borderWidth: 0, borderRadius: 4, borderSkipped: false,
+              yAxisID: 'yG',
+            },
+            {
+              type: 'line', label: 'Kümülatif',
+              data: kumul,
+              borderColor: '#f59e0b', borderWidth: 2,
+              pointRadius: kumul.map((v, i) => (i === kumul.length - 1) ? 3 : 0),
+              pointBackgroundColor: '#f59e0b',
+              pointHoverRadius: 4,
+              fill: false, tension: 0.3, spanGaps: false,
+              yAxisID: 'yK',
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#111118', borderColor: '#1e1e2a', borderWidth: 1,
+              titleColor: '#94a3b8', bodyColor: '#e4e6eb',
+              padding: 10, cornerRadius: 8,
+              callbacks: {
+                title: items => items[0].label,
+                label: ctx => {
+                  if (ctx.raw === null) return null;
+                  const v = ctx.raw, s = v >= 0 ? '+' : '';
+                  const lbl = { 'Günlük Realize': 'Realize', 'Kümülatif': 'Kümülatif' }[ctx.dataset.label] || ctx.dataset.label;
+                  return ` ${lbl}: ${s}${Math.round(v).toLocaleString('tr-TR')} ₺`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#3d4455', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 8 },
+              grid: { color: '#151520' }, border: { display: false }
+            },
+            yG: {
+              type: 'linear', position: 'left',
+              ticks: { color: '#3d4455', font: { size: 10 }, maxTicksLimit: 4,
+                callback: v => Math.round(v / 1000) + 'K' },
+              grid: { color: '#151520' }, border: { display: false }
+            },
+            yK: {
+              type: 'linear', position: 'right',
+              ticks: { color: '#b45309', font: { size: 10 }, maxTicksLimit: 4,
+                callback: v => Math.round(v / 1000) + 'K' },
+              grid: { drawOnChartArea: false }, border: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    // Son Kapananlar
+    const kapananlar = d.kapananlar || [];
+    document.getElementById('k1-kapanan-pill').textContent = 'son ' + kapananlar.length;
+    document.getElementById('k1-kapanan-body').innerHTML = kapananlar.map(r => `<tr>
+      <td><b>${r.sembol}</b></td>
+      <td class="neu">${r.tarih}</td>
+      <td class="${cls(r.pnl_yuzde)}">${pct(r.pnl_yuzde)}</td>
+      <td class="${cls(r.pnl_tl)}">${tl(r.pnl_tl)}</td>
+      <td class="${sebepClass(r.sebep)}">${sebepLabel(r.sebep)}</td>
+    </tr>`).join('') || '<tr><td colspan="5"><div class="empty">Kapanan işlem yok</div></td></tr>';
+  }
+
+  /* ── Accordion ── */
+  function toggle(id) { document.getElementById(id).classList.toggle('collapsed'); }
+
+  /* ── Fetch ── */
+  async function load() {
+    try {
+      const res = await fetch('./data.json?t=' + Date.now());
+      if (!res.ok) throw new Error(res.status);
+      const data = await res.json();
+      document.getElementById('ts').textContent = data.son_guncelleme;
+      document.getElementById('upd-label').textContent = 'Güncellendi';
+      renderIzStop(data.iz_stop);
+      renderKombo1(data.kombo1);
+    } catch(e) {
+      document.getElementById('upd-label').textContent = 'Bağlanamadı';
+    }
+  }
+  load();
+  setInterval(load, 10 * 60 * 1000);
+</script>
+</body>
+</html>
