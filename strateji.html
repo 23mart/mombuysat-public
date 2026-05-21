@@ -213,7 +213,7 @@
   const cls = v => v>0?'pos':v<0?'neg':'neu';
 
   function sebepClass(s){ if(!s)return'r-def'; if(/stop loss/i.test(s))return'r-stop'; if(/tp2|tp1/i.test(s))return'r-tp'; if(/alphatrend/i.test(s))return'r-at'; if(/koruma|maliyet/i.test(s))return'r-kor'; return'r-def'; }
-  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop -%7'; if(/tp2/i.test(s))return'🎯 TP2'; if(/tp1/i.test(s))return'✅ TP1'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; if(/manuel/i.test(s))return'✋ Manuel'; return s.length>22?s.slice(0,22)+'…':s; }
+  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop -%7'; if(/tp2/i.test(s))return'🎯 TP2'; if(/tp1/i.test(s))return'✅ TP1'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/maliyet stopu/i.test(s))return'💰 Maliyet Stopu'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; if(/manuel/i.test(s))return'✋ Manuel'; return s.length>22?s.slice(0,22)+'…':s; }
 
   /* ── Stats ── */
   function renderStats(k){
