@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-05-28 11:30",
+  "son_guncelleme": "2026-05-28 16:00",
   "kasa": {
     "acik_sayi": 49,
     "toplam_yatirim": 333750.0,
@@ -3201,12 +3201,12 @@
   "strateji": {
     "kasa": {
       "kapanan_toplam": 20,
-      "kapanan_net_tl": 3039.0,
+      "kapanan_net_tl": 4135.0,
       "win_rate": 85.0,
       "win_sayi": 17,
       "win_tl": 4135.0,
       "los_sayi": 3,
-      "los_tl": -1096.0,
+      "los_tl": 0.0,
       "acik_sayi": 0,
       "yuzen_pnl_tl": 0.0,
       "yuzen_pnl_iz_tl": 0.0,
@@ -3234,15 +3234,15 @@
         "sembol": "GEREL",
         "tarih": "2026-05-18",
         "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": -7.09,
-        "pnl_tl": -354.0
+        "pnl_yuzde": 0.0,
+        "pnl_tl": 0.0
       },
       {
         "sembol": "RUBNS",
         "tarih": "2026-05-13",
         "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": -7.56,
-        "pnl_tl": -378.0
+        "pnl_yuzde": 0.0,
+        "pnl_tl": 0.0
       },
       {
         "sembol": "KCAER",
@@ -3318,8 +3318,8 @@
         "sembol": "EGGUB",
         "tarih": "2026-05-12",
         "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": -7.26,
-        "pnl_tl": -363.0
+        "pnl_yuzde": 0.0,
+        "pnl_tl": 0.0
       },
       {
         "sembol": "BIZIM",
@@ -3365,18 +3365,18 @@
       },
       {
         "tarih": "2026-05-12",
-        "gunluk_pnl": 398.0,
-        "kumulatif_pnl": 928.0
+        "gunluk_pnl": 761.0,
+        "kumulatif_pnl": 1291.0
       },
       {
         "tarih": "2026-05-13",
-        "gunluk_pnl": 989.0,
-        "kumulatif_pnl": 1917.0
+        "gunluk_pnl": 1368.0,
+        "kumulatif_pnl": 2659.0
       },
       {
         "tarih": "2026-05-18",
-        "gunluk_pnl": 1122.0,
-        "kumulatif_pnl": 3039.0
+        "gunluk_pnl": 1476.0,
+        "kumulatif_pnl": 4135.0
       }
     ]
   }
