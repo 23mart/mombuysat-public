@@ -143,7 +143,7 @@
   <!-- Bölüm A: İz Durdurucu Simülasyonu -->
   <div class="sec-header">
     <h2>İZ DURDURUCU SİMÜLASYONU</h2>
-    <p>Aktif pozisyonlar üzerinde %3 iz stop uygulanmış simülasyon</p>
+    <p>Aktif pozisyonlar · max P&L ≥ %3 → iz stop = max(0, max_pnl − %3) · 0 &lt; max P&L &lt; %3 → maliyet stop = %0</p>
   </div>
 
   <div class="stats" id="iz-stats">
@@ -186,7 +186,7 @@
   <!-- Bölüm B: Kombo 1 Geçmişi -->
   <div class="sec-header" style="margin-top:8px">
     <h2>KOMBO 1 GEÇMİŞİ (İZ STOP UYGULANMIŞ)</h2>
-    <p>XU100 streak≥3, haftalık artış&gt;%10, MACD histogram 0~1 filtresiyle alınan ve kapanan işlemler</p>
+    <p>XU100 streak≥3, haftalık artış&gt;%10, MACD histogram 0~1 · iz stop + maliyet stop uygulanmış</p>
   </div>
 
   <div class="stats" id="k1-stats">
