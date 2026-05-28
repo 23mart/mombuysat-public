@@ -246,9 +246,9 @@
         <div class="card-sub" style="color:var(--ac3)">iz stop uygulanmış</div>
       </div>
       <div class="card">
-        <div class="card-label">Realizasyon (İz Stop)</div>
-        <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
-        <div class="card-sub">${k.kapanan_toplam||0} kapanan · %${k.win_rate||0} başarı</div>
+        <div class="card-label">🎯 Win Rate</div>
+        <div class="card-value ${ (k.win_rate||0)>=50?'pos':'neg' }">${k.win_rate||0}%</div>
+        <div class="card-sub">${k.kapanan_toplam||0} kapanan · ${tl(k.kapanan_net_tl)} net</div>
       </div>
       <div class="card">
         <div class="card-label">✅ Karla Kapanan</div>
