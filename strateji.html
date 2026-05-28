@@ -452,7 +452,7 @@
         document.getElementById('baslangic-sub').textContent = 'Başlangıç: '+st.kasa.baslangic;
       }
       renderStats(st.kasa||{});
-      renderGrafik(st.gecmis||[], st.kasa||{});
+      try { renderGrafik(st.gecmis||[], st.kasa||{}); } catch(_){}
       renderPortfoy(st.portfoy||[]);
       renderKapananlar(st.kapananlar||[]);
     } catch(e) {
