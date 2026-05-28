@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-05-28 16:38",
+  "son_guncelleme": "2026-05-28 17:27",
   "kasa": {
     "acik_sayi": 49,
     "toplam_yatirim": 333750.0,
@@ -3199,6 +3199,637 @@
         "kumulatif_pnl": 4135.0
       }
     ]
+  },
+  "filtreler": {
+    "a": {
+      "kasa": {
+        "kapanan_toplam": 74,
+        "kapanan_net_tl": 9101.0,
+        "win_rate": 64.9,
+        "win_sayi": 48,
+        "win_tl": 9606.0,
+        "los_sayi": 26,
+        "los_tl": -505.0,
+        "acik_sayi": 0,
+        "yuzen_pnl_tl": 0.0,
+        "yuzen_pnl_iz_tl": 0.0,
+        "toplam_yatirim": 0.0,
+        "toplam_sermaye": 363750.0,
+        "getiri_yuzde": 2.5,
+        "ort_sure": 3.3
+      },
+      "portfoy": [],
+      "kapananlar": [
+        {
+          "sembol": "DUNYH",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 33.54,
+          "pnl_tl": 838.0
+        },
+        {
+          "sembol": "DMRGD",
+          "tarih": "2026-05-25",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ONCSM",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 16.1,
+          "pnl_tl": 604.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 4.26,
+          "pnl_tl": 213.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.08,
+          "pnl_tl": 254.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.39,
+          "pnl_tl": 19.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.5,
+          "pnl_tl": 25.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.38,
+          "pnl_tl": 19.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.22,
+          "pnl_tl": 11.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.4,
+          "pnl_tl": 20.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.34,
+          "pnl_tl": 17.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "BRMEN",
+          "tarih": "2026-05-21",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": -10.09,
+          "pnl_tl": -505.0
+        },
+        {
+          "sembol": "CVKMD",
+          "tarih": "2026-05-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "AHGAZ",
+          "tarih": "2026-05-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.45,
+          "pnl_tl": 22.0
+        }
+      ],
+      "gecmis": [
+        {
+          "tarih": "2026-05-11",
+          "gunluk_pnl": 530.0,
+          "kumulatif_pnl": 530.0
+        },
+        {
+          "tarih": "2026-05-12",
+          "gunluk_pnl": 1076.0,
+          "kumulatif_pnl": 1606.0
+        },
+        {
+          "tarih": "2026-05-13",
+          "gunluk_pnl": 2112.0,
+          "kumulatif_pnl": 3718.0
+        },
+        {
+          "tarih": "2026-05-14",
+          "gunluk_pnl": 203.0,
+          "kumulatif_pnl": 3922.0
+        },
+        {
+          "tarih": "2026-05-15",
+          "gunluk_pnl": 54.0,
+          "kumulatif_pnl": 3976.0
+        },
+        {
+          "tarih": "2026-05-18",
+          "gunluk_pnl": 2467.0,
+          "kumulatif_pnl": 6443.0
+        },
+        {
+          "tarih": "2026-05-20",
+          "gunluk_pnl": 375.0,
+          "kumulatif_pnl": 6818.0
+        },
+        {
+          "tarih": "2026-05-21",
+          "gunluk_pnl": 262.0,
+          "kumulatif_pnl": 7080.0
+        },
+        {
+          "tarih": "2026-05-22",
+          "gunluk_pnl": 111.0,
+          "kumulatif_pnl": 7192.0
+        },
+        {
+          "tarih": "2026-05-25",
+          "gunluk_pnl": 1909.0,
+          "kumulatif_pnl": 9101.0
+        }
+      ]
+    },
+    "b": {
+      "kasa": {
+        "kapanan_toplam": 49,
+        "kapanan_net_tl": 6681.0,
+        "win_rate": 71.4,
+        "win_sayi": 35,
+        "win_tl": 6681.0,
+        "los_sayi": 14,
+        "los_tl": 0.0,
+        "acik_sayi": 0,
+        "yuzen_pnl_tl": 0.0,
+        "yuzen_pnl_iz_tl": 0.0,
+        "toplam_yatirim": 0.0,
+        "toplam_sermaye": 241250.0,
+        "getiri_yuzde": 2.77,
+        "ort_sure": 3.5
+      },
+      "portfoy": [],
+      "kapananlar": [
+        {
+          "sembol": "DUNYH",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 33.54,
+          "pnl_tl": 838.0
+        },
+        {
+          "sembol": "DMRGD",
+          "tarih": "2026-05-25",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 4.26,
+          "pnl_tl": 213.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-25",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.08,
+          "pnl_tl": 254.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.39,
+          "pnl_tl": 19.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.5,
+          "pnl_tl": 25.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.38,
+          "pnl_tl": 19.0
+        },
+        {
+          "sembol": "ZGYO",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.22,
+          "pnl_tl": 11.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.4,
+          "pnl_tl": 20.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.34,
+          "pnl_tl": 17.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "GEDZA",
+          "tarih": "2026-05-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "CVKMD",
+          "tarih": "2026-05-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "CRDFA",
+          "tarih": "2026-05-21",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.12,
+          "pnl_tl": 256.0
+        },
+        {
+          "sembol": "ISSEN",
+          "tarih": "2026-05-20",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.75,
+          "pnl_tl": 287.0
+        },
+        {
+          "sembol": "ATAKP",
+          "tarih": "2026-05-20",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        }
+      ],
+      "gecmis": [
+        {
+          "tarih": "2026-05-11",
+          "gunluk_pnl": 530.0,
+          "kumulatif_pnl": 530.0
+        },
+        {
+          "tarih": "2026-05-12",
+          "gunluk_pnl": 781.0,
+          "kumulatif_pnl": 1310.0
+        },
+        {
+          "tarih": "2026-05-13",
+          "gunluk_pnl": 1368.0,
+          "kumulatif_pnl": 2678.0
+        },
+        {
+          "tarih": "2026-05-14",
+          "gunluk_pnl": 128.0,
+          "kumulatif_pnl": 2806.0
+        },
+        {
+          "tarih": "2026-05-15",
+          "gunluk_pnl": 54.0,
+          "kumulatif_pnl": 2860.0
+        },
+        {
+          "tarih": "2026-05-18",
+          "gunluk_pnl": 1861.0,
+          "kumulatif_pnl": 4721.0
+        },
+        {
+          "tarih": "2026-05-20",
+          "gunluk_pnl": 287.0,
+          "kumulatif_pnl": 5008.0
+        },
+        {
+          "tarih": "2026-05-21",
+          "gunluk_pnl": 256.0,
+          "kumulatif_pnl": 5264.0
+        },
+        {
+          "tarih": "2026-05-22",
+          "gunluk_pnl": 111.0,
+          "kumulatif_pnl": 5375.0
+        },
+        {
+          "tarih": "2026-05-25",
+          "gunluk_pnl": 1306.0,
+          "kumulatif_pnl": 6681.0
+        }
+      ]
+    },
+    "c": {
+      "kasa": {
+        "kapanan_toplam": 23,
+        "kapanan_net_tl": 4398.0,
+        "win_rate": 87.0,
+        "win_sayi": 20,
+        "win_tl": 4398.0,
+        "los_sayi": 3,
+        "los_tl": 0.0,
+        "acik_sayi": 0,
+        "yuzen_pnl_tl": 0.0,
+        "yuzen_pnl_iz_tl": 0.0,
+        "toplam_yatirim": 0.0,
+        "toplam_sermaye": 113750.0,
+        "getiri_yuzde": 3.87,
+        "ort_sure": 3.5
+      },
+      "portfoy": [],
+      "kapananlar": [
+        {
+          "sembol": "CVKMD",
+          "tarih": "2026-05-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "CRDFA",
+          "tarih": "2026-05-21",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.12,
+          "pnl_tl": 256.0
+        },
+        {
+          "sembol": "ISSEN",
+          "tarih": "2026-05-20",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 5.75,
+          "pnl_tl": 287.0
+        },
+        {
+          "sembol": "AKFIS",
+          "tarih": "2026-05-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 6.1,
+          "pnl_tl": 305.0
+        },
+        {
+          "sembol": "SARKY",
+          "tarih": "2026-05-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 21.34,
+          "pnl_tl": 800.0
+        },
+        {
+          "sembol": "PRKAB",
+          "tarih": "2026-05-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 13.51,
+          "pnl_tl": 676.0
+        },
+        {
+          "sembol": "GEREL",
+          "tarih": "2026-05-18",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "YUNSA",
+          "tarih": "2026-05-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.4,
+          "pnl_tl": 20.0
+        },
+        {
+          "sembol": "ALFAS",
+          "tarih": "2026-05-15",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 1.08,
+          "pnl_tl": 54.0
+        },
+        {
+          "sembol": "ULUSE",
+          "tarih": "2026-05-14",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 1.95,
+          "pnl_tl": 98.0
+        },
+        {
+          "sembol": "RUBNS",
+          "tarih": "2026-05-13",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "KCAER",
+          "tarih": "2026-05-13",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 3.27,
+          "pnl_tl": 163.0
+        },
+        {
+          "sembol": "KRSTL",
+          "tarih": "2026-05-13",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.48,
+          "pnl_tl": 24.0
+        },
+        {
+          "sembol": "DITAS",
+          "tarih": "2026-05-13",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 13.64,
+          "pnl_tl": 682.0
+        },
+        {
+          "sembol": "TRALT",
+          "tarih": "2026-05-13",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 1.21,
+          "pnl_tl": 60.0
+        },
+        {
+          "sembol": "ATAKP",
+          "tarih": "2026-05-13",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 4.49,
+          "pnl_tl": 224.0
+        },
+        {
+          "sembol": "ONCSM",
+          "tarih": "2026-05-12",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 3.21,
+          "pnl_tl": 160.0
+        },
+        {
+          "sembol": "MEGMT",
+          "tarih": "2026-05-12",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.65,
+          "pnl_tl": 33.0
+        },
+        {
+          "sembol": "PETUN",
+          "tarih": "2026-05-12",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 1.24,
+          "pnl_tl": 62.0
+        },
+        {
+          "sembol": "EMPAE",
+          "tarih": "2026-05-12",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.39,
+          "pnl_tl": 19.0
+        }
+      ],
+      "gecmis": [
+        {
+          "tarih": "2026-05-11",
+          "gunluk_pnl": 474.0,
+          "kumulatif_pnl": 474.0
+        },
+        {
+          "tarih": "2026-05-12",
+          "gunluk_pnl": 274.0,
+          "kumulatif_pnl": 748.0
+        },
+        {
+          "tarih": "2026-05-13",
+          "gunluk_pnl": 1154.0,
+          "kumulatif_pnl": 1902.0
+        },
+        {
+          "tarih": "2026-05-14",
+          "gunluk_pnl": 98.0,
+          "kumulatif_pnl": 2000.0
+        },
+        {
+          "tarih": "2026-05-15",
+          "gunluk_pnl": 54.0,
+          "kumulatif_pnl": 2054.0
+        },
+        {
+          "tarih": "2026-05-18",
+          "gunluk_pnl": 1801.0,
+          "kumulatif_pnl": 3855.0
+        },
+        {
+          "tarih": "2026-05-20",
+          "gunluk_pnl": 287.0,
+          "kumulatif_pnl": 4142.0
+        },
+        {
+          "tarih": "2026-05-21",
+          "gunluk_pnl": 256.0,
+          "kumulatif_pnl": 4398.0
+        }
+      ]
+    }
   },
   "strateji": {
     "kasa": {
