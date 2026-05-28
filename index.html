@@ -312,9 +312,9 @@
         <div class="card-sub">gerçekleşmemiş kâr/zarar</div>
       </div>
       <div class="card">
-        <div class="card-label">Realizasyon</div>
-        <div class="card-value ${cls(k.kapanan_net_tl)}">${tl(k.kapanan_net_tl)}</div>
-        <div class="card-sub">${k.kapanan_toplam} kapanan · ${(k.kapanan_toplam||0)+(k.acik_sayi||0)} toplam işlem · %${k.win_rate} başarı</div>
+        <div class="card-label">🎯 Win Rate</div>
+        <div class="card-value ${ (k.win_rate||0)>=50?'pos':'neg' }">${k.win_rate||0}%</div>
+        <div class="card-sub">${k.kapanan_toplam} kapanan · ${tl(k.kapanan_net_tl)} net</div>
       </div>
       <div class="card">
         <div class="card-label">✅ Karla Kapanan</div>
