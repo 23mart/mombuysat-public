@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strateji · Baz (Tüm İşlemler)</title>
+  <title>Strateji · Kombo 1 + İz Stop</title>
   <style>
     :root {
       --bg:      #0b0b10;
@@ -113,8 +113,8 @@
   <div class="logo">
     <div class="logo-mark">🎯</div>
     <div>
-      <div class="logo-title">Strateji · Baz (Tüm İşlemler)</div>
-      <div class="logo-sub" id="baslangic-sub">BIST · iz stop + maliyet stop · referans</div>
+      <div class="logo-title">Strateji · Kombo 1 + İz Stop</div>
+      <div class="logo-sub" id="baslangic-sub">BIST · streak≥3 · haftalık>%10 · macd 0~1</div>
     </div>
   </div>
   <div class="header-meta">
@@ -137,8 +137,8 @@
   <div class="banner">
     <div class="banner-icon">📐</div>
     <div>
-      <div class="banner-title">Baz Strateji · Tüm İşlemler</div>
-      <div class="banner-desc">Filtre yok — tüm kapanan işlemler &nbsp;·&nbsp; İz stop: max P&L ≥ %3 ise stop = max(0, max_pnl − 3%) &nbsp;·&nbsp; Maliyet stop: 0 &lt; max P&L &lt; %3 ise stop = %0 &nbsp;·&nbsp; Filtre A/B/C ile kıyaslama için baz referans</div>
+      <div class="banner-title">Kombo 1 + İz Durdurucu</div>
+      <div class="banner-desc">Filtre: XU100 streak ≥ 3 &nbsp;+&nbsp; Haftalık artış > %10 &nbsp;+&nbsp; MACD histogram (0–1) &nbsp;·&nbsp; İz stop: max P&L ≥ %3 ise stop = max(0, max_pnl − 3%) &nbsp;·&nbsp; Maliyet stop: 0 &lt; max P&L &lt; %3 ise stop = %0</div>
     </div>
   </div>
 
@@ -234,7 +234,7 @@
     const netGercek = (k.kapanan_net_tl||0) + (k.yuzen_pnl_tl||0);
     document.getElementById('stats').innerHTML = `
       <div class="card">
-        <div class="card-label">Açık Pozisyon (Tümü)</div>
+        <div class="card-label">Açık Pozisyon (Kombo 1)</div>
         <div class="card-value" style="color:var(--violet3)">${k.acik_sayi||0}</div>
         <div class="card-sub">${tl0(k.toplam_yatirim)} yatırım · ort. ${k.ort_sure||0}G tutma</div>
       </div>
@@ -291,7 +291,7 @@
   }
   function drawPortfoy(){
     if(!portfoyData.length){
-      document.getElementById('portfoy-body').innerHTML = `<tr><td colspan="10"><div class="empty">Henüz açık pozisyon yok</div></td></tr>`;
+      document.getElementById('portfoy-body').innerHTML = `<tr><td colspan="10"><div class="empty">Henüz Kombo 1 sinyali ile açılan pozisyon yok</div></td></tr>`;
       return;
     }
     const sorted = [...portfoyData].sort((a,b) => {
