@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-05-28 16:09",
+  "son_guncelleme": "2026-05-28 16:38",
   "kasa": {
     "acik_sayi": 49,
     "toplam_yatirim": 333750.0,
@@ -3202,186 +3202,24 @@
   },
   "strateji": {
     "kasa": {
-      "kapanan_toplam": 20,
-      "kapanan_net_tl": 4135.0,
-      "win_rate": 85.0,
-      "win_sayi": 17,
-      "win_tl": 4135.0,
-      "los_sayi": 3,
+      "kapanan_toplam": 0,
+      "kapanan_net_tl": 0.0,
+      "win_rate": 0,
+      "win_sayi": 0,
+      "win_tl": 0.0,
+      "los_sayi": 0,
       "los_tl": 0.0,
       "acik_sayi": 0,
       "yuzen_pnl_tl": 0.0,
       "yuzen_pnl_iz_tl": 0.0,
       "toplam_yatirim": 0.0,
-      "toplam_sermaye": 98750.0,
-      "getiri_yuzde": 4.19,
-      "ort_sure": 3.3,
+      "toplam_sermaye": 0.0,
+      "getiri_yuzde": 0,
+      "ort_sure": 0,
       "baslangic": "2026-05-21"
     },
     "portfoy": [],
-    "kapananlar": [
-      {
-        "sembol": "SARKY",
-        "tarih": "2026-05-18",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 21.34,
-        "pnl_tl": 800.0
-      },
-      {
-        "sembol": "PRKAB",
-        "tarih": "2026-05-18",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 13.51,
-        "pnl_tl": 676.0
-      },
-      {
-        "sembol": "GEREL",
-        "tarih": "2026-05-18",
-        "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0
-      },
-      {
-        "sembol": "RUBNS",
-        "tarih": "2026-05-13",
-        "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0
-      },
-      {
-        "sembol": "KCAER",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 3.27,
-        "pnl_tl": 163.0
-      },
-      {
-        "sembol": "KRSTL",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.48,
-        "pnl_tl": 24.0
-      },
-      {
-        "sembol": "DITAS",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 13.64,
-        "pnl_tl": 682.0
-      },
-      {
-        "sembol": "KARSN",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 4.27,
-        "pnl_tl": 213.0
-      },
-      {
-        "sembol": "TRALT",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 1.21,
-        "pnl_tl": 60.0
-      },
-      {
-        "sembol": "ATAKP",
-        "tarih": "2026-05-13",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 4.49,
-        "pnl_tl": 224.0
-      },
-      {
-        "sembol": "ONCSM",
-        "tarih": "2026-05-12",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 3.21,
-        "pnl_tl": 160.0
-      },
-      {
-        "sembol": "SURGY",
-        "tarih": "2026-05-12",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 10.13,
-        "pnl_tl": 507.0
-      },
-      {
-        "sembol": "MEGMT",
-        "tarih": "2026-05-12",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.65,
-        "pnl_tl": 33.0
-      },
-      {
-        "sembol": "PETUN",
-        "tarih": "2026-05-12",
-        "sebep": "Maliyet Stopu",
-        "pnl_yuzde": 1.24,
-        "pnl_tl": 62.0
-      },
-      {
-        "sembol": "EGGUB",
-        "tarih": "2026-05-12",
-        "sebep": "Stop Loss (-%7)",
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0
-      },
-      {
-        "sembol": "BIZIM",
-        "tarih": "2026-05-11",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 8.01,
-        "pnl_tl": 401.0
-      },
-      {
-        "sembol": "ENDAE",
-        "tarih": "2026-05-11",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.47,
-        "pnl_tl": 23.0
-      },
-      {
-        "sembol": "CGCAM",
-        "tarih": "2026-05-11",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.64,
-        "pnl_tl": 32.0
-      },
-      {
-        "sembol": "ZGYO",
-        "tarih": "2026-05-11",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.89,
-        "pnl_tl": 45.0
-      },
-      {
-        "sembol": "ATATR",
-        "tarih": "2026-05-11",
-        "sebep": "Koruma Stopu (Maliyet)",
-        "pnl_yuzde": 0.58,
-        "pnl_tl": 29.0
-      }
-    ],
-    "gecmis": [
-      {
-        "tarih": "2026-05-11",
-        "gunluk_pnl": 530.0,
-        "kumulatif_pnl": 530.0
-      },
-      {
-        "tarih": "2026-05-12",
-        "gunluk_pnl": 761.0,
-        "kumulatif_pnl": 1291.0
-      },
-      {
-        "tarih": "2026-05-13",
-        "gunluk_pnl": 1368.0,
-        "kumulatif_pnl": 2659.0
-      },
-      {
-        "tarih": "2026-05-18",
-        "gunluk_pnl": 1476.0,
-        "kumulatif_pnl": 4135.0
-      }
-    ]
+    "kapananlar": [],
+    "gecmis": []
   }
 }
