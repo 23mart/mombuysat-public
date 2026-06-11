@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-06-10 18:10",
+  "son_guncelleme": "2026-06-11 09:55",
   "kasa": {
     "acik_sayi": 15,
     "toplam_yatirim": 78750.0,
@@ -19,19 +19,19 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 2.58,
     "ort_kayip": -2.1,
-    "ort_sure": 18.5,
+    "ort_sure": 19.5,
     "kalkan_sayi": 14,
     "tp1_sayi": 12,
     "tp2_sayi": 10,
-    "bugun_pnl_tl": 747.0,
-    "bugun_islem_sayi": 3,
+    "bugun_pnl_tl": 0,
+    "bugun_islem_sayi": 0,
     "gecen_hafta_pnl_tl": 11915.0,
     "gecen_hafta_islem_sayi": 56,
     "bu_hafta_pnl_tl": -751.0,
     "bu_hafta_islem_sayi": 10,
-    "toplam_gun": 27,
+    "toplam_gun": 28,
     "stop_yakin_sayi": 2,
-    "bugun_acilan_sayi": 1,
+    "bugun_acilan_sayi": 0,
     "yas_kisa": 2,
     "yas_orta": 0,
     "yas_uzun": 10,
@@ -121,7 +121,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 178.07,
-      "gun": 29
+      "gun": 30
     },
     {
       "sembol": "EUPWR",
@@ -163,7 +163,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 74.65,
-      "gun": 36
+      "gun": 37
     },
     {
       "sembol": "HRKET",
@@ -184,7 +184,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 75.16,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "ATATP",
@@ -205,7 +205,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 60.35,
-      "gun": 36
+      "gun": 37
     },
     {
       "sembol": "GUNDG",
@@ -226,7 +226,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 59.01,
-      "gun": 23
+      "gun": 24
     },
     {
       "sembol": "RYSAS",
@@ -247,7 +247,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 30.36,
-      "gun": 15
+      "gun": 16
     },
     {
       "sembol": "AVHOL",
@@ -268,7 +268,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 32.28,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "HATSN",
@@ -289,7 +289,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 30.81,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "ISDMR",
@@ -310,7 +310,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 21.23,
-      "gun": 19
+      "gun": 20
     },
     {
       "sembol": "RYGYO",
@@ -331,7 +331,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.45,
-      "gun": 15
+      "gun": 16
     },
     {
       "sembol": "DERIM",
@@ -352,7 +352,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 9.64,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "BRKO",
@@ -373,7 +373,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     }
   ],
   "son_alinanlar": [
@@ -396,7 +396,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "DERIM",
@@ -417,7 +417,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 9.64,
-      "gun": 1
+      "gun": 2
     },
     {
       "sembol": "RYGYO",
@@ -438,7 +438,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.45,
-      "gun": 15
+      "gun": 16
     },
     {
       "sembol": "RYSAS",
@@ -459,7 +459,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 30.36,
-      "gun": 15
+      "gun": 16
     },
     {
       "sembol": "AVHOL",
@@ -480,7 +480,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 32.28,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "HATSN",
@@ -501,7 +501,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 30.81,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "HRKET",
@@ -522,7 +522,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 75.16,
-      "gun": 16
+      "gun": 17
     },
     {
       "sembol": "ISDMR",
@@ -543,7 +543,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 21.23,
-      "gun": 19
+      "gun": 20
     },
     {
       "sembol": "GUNDG",
@@ -564,7 +564,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 59.01,
-      "gun": 23
+      "gun": 24
     },
     {
       "sembol": "EMPAE",
@@ -585,7 +585,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 178.07,
-      "gun": 29
+      "gun": 30
     },
     {
       "sembol": "GESAN",
@@ -606,7 +606,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 74.65,
-      "gun": 36
+      "gun": 37
     },
     {
       "sembol": "ATATP",
@@ -627,7 +627,7 @@
       "tp1": true,
       "tp2": true,
       "max_pnl": 60.35,
-      "gun": 36
+      "gun": 37
     },
     {
       "sembol": "OZATD",
@@ -1021,8 +1021,15 @@
     {
       "tarih": "2026-06-10",
       "gunluk_pnl": 747.0,
-      "kumulatif_pnl": -29778.0,
+      "kumulatif_pnl": 10082.0,
       "islem_sayi": 3,
+      "yuzen_pnl": 39860.0
+    },
+    {
+      "tarih": "2026-06-11",
+      "gunluk_pnl": 0,
+      "kumulatif_pnl": -29778.0,
+      "islem_sayi": 0,
       "yuzen_pnl": 61158.0
     }
   ],
@@ -1102,7 +1109,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 178.07,
-        "gun": 29,
+        "gun": 30,
         "iz_sev": 175.07,
         "iz_tetik": false,
         "iz_kz": 178.07,
@@ -1152,7 +1159,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 75.16,
-        "gun": 16,
+        "gun": 17,
         "iz_sev": 72.16,
         "iz_tetik": true,
         "iz_kz": 72.16,
@@ -1177,7 +1184,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 74.65,
-        "gun": 36,
+        "gun": 37,
         "iz_sev": 71.65,
         "iz_tetik": true,
         "iz_kz": 71.65,
@@ -1202,7 +1209,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 60.35,
-        "gun": 36,
+        "gun": 37,
         "iz_sev": 57.35,
         "iz_tetik": true,
         "iz_kz": 57.35,
@@ -1227,7 +1234,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 59.01,
-        "gun": 23,
+        "gun": 24,
         "iz_sev": 56.01,
         "iz_tetik": true,
         "iz_kz": 56.01,
@@ -1252,7 +1259,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 32.28,
-        "gun": 16,
+        "gun": 17,
         "iz_sev": 29.28,
         "iz_tetik": true,
         "iz_kz": 29.28,
@@ -1277,7 +1284,7 @@
         "tp1": true,
         "tp2": true,
         "max_pnl": 30.81,
-        "gun": 16,
+        "gun": 17,
         "iz_sev": 27.81,
         "iz_tetik": true,
         "iz_kz": 27.81,
@@ -1302,7 +1309,7 @@
         "tp1": true,
         "tp2": false,
         "max_pnl": 30.36,
-        "gun": 15,
+        "gun": 16,
         "iz_sev": 27.36,
         "iz_tetik": true,
         "iz_kz": 27.36,
@@ -1327,7 +1334,7 @@
         "tp1": true,
         "tp2": false,
         "max_pnl": 21.23,
-        "gun": 19,
+        "gun": 20,
         "iz_sev": 18.23,
         "iz_tetik": true,
         "iz_kz": 18.23,
@@ -1352,7 +1359,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 12.45,
-        "gun": 15,
+        "gun": 16,
         "iz_sev": 9.45,
         "iz_tetik": true,
         "iz_kz": 9.45,
@@ -1377,7 +1384,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 9.64,
-        "gun": 1,
+        "gun": 2,
         "iz_sev": 6.64,
         "iz_tetik": true,
         "iz_kz": 6.64,
@@ -1402,7 +1409,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 0.0,
-        "gun": 0,
+        "gun": 1,
         "iz_sev": null,
         "iz_tetik": false,
         "iz_kz": 0.0,
@@ -1625,7 +1632,7 @@
           "tp1": false,
           "tp2": false,
           "max_pnl": 9.64,
-          "gun": 1,
+          "gun": 2,
           "iz_sev": 6.64,
           "iz_kz": 6.64,
           "iz_tl": 332.0
