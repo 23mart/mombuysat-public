@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-06-23 10:40",
+  "son_guncelleme": "2026-06-23 10:50",
   "kasa": {
-    "acik_sayi": 3,
-    "toplam_yatirim": 12500.0,
-    "portfoy_degeri": 13805.0,
-    "yuzen_pnl_tl": 1305.0,
-    "yuzen_pnl_yuzde": 10.44,
+    "acik_sayi": 4,
+    "toplam_yatirim": 22500.0,
+    "portfoy_degeri": 23774.0,
+    "yuzen_pnl_tl": 1274.0,
+    "yuzen_pnl_yuzde": 5.66,
     "kapanan_toplam": 824,
     "kapanan_net_tl": 20567.0,
     "win_rate": 43.0,
@@ -19,7 +19,7 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 5.0,
     "ort_kayip": -2.08,
-    "ort_sure": 10.0,
+    "ort_sure": 7.5,
     "kalkan_sayi": 3,
     "tp1_sayi": 1,
     "tp2_sayi": 1,
@@ -31,16 +31,16 @@
     "bu_hafta_islem_sayi": 4,
     "toplam_gun": 35,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 0,
-    "yas_kisa": 0,
+    "bugun_acilan_sayi": 1,
+    "yas_kisa": 1,
     "yas_orta": 1,
     "yas_uzun": 2,
     "en_iyi_sembol": "BRKO",
     "en_iyi_pnl": 20.94,
     "en_iyi_tl": 524.0,
-    "en_kotu_sembol": "BMSTL",
-    "en_kotu_pnl": 3.71,
-    "en_kotu_tl": 185.0,
+    "en_kotu_sembol": "INVES",
+    "en_kotu_pnl": 0.0,
+    "en_kotu_tl": 0.0,
     "kategoriler": {
       "3": {
         "sayi": 0,
@@ -53,9 +53,9 @@
         "yuzen_tl": 524.0
       },
       "1": {
-        "sayi": 2,
-        "ort_pnl": 7.81,
-        "yuzen_tl": 781.0
+        "sayi": 3,
+        "ort_pnl": 5.01,
+        "yuzen_tl": 751.0
       }
     }
   },
@@ -91,9 +91,9 @@
         "13:20"
       ],
       "alis": 72.15,
-      "guncel": 80.75,
-      "pnl_yuzde": 11.92,
-      "pnl_tl": 596.0,
+      "guncel": 80.35,
+      "pnl_yuzde": 11.37,
+      "pnl_tl": 568.0,
       "yatirim": 5000,
       "stop": 72.51,
       "kalkan": true,
@@ -112,9 +112,9 @@
         "15:10"
       ],
       "alis": 91.7,
-      "guncel": 95.1,
-      "pnl_yuzde": 3.71,
-      "pnl_tl": 185.0,
+      "guncel": 95.05,
+      "pnl_yuzde": 3.65,
+      "pnl_tl": 183.0,
       "yatirim": 5000,
       "stop": 92.16,
       "kalkan": true,
@@ -122,9 +122,51 @@
       "tp2": false,
       "max_pnl": 8.18,
       "gun": 6
+    },
+    {
+      "sembol": "INVES",
+      "kategori": 1,
+      "alis_tarihi": "2026-06-23",
+      "alis_saati": "10:50",
+      "_sort_key": [
+        "2026-06-23",
+        "10:50"
+      ],
+      "alis": 694.0,
+      "guncel": 694.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 10000,
+      "stop": 645.42,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 0
     }
   ],
   "son_alinanlar": [
+    {
+      "sembol": "INVES",
+      "kategori": 1,
+      "alis_tarihi": "2026-06-23",
+      "alis_saati": "10:50",
+      "_sort_key": [
+        "2026-06-23",
+        "10:50"
+      ],
+      "alis": 694.0,
+      "guncel": 694.0,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 10000,
+      "stop": 645.42,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 0
+    },
     {
       "sembol": "BMSTL",
       "kategori": 1,
@@ -135,9 +177,9 @@
         "15:10"
       ],
       "alis": 91.7,
-      "guncel": 95.1,
-      "pnl_yuzde": 3.71,
-      "pnl_tl": 185.0,
+      "guncel": 95.05,
+      "pnl_yuzde": 3.65,
+      "pnl_tl": 183.0,
       "yatirim": 5000,
       "stop": 92.16,
       "kalkan": true,
@@ -156,9 +198,9 @@
         "13:20"
       ],
       "alis": 72.15,
-      "guncel": 80.75,
-      "pnl_yuzde": 11.92,
-      "pnl_tl": 596.0,
+      "guncel": 80.35,
+      "pnl_yuzde": 11.37,
+      "pnl_tl": 568.0,
       "yatirim": 5000,
       "stop": 72.51,
       "kalkan": true,
@@ -575,15 +617,15 @@
       "gunluk_pnl": 9.0,
       "kumulatif_pnl": 20566.0,
       "islem_sayi": 1,
-      "yuzen_pnl": 1305.0
+      "yuzen_pnl": 1274.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 3,
+    "acik_sayi": 4,
     "tetiklenen": 3,
-    "gercek_net_tl": 1305.0,
+    "gercek_net_tl": 1274.0,
     "iz_net_tl": 1660.0,
-    "kazanim_tl": 355.0,
+    "kazanim_tl": 386.0,
     "portfoy": [
       {
         "sembol": "BRKO",
@@ -620,9 +662,9 @@
           "13:20"
         ],
         "alis": 72.15,
-        "guncel": 80.75,
-        "pnl_yuzde": 11.92,
-        "pnl_tl": 596.0,
+        "guncel": 80.35,
+        "pnl_yuzde": 11.37,
+        "pnl_tl": 568.0,
         "yatirim": 5000,
         "stop": 72.51,
         "kalkan": true,
@@ -645,9 +687,9 @@
           "15:10"
         ],
         "alis": 91.7,
-        "guncel": 95.1,
-        "pnl_yuzde": 3.71,
-        "pnl_tl": 185.0,
+        "guncel": 95.05,
+        "pnl_yuzde": 3.65,
+        "pnl_tl": 183.0,
         "yatirim": 5000,
         "stop": 92.16,
         "kalkan": true,
@@ -659,6 +701,31 @@
         "iz_tetik": true,
         "iz_kz": 5.18,
         "iz_tl": 259.0
+      },
+      {
+        "sembol": "INVES",
+        "kategori": 1,
+        "alis_tarihi": "2026-06-23",
+        "alis_saati": "10:50",
+        "_sort_key": [
+          "2026-06-23",
+          "10:50"
+        ],
+        "alis": 694.0,
+        "guncel": 694.0,
+        "pnl_yuzde": 0.0,
+        "pnl_tl": 0.0,
+        "yatirim": 10000,
+        "stop": 645.42,
+        "kalkan": false,
+        "tp1": false,
+        "tp2": false,
+        "max_pnl": 0.0,
+        "gun": 0,
+        "iz_sev": null,
+        "iz_tetik": false,
+        "iz_kz": 0.0,
+        "iz_tl": 0.0
       }
     ]
   },
@@ -842,19 +909,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 97,
-        "kapanan_net_tl": 18129.0,
+        "kapanan_toplam": 98,
+        "kapanan_net_tl": 18164.0,
         "win_rate": 99.0,
-        "win_sayi": 96,
-        "win_tl": 18633.0,
+        "win_sayi": 97,
+        "win_tl": 18669.0,
         "los_sayi": 1,
         "los_tl": -505.0,
         "acik_sayi": 1,
-        "yuzen_pnl_tl": 596.0,
+        "yuzen_pnl_tl": 568.0,
         "yuzen_pnl_iz_tl": 602.0,
         "toplam_yatirim": 5000.0,
-        "toplam_sermaye": 476250.0,
-        "getiri_yuzde": 3.93,
+        "toplam_sermaye": 481250.0,
+        "getiri_yuzde": 3.9,
         "ort_sure": 4.3
       },
       "portfoy": [
@@ -868,9 +935,9 @@
             "13:20"
           ],
           "alis": 72.15,
-          "guncel": 80.75,
-          "pnl_yuzde": 11.92,
-          "pnl_tl": 596.0,
+          "guncel": 80.35,
+          "pnl_yuzde": 11.37,
+          "pnl_tl": 568.0,
           "yatirim": 5000,
           "stop": 72.51,
           "kalkan": true,
@@ -884,6 +951,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "AKSEN",
+          "tarih": "2026-06-23",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.71,
+          "pnl_tl": 36.0
+        },
         {
           "sembol": "ENERY",
           "tarih": "2026-06-22",
@@ -1016,13 +1090,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 0.72,
           "pnl_tl": 36.0
-        },
-        {
-          "sembol": "BRMEN",
-          "tarih": "2026-06-02",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 7.62,
-          "pnl_tl": 381.0
         }
       ],
       "gecmis": [
@@ -1150,25 +1217,30 @@
           "tarih": "2026-06-22",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 18129.0
+        },
+        {
+          "tarih": "2026-06-23",
+          "gunluk_pnl": 36.0,
+          "kumulatif_pnl": 18164.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 60,
-        "kapanan_net_tl": 8449.0,
+        "kapanan_toplam": 61,
+        "kapanan_net_tl": 8485.0,
         "win_rate": 100.0,
-        "win_sayi": 60,
-        "win_tl": 8449.0,
+        "win_sayi": 61,
+        "win_tl": 8485.0,
         "los_sayi": 0,
         "los_tl": 0.0,
         "acik_sayi": 1,
-        "yuzen_pnl_tl": 596.0,
+        "yuzen_pnl_tl": 568.0,
         "yuzen_pnl_iz_tl": 602.0,
         "toplam_yatirim": 5000.0,
-        "toplam_sermaye": 298750.0,
-        "getiri_yuzde": 3.03,
-        "ort_sure": 3.5
+        "toplam_sermaye": 303750.0,
+        "getiri_yuzde": 2.99,
+        "ort_sure": 3.6
       },
       "portfoy": [
         {
@@ -1181,9 +1253,9 @@
             "13:20"
           ],
           "alis": 72.15,
-          "guncel": 80.75,
-          "pnl_yuzde": 11.92,
-          "pnl_tl": 596.0,
+          "guncel": 80.35,
+          "pnl_yuzde": 11.37,
+          "pnl_tl": 568.0,
           "yatirim": 5000,
           "stop": 72.51,
           "kalkan": true,
@@ -1197,6 +1269,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "AKSEN",
+          "tarih": "2026-06-23",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 0.71,
+          "pnl_tl": 36.0
+        },
         {
           "sembol": "BANVT",
           "tarih": "2026-06-19",
@@ -1329,13 +1408,6 @@
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
-        },
-        {
-          "sembol": "ZGYO",
-          "tarih": "2026-05-22",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.39,
-          "pnl_tl": 19.0
         }
       ],
       "gecmis": [
@@ -1433,6 +1505,11 @@
           "tarih": "2026-06-19",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 8449.0
+        },
+        {
+          "tarih": "2026-06-23",
+          "gunluk_pnl": 36.0,
+          "kumulatif_pnl": 8485.0
         }
       ]
     },
@@ -1446,7 +1523,7 @@
         "los_sayi": 0,
         "los_tl": 0.0,
         "acik_sayi": 1,
-        "yuzen_pnl_tl": 596.0,
+        "yuzen_pnl_tl": 568.0,
         "yuzen_pnl_iz_tl": 602.0,
         "toplam_yatirim": 5000.0,
         "toplam_sermaye": 153750.0,
@@ -1464,9 +1541,9 @@
             "13:20"
           ],
           "alis": 72.15,
-          "guncel": 80.75,
-          "pnl_yuzde": 11.92,
-          "pnl_tl": 596.0,
+          "guncel": 80.35,
+          "pnl_yuzde": 11.37,
+          "pnl_tl": 568.0,
           "yatirim": 5000,
           "stop": 72.51,
           "kalkan": true,
