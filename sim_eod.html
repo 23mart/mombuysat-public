@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EoD Sim · 2 Yıllık Geriye Dönük</title>
+  <style>
+    :root {
+      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#ffffff; --text:#ffffff;
+      --muted:#ffffff; --green:#22c55e; --red:#ef4444; --blue:#60a5fa;
+      --gold:#f59e0b; --orange:#fb923c;
+      --ac:#a855f7; --ac2:#7e22ce; --ac3:#d8b4fe;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.5;min-height:100vh}
+
+    .header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;min-height:56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:4px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--ac),var(--ac2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
+    .logo-title{font-size:15px;font-weight:700;letter-spacing:-.3px}
+    .logo-sub{font-size:11px;color:var(--muted)}
+    .header-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--muted)}
+    .nav-links{display:flex;gap:6px;flex-wrap:wrap}
+    .nav-btn{font-size:11px;font-weight:600;padding:4px 11px;border-radius:6px;background:var(--s2);border:1px solid var(--border);color:var(--muted);text-decoration:none;transition:background .15s,color .15s;white-space:nowrap}
+    .nav-btn:hover{background:#1e1e2a;color:var(--text)}
+    .nav-btn.active{background:rgba(168,85,247,.15);border-color:rgba(168,85,247,.45);color:var(--ac3)}
+    .upd-pill{display:flex;align-items:center;gap:6px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);padding:4px 12px;border-radius:20px;color:var(--ac3);font-size:12px}
+    .dot{width:7px;height:7px;background:var(--ac);border-radius:50%;animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+    .page{max-width:1440px;margin:0 auto;padding:24px 28px}
+
+    .banner{background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(126,34,206,.06));border:1px solid rgba(168,85,247,.25);border-radius:12px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px}
+    .banner-icon{font-size:32px;flex-shrink:0}
+    .banner-title{font-size:16px;font-weight:700;color:var(--ac3);margin-bottom:3px}
+    .banner-desc{font-size:12px;color:var(--muted)}
+
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+    .card-label{font-size:10px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .card-value{font-size:24px;font-weight:700;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums}
+    .card-sub{font-size:11px;color:var(--muted)}
+
+    .section{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+    .section-head{padding:13px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;gap:10px;flex-wrap:wrap}
+    .section-head:hover{background:var(--s2)}
+    .section-head-fixed{cursor:default}
+    .section-head-fixed:hover{background:transparent}
+    .section-title{font-size:13px;font-weight:600}
+    .pill{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--s2);border:1px solid var(--border);color:var(--muted)}
+    .pill-ac{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:var(--ac3)}
+    .toggle{font-size:11px;color:var(--muted);transition:transform .2s}
+    .section.collapsed .toggle{transform:rotate(-90deg)}
+    .section.collapsed .section-body{display:none}
+
+    .tbl-wrap{overflow-x:auto;max-height:640px;overflow-y:auto}
+    table{width:100%;border-collapse:collapse}
+    thead th{padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;background:var(--surface);position:sticky;top:0;z-index:2}
+    thead th.active{color:var(--ac3)}
+    tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:var(--s2)}
+    td{padding:8px 14px;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12px}
+
+    .sym-name{font-weight:700;font-size:13px}
+    .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--muted)}
+    .day-badge{font-size:11px;padding:2px 7px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--muted)}
+    .flag-on{color:var(--ac3);font-weight:700}
+    .flag-off{color:#333}
+
+    .r-stop{color:#f87171}.r-tp{color:#86efac}.r-at{color:#93c5fd}.r-kor{color:#fdba74}.r-def{color:var(--muted)}
+
+    .empty{display:flex;align-items:center;justify-content:center;gap:10px;padding:44px;color:var(--muted)}
+    .spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--ac);border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .ctrl-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;background:var(--s2);border-bottom:1px solid var(--border)}
+    .ctrl-bar input,.ctrl-bar select{background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit}
+    .ctrl-bar input{min-width:140px}
+    .ctrl-bar label{font-size:11px;color:var(--muted);margin-right:3px}
+    .ctrl-bar .ctrl-info{margin-left:auto;font-size:11px;color:var(--muted)}
+
+    .ozet-tbl td,.ozet-tbl th{font-size:12px}
+    .footer{text-align:center;color:var(--muted);font-size:11px;padding:20px;border-top:1px solid var(--border)}
+    @media(max-width:480px){.page{padding:16px 14px}}
+    @media(max-width:640px){.header{padding:8px 14px}.header-meta{width:100%;padding-bottom:6px}#ts{display:none}}
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">🧪</div>
+    <div>
+      <div class="logo-title">EoD Sim · 2 Yıllık Geriye Dönük</div>
+      <div class="logo-sub">trades_sim_eod · günlük kapanış girişi · ~500 iş günü</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <nav class="nav-links">
+      <a class="nav-btn" href="./index.html">📈 Portföy</a>
+      <a class="nav-btn" href="./kombo1.html">🔬 Kombo 1</a>
+      <a class="nav-btn" href="./strateji.html">🎯 Strateji</a>
+      <a class="nav-btn" href="./filtre_a.html">🟢 Filtre A</a>
+      <a class="nav-btn" href="./filtre_b.html">🔵 Filtre B</a>
+      <a class="nav-btn" href="./filtre_c.html">🟡 Filtre C</a>
+      <a class="nav-btn active" href="./sim_eod.html">🧪 EoD Sim</a>
+    </nav>
+    <span id="ts"></span>
+    <div class="upd-pill"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="banner">
+    <div class="banner-icon">🧪</div>
+    <div>
+      <div class="banner-title" id="banner-title">EoD Sim — Günlük Kapanış Girişli Backtest</div>
+      <div class="banner-desc" id="banner-desc">Aynı strateji (giriş + çıkış) yfinance 2 yıllık günlük bar üzerinde EoD bazlı simüle edildi. Canlı tabloya hiç dokunulmaz; karşılaştırma için.</div>
+    </div>
+  </div>
+
+  <!-- Özet kartları -->
+  <div class="stats" id="stats">
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+  </div>
+
+  <!-- Filtre özetleri -->
+  <div class="section">
+    <div class="section-head section-head-fixed">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Filtre Bazlı Özet</span>
+        <span class="pill pill-ac" id="filtre-pill">—</span>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="ozet-tbl">
+        <thead>
+          <tr>
+            <th>Senaryo</th><th>N</th><th>WR %</th><th>Ort %</th><th>Net ₺</th>
+            <th>Ort. kazanç %</th><th>Ort. kayıp %</th>
+          </tr>
+        </thead>
+        <tbody id="filtre-body"><tr><td colspan="7"><div class="empty"><div class="spinner"></div></div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Çıkış sebep dağılımı -->
+  <div class="section">
+    <div class="section-head section-head-fixed">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Çıkış Sebep Dağılımı</span>
+        <span class="pill" id="sebep-pill">—</span>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="ozet-tbl">
+        <thead><tr><th>Sebep</th><th>N</th><th>Ort %</th><th>Net ₺</th><th>Pay</th></tr></thead>
+        <tbody id="sebep-body"><tr><td colspan="5"><div class="empty"><div class="spinner"></div></div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Aylık özet -->
+  <div class="section collapsed" id="sec-aylik">
+    <div class="section-head" onclick="toggle('sec-aylik')">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Aylık Özet</span>
+        <span class="pill" id="aylik-pill">—</span>
+      </div>
+      <span class="toggle">▼</span>
+    </div>
+    <div class="tbl-wrap">
+      <table class="ozet-tbl">
+        <thead><tr><th>Ay</th><th>N</th><th>Net ₺</th><th>Ort %</th></tr></thead>
+        <tbody id="aylik-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tüm trade'ler tablosu (filtrelenebilir) -->
+  <div class="section">
+    <div class="section-head section-head-fixed">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title">Trade Listesi</span>
+        <span class="pill pill-ac" id="trade-pill">—</span>
+      </div>
+    </div>
+    <div class="ctrl-bar">
+      <label>Sembol</label>
+      <input id="f-sym" type="search" placeholder="ASELS, THYAO...">
+      <label>Sebep</label>
+      <select id="f-sebep"><option value="">(hepsi)</option></select>
+      <label>Filtre</label>
+      <select id="f-flag">
+        <option value="">(tümü)</option>
+        <option value="filtre_a_ok">Filtre A</option>
+        <option value="filtre_b_ok">Filtre B</option>
+        <option value="filtre_c_ok">Filtre C</option>
+        <option value="kombo1_ok">Kombo 1</option>
+        <option value="onceki_yok">Önceki işlem yok</option>
+        <option value="kazanc">Sadece kazanç</option>
+        <option value="kayip">Sadece kayıp</option>
+      </select>
+      <label>Veri Kümesi</label>
+      <select id="f-set">
+        <option value="sim_eod.json" selected>EoD (4867)</option>
+        <option value="sim_intraday.json">Intraday (1157)</option>
+      </select>
+      <span class="ctrl-info" id="trade-info">—</span>
+    </div>
+    <div class="tbl-wrap" style="max-height:720px">
+      <table>
+        <thead id="trade-head">
+          <tr>
+            <th data-k="alis_tarihi"  data-t="s">Alış Tarihi</th>
+            <th data-k="sembol"       data-t="s">Hisse</th>
+            <th data-k="alis_fiyati"  data-t="n">Alış</th>
+            <th data-k="satis_fiyati" data-t="n">Satış</th>
+            <th data-k="kar_zarar_yuzde" data-t="n" class="active">P&L %</th>
+            <th data-k="kar_zarar_tl"    data-t="n">P&L ₺</th>
+            <th data-k="gun_sayisi"   data-t="n">Süre</th>
+            <th data-k="sebep"        data-t="s">Sebep</th>
+            <th data-k="max_pnl"      data-t="n">Zirve %</th>
+            <th data-k="min_pnl"      data-t="n">Dip %</th>
+            <th data-k="haftalik_artis" data-t="n">Haf %</th>
+            <th data-k="macd_histogram" data-t="n">MACD H</th>
+            <th data-k="bist100_gun"  data-t="n">XU100 G%</th>
+            <th data-k="fiyat_streak" data-t="n">Streak</th>
+            <th data-k="t3_uzaklik"   data-t="n">T3 uzk</th>
+            <th data-k="adr_alis"     data-t="n">ADR</th>
+            <th data-k="filtre_a_ok"  data-t="n">A</th>
+            <th data-k="filtre_b_ok"  data-t="n">B</th>
+            <th data-k="filtre_c_ok"  data-t="n">C</th>
+            <th data-k="kombo1_ok"    data-t="n">K1</th>
+          </tr>
+        </thead>
+        <tbody id="trade-body"><tr><td colspan="20"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+<footer class="footer">Sim verisi statik · canlı bot tablosuna dokunulmaz · backtest tahminleri yatırım tavsiyesi değildir</footer>
+
+<script>
+  const pct = (v,d=2) => v==null?'-':(v>=0?'+':'')+Number(v).toFixed(d)+'%';
+  const tl  = v => v==null?'-':(v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+  const cls = v => v>0?'pos':v<0?'neg':'neu';
+
+  function sebepClass(s){ if(!s)return'r-def'; if(/stop loss/i.test(s))return'r-stop'; if(/tp/i.test(s))return'r-tp'; if(/alphatrend/i.test(s))return'r-at'; if(/koruma|maliyet/i.test(s))return'r-kor'; return'r-def'; }
+  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/maliyet stopu/i.test(s))return'💰 Maliyet'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; return s; }
+  function flag(v){ return v?'<span class="flag-on">●</span>':'<span class="flag-off">○</span>'; }
+
+  function toggle(id){ document.getElementById(id).classList.toggle('collapsed'); }
+
+  let _data = null;
+  let _sort = { k:'kar_zarar_yuzde', dir:-1 };
+
+  function renderStats(d){
+    const o = d.ozet;
+    document.getElementById('stats').innerHTML = `
+      <div class="card">
+        <div class="card-label">Toplam Trade</div>
+        <div class="card-value" style="color:var(--ac3)">${o.n.toLocaleString('tr-TR')}</div>
+        <div class="card-sub">${d.tarih_baslangic} → ${d.tarih_bitis} · ${d.sembol_sayisi} sembol</div>
+      </div>
+      <div class="card">
+        <div class="card-label">🎯 Win Rate</div>
+        <div class="card-value">${o.wr}%</div>
+        <div class="card-sub">${o.kazanc_n.toLocaleString('tr-TR')} kazanan</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ort. P&L %</div>
+        <div class="card-value ${cls(o.ort_pct)}">${pct(o.ort_pct)}</div>
+        <div class="card-sub">kazanç ${pct(o.ort_kazanc_pct)} · kayıp ${pct(o.ort_kayip_pct)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Net ₺</div>
+        <div class="card-value ${cls(o.net_tl)}">${tl(o.net_tl)}</div>
+        <div class="card-sub">tüm sim dönemi</div>
+      </div>
+    `;
+  }
+
+  function renderFiltreler(d){
+    const f = d.filtreler;
+    const baz = d.ozet;
+    const rows = [
+      ['Tüm işlemler (baz)', baz],
+      ['Filtre A (haf>10 + macd>0)', f.a],
+      ['Filtre B (+bist≥0)', f.b],
+      ['Filtre C (+streak≥2)', f.c],
+      ['Kombo1 (xu100≥3+haf+macd_0_1)', f.kombo1],
+      ['Önceki işlem yok', f.onceki_yok],
+      ['Filtre C + önceki yok', f.c_onceki_yok],
+    ];
+    document.getElementById('filtre-body').innerHTML = rows.map(([ad,s])=>{
+      if(!s||!s.n) return `<tr><td>${ad}</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>`;
+      return `<tr>
+        <td><b>${ad}</b></td>
+        <td>${s.n.toLocaleString('tr-TR')}</td>
+        <td>${s.wr}%</td>
+        <td class="${cls(s.ort_pct)}">${pct(s.ort_pct)}</td>
+        <td class="${cls(s.net_tl)}"><b>${tl(s.net_tl)}</b></td>
+        <td class="pos">${pct(s.ort_kazanc_pct)}</td>
+        <td class="neg">${pct(s.ort_kayip_pct)}</td>
+      </tr>`;
+    }).join('');
+    document.getElementById('filtre-pill').textContent = `${rows.length} senaryo`;
+  }
+
+  function renderSebepler(d){
+    const total = d.ozet.n || 1;
+    document.getElementById('sebep-body').innerHTML = d.sebepler.map(s => `
+      <tr>
+        <td><span class="${sebepClass(s.sebep)}">${sebepLabel(s.sebep)}</span></td>
+        <td>${s.n.toLocaleString('tr-TR')}</td>
+        <td class="${cls(s.ort_pct)}">${pct(s.ort_pct)}</td>
+        <td class="${cls(s.net_tl)}"><b>${tl(s.net_tl)}</b></td>
+        <td>${(s.n/total*100).toFixed(1)}%</td>
+      </tr>
+    `).join('');
+    document.getElementById('sebep-pill').textContent = `${d.sebepler.length} sebep`;
+
+    // sebep dropdown'ı doldur
+    const sel = document.getElementById('f-sebep');
+    const mevcut = sel.value;
+    sel.innerHTML = '<option value="">(hepsi)</option>' +
+      d.sebepler.map(s=>`<option value="${s.sebep}">${sebepLabel(s.sebep)} (${s.n})</option>`).join('');
+    sel.value = mevcut;
+  }
+
+  function renderAylik(d){
+    document.getElementById('aylik-body').innerHTML = d.aylik.map(a=>`
+      <tr>
+        <td><b>${a.ay}</b></td>
+        <td>${a.n}</td>
+        <td class="${cls(a.net_tl)}"><b>${tl(a.net_tl)}</b></td>
+        <td class="${cls(a.ort_pct)}">${pct(a.ort_pct)}</td>
+      </tr>
+    `).join('');
+    document.getElementById('aylik-pill').textContent = `${d.aylik.length} ay`;
+  }
+
+  function applyFiltersSort(){
+    const sym   = document.getElementById('f-sym').value.trim().toUpperCase();
+    const sebep = document.getElementById('f-sebep').value;
+    const flag_ = document.getElementById('f-flag').value;
+    let rows = _data.trades;
+    if(sym)   rows = rows.filter(r => (r.sembol||'').includes(sym));
+    if(sebep) rows = rows.filter(r => r.sebep === sebep);
+    if(flag_){
+      if(flag_==='onceki_yok') rows = rows.filter(r => r.onceki_islem_var === 0);
+      else if(flag_==='kazanc') rows = rows.filter(r => (r.kar_zarar_yuzde||0) > 0);
+      else if(flag_==='kayip')  rows = rows.filter(r => (r.kar_zarar_yuzde||0) <= 0);
+      else                      rows = rows.filter(r => r[flag_] === 1);
+    }
+    const k = _sort.k, dir = _sort.dir;
+    const typ = document.querySelector(`#trade-head th[data-k="${k}"]`)?.dataset.t || 's';
+    rows = rows.slice().sort((a,b)=>{
+      let av = a[k], bv = b[k];
+      if(av==null) return 1; if(bv==null) return -1;
+      if(typ==='n'){ av=+av; bv=+bv; }
+      return av < bv ? -dir : av > bv ? dir : 0;
+    });
+    return rows;
+  }
+
+  function renderTrades(){
+    const rows = applyFiltersSort();
+    document.getElementById('trade-info').textContent = `${rows.length.toLocaleString('tr-TR')} / ${_data.trades.length.toLocaleString('tr-TR')} kayıt`;
+    document.getElementById('trade-pill').textContent = `${rows.length.toLocaleString('tr-TR')} trade`;
+    // İlk 800 satırı render et (DOM şişmesin)
+    const lim = 800;
+    const display = rows.slice(0, lim);
+    document.getElementById('trade-body').innerHTML = display.map(r => `
+      <tr>
+        <td>${r.alis_tarihi}</td>
+        <td><span class="sym-name">${r.sembol}</span></td>
+        <td>${(r.alis_fiyati||0).toFixed(2)}</td>
+        <td>${(r.satis_fiyati||0).toFixed(2)}</td>
+        <td class="${cls(r.kar_zarar_yuzde)}"><b>${pct(r.kar_zarar_yuzde)}</b></td>
+        <td class="${cls(r.kar_zarar_tl)}"><b>${tl(r.kar_zarar_tl)}</b></td>
+        <td><span class="day-badge">${r.gun_sayisi||0}G</span></td>
+        <td><span class="${sebepClass(r.sebep)}">${sebepLabel(r.sebep)}</span></td>
+        <td class="pos">${pct(r.max_pnl)}</td>
+        <td class="neg">${pct(r.min_pnl)}</td>
+        <td>${r.haftalik_artis==null?'-':pct(r.haftalik_artis,1)}</td>
+        <td>${r.macd_histogram==null?'-':(+r.macd_histogram).toFixed(3)}</td>
+        <td>${r.bist100_gun==null?'-':pct(r.bist100_gun,2)}</td>
+        <td>${r.fiyat_streak??'-'}</td>
+        <td>${r.t3_uzaklik==null?'-':pct(r.t3_uzaklik,1)}</td>
+        <td>${r.adr_alis==null?'-':(+r.adr_alis).toFixed(1)}</td>
+        <td>${flag(r.filtre_a_ok)}</td>
+        <td>${flag(r.filtre_b_ok)}</td>
+        <td>${flag(r.filtre_c_ok)}</td>
+        <td>${flag(r.kombo1_ok)}</td>
+      </tr>
+    `).join('') + (rows.length > lim
+      ? `<tr><td colspan="20" style="text-align:center;color:var(--muted);padding:14px;font-style:italic">İlk ${lim} kayıt gösteriliyor — filtreleyerek daraltın</td></tr>`
+      : '');
+
+    // sort header indicator
+    document.querySelectorAll('#trade-head th').forEach(th=>{
+      th.classList.toggle('active', th.dataset.k === _sort.k);
+    });
+  }
+
+  function bindHeaderSort(){
+    document.querySelectorAll('#trade-head th').forEach(th=>{
+      th.onclick = ()=>{
+        const k = th.dataset.k;
+        if(_sort.k === k) _sort.dir = -_sort.dir;
+        else { _sort.k = k; _sort.dir = th.dataset.t === 'n' ? -1 : 1; }
+        renderTrades();
+      };
+    });
+  }
+
+  function renderAll(d){
+    _data = d;
+    document.getElementById('ts').textContent = d.guncelleme;
+    document.getElementById('upd-label').textContent = 'Güncellendi';
+    if(d.tablo === 'trades_sim_intraday'){
+      document.getElementById('banner-title').textContent = 'Intraday Sim — Gün İçi Tetik Girişli Backtest';
+      document.getElementById('banner-desc').textContent  = 'Gün içi high prev_close × 1.045 eşiğini geçtiğinde giriş; indikatörler önceki gün kapanışından. Canlı 10dk botuna en yakın yaklaşım.';
+    } else {
+      document.getElementById('banner-title').textContent = 'EoD Sim — Günlük Kapanış Girişli Backtest';
+      document.getElementById('banner-desc').textContent  = 'Aynı strateji (giriş + çıkış) yfinance 2 yıllık günlük bar üzerinde EoD bazlı simüle edildi. Canlı tabloya hiç dokunulmaz.';
+    }
+    renderStats(d);
+    renderFiltreler(d);
+    renderSebepler(d);
+    renderAylik(d);
+    renderTrades();
+  }
+
+  async function load(file){
+    document.getElementById('upd-label').textContent = 'Yükleniyor';
+    try {
+      const res = await fetch('./'+file+'?t='+Date.now());
+      if(!res.ok) throw new Error(res.status);
+      const data = await res.json();
+      renderAll(data);
+    } catch(e) {
+      document.getElementById('upd-label').textContent = 'Bağlanamadı';
+      document.getElementById('trade-body').innerHTML = `<tr><td colspan="20"><div class="empty">${file} okunamadı</div></td></tr>`;
+    }
+  }
+
+  // bind
+  document.getElementById('f-sym').oninput   = ()=>{ if(_data) renderTrades(); };
+  document.getElementById('f-sebep').onchange= ()=>{ if(_data) renderTrades(); };
+  document.getElementById('f-flag').onchange = ()=>{ if(_data) renderTrades(); };
+  document.getElementById('f-set').onchange  = (e)=> load(e.target.value);
+  bindHeaderSort();
+
+  load('sim_eod.json');
+</script>
+</body>
+</html>
