@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-06-26 16:10",
+  "son_guncelleme": "2026-06-26 16:20",
   "kasa": {
-    "acik_sayi": 1,
-    "toplam_yatirim": 5000.0,
-    "portfoy_degeri": 5180.0,
-    "yuzen_pnl_tl": 180.0,
-    "yuzen_pnl_yuzde": 3.6,
+    "acik_sayi": 2,
+    "toplam_yatirim": 10000.0,
+    "portfoy_degeri": 10185.0,
+    "yuzen_pnl_tl": 185.0,
+    "yuzen_pnl_yuzde": 1.85,
     "kapanan_toplam": 830,
     "kapanan_net_tl": 21193.0,
     "win_rate": 43.1,
@@ -19,7 +19,7 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 5.01,
     "ort_kayip": -2.07,
-    "ort_sure": 9.0,
+    "ort_sure": 4.5,
     "kalkan_sayi": 1,
     "tp1_sayi": 0,
     "tp2_sayi": 0,
@@ -31,16 +31,16 @@
     "bu_hafta_islem_sayi": 10,
     "toplam_gun": 38,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 0,
-    "yas_kisa": 0,
+    "bugun_acilan_sayi": 1,
+    "yas_kisa": 1,
     "yas_orta": 0,
     "yas_uzun": 1,
     "en_iyi_sembol": "BMSTL",
-    "en_iyi_pnl": 3.6,
-    "en_iyi_tl": 180.0,
-    "en_kotu_sembol": "BMSTL",
-    "en_kotu_pnl": 3.6,
-    "en_kotu_tl": 180.0,
+    "en_iyi_pnl": 3.71,
+    "en_iyi_tl": 185.0,
+    "en_kotu_sembol": "POLTK",
+    "en_kotu_pnl": 0.0,
+    "en_kotu_tl": 0.0,
     "kategoriler": {
       "3": {
         "sayi": 0,
@@ -48,14 +48,14 @@
         "yuzen_tl": 0.0
       },
       "2": {
-        "sayi": 0,
-        "ort_pnl": 0,
+        "sayi": 1,
+        "ort_pnl": 0.0,
         "yuzen_tl": 0.0
       },
       "1": {
         "sayi": 1,
-        "ort_pnl": 3.6,
-        "yuzen_tl": 180.0
+        "ort_pnl": 3.71,
+        "yuzen_tl": 185.0
       }
     }
   },
@@ -70,9 +70,9 @@
         "15:10"
       ],
       "alis": 91.7,
-      "guncel": 95.0,
-      "pnl_yuzde": 3.6,
-      "pnl_tl": 180.0,
+      "guncel": 95.1,
+      "pnl_yuzde": 3.71,
+      "pnl_tl": 185.0,
       "yatirim": 5000,
       "stop": 92.16,
       "kalkan": true,
@@ -80,9 +80,51 @@
       "tp2": false,
       "max_pnl": 8.18,
       "gun": 9
+    },
+    {
+      "sembol": "POLTK",
+      "kategori": 2,
+      "alis_tarihi": "2026-06-26",
+      "alis_saati": "16:20",
+      "_sort_key": [
+        "2026-06-26",
+        "16:20"
+      ],
+      "alis": 5462.5,
+      "guncel": 5462.5,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 5000,
+      "stop": 5080.12,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 0
     }
   ],
   "son_alinanlar": [
+    {
+      "sembol": "POLTK",
+      "kategori": 2,
+      "alis_tarihi": "2026-06-26",
+      "alis_saati": "16:20",
+      "_sort_key": [
+        "2026-06-26",
+        "16:20"
+      ],
+      "alis": 5462.5,
+      "guncel": 5462.5,
+      "pnl_yuzde": 0.0,
+      "pnl_tl": 0.0,
+      "yatirim": 5000,
+      "stop": 5080.12,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.0,
+      "gun": 0
+    },
     {
       "sembol": "BMSTL",
       "kategori": 1,
@@ -93,9 +135,9 @@
         "15:10"
       ],
       "alis": 91.7,
-      "guncel": 95.0,
-      "pnl_yuzde": 3.6,
-      "pnl_tl": 180.0,
+      "guncel": 95.1,
+      "pnl_yuzde": 3.71,
+      "pnl_tl": 185.0,
       "yatirim": 5000,
       "stop": 92.16,
       "kalkan": true,
@@ -512,15 +554,15 @@
       "gunluk_pnl": 381.0,
       "kumulatif_pnl": 21192.0,
       "islem_sayi": 1,
-      "yuzen_pnl": 180.0
+      "yuzen_pnl": 185.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 1,
+    "acik_sayi": 2,
     "tetiklenen": 1,
-    "gercek_net_tl": 180.0,
+    "gercek_net_tl": 186.0,
     "iz_net_tl": 259.0,
-    "kazanim_tl": 79.0,
+    "kazanim_tl": 74.0,
     "portfoy": [
       {
         "sembol": "BMSTL",
@@ -532,9 +574,9 @@
           "15:10"
         ],
         "alis": 91.7,
-        "guncel": 95.0,
-        "pnl_yuzde": 3.6,
-        "pnl_tl": 180.0,
+        "guncel": 95.1,
+        "pnl_yuzde": 3.71,
+        "pnl_tl": 185.0,
         "yatirim": 5000,
         "stop": 92.16,
         "kalkan": true,
@@ -546,6 +588,31 @@
         "iz_tetik": true,
         "iz_kz": 5.18,
         "iz_tl": 259.0
+      },
+      {
+        "sembol": "POLTK",
+        "kategori": 2,
+        "alis_tarihi": "2026-06-26",
+        "alis_saati": "16:20",
+        "_sort_key": [
+          "2026-06-26",
+          "16:20"
+        ],
+        "alis": 5462.5,
+        "guncel": 5462.5,
+        "pnl_yuzde": 0.0,
+        "pnl_tl": 0.0,
+        "yatirim": 5000,
+        "stop": 5080.12,
+        "kalkan": false,
+        "tp1": false,
+        "tp2": false,
+        "max_pnl": 0.0,
+        "gun": 0,
+        "iz_sev": null,
+        "iz_tetik": false,
+        "iz_kz": 0.0,
+        "iz_tl": 0.0
       }
     ]
   },
