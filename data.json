@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-06-29 18:10",
+  "son_guncelleme": "2026-06-30 09:55",
   "kasa": {
     "acik_sayi": 2,
     "toplam_yatirim": 15000.0,
@@ -19,7 +19,7 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 5.01,
     "ort_kayip": -2.07,
-    "ort_sure": 6.0,
+    "ort_sure": 7.0,
     "kalkan_sayi": 1,
     "tp1_sayi": 0,
     "tp2_sayi": 0,
@@ -29,9 +29,9 @@
     "gecen_hafta_islem_sayi": 11,
     "bu_hafta_pnl_tl": 0,
     "bu_hafta_islem_sayi": 0,
-    "toplam_gun": 39,
+    "toplam_gun": 40,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 1,
+    "bugun_acilan_sayi": 0,
     "yas_kisa": 1,
     "yas_orta": 0,
     "yas_uzun": 1,
@@ -79,7 +79,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 8.18,
-      "gun": 12
+      "gun": 13
     },
     {
       "sembol": "AKCNS",
@@ -100,7 +100,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     }
   ],
   "son_alinanlar": [
@@ -123,7 +123,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 0.0,
-      "gun": 0
+      "gun": 1
     },
     {
       "sembol": "BMSTL",
@@ -144,7 +144,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 8.18,
-      "gun": 12
+      "gun": 13
     }
   ],
   "son_kapananlar": [
@@ -559,6 +559,13 @@
     {
       "tarih": "2026-06-29",
       "gunluk_pnl": 0,
+      "kumulatif_pnl": 61712.0,
+      "islem_sayi": 0,
+      "yuzen_pnl": 40545.0
+    },
+    {
+      "tarih": "2026-06-30",
+      "gunluk_pnl": 0,
       "kumulatif_pnl": 21167.0,
       "islem_sayi": 0,
       "yuzen_pnl": 144.0
@@ -590,7 +597,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 8.18,
-        "gun": 12,
+        "gun": 13,
         "iz_sev": 5.18,
         "iz_tetik": true,
         "iz_kz": 5.18,
@@ -615,7 +622,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 0.0,
-        "gun": 0,
+        "gun": 1,
         "iz_sev": null,
         "iz_tetik": false,
         "iz_kz": 0.0,
