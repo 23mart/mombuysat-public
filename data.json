@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-01 10:40",
+  "son_guncelleme": "2026-07-01 10:50",
   "kasa": {
     "acik_sayi": 1,
     "toplam_yatirim": 10000.0,
-    "portfoy_degeri": 11019.0,
-    "yuzen_pnl_tl": 1019.0,
-    "yuzen_pnl_yuzde": 10.19,
+    "portfoy_degeri": 10995.0,
+    "yuzen_pnl_tl": 995.0,
+    "yuzen_pnl_yuzde": 9.95,
     "kapanan_toplam": 834,
     "kapanan_net_tl": 21210.0,
     "win_rate": 43.3,
@@ -36,11 +36,11 @@
     "yas_orta": 0,
     "yas_uzun": 0,
     "en_iyi_sembol": "AKCNS",
-    "en_iyi_pnl": 10.19,
-    "en_iyi_tl": 1019.0,
+    "en_iyi_pnl": 9.95,
+    "en_iyi_tl": 995.0,
     "en_kotu_sembol": "AKCNS",
-    "en_kotu_pnl": 10.19,
-    "en_kotu_tl": 1019.0,
+    "en_kotu_pnl": 9.95,
+    "en_kotu_tl": 995.0,
     "kategoriler": {
       "3": {
         "sayi": 0,
@@ -54,8 +54,8 @@
       },
       "1": {
         "sayi": 1,
-        "ort_pnl": 10.19,
-        "yuzen_tl": 1019.0
+        "ort_pnl": 9.95,
+        "yuzen_tl": 995.0
       }
     }
   },
@@ -70,9 +70,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 228.1,
-      "pnl_yuzde": 10.19,
-      "pnl_tl": 1019.0,
+      "guncel": 227.6,
+      "pnl_yuzde": 9.95,
+      "pnl_tl": 995.0,
       "yatirim": 10000,
       "stop": 208.03,
       "kalkan": true,
@@ -93,9 +93,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 228.1,
-      "pnl_yuzde": 10.19,
-      "pnl_tl": 1019.0,
+      "guncel": 227.6,
+      "pnl_yuzde": 9.95,
+      "pnl_tl": 995.0,
       "yatirim": 10000,
       "stop": 208.03,
       "kalkan": true,
@@ -533,14 +533,14 @@
       "gunluk_pnl": 6.0,
       "kumulatif_pnl": 21209.0,
       "islem_sayi": 1,
-      "yuzen_pnl": 1019.0
+      "yuzen_pnl": 995.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 1,
     "tetiklenen": 0,
-    "gercek_net_tl": 1019.0,
-    "iz_net_tl": 1019.0,
+    "gercek_net_tl": 995.0,
+    "iz_net_tl": 995.0,
     "kazanim_tl": 0.0,
     "portfoy": [
       {
@@ -553,9 +553,9 @@
           "10:20"
         ],
         "alis": 207.0,
-        "guncel": 228.1,
-        "pnl_yuzde": 10.19,
-        "pnl_tl": 1019.0,
+        "guncel": 227.6,
+        "pnl_yuzde": 9.95,
+        "pnl_tl": 995.0,
         "yatirim": 10000,
         "stop": 208.03,
         "kalkan": true,
@@ -565,8 +565,8 @@
         "gun": 2,
         "iz_sev": 8.59,
         "iz_tetik": false,
-        "iz_kz": 10.19,
-        "iz_tl": 1019.0
+        "iz_kz": 9.95,
+        "iz_tl": 995.0
       }
     ]
   },
@@ -750,23 +750,30 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 101,
-        "kapanan_net_tl": 18769.0,
+        "kapanan_toplam": 102,
+        "kapanan_net_tl": 18775.0,
         "win_rate": 99.0,
-        "win_sayi": 100,
-        "win_tl": 19274.0,
+        "win_sayi": 101,
+        "win_tl": 19280.0,
         "los_sayi": 1,
         "los_tl": -505.0,
         "acik_sayi": 0,
         "yuzen_pnl_tl": 0.0,
         "yuzen_pnl_iz_tl": 0.0,
         "toplam_yatirim": 0.0,
-        "toplam_sermaye": 491250.0,
-        "getiri_yuzde": 3.82,
+        "toplam_sermaye": 496250.0,
+        "getiri_yuzde": 3.78,
         "ort_sure": 4.4
       },
       "portfoy": [],
       "kapananlar": [
+        {
+          "sembol": "CMBTN",
+          "tarih": "2026-07-01",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.12,
+          "pnl_tl": 6.0
+        },
         {
           "sembol": "AKBNK",
           "tarih": "2026-06-26",
@@ -899,13 +906,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 0.67,
           "pnl_tl": 33.0
-        },
-        {
-          "sembol": "GENKM",
-          "tarih": "2026-06-05",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 5.72,
-          "pnl_tl": 286.0
         }
       ],
       "gecmis": [
@@ -1048,6 +1048,11 @@
           "tarih": "2026-06-26",
           "gunluk_pnl": 602.0,
           "kumulatif_pnl": 18769.0
+        },
+        {
+          "tarih": "2026-07-01",
+          "gunluk_pnl": 6.0,
+          "kumulatif_pnl": 18775.0
         }
       ]
     },
