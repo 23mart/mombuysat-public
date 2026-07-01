@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-06-30 18:10",
+  "son_guncelleme": "2026-07-01 09:55",
   "kasa": {
     "acik_sayi": 1,
     "toplam_yatirim": 10000.0,
@@ -19,17 +19,17 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 4.98,
     "ort_kayip": -2.07,
-    "ort_sure": 1.0,
+    "ort_sure": 2.0,
     "kalkan_sayi": 1,
     "tp1_sayi": 0,
     "tp2_sayi": 0,
-    "bugun_pnl_tl": 36.0,
-    "bugun_islem_sayi": 2,
+    "bugun_pnl_tl": 0,
+    "bugun_islem_sayi": 0,
     "gecen_hafta_pnl_tl": 23598.0,
     "gecen_hafta_islem_sayi": 11,
     "bu_hafta_pnl_tl": 36.0,
     "bu_hafta_islem_sayi": 2,
-    "toplam_gun": 40,
+    "toplam_gun": 41,
     "stop_yakin_sayi": 0,
     "bugun_acilan_sayi": 0,
     "yas_kisa": 1,
@@ -79,7 +79,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 10.0,
-      "gun": 1
+      "gun": 2
     }
   ],
   "son_alinanlar": [
@@ -102,7 +102,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 10.0,
-      "gun": 1
+      "gun": 2
     }
   ],
   "son_kapananlar": [
@@ -524,8 +524,15 @@
     {
       "tarih": "2026-06-30",
       "gunluk_pnl": 36.0,
-      "kumulatif_pnl": 21203.0,
+      "kumulatif_pnl": 61748.0,
       "islem_sayi": 2,
+      "yuzen_pnl": 40545.0
+    },
+    {
+      "tarih": "2026-07-01",
+      "gunluk_pnl": 0,
+      "kumulatif_pnl": 21203.0,
+      "islem_sayi": 0,
       "yuzen_pnl": 1000.0
     }
   ],
@@ -555,7 +562,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 10.0,
-        "gun": 1,
+        "gun": 2,
         "iz_sev": 7.0,
         "iz_tetik": false,
         "iz_kz": 10.0,
