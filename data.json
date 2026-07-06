@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-06 10:00",
+  "son_guncelleme": "2026-07-06 10:10",
   "kasa": {
     "acik_sayi": 2,
     "toplam_yatirim": 17500.0,
@@ -838,10 +838,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 103,
+        "kapanan_toplam": 104,
         "kapanan_net_tl": 18775.0,
         "win_rate": 99.0,
-        "win_sayi": 102,
+        "win_sayi": 103,
         "win_tl": 19280.0,
         "los_sayi": 1,
         "los_tl": -505.0,
@@ -849,12 +849,19 @@
         "yuzen_pnl_tl": 0.0,
         "yuzen_pnl_iz_tl": 0.0,
         "toplam_yatirim": 0.0,
-        "toplam_sermaye": 501250.0,
-        "getiri_yuzde": 3.75,
+        "toplam_sermaye": 506250.0,
+        "getiri_yuzde": 3.71,
         "ort_sure": 4.4
       },
       "portfoy": [],
       "kapananlar": [
+        {
+          "sembol": "ALCAR",
+          "tarih": "2026-07-06",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
         {
           "sembol": "BLUME",
           "tarih": "2026-07-02",
@@ -987,13 +994,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 0.33,
           "pnl_tl": 16.0
-        },
-        {
-          "sembol": "AYCES",
-          "tarih": "2026-06-08",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
         }
       ],
       "gecmis": [
@@ -1144,6 +1144,11 @@
         },
         {
           "tarih": "2026-07-02",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 18775.0
+        },
+        {
+          "tarih": "2026-07-06",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 18775.0
         }
