@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EoD Sim · 2 Yıllık Geriye Dönük</title>
+  <title>EoD Sim · Kapanış Botu</title>
   <style>
     :root {
-      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#ffffff; --text:#ffffff;
-      --muted:#ffffff; --green:#22c55e; --red:#ef4444; --blue:#60a5fa;
-      --gold:#f59e0b; --orange:#fb923c;
+      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#ffffff; --text:#e4e6eb;
+      --muted:#5a6070; --green:#22c55e; --green2:#16a34a; --red:#ef4444;
+      --blue:#60a5fa; --gold:#f59e0b; --orange:#fb923c;
       --ac:#a855f7; --ac2:#7e22ce; --ac3:#d8b4fe;
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -18,8 +18,8 @@
     .logo{display:flex;align-items:center;gap:10px}
     .logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--ac),var(--ac2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
     .logo-title{font-size:15px;font-weight:700;letter-spacing:-.3px}
-    .logo-sub{font-size:11px;color:var(--muted)}
-    .header-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--muted)}
+    .logo-sub{font-size:11px;color:var(--text)}
+    .header-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--text)}
     .nav-links{display:flex;gap:6px;flex-wrap:wrap}
     .nav-btn{font-size:11px;font-weight:600;padding:4px 11px;border-radius:6px;background:var(--s2);border:1px solid var(--border);color:var(--muted);text-decoration:none;transition:background .15s,color .15s;white-space:nowrap}
     .nav-btn:hover{background:#1e1e2a;color:var(--text)}
@@ -33,14 +33,14 @@
     .banner{background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(126,34,206,.06));border:1px solid rgba(168,85,247,.25);border-radius:12px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px}
     .banner-icon{font-size:32px;flex-shrink:0}
     .banner-title{font-size:16px;font-weight:700;color:var(--ac3);margin-bottom:3px}
-    .banner-desc{font-size:12px;color:var(--muted)}
+    .banner-desc{font-size:12px;color:var(--text)}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
     @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
     .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
-    .card-label{font-size:10px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .card-label{font-size:10px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--text);margin-bottom:8px}
     .card-value{font-size:24px;font-weight:700;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums}
-    .card-sub{font-size:11px;color:var(--muted)}
+    .card-sub{font-size:11px;color:var(--text)}
 
     .section{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
     .section-head{padding:13px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;gap:10px;flex-wrap:wrap}
@@ -48,41 +48,42 @@
     .section-head-fixed{cursor:default}
     .section-head-fixed:hover{background:transparent}
     .section-title{font-size:13px;font-weight:600}
-    .pill{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--s2);border:1px solid var(--border);color:var(--muted)}
+    .pill{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--s2);border:1px solid var(--border);color:var(--text)}
     .pill-ac{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:var(--ac3)}
-    .toggle{font-size:11px;color:var(--muted);transition:transform .2s}
+    .toggle{font-size:11px;color:var(--text);transition:transform .2s}
     .section.collapsed .toggle{transform:rotate(-90deg)}
     .section.collapsed .section-body{display:none}
 
+    .chart-wrap{position:relative;height:200px;padding:16px 18px 18px}
+    @media(min-width:600px){.chart-wrap{height:260px}}
+
     .tbl-wrap{overflow-x:auto;max-height:640px;overflow-y:auto}
     table{width:100%;border-collapse:collapse}
-    thead th{padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;background:var(--surface);position:sticky;top:0;z-index:2}
+    thead th{padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;background:var(--surface);position:sticky;top:0;z-index:2}
     thead th.active{color:var(--ac3)}
     tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
     tbody tr:last-child{border-bottom:none}
     tbody tr:hover{background:var(--s2)}
-    td{padding:8px 14px;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12px}
+    td{padding:9px 14px;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12px}
 
     .sym-name{font-weight:700;font-size:13px}
-    .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--muted)}
-    .day-badge{font-size:11px;padding:2px 7px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--muted)}
-    .flag-on{color:var(--ac3);font-weight:700}
-    .flag-off{color:#333}
+    .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--text)}
+    .day-badge{font-size:11px;padding:2px 7px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--text)}
 
-    .r-stop{color:#f87171}.r-tp{color:#86efac}.r-at{color:#93c5fd}.r-kor{color:#fdba74}.r-def{color:var(--muted)}
+    .r-stop{color:#f87171}.r-tp{color:#86efac}.r-at{color:#93c5fd}.r-kor{color:#fdba74}.r-def{color:var(--text)}
 
-    .empty{display:flex;align-items:center;justify-content:center;gap:10px;padding:44px;color:var(--muted)}
+    .empty{display:flex;align-items:center;justify-content:center;gap:10px;padding:44px;color:var(--text)}
     .spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--ac);border-radius:50%;animation:spin .7s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
 
     .ctrl-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;background:var(--s2);border-bottom:1px solid var(--border)}
     .ctrl-bar input,.ctrl-bar select{background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit}
     .ctrl-bar input{min-width:140px}
-    .ctrl-bar label{font-size:11px;color:var(--muted);margin-right:3px}
-    .ctrl-bar .ctrl-info{margin-left:auto;font-size:11px;color:var(--muted)}
+    .ctrl-bar label{font-size:11px;color:var(--text);margin-right:3px}
+    .ctrl-bar .ctrl-info{margin-left:auto;font-size:11px;color:var(--text)}
 
     .ozet-tbl td,.ozet-tbl th{font-size:12px}
-    .footer{text-align:center;color:var(--muted);font-size:11px;padding:20px;border-top:1px solid var(--border)}
+    .footer{text-align:center;color:var(--text);font-size:11px;padding:20px;border-top:1px solid var(--border)}
     @media(max-width:480px){.page{padding:16px 14px}}
     @media(max-width:640px){.header{padding:8px 14px}.header-meta{width:100%;padding-bottom:6px}#ts{display:none}}
   </style>
@@ -93,8 +94,8 @@
   <div class="logo">
     <div class="logo-mark">🧪</div>
     <div>
-      <div class="logo-title">EoD Sim · 2 Yıllık Geriye Dönük</div>
-      <div class="logo-sub">trades_sim_eod · günlük kapanış girişi · ~500 iş günü</div>
+      <div class="logo-title">EoD Sim · Kapanış Botu</div>
+      <div class="logo-sub">Aynı strateji · gün sonu al-sat</div>
     </div>
   </div>
   <div class="header-meta">
@@ -117,8 +118,8 @@
   <div class="banner">
     <div class="banner-icon">🧪</div>
     <div>
-      <div class="banner-title" id="banner-title">EoD Sim — Günlük Kapanış Girişli Backtest</div>
-      <div class="banner-desc" id="banner-desc">Aynı strateji (giriş + çıkış) yfinance 2 yıllık günlük bar üzerinde EoD bazlı simüle edildi. Canlı tabloya hiç dokunulmaz; karşılaştırma için.</div>
+      <div class="banner-title">Kapanışta Al-Sat Yapan Paralel Bot</div>
+      <div class="banner-desc">Canlı bot 10 dakikada bir tarar; bu bot ise aynı strateji ile <b>sadece günlük kapanışta</b> al-sat yapıyor. 2 yıllık geriye dönük geçmiş üzerinde simüle edildi.</div>
     </div>
   </div>
 
@@ -128,27 +129,21 @@
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
     <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
+    <div class="card"><div class="empty"><div class="spinner"></div></div></div>
   </div>
 
-  <!-- Filtre özetleri -->
+  <!-- Grafik -->
   <div class="section">
     <div class="section-head section-head-fixed">
       <div style="display:flex;align-items:center;gap:10px">
-        <span class="section-title">Filtre Bazlı Özet</span>
-        <span class="pill pill-ac" id="filtre-pill">—</span>
+        <span class="section-title">Aylık Getiri Geçmişi</span>
+        <span class="pill pill-ac" id="grafik-pill">—</span>
       </div>
     </div>
-    <div class="tbl-wrap">
-      <table class="ozet-tbl">
-        <thead>
-          <tr>
-            <th>Senaryo</th><th>N</th><th>WR %</th><th>Ort %</th><th>Net ₺</th>
-            <th>Ort. kazanç %</th><th>Ort. kayıp %</th>
-          </tr>
-        </thead>
-        <tbody id="filtre-body"><tr><td colspan="7"><div class="empty"><div class="spinner"></div></div></td></tr></tbody>
-      </table>
-    </div>
+    <div class="chart-wrap"><canvas id="chart"></canvas></div>
   </div>
 
   <!-- Çıkış sebep dağılımı -->
@@ -171,7 +166,7 @@
   <div class="section collapsed" id="sec-aylik">
     <div class="section-head" onclick="toggle('sec-aylik')">
       <div style="display:flex;align-items:center;gap:10px">
-        <span class="section-title">Aylık Özet</span>
+        <span class="section-title">Aylık Detay</span>
         <span class="pill" id="aylik-pill">—</span>
       </div>
       <span class="toggle">▼</span>
@@ -184,11 +179,11 @@
     </div>
   </div>
 
-  <!-- Tüm trade'ler tablosu (filtrelenebilir) -->
+  <!-- Trade listesi -->
   <div class="section">
     <div class="section-head section-head-fixed">
       <div style="display:flex;align-items:center;gap:10px">
-        <span class="section-title">Trade Listesi</span>
+        <span class="section-title">Trade Geçmişi</span>
         <span class="pill pill-ac" id="trade-pill">—</span>
       </div>
     </div>
@@ -197,21 +192,11 @@
       <input id="f-sym" type="search" placeholder="ASELS, THYAO...">
       <label>Sebep</label>
       <select id="f-sebep"><option value="">(hepsi)</option></select>
-      <label>Filtre</label>
-      <select id="f-flag">
+      <label>Sonuç</label>
+      <select id="f-son">
         <option value="">(tümü)</option>
-        <option value="filtre_a_ok">Filtre A</option>
-        <option value="filtre_b_ok">Filtre B</option>
-        <option value="filtre_c_ok">Filtre C</option>
-        <option value="kombo1_ok">Kombo 1</option>
-        <option value="onceki_yok">Önceki işlem yok</option>
         <option value="kazanc">Sadece kazanç</option>
         <option value="kayip">Sadece kayıp</option>
-      </select>
-      <label>Veri Kümesi</label>
-      <select id="f-set">
-        <option value="sim_eod.json" selected>EoD (4867)</option>
-        <option value="sim_intraday.json">Intraday (1157)</option>
       </select>
       <span class="ctrl-info" id="trade-info">—</span>
     </div>
@@ -219,29 +204,17 @@
       <table>
         <thead id="trade-head">
           <tr>
-            <th data-k="alis_tarihi"  data-t="s">Alış Tarihi</th>
+            <th data-k="alis_tarihi"  data-t="s" class="active">Alış Tarihi</th>
             <th data-k="sembol"       data-t="s">Hisse</th>
             <th data-k="alis_fiyati"  data-t="n">Alış</th>
             <th data-k="satis_fiyati" data-t="n">Satış</th>
-            <th data-k="kar_zarar_yuzde" data-t="n" class="active">P&L %</th>
+            <th data-k="kar_zarar_yuzde" data-t="n">P&L %</th>
             <th data-k="kar_zarar_tl"    data-t="n">P&L ₺</th>
             <th data-k="gun_sayisi"   data-t="n">Süre</th>
             <th data-k="sebep"        data-t="s">Sebep</th>
-            <th data-k="max_pnl"      data-t="n">Zirve %</th>
-            <th data-k="min_pnl"      data-t="n">Dip %</th>
-            <th data-k="haftalik_artis" data-t="n">Haf %</th>
-            <th data-k="macd_histogram" data-t="n">MACD H</th>
-            <th data-k="bist100_gun"  data-t="n">XU100 G%</th>
-            <th data-k="fiyat_streak" data-t="n">Streak</th>
-            <th data-k="t3_uzaklik"   data-t="n">T3 uzk</th>
-            <th data-k="adr_alis"     data-t="n">ADR</th>
-            <th data-k="filtre_a_ok"  data-t="n">A</th>
-            <th data-k="filtre_b_ok"  data-t="n">B</th>
-            <th data-k="filtre_c_ok"  data-t="n">C</th>
-            <th data-k="kombo1_ok"    data-t="n">K1</th>
           </tr>
         </thead>
-        <tbody id="trade-body"><tr><td colspan="20"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
+        <tbody id="trade-body"><tr><td colspan="8"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -249,22 +222,35 @@
 </main>
 <footer class="footer">Sim verisi statik · canlı bot tablosuna dokunulmaz · backtest tahminleri yatırım tavsiyesi değildir</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
   const pct = (v,d=2) => v==null?'-':(v>=0?'+':'')+Number(v).toFixed(d)+'%';
   const tl  = v => v==null?'-':(v>=0?'+':'')+Math.round(v).toLocaleString('tr-TR')+' ₺';
+  const tl0 = v => Math.round(v||0).toLocaleString('tr-TR')+' ₺';
   const cls = v => v>0?'pos':v<0?'neg':'neu';
 
   function sebepClass(s){ if(!s)return'r-def'; if(/stop loss/i.test(s))return'r-stop'; if(/tp/i.test(s))return'r-tp'; if(/alphatrend/i.test(s))return'r-at'; if(/koruma|maliyet/i.test(s))return'r-kor'; return'r-def'; }
-  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/maliyet stopu/i.test(s))return'💰 Maliyet'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; return s; }
-  function flag(v){ return v?'<span class="flag-on">●</span>':'<span class="flag-off">○</span>'; }
+  function sebepLabel(s){ if(!s)return'—'; if(/stop loss.*7/i.test(s))return'🛑 Stop -%7'; if(/alphatrend/i.test(s))return'📉 AT Kırılımı'; if(/koruma.*maliyet/i.test(s))return'🛡 Koruma'; if(/maliyet stopu/i.test(s))return'💰 Maliyet'; return s; }
 
   function toggle(id){ document.getElementById(id).classList.toggle('collapsed'); }
 
   let _data = null;
-  let _sort = { k:'kar_zarar_yuzde', dir:-1 };
+  let _sort = { k:'alis_tarihi', dir:-1 };
 
   function renderStats(d){
     const o = d.ozet;
+    const aylik = d.aylik||[];
+    const enIyiAy  = aylik.length ? [...aylik].sort((a,b)=>b.net_tl-a.net_tl)[0] : null;
+    const enKotuAy = aylik.length ? [...aylik].sort((a,b)=>a.net_tl-b.net_tl)[0] : null;
+    const trades = d.trades||[];
+    const enIyiTr  = trades.length ? [...trades].sort((a,b)=>b.kar_zarar_yuzde-a.kar_zarar_yuzde)[0] : null;
+    const enKotuTr = trades.length ? [...trades].sort((a,b)=>a.kar_zarar_yuzde-b.kar_zarar_yuzde)[0] : null;
+    const ortSure = trades.length ? (trades.reduce((s,t)=>s+(t.gun_sayisi||0),0)/trades.length) : 0;
+    const kazanan = trades.filter(t=>(t.kar_zarar_yuzde||0)>0);
+    const kaybeden = trades.filter(t=>(t.kar_zarar_yuzde||0)<=0);
+    const winTL = kazanan.reduce((s,t)=>s+(t.kar_zarar_tl||0),0);
+    const losTL = kaybeden.reduce((s,t)=>s+(t.kar_zarar_tl||0),0);
+
     document.getElementById('stats').innerHTML = `
       <div class="card">
         <div class="card-label">Toplam Trade</div>
@@ -273,47 +259,40 @@
       </div>
       <div class="card">
         <div class="card-label">🎯 Win Rate</div>
-        <div class="card-value">${o.wr}%</div>
-        <div class="card-sub">${o.kazanc_n.toLocaleString('tr-TR')} kazanan</div>
+        <div class="card-value ${o.wr>=50?'pos':'neg'}">${o.wr}%</div>
+        <div class="card-sub">${o.kazanc_n.toLocaleString('tr-TR')} kazanan · ${(o.n-o.kazanc_n).toLocaleString('tr-TR')} kaybeden</div>
       </div>
       <div class="card">
-        <div class="card-label">Ort. P&L %</div>
-        <div class="card-value ${cls(o.ort_pct)}">${pct(o.ort_pct)}</div>
-        <div class="card-sub">kazanç ${pct(o.ort_kazanc_pct)} · kayıp ${pct(o.ort_kayip_pct)}</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Net ₺</div>
+        <div class="card-label">Net Kâr/Zarar</div>
         <div class="card-value ${cls(o.net_tl)}">${tl(o.net_tl)}</div>
-        <div class="card-sub">tüm sim dönemi</div>
+        <div class="card-sub ${cls(o.ort_pct)}">ort. ${pct(o.ort_pct)} / trade</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ort. Süre</div>
+        <div class="card-value">${ortSure.toFixed(1)}G</div>
+        <div class="card-sub">pozisyon başına tutma günü</div>
+      </div>
+      <div class="card">
+        <div class="card-label">✅ Karla Kapanan</div>
+        <div class="card-value pos">${kazanan.length} işlem</div>
+        <div class="card-sub pos">${tl(winTL)} · ort ${pct(o.ort_kazanc_pct)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">❌ Zararla Kapanan</div>
+        <div class="card-value neg">${kaybeden.length} işlem</div>
+        <div class="card-sub neg">${tl(losTL)} · ort ${pct(o.ort_kayip_pct)}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">🏆 En İyi Ay</div>
+        <div class="card-value pos">${enIyiAy?enIyiAy.ay:'—'}</div>
+        <div class="card-sub pos">${enIyiAy?tl(enIyiAy.net_tl):''} · ${enIyiAy?enIyiAy.n+' işlem':''}</div>
+      </div>
+      <div class="card">
+        <div class="card-label">📉 En Kötü Ay</div>
+        <div class="card-value neg">${enKotuAy?enKotuAy.ay:'—'}</div>
+        <div class="card-sub neg">${enKotuAy?tl(enKotuAy.net_tl):''} · ${enKotuAy?enKotuAy.n+' işlem':''}</div>
       </div>
     `;
-  }
-
-  function renderFiltreler(d){
-    const f = d.filtreler;
-    const baz = d.ozet;
-    const rows = [
-      ['Tüm işlemler (baz)', baz],
-      ['Filtre A (haf>10 + macd>0)', f.a],
-      ['Filtre B (+bist≥0)', f.b],
-      ['Filtre C (+streak≥2)', f.c],
-      ['Kombo1 (xu100≥3+haf+macd_0_1)', f.kombo1],
-      ['Önceki işlem yok', f.onceki_yok],
-      ['Filtre C + önceki yok', f.c_onceki_yok],
-    ];
-    document.getElementById('filtre-body').innerHTML = rows.map(([ad,s])=>{
-      if(!s||!s.n) return `<tr><td>${ad}</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>`;
-      return `<tr>
-        <td><b>${ad}</b></td>
-        <td>${s.n.toLocaleString('tr-TR')}</td>
-        <td>${s.wr}%</td>
-        <td class="${cls(s.ort_pct)}">${pct(s.ort_pct)}</td>
-        <td class="${cls(s.net_tl)}"><b>${tl(s.net_tl)}</b></td>
-        <td class="pos">${pct(s.ort_kazanc_pct)}</td>
-        <td class="neg">${pct(s.ort_kayip_pct)}</td>
-      </tr>`;
-    }).join('');
-    document.getElementById('filtre-pill').textContent = `${rows.length} senaryo`;
   }
 
   function renderSebepler(d){
@@ -329,7 +308,6 @@
     `).join('');
     document.getElementById('sebep-pill').textContent = `${d.sebepler.length} sebep`;
 
-    // sebep dropdown'ı doldur
     const sel = document.getElementById('f-sebep');
     const mevcut = sel.value;
     sel.innerHTML = '<option value="">(hepsi)</option>' +
@@ -349,19 +327,83 @@
     document.getElementById('aylik-pill').textContent = `${d.aylik.length} ay`;
   }
 
+  let chartObj = null;
+  function renderChart(d){
+    const aylik = d.aylik||[];
+    if(!aylik.length) return;
+    document.getElementById('grafik-pill').textContent = aylik.length+' ay';
+
+    const labels = aylik.map(a => a.ay);
+    const aylikNet = aylik.map(a => a.net_tl);
+    let cum = 0;
+    const kumulatif = aylikNet.map(v => (cum += v));
+
+    if(chartObj){ chartObj.destroy(); }
+    chartObj = new Chart(document.getElementById('chart'), {
+      data:{
+        labels,
+        datasets:[
+          {
+            type:'bar', label:'Aylık Net',
+            data: aylikNet,
+            backgroundColor: aylikNet.map(v => v>=0 ? 'rgba(34,197,94,.55)' : 'rgba(239,68,68,.55)'),
+            borderColor:     aylikNet.map(v => v>=0 ? '#22c55e' : '#ef4444'),
+            borderWidth: 0, borderRadius: 4, borderSkipped: false,
+            yAxisID:'yG',
+          },
+          {
+            type:'line', label:'Kümülatif',
+            data: kumulatif,
+            borderColor:'#a855f7', borderWidth:2,
+            pointRadius: 0, pointHoverRadius: 4, pointHoverBackgroundColor:'#a855f7',
+            fill:false, tension:0.25,
+            yAxisID:'yK',
+          }
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        interaction:{ mode:'index', intersect:false },
+        plugins:{
+          legend:{ display:false },
+          tooltip:{
+            backgroundColor:'#111118', borderColor:'#1e1e2a', borderWidth:1,
+            titleColor:'#94a3b8', bodyColor:'#e4e6eb',
+            padding:10, cornerRadius:8,
+            callbacks:{
+              label: ctx => {
+                const v = ctx.raw, s = v>=0?'+':'';
+                const lbl = ctx.dataset.label;
+                return ` ${lbl}: ${s}${Math.round(v).toLocaleString('tr-TR')} ₺`;
+              }
+            }
+          }
+        },
+        scales:{
+          x:{ ticks:{ color:'#3d4455', font:{size:10}, maxRotation:0, maxTicksLimit:12 },
+              grid:{ color:'#151520' }, border:{display:false} },
+          yG:{ type:'linear', position:'left',
+               ticks:{ color:'#3d4455', font:{size:10}, maxTicksLimit:5,
+                       callback: v => Math.round(v/1000)+'K' },
+               grid:{ color:'#151520' }, border:{display:false} },
+          yK:{ type:'linear', position:'right',
+               ticks:{ color:'#7e22ce', font:{size:10}, maxTicksLimit:5,
+                       callback: v => Math.round(v/1000)+'K' },
+               grid:{ drawOnChartArea:false }, border:{display:false} }
+        }
+      }
+    });
+  }
+
   function applyFiltersSort(){
     const sym   = document.getElementById('f-sym').value.trim().toUpperCase();
     const sebep = document.getElementById('f-sebep').value;
-    const flag_ = document.getElementById('f-flag').value;
+    const son   = document.getElementById('f-son').value;
     let rows = _data.trades;
     if(sym)   rows = rows.filter(r => (r.sembol||'').includes(sym));
     if(sebep) rows = rows.filter(r => r.sebep === sebep);
-    if(flag_){
-      if(flag_==='onceki_yok') rows = rows.filter(r => r.onceki_islem_var === 0);
-      else if(flag_==='kazanc') rows = rows.filter(r => (r.kar_zarar_yuzde||0) > 0);
-      else if(flag_==='kayip')  rows = rows.filter(r => (r.kar_zarar_yuzde||0) <= 0);
-      else                      rows = rows.filter(r => r[flag_] === 1);
-    }
+    if(son==='kazanc') rows = rows.filter(r => (r.kar_zarar_yuzde||0) > 0);
+    else if(son==='kayip') rows = rows.filter(r => (r.kar_zarar_yuzde||0) <= 0);
     const k = _sort.k, dir = _sort.dir;
     const typ = document.querySelector(`#trade-head th[data-k="${k}"]`)?.dataset.t || 's';
     rows = rows.slice().sort((a,b)=>{
@@ -377,8 +419,7 @@
     const rows = applyFiltersSort();
     document.getElementById('trade-info').textContent = `${rows.length.toLocaleString('tr-TR')} / ${_data.trades.length.toLocaleString('tr-TR')} kayıt`;
     document.getElementById('trade-pill').textContent = `${rows.length.toLocaleString('tr-TR')} trade`;
-    // İlk 800 satırı render et (DOM şişmesin)
-    const lim = 800;
+    const lim = 500;
     const display = rows.slice(0, lim);
     document.getElementById('trade-body').innerHTML = display.map(r => `
       <tr>
@@ -390,24 +431,11 @@
         <td class="${cls(r.kar_zarar_tl)}"><b>${tl(r.kar_zarar_tl)}</b></td>
         <td><span class="day-badge">${r.gun_sayisi||0}G</span></td>
         <td><span class="${sebepClass(r.sebep)}">${sebepLabel(r.sebep)}</span></td>
-        <td class="pos">${pct(r.max_pnl)}</td>
-        <td class="neg">${pct(r.min_pnl)}</td>
-        <td>${r.haftalik_artis==null?'-':pct(r.haftalik_artis,1)}</td>
-        <td>${r.macd_histogram==null?'-':(+r.macd_histogram).toFixed(3)}</td>
-        <td>${r.bist100_gun==null?'-':pct(r.bist100_gun,2)}</td>
-        <td>${r.fiyat_streak??'-'}</td>
-        <td>${r.t3_uzaklik==null?'-':pct(r.t3_uzaklik,1)}</td>
-        <td>${r.adr_alis==null?'-':(+r.adr_alis).toFixed(1)}</td>
-        <td>${flag(r.filtre_a_ok)}</td>
-        <td>${flag(r.filtre_b_ok)}</td>
-        <td>${flag(r.filtre_c_ok)}</td>
-        <td>${flag(r.kombo1_ok)}</td>
       </tr>
     `).join('') + (rows.length > lim
-      ? `<tr><td colspan="20" style="text-align:center;color:var(--muted);padding:14px;font-style:italic">İlk ${lim} kayıt gösteriliyor — filtreleyerek daraltın</td></tr>`
+      ? `<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:14px;font-style:italic">İlk ${lim} kayıt gösteriliyor — filtreleyerek daraltın</td></tr>`
       : '');
 
-    // sort header indicator
     document.querySelectorAll('#trade-head th').forEach(th=>{
       th.classList.toggle('active', th.dataset.k === _sort.k);
     });
@@ -428,41 +456,32 @@
     _data = d;
     document.getElementById('ts').textContent = d.guncelleme;
     document.getElementById('upd-label').textContent = 'Güncellendi';
-    if(d.tablo === 'trades_sim_intraday'){
-      document.getElementById('banner-title').textContent = 'Intraday Sim — Gün İçi Tetik Girişli Backtest';
-      document.getElementById('banner-desc').textContent  = 'Gün içi high prev_close × 1.045 eşiğini geçtiğinde giriş; indikatörler önceki gün kapanışından. Canlı 10dk botuna en yakın yaklaşım.';
-    } else {
-      document.getElementById('banner-title').textContent = 'EoD Sim — Günlük Kapanış Girişli Backtest';
-      document.getElementById('banner-desc').textContent  = 'Aynı strateji (giriş + çıkış) yfinance 2 yıllık günlük bar üzerinde EoD bazlı simüle edildi. Canlı tabloya hiç dokunulmaz.';
-    }
     renderStats(d);
-    renderFiltreler(d);
+    renderChart(d);
     renderSebepler(d);
     renderAylik(d);
     renderTrades();
   }
 
-  async function load(file){
+  async function load(){
     document.getElementById('upd-label').textContent = 'Yükleniyor';
     try {
-      const res = await fetch('./'+file+'?t='+Date.now());
+      const res = await fetch('./sim_eod.json?t='+Date.now());
       if(!res.ok) throw new Error(res.status);
       const data = await res.json();
       renderAll(data);
     } catch(e) {
       document.getElementById('upd-label').textContent = 'Bağlanamadı';
-      document.getElementById('trade-body').innerHTML = `<tr><td colspan="20"><div class="empty">${file} okunamadı</div></td></tr>`;
+      document.getElementById('trade-body').innerHTML = `<tr><td colspan="8"><div class="empty">sim_eod.json okunamadı</div></td></tr>`;
     }
   }
 
-  // bind
   document.getElementById('f-sym').oninput   = ()=>{ if(_data) renderTrades(); };
   document.getElementById('f-sebep').onchange= ()=>{ if(_data) renderTrades(); };
-  document.getElementById('f-flag').onchange = ()=>{ if(_data) renderTrades(); };
-  document.getElementById('f-set').onchange  = (e)=> load(e.target.value);
+  document.getElementById('f-son').onchange  = ()=>{ if(_data) renderTrades(); };
   bindHeaderSort();
 
-  load('sim_eod.json');
+  load();
 </script>
 </body>
 </html>
