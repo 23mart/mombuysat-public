@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-07 15:20",
+  "son_guncelleme": "2026-07-07 15:30",
   "kasa": {
     "acik_sayi": 2,
     "toplam_yatirim": 17500.0,
@@ -845,10 +845,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 104,
+        "kapanan_toplam": 105,
         "kapanan_net_tl": 18775.0,
         "win_rate": 99.0,
-        "win_sayi": 103,
+        "win_sayi": 104,
         "win_tl": 19280.0,
         "los_sayi": 1,
         "los_tl": -505.0,
@@ -856,12 +856,19 @@
         "yuzen_pnl_tl": 0.0,
         "yuzen_pnl_iz_tl": 0.0,
         "toplam_yatirim": 0.0,
-        "toplam_sermaye": 506250.0,
-        "getiri_yuzde": 3.71,
+        "toplam_sermaye": 511250.0,
+        "getiri_yuzde": 3.67,
         "ort_sure": 4.4
       },
       "portfoy": [],
       "kapananlar": [
+        {
+          "sembol": "VKFYO",
+          "tarih": "2026-07-07",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
         {
           "sembol": "ALCAR",
           "tarih": "2026-07-06",
@@ -994,13 +1001,6 @@
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
-        },
-        {
-          "sembol": "OBASE",
-          "tarih": "2026-06-09",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 0.33,
-          "pnl_tl": 16.0
         }
       ],
       "gecmis": [
@@ -1158,15 +1158,20 @@
           "tarih": "2026-07-06",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 18775.0
+        },
+        {
+          "tarih": "2026-07-07",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 18775.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 64,
+        "kapanan_toplam": 65,
         "kapanan_net_tl": 9087.0,
         "win_rate": 100.0,
-        "win_sayi": 64,
+        "win_sayi": 65,
         "win_tl": 9087.0,
         "los_sayi": 0,
         "los_tl": 0.0,
@@ -1174,12 +1179,19 @@
         "yuzen_pnl_tl": 0.0,
         "yuzen_pnl_iz_tl": 0.0,
         "toplam_yatirim": 0.0,
-        "toplam_sermaye": 313750.0,
-        "getiri_yuzde": 2.9,
+        "toplam_sermaye": 318750.0,
+        "getiri_yuzde": 2.85,
         "ort_sure": 3.8
       },
       "portfoy": [],
       "kapananlar": [
+        {
+          "sembol": "VKFYO",
+          "tarih": "2026-07-07",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
         {
           "sembol": "BLUME",
           "tarih": "2026-07-02",
@@ -1312,13 +1324,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 5.08,
           "pnl_tl": 254.0
-        },
-        {
-          "sembol": "GEDZA",
-          "tarih": "2026-05-22",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
         }
       ],
       "gecmis": [
@@ -1436,15 +1441,20 @@
           "tarih": "2026-07-02",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 9087.0
+        },
+        {
+          "tarih": "2026-07-07",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 9087.0
         }
       ]
     },
     "c": {
       "kasa": {
-        "kapanan_toplam": 33,
+        "kapanan_toplam": 34,
         "kapanan_net_tl": 5747.0,
         "win_rate": 100.0,
-        "win_sayi": 33,
+        "win_sayi": 34,
         "win_tl": 5747.0,
         "los_sayi": 0,
         "los_tl": 0.0,
@@ -1452,12 +1462,19 @@
         "yuzen_pnl_tl": 0.0,
         "yuzen_pnl_iz_tl": 0.0,
         "toplam_yatirim": 0.0,
-        "toplam_sermaye": 163750.0,
-        "getiri_yuzde": 3.51,
+        "toplam_sermaye": 168750.0,
+        "getiri_yuzde": 3.41,
         "ort_sure": 3.7
       },
       "portfoy": [],
       "kapananlar": [
+        {
+          "sembol": "VKFYO",
+          "tarih": "2026-07-07",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
         {
           "sembol": "BLUME",
           "tarih": "2026-07-02",
@@ -1590,13 +1607,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 1.08,
           "pnl_tl": 54.0
-        },
-        {
-          "sembol": "ULUSE",
-          "tarih": "2026-05-14",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 1.95,
-          "pnl_tl": 98.0
         }
       ],
       "gecmis": [
@@ -1682,6 +1692,11 @@
         },
         {
           "tarih": "2026-07-02",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 5747.0
+        },
+        {
+          "tarih": "2026-07-07",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 5747.0
         }
