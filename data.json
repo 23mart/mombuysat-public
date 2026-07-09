@@ -1,38 +1,38 @@
 {
-  "son_guncelleme": "2026-07-09 18:00",
+  "son_guncelleme": "2026-07-09 18:10",
   "kasa": {
-    "acik_sayi": 3,
-    "toplam_yatirim": 22500.0,
-    "portfoy_degeri": 23145.0,
+    "acik_sayi": 2,
+    "toplam_yatirim": 12500.0,
+    "portfoy_degeri": 13145.0,
     "yuzen_pnl_tl": 645.0,
-    "yuzen_pnl_yuzde": 2.87,
-    "kapanan_toplam": 840,
+    "yuzen_pnl_yuzde": 5.16,
+    "kapanan_toplam": 841,
     "kapanan_net_tl": 20263.0,
-    "win_rate": 43.0,
+    "win_rate": 42.9,
     "win_sayi": 361,
     "win_tl": 87284.0,
     "win_yatirim": 2627500.0,
     "win_ort_sure": 4.0,
-    "los_sayi": 479,
+    "los_sayi": 480,
     "los_tl": -67021.0,
-    "los_yatirim": 3885833.0,
+    "los_yatirim": 3895833.0,
     "los_ort_sure": 1.5,
     "ort_kazanc": 4.97,
-    "ort_kayip": -2.08,
-    "ort_sure": 3.7,
+    "ort_kayip": -2.07,
+    "ort_sure": 5.5,
     "kalkan_sayi": 1,
     "tp1_sayi": 1,
     "tp2_sayi": 0,
     "bugun_pnl_tl": -880.0,
-    "bugun_islem_sayi": 2,
+    "bugun_islem_sayi": 3,
     "gecen_hafta_pnl_tl": -26.0,
     "gecen_hafta_islem_sayi": 5,
     "bu_hafta_pnl_tl": -880.0,
-    "bu_hafta_islem_sayi": 4,
+    "bu_hafta_islem_sayi": 5,
     "toplam_gun": 47,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 1,
-    "yas_kisa": 2,
+    "bugun_acilan_sayi": 0,
+    "yas_kisa": 1,
     "yas_orta": 0,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
@@ -48,8 +48,8 @@
         "yuzen_tl": 0.0
       },
       "2": {
-        "sayi": 2,
-        "ort_pnl": -1.99,
+        "sayi": 1,
+        "ort_pnl": -3.98,
         "yuzen_tl": -199.0
       },
       "1": {
@@ -82,27 +82,6 @@
       "gun": 10
     },
     {
-      "sembol": "ASGYO",
-      "kategori": 2,
-      "alis_tarihi": "2026-07-09",
-      "alis_saati": "18:00",
-      "_sort_key": [
-        "2026-07-09",
-        "18:00"
-      ],
-      "alis": 12.86,
-      "guncel": 12.86,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
-      "yatirim": 10000,
-      "stop": 11.96,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.0,
-      "gun": 0
-    },
-    {
       "sembol": "BALAT",
       "kategori": 2,
       "alis_tarihi": "2026-07-08",
@@ -125,27 +104,6 @@
     }
   ],
   "son_alinanlar": [
-    {
-      "sembol": "ASGYO",
-      "kategori": 2,
-      "alis_tarihi": "2026-07-09",
-      "alis_saati": "18:00",
-      "_sort_key": [
-        "2026-07-09",
-        "18:00"
-      ],
-      "alis": 12.86,
-      "guncel": 12.86,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
-      "yatirim": 10000,
-      "stop": 11.96,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.0,
-      "gun": 0
-    },
     {
       "sembol": "BALAT",
       "kategori": 2,
@@ -190,6 +148,13 @@
     }
   ],
   "son_kapananlar": [
+    {
+      "sembol": "ASGYO",
+      "pnl_yuzde": 0,
+      "pnl_tl": 0,
+      "sebep": "Maliyet Stopu",
+      "tarih": "2026-07-09"
+    },
     {
       "sembol": "KOTON",
       "pnl_yuzde": -14.56,
@@ -321,13 +286,6 @@
       "pnl_yuzde": -0.1,
       "pnl_tl": -5.0,
       "sebep": "Maliyet Stopu",
-      "tarih": "2026-06-22"
-    },
-    {
-      "sembol": "OZATD",
-      "pnl_yuzde": 347.29,
-      "pnl_tl": 23152.0,
-      "sebep": "AlphaTrend Kırılımı",
       "tarih": "2026-06-22"
     }
   ],
@@ -658,12 +616,12 @@
       "tarih": "2026-07-09",
       "gunluk_pnl": -880.0,
       "kumulatif_pnl": 20262.0,
-      "islem_sayi": 2,
+      "islem_sayi": 3,
       "yuzen_pnl": 645.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 3,
+    "acik_sayi": 2,
     "tetiklenen": 1,
     "gercek_net_tl": 646.0,
     "iz_net_tl": 772.0,
@@ -693,31 +651,6 @@
         "iz_tetik": true,
         "iz_kz": 12.94,
         "iz_tl": 970.0
-      },
-      {
-        "sembol": "ASGYO",
-        "kategori": 2,
-        "alis_tarihi": "2026-07-09",
-        "alis_saati": "18:00",
-        "_sort_key": [
-          "2026-07-09",
-          "18:00"
-        ],
-        "alis": 12.86,
-        "guncel": 12.86,
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0,
-        "yatirim": 10000,
-        "stop": 11.96,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 0.0,
-        "gun": 0,
-        "iz_sev": null,
-        "iz_tetik": false,
-        "iz_kz": 0.0,
-        "iz_tl": 0.0
       },
       {
         "sembol": "BALAT",
@@ -926,19 +859,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 105,
-        "kapanan_net_tl": 18775.0,
-        "win_rate": 99.0,
+        "kapanan_toplam": 106,
+        "kapanan_net_tl": 18047.0,
+        "win_rate": 98.1,
         "win_sayi": 104,
         "win_tl": 19280.0,
-        "los_sayi": 1,
-        "los_tl": -505.0,
+        "los_sayi": 2,
+        "los_tl": -1233.0,
         "acik_sayi": 1,
         "yuzen_pnl_tl": -199.0,
         "yuzen_pnl_iz_tl": -199.0,
         "toplam_yatirim": 5000.0,
-        "toplam_sermaye": 516250.0,
-        "getiri_yuzde": 3.6,
+        "toplam_sermaye": 521250.0,
+        "getiri_yuzde": 3.42,
         "ort_sure": 4.4
       },
       "portfoy": [
@@ -968,6 +901,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "KOTON",
+          "tarih": "2026-07-09",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": -14.56,
+          "pnl_tl": -728.0
+        },
         {
           "sembol": "VKFYO",
           "tarih": "2026-07-07",
@@ -1097,13 +1037,6 @@
         {
           "sembol": "TMPOL",
           "tarih": "2026-06-11",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "RAYSG",
-          "tarih": "2026-06-10",
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
@@ -1269,24 +1202,29 @@
           "tarih": "2026-07-07",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 18775.0
+        },
+        {
+          "tarih": "2026-07-09",
+          "gunluk_pnl": -728.0,
+          "kumulatif_pnl": 18047.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 65,
-        "kapanan_net_tl": 9087.0,
-        "win_rate": 100.0,
+        "kapanan_toplam": 66,
+        "kapanan_net_tl": 8359.0,
+        "win_rate": 98.5,
         "win_sayi": 65,
         "win_tl": 9087.0,
-        "los_sayi": 0,
-        "los_tl": 0.0,
+        "los_sayi": 1,
+        "los_tl": -728.0,
         "acik_sayi": 1,
         "yuzen_pnl_tl": -199.0,
         "yuzen_pnl_iz_tl": -199.0,
         "toplam_yatirim": 5000.0,
-        "toplam_sermaye": 323750.0,
-        "getiri_yuzde": 2.75,
+        "toplam_sermaye": 328750.0,
+        "getiri_yuzde": 2.48,
         "ort_sure": 3.8
       },
       "portfoy": [
@@ -1316,6 +1254,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "KOTON",
+          "tarih": "2026-07-09",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": -14.56,
+          "pnl_tl": -728.0
+        },
         {
           "sembol": "VKFYO",
           "tarih": "2026-07-07",
@@ -1448,13 +1393,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 4.26,
           "pnl_tl": 213.0
-        },
-        {
-          "sembol": "ZGYO",
-          "tarih": "2026-05-25",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 5.08,
-          "pnl_tl": 254.0
         }
       ],
       "gecmis": [
@@ -1577,6 +1515,11 @@
           "tarih": "2026-07-07",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 9087.0
+        },
+        {
+          "tarih": "2026-07-09",
+          "gunluk_pnl": -728.0,
+          "kumulatif_pnl": 8359.0
         }
       ]
     },
