@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-10 11:20",
+  "son_guncelleme": "2026-07-10 11:30",
   "kasa": {
-    "acik_sayi": 4,
-    "toplam_yatirim": 32500.0,
-    "portfoy_degeri": 33233.0,
-    "yuzen_pnl_tl": 733.0,
-    "yuzen_pnl_yuzde": 2.25,
+    "acik_sayi": 5,
+    "toplam_yatirim": 37500.0,
+    "portfoy_degeri": 38376.0,
+    "yuzen_pnl_tl": 876.0,
+    "yuzen_pnl_yuzde": 2.34,
     "kapanan_toplam": 842,
     "kapanan_net_tl": 20267.0,
     "win_rate": 43.0,
@@ -19,7 +19,7 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 4.96,
     "ort_kayip": -2.07,
-    "ort_sure": 3.2,
+    "ort_sure": 2.6,
     "kalkan_sayi": 1,
     "tp1_sayi": 1,
     "tp2_sayi": 0,
@@ -31,13 +31,13 @@
     "bu_hafta_islem_sayi": 6,
     "toplam_gun": 48,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 2,
-    "yas_kisa": 3,
+    "bugun_acilan_sayi": 3,
+    "yas_kisa": 4,
     "yas_orta": 0,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
-    "en_iyi_pnl": 12.56,
-    "en_iyi_tl": 942.0,
+    "en_iyi_pnl": 13.04,
+    "en_iyi_tl": 978.0,
     "en_kotu_sembol": "BALAT",
     "en_kotu_pnl": -4.19,
     "en_kotu_tl": -209.0,
@@ -53,9 +53,9 @@
         "yuzen_tl": -209.0
       },
       "1": {
-        "sayi": 3,
-        "ort_pnl": 4.19,
-        "yuzen_tl": 942.0
+        "sayi": 4,
+        "ort_pnl": 3.53,
+        "yuzen_tl": 1085.0
       }
     }
   },
@@ -70,9 +70,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 233.0,
-      "pnl_yuzde": 12.56,
-      "pnl_tl": 942.0,
+      "guncel": 234.0,
+      "pnl_yuzde": 13.04,
+      "pnl_tl": 978.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -80,6 +80,27 @@
       "tp2": false,
       "max_pnl": 15.94,
       "gun": 11
+    },
+    {
+      "sembol": "VESTL",
+      "kategori": 1,
+      "alis_tarihi": "2026-07-10",
+      "alis_saati": "11:20",
+      "_sort_key": [
+        "2026-07-10",
+        "11:20"
+      ],
+      "alis": 26.14,
+      "guncel": 26.42,
+      "pnl_yuzde": 1.07,
+      "pnl_tl": 107.0,
+      "yatirim": 10000,
+      "stop": 24.31,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 1.07,
+      "gun": 0
     },
     {
       "sembol": "ATEKS",
@@ -103,20 +124,20 @@
       "gun": 0
     },
     {
-      "sembol": "VESTL",
+      "sembol": "DAGI",
       "kategori": 1,
       "alis_tarihi": "2026-07-10",
-      "alis_saati": "11:20",
+      "alis_saati": "11:30",
       "_sort_key": [
         "2026-07-10",
-        "11:20"
+        "11:30"
       ],
-      "alis": 26.14,
-      "guncel": 26.14,
+      "alis": 10.15,
+      "guncel": 10.15,
       "pnl_yuzde": 0.0,
       "pnl_tl": 0.0,
-      "yatirim": 10000,
-      "stop": 24.31,
+      "yatirim": 5000,
+      "stop": 9.44,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
@@ -147,20 +168,20 @@
   ],
   "son_alinanlar": [
     {
-      "sembol": "ATEKS",
+      "sembol": "DAGI",
       "kategori": 1,
       "alis_tarihi": "2026-07-10",
-      "alis_saati": "11:20",
+      "alis_saati": "11:30",
       "_sort_key": [
         "2026-07-10",
-        "11:20"
+        "11:30"
       ],
-      "alis": 131.6,
-      "guncel": 131.6,
+      "alis": 10.15,
+      "guncel": 10.15,
       "pnl_yuzde": 0.0,
       "pnl_tl": 0.0,
-      "yatirim": 10000,
-      "stop": 122.39,
+      "yatirim": 5000,
+      "stop": 9.44,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
@@ -177,11 +198,32 @@
         "11:20"
       ],
       "alis": 26.14,
-      "guncel": 26.14,
+      "guncel": 26.42,
+      "pnl_yuzde": 1.07,
+      "pnl_tl": 107.0,
+      "yatirim": 10000,
+      "stop": 24.31,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 1.07,
+      "gun": 0
+    },
+    {
+      "sembol": "ATEKS",
+      "kategori": 1,
+      "alis_tarihi": "2026-07-10",
+      "alis_saati": "11:20",
+      "_sort_key": [
+        "2026-07-10",
+        "11:20"
+      ],
+      "alis": 131.6,
+      "guncel": 131.6,
       "pnl_yuzde": 0.0,
       "pnl_tl": 0.0,
       "yatirim": 10000,
-      "stop": 24.31,
+      "stop": 122.39,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
@@ -219,9 +261,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 233.0,
-      "pnl_yuzde": 12.56,
-      "pnl_tl": 942.0,
+      "guncel": 234.0,
+      "pnl_yuzde": 13.04,
+      "pnl_tl": 978.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -708,15 +750,15 @@
       "gunluk_pnl": 5.0,
       "kumulatif_pnl": 20267.0,
       "islem_sayi": 1,
-      "yuzen_pnl": 733.0
+      "yuzen_pnl": 876.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 4,
-    "tetiklenen": 1,
-    "gercek_net_tl": 732.0,
-    "iz_net_tl": 761.0,
-    "kazanim_tl": 28.0,
+    "acik_sayi": 5,
+    "tetiklenen": 0,
+    "gercek_net_tl": 876.0,
+    "iz_net_tl": 876.0,
+    "kazanim_tl": 0.0,
     "portfoy": [
       {
         "sembol": "AKCNS",
@@ -728,9 +770,9 @@
           "10:20"
         ],
         "alis": 207.0,
-        "guncel": 233.0,
-        "pnl_yuzde": 12.56,
-        "pnl_tl": 942.0,
+        "guncel": 234.0,
+        "pnl_yuzde": 13.04,
+        "pnl_tl": 978.0,
         "yatirim": 7500.0,
         "stop": 208.03,
         "kalkan": true,
@@ -739,9 +781,34 @@
         "max_pnl": 15.94,
         "gun": 11,
         "iz_sev": 12.94,
-        "iz_tetik": true,
-        "iz_kz": 12.94,
-        "iz_tl": 970.0
+        "iz_tetik": false,
+        "iz_kz": 13.04,
+        "iz_tl": 978.0
+      },
+      {
+        "sembol": "VESTL",
+        "kategori": 1,
+        "alis_tarihi": "2026-07-10",
+        "alis_saati": "11:20",
+        "_sort_key": [
+          "2026-07-10",
+          "11:20"
+        ],
+        "alis": 26.14,
+        "guncel": 26.42,
+        "pnl_yuzde": 1.07,
+        "pnl_tl": 107.0,
+        "yatirim": 10000,
+        "stop": 24.31,
+        "kalkan": false,
+        "tp1": false,
+        "tp2": false,
+        "max_pnl": 1.07,
+        "gun": 0,
+        "iz_sev": 0.0,
+        "iz_tetik": false,
+        "iz_kz": 1.07,
+        "iz_tl": 107.0
       },
       {
         "sembol": "ATEKS",
@@ -769,20 +836,20 @@
         "iz_tl": 0.0
       },
       {
-        "sembol": "VESTL",
+        "sembol": "DAGI",
         "kategori": 1,
         "alis_tarihi": "2026-07-10",
-        "alis_saati": "11:20",
+        "alis_saati": "11:30",
         "_sort_key": [
           "2026-07-10",
-          "11:20"
+          "11:30"
         ],
-        "alis": 26.14,
-        "guncel": 26.14,
+        "alis": 10.15,
+        "guncel": 10.15,
         "pnl_yuzde": 0.0,
         "pnl_tl": 0.0,
-        "yatirim": 10000,
-        "stop": 24.31,
+        "yatirim": 5000,
+        "stop": 9.44,
         "kalkan": false,
         "tp1": false,
         "tp2": false,
