@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-10 11:00",
+  "son_guncelleme": "2026-07-10 11:10",
   "kasa": {
     "acik_sayi": 3,
     "toplam_yatirim": 17500.0,
-    "portfoy_degeri": 18200.0,
-    "yuzen_pnl_tl": 700.0,
-    "yuzen_pnl_yuzde": 4.0,
+    "portfoy_degeri": 18246.0,
+    "yuzen_pnl_tl": 746.0,
+    "yuzen_pnl_yuzde": 4.26,
     "kapanan_toplam": 841,
     "kapanan_net_tl": 20263.0,
     "win_rate": 42.9,
@@ -36,8 +36,8 @@
     "yas_orta": 0,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
-    "en_iyi_pnl": 12.22,
-    "en_iyi_tl": 917.0,
+    "en_iyi_pnl": 12.37,
+    "en_iyi_tl": 928.0,
     "en_kotu_sembol": "BALAT",
     "en_kotu_pnl": -4.19,
     "en_kotu_tl": -209.0,
@@ -54,8 +54,8 @@
       },
       "1": {
         "sayi": 2,
-        "ort_pnl": 6.04,
-        "yuzen_tl": 910.0
+        "ort_pnl": 6.46,
+        "yuzen_tl": 955.0
       }
     }
   },
@@ -70,9 +70,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 232.3,
-      "pnl_yuzde": 12.22,
-      "pnl_tl": 917.0,
+      "guncel": 232.6,
+      "pnl_yuzde": 12.37,
+      "pnl_tl": 928.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -91,15 +91,15 @@
         "10:50"
       ],
       "alis": 43.84,
-      "guncel": 43.78,
-      "pnl_yuzde": -0.14,
-      "pnl_tl": -7.0,
+      "guncel": 44.08,
+      "pnl_yuzde": 0.55,
+      "pnl_tl": 27.0,
       "yatirim": 5000,
       "stop": 40.77,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.32,
+      "max_pnl": 0.87,
       "gun": 0
     },
     {
@@ -135,15 +135,15 @@
         "10:50"
       ],
       "alis": 43.84,
-      "guncel": 43.78,
-      "pnl_yuzde": -0.14,
-      "pnl_tl": -7.0,
+      "guncel": 44.08,
+      "pnl_yuzde": 0.55,
+      "pnl_tl": 27.0,
       "yatirim": 5000,
       "stop": 40.77,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.32,
+      "max_pnl": 0.87,
       "gun": 0
     },
     {
@@ -177,9 +177,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 232.3,
-      "pnl_yuzde": 12.22,
-      "pnl_tl": 917.0,
+      "guncel": 232.6,
+      "pnl_yuzde": 12.37,
+      "pnl_tl": 928.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -666,15 +666,15 @@
       "gunluk_pnl": 0,
       "kumulatif_pnl": 20262.0,
       "islem_sayi": 0,
-      "yuzen_pnl": 700.0
+      "yuzen_pnl": 746.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 3,
-    "tetiklenen": 2,
-    "gercek_net_tl": 700.0,
-    "iz_net_tl": 761.0,
-    "kazanim_tl": 61.0,
+    "tetiklenen": 1,
+    "gercek_net_tl": 746.0,
+    "iz_net_tl": 788.0,
+    "kazanim_tl": 43.0,
     "portfoy": [
       {
         "sembol": "AKCNS",
@@ -686,9 +686,9 @@
           "10:20"
         ],
         "alis": 207.0,
-        "guncel": 232.3,
-        "pnl_yuzde": 12.22,
-        "pnl_tl": 917.0,
+        "guncel": 232.6,
+        "pnl_yuzde": 12.37,
+        "pnl_tl": 928.0,
         "yatirim": 7500.0,
         "stop": 208.03,
         "kalkan": true,
@@ -711,20 +711,20 @@
           "10:50"
         ],
         "alis": 43.84,
-        "guncel": 43.78,
-        "pnl_yuzde": -0.14,
-        "pnl_tl": -7.0,
+        "guncel": 44.08,
+        "pnl_yuzde": 0.55,
+        "pnl_tl": 27.0,
         "yatirim": 5000,
         "stop": 40.77,
         "kalkan": false,
         "tp1": false,
         "tp2": false,
-        "max_pnl": 0.32,
+        "max_pnl": 0.87,
         "gun": 0,
         "iz_sev": 0.0,
-        "iz_tetik": true,
-        "iz_kz": 0.0,
-        "iz_tl": 0.0
+        "iz_tetik": false,
+        "iz_kz": 0.55,
+        "iz_tl": 28.0
       },
       {
         "sembol": "BALAT",
