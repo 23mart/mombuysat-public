@@ -1,38 +1,38 @@
 {
-  "son_guncelleme": "2026-07-10 18:00",
+  "son_guncelleme": "2026-07-10 18:10",
   "kasa": {
-    "acik_sayi": 4,
-    "toplam_yatirim": 32500.0,
-    "portfoy_degeri": 33471.0,
-    "yuzen_pnl_tl": 971.0,
-    "yuzen_pnl_yuzde": 2.99,
-    "kapanan_toplam": 845,
-    "kapanan_net_tl": 20073.0,
+    "acik_sayi": 3,
+    "toplam_yatirim": 22500.0,
+    "portfoy_degeri": 23405.0,
+    "yuzen_pnl_tl": 905.0,
+    "yuzen_pnl_yuzde": 4.02,
+    "kapanan_toplam": 846,
+    "kapanan_net_tl": 20119.0,
     "win_rate": 43.1,
-    "win_sayi": 364,
-    "win_tl": 87307.0,
-    "win_yatirim": 2642500.0,
+    "win_sayi": 365,
+    "win_tl": 87353.0,
+    "win_yatirim": 2652500.0,
     "win_ort_sure": 4.0,
     "los_sayi": 481,
     "los_tl": -67234.0,
     "los_yatirim": 3905833.0,
     "los_ort_sure": 1.5,
-    "ort_kazanc": 4.93,
+    "ort_kazanc": 4.92,
     "ort_kayip": -2.07,
-    "ort_sure": 3.2,
+    "ort_sure": 4.3,
     "kalkan_sayi": 1,
     "tp1_sayi": 1,
     "tp2_sayi": 0,
-    "bugun_pnl_tl": -190.0,
-    "bugun_islem_sayi": 4,
+    "bugun_pnl_tl": -144.0,
+    "bugun_islem_sayi": 5,
     "gecen_hafta_pnl_tl": -26.0,
     "gecen_hafta_islem_sayi": 5,
-    "bu_hafta_pnl_tl": -1069.0,
-    "bu_hafta_islem_sayi": 9,
+    "bu_hafta_pnl_tl": -1023.0,
+    "bu_hafta_islem_sayi": 10,
     "toplam_gun": 48,
     "stop_yakin_sayi": 0,
-    "bugun_acilan_sayi": 2,
-    "yas_kisa": 3,
+    "bugun_acilan_sayi": 1,
+    "yas_kisa": 2,
     "yas_orta": 0,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
@@ -53,9 +53,9 @@
         "yuzen_tl": -209.0
       },
       "1": {
-        "sayi": 3,
-        "ort_pnl": 5.05,
-        "yuzen_tl": 1180.0
+        "sayi": 2,
+        "ort_pnl": 7.25,
+        "yuzen_tl": 1114.0
       }
     }
   },
@@ -103,27 +103,6 @@
       "gun": 0
     },
     {
-      "sembol": "FORTE",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-10",
-      "alis_saati": "17:40",
-      "_sort_key": [
-        "2026-07-10",
-        "17:40"
-      ],
-      "alis": 98.55,
-      "guncel": 99.2,
-      "pnl_yuzde": 0.66,
-      "pnl_tl": 66.0,
-      "yatirim": 10000,
-      "stop": 91.65,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.96,
-      "gun": 0
-    },
-    {
       "sembol": "BALAT",
       "kategori": 2,
       "alis_tarihi": "2026-07-08",
@@ -146,27 +125,6 @@
     }
   ],
   "son_alinanlar": [
-    {
-      "sembol": "FORTE",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-10",
-      "alis_saati": "17:40",
-      "_sort_key": [
-        "2026-07-10",
-        "17:40"
-      ],
-      "alis": 98.55,
-      "guncel": 99.2,
-      "pnl_yuzde": 0.66,
-      "pnl_tl": 66.0,
-      "yatirim": 10000,
-      "stop": 91.65,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.96,
-      "gun": 0
-    },
     {
       "sembol": "VESTL",
       "kategori": 1,
@@ -232,6 +190,13 @@
     }
   ],
   "son_kapananlar": [
+    {
+      "sembol": "FORTE",
+      "pnl_yuzde": 0.46,
+      "pnl_tl": 46.0,
+      "sebep": "Maliyet Stopu",
+      "tarih": "2026-07-10"
+    },
     {
       "sembol": "TRMET",
       "pnl_yuzde": 0.08,
@@ -364,13 +329,6 @@
       "pnl_tl": 337.0,
       "sebep": "AlphaTrend Kırılımı",
       "tarih": "2026-06-24"
-    },
-    {
-      "sembol": "BALSU",
-      "pnl_yuzde": 0.06,
-      "pnl_tl": 3.0,
-      "sebep": "Maliyet Stopu",
-      "tarih": "2026-06-23"
     }
   ],
   "gecmis": [
@@ -705,17 +663,17 @@
     },
     {
       "tarih": "2026-07-10",
-      "gunluk_pnl": -190.0,
-      "kumulatif_pnl": 20072.0,
-      "islem_sayi": 4,
-      "yuzen_pnl": 971.0
+      "gunluk_pnl": -144.0,
+      "kumulatif_pnl": 20118.0,
+      "islem_sayi": 5,
+      "yuzen_pnl": 905.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 4,
+    "acik_sayi": 3,
     "tetiklenen": 0,
-    "gercek_net_tl": 971.0,
-    "iz_net_tl": 971.0,
+    "gercek_net_tl": 905.0,
+    "iz_net_tl": 905.0,
     "kazanim_tl": 0.0,
     "portfoy": [
       {
@@ -767,31 +725,6 @@
         "iz_tetik": false,
         "iz_kz": 1.07,
         "iz_tl": 107.0
-      },
-      {
-        "sembol": "FORTE",
-        "kategori": 1,
-        "alis_tarihi": "2026-07-10",
-        "alis_saati": "17:40",
-        "_sort_key": [
-          "2026-07-10",
-          "17:40"
-        ],
-        "alis": 98.55,
-        "guncel": 99.2,
-        "pnl_yuzde": 0.66,
-        "pnl_tl": 66.0,
-        "yatirim": 10000,
-        "stop": 91.65,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 0.96,
-        "gun": 0,
-        "iz_sev": 0.0,
-        "iz_tetik": false,
-        "iz_kz": 0.66,
-        "iz_tl": 66.0
       },
       {
         "sembol": "BALAT",
