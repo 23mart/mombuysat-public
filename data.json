@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-13 16:10",
+  "son_guncelleme": "2026-07-13 16:20",
   "kasa": {
     "acik_sayi": 4,
     "toplam_yatirim": 22500.0,
-    "portfoy_degeri": 23797.0,
-    "yuzen_pnl_tl": 1297.0,
-    "yuzen_pnl_yuzde": 5.76,
+    "portfoy_degeri": 23807.0,
+    "yuzen_pnl_tl": 1307.0,
+    "yuzen_pnl_yuzde": 5.81,
     "kapanan_toplam": 848,
     "kapanan_net_tl": 19997.0,
     "win_rate": 43.0,
@@ -54,8 +54,8 @@
       },
       "1": {
         "sayi": 3,
-        "ort_pnl": 3.85,
-        "yuzen_tl": 936.0
+        "ort_pnl": 3.92,
+        "yuzen_tl": 946.0
       }
     }
   },
@@ -112,9 +112,9 @@
         "14:00"
       ],
       "alis": 10.14,
-      "guncel": 10.23,
-      "pnl_yuzde": 0.89,
-      "pnl_tl": 44.0,
+      "guncel": 10.25,
+      "pnl_yuzde": 1.08,
+      "pnl_tl": 54.0,
       "yatirim": 5000,
       "stop": 9.43,
       "kalkan": false,
@@ -156,9 +156,9 @@
         "14:00"
       ],
       "alis": 10.14,
-      "guncel": 10.23,
-      "pnl_yuzde": 0.89,
-      "pnl_tl": 44.0,
+      "guncel": 10.25,
+      "pnl_yuzde": 1.08,
+      "pnl_tl": 54.0,
       "yatirim": 5000,
       "stop": 9.43,
       "kalkan": false,
@@ -715,14 +715,14 @@
       "gunluk_pnl": -122.0,
       "kumulatif_pnl": 19996.0,
       "islem_sayi": 2,
-      "yuzen_pnl": 1297.0
+      "yuzen_pnl": 1307.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 4,
     "tetiklenen": 0,
-    "gercek_net_tl": 1297.0,
-    "iz_net_tl": 1297.0,
+    "gercek_net_tl": 1307.0,
+    "iz_net_tl": 1307.0,
     "kazanim_tl": 0.0,
     "portfoy": [
       {
@@ -785,9 +785,9 @@
           "14:00"
         ],
         "alis": 10.14,
-        "guncel": 10.23,
-        "pnl_yuzde": 0.89,
-        "pnl_tl": 44.0,
+        "guncel": 10.25,
+        "pnl_yuzde": 1.08,
+        "pnl_tl": 54.0,
         "yatirim": 5000,
         "stop": 9.43,
         "kalkan": false,
@@ -797,8 +797,8 @@
         "gun": 0,
         "iz_sev": 0.0,
         "iz_tetik": false,
-        "iz_kz": 0.89,
-        "iz_tl": 44.0
+        "iz_kz": 1.08,
+        "iz_tl": 54.0
       },
       {
         "sembol": "QNBFK",
