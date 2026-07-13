@@ -1,38 +1,38 @@
 {
-  "son_guncelleme": "2026-07-13 10:20",
+  "son_guncelleme": "2026-07-13 10:30",
   "kasa": {
-    "acik_sayi": 4,
-    "toplam_yatirim": 27500.0,
-    "portfoy_degeri": 28814.0,
-    "yuzen_pnl_tl": 1314.0,
-    "yuzen_pnl_yuzde": 4.78,
-    "kapanan_toplam": 846,
-    "kapanan_net_tl": 20119.0,
+    "acik_sayi": 3,
+    "toplam_yatirim": 17500.0,
+    "portfoy_degeri": 18692.0,
+    "yuzen_pnl_tl": 1192.0,
+    "yuzen_pnl_yuzde": 6.81,
+    "kapanan_toplam": 847,
+    "kapanan_net_tl": 20058.0,
     "win_rate": 43.1,
     "win_sayi": 365,
     "win_tl": 87353.0,
     "win_yatirim": 2652500.0,
     "win_ort_sure": 4.0,
-    "los_sayi": 481,
-    "los_tl": -67234.0,
-    "los_yatirim": 3905833.0,
+    "los_sayi": 482,
+    "los_tl": -67295.0,
+    "los_yatirim": 3915833.0,
     "los_ort_sure": 1.5,
     "ort_kazanc": 4.92,
     "ort_kayip": -2.07,
-    "ort_sure": 5.5,
+    "ort_sure": 6.3,
     "kalkan_sayi": 1,
     "tp1_sayi": 1,
     "tp2_sayi": 0,
-    "bugun_pnl_tl": 0,
-    "bugun_islem_sayi": 0,
+    "bugun_pnl_tl": -61.0,
+    "bugun_islem_sayi": 1,
     "gecen_hafta_pnl_tl": -1023.0,
     "gecen_hafta_islem_sayi": 10,
-    "bu_hafta_pnl_tl": 0,
-    "bu_hafta_islem_sayi": 0,
+    "bu_hafta_pnl_tl": -61.0,
+    "bu_hafta_islem_sayi": 1,
     "toplam_gun": 49,
     "stop_yakin_sayi": 0,
     "bugun_acilan_sayi": 1,
-    "yas_kisa": 2,
+    "yas_kisa": 1,
     "yas_orta": 1,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
@@ -53,9 +53,9 @@
         "yuzen_tl": 134.0
       },
       "1": {
-        "sayi": 3,
-        "ort_pnl": 5.11,
-        "yuzen_tl": 1180.0
+        "sayi": 2,
+        "ort_pnl": 7.05,
+        "yuzen_tl": 1058.0
       }
     }
   },
@@ -103,27 +103,6 @@
       "gun": 5
     },
     {
-      "sembol": "VESTL",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-10",
-      "alis_saati": "11:20",
-      "_sort_key": [
-        "2026-07-10",
-        "11:20"
-      ],
-      "alis": 26.14,
-      "guncel": 26.46,
-      "pnl_yuzde": 1.22,
-      "pnl_tl": 122.0,
-      "yatirim": 10000,
-      "stop": 24.31,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 2.37,
-      "gun": 3
-    },
-    {
       "sembol": "QNBFK",
       "kategori": 1,
       "alis_tarihi": "2026-07-13",
@@ -166,27 +145,6 @@
       "tp2": false,
       "max_pnl": 0.0,
       "gun": 0
-    },
-    {
-      "sembol": "VESTL",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-10",
-      "alis_saati": "11:20",
-      "_sort_key": [
-        "2026-07-10",
-        "11:20"
-      ],
-      "alis": 26.14,
-      "guncel": 26.46,
-      "pnl_yuzde": 1.22,
-      "pnl_tl": 122.0,
-      "yatirim": 10000,
-      "stop": 24.31,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 2.37,
-      "gun": 3
     },
     {
       "sembol": "BALAT",
@@ -232,6 +190,13 @@
     }
   ],
   "son_kapananlar": [
+    {
+      "sembol": "VESTL",
+      "pnl_yuzde": -0.61,
+      "pnl_tl": -61.0,
+      "sebep": "Maliyet Stopu",
+      "tarih": "2026-07-13"
+    },
     {
       "sembol": "FORTE",
       "pnl_yuzde": 0.46,
@@ -364,13 +329,6 @@
       "pnl_tl": -62.0,
       "sebep": "Maliyet Stopu",
       "tarih": "2026-06-25"
-    },
-    {
-      "sembol": "BRKO",
-      "pnl_yuzde": 13.47,
-      "pnl_tl": 337.0,
-      "sebep": "AlphaTrend Kırılımı",
-      "tarih": "2026-06-24"
     }
   ],
   "gecmis": [
@@ -712,17 +670,17 @@
     },
     {
       "tarih": "2026-07-13",
-      "gunluk_pnl": 0,
-      "kumulatif_pnl": 20118.0,
-      "islem_sayi": 0,
-      "yuzen_pnl": 1314.0
+      "gunluk_pnl": -61.0,
+      "kumulatif_pnl": 20057.0,
+      "islem_sayi": 1,
+      "yuzen_pnl": 1192.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 4,
+    "acik_sayi": 3,
     "tetiklenen": 0,
-    "gercek_net_tl": 1314.0,
-    "iz_net_tl": 1314.0,
+    "gercek_net_tl": 1192.0,
+    "iz_net_tl": 1192.0,
     "kazanim_tl": 0.0,
     "portfoy": [
       {
@@ -774,31 +732,6 @@
         "iz_tetik": false,
         "iz_kz": 2.68,
         "iz_tl": 134.0
-      },
-      {
-        "sembol": "VESTL",
-        "kategori": 1,
-        "alis_tarihi": "2026-07-10",
-        "alis_saati": "11:20",
-        "_sort_key": [
-          "2026-07-10",
-          "11:20"
-        ],
-        "alis": 26.14,
-        "guncel": 26.46,
-        "pnl_yuzde": 1.22,
-        "pnl_tl": 122.0,
-        "yatirim": 10000,
-        "stop": 24.31,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 2.37,
-        "gun": 3,
-        "iz_sev": 0.0,
-        "iz_tetik": false,
-        "iz_kz": 1.22,
-        "iz_tl": 122.0
       },
       {
         "sembol": "QNBFK",
