@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-14 12:00",
+  "son_guncelleme": "2026-07-14 12:10",
   "kasa": {
     "acik_sayi": 2,
     "toplam_yatirim": 12500.0,
-    "portfoy_degeri": 13929.0,
-    "yuzen_pnl_tl": 1429.0,
-    "yuzen_pnl_yuzde": 11.43,
+    "portfoy_degeri": 13926.0,
+    "yuzen_pnl_tl": 1426.0,
+    "yuzen_pnl_yuzde": 11.4,
     "kapanan_toplam": 850,
     "kapanan_net_tl": 19370.0,
     "win_rate": 42.9,
@@ -36,8 +36,8 @@
     "yas_orta": 1,
     "yas_uzun": 1,
     "en_iyi_sembol": "AKCNS",
-    "en_iyi_pnl": 14.25,
-    "en_iyi_tl": 1069.0,
+    "en_iyi_pnl": 14.2,
+    "en_iyi_tl": 1065.0,
     "en_kotu_sembol": "BALAT",
     "en_kotu_pnl": 7.21,
     "en_kotu_tl": 360.0,
@@ -54,8 +54,8 @@
       },
       "1": {
         "sayi": 1,
-        "ort_pnl": 14.25,
-        "yuzen_tl": 1069.0
+        "ort_pnl": 14.2,
+        "yuzen_tl": 1065.0
       }
     }
   },
@@ -70,9 +70,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 236.5,
-      "pnl_yuzde": 14.25,
-      "pnl_tl": 1069.0,
+      "guncel": 236.4,
+      "pnl_yuzde": 14.2,
+      "pnl_tl": 1065.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -135,9 +135,9 @@
         "10:20"
       ],
       "alis": 207.0,
-      "guncel": 236.5,
-      "pnl_yuzde": 14.25,
-      "pnl_tl": 1069.0,
+      "guncel": 236.4,
+      "pnl_yuzde": 14.2,
+      "pnl_tl": 1065.0,
       "yatirim": 7500.0,
       "stop": 208.03,
       "kalkan": true,
@@ -638,14 +638,14 @@
       "gunluk_pnl": -627.0,
       "kumulatif_pnl": 19369.0,
       "islem_sayi": 1,
-      "yuzen_pnl": 1429.0
+      "yuzen_pnl": 1426.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 2,
     "tetiklenen": 0,
-    "gercek_net_tl": 1429.0,
-    "iz_net_tl": 1429.0,
+    "gercek_net_tl": 1426.0,
+    "iz_net_tl": 1426.0,
     "kazanim_tl": 0.0,
     "portfoy": [
       {
@@ -658,9 +658,9 @@
           "10:20"
         ],
         "alis": 207.0,
-        "guncel": 236.5,
-        "pnl_yuzde": 14.25,
-        "pnl_tl": 1069.0,
+        "guncel": 236.4,
+        "pnl_yuzde": 14.2,
+        "pnl_tl": 1065.0,
         "yatirim": 7500.0,
         "stop": 208.03,
         "kalkan": true,
@@ -670,8 +670,8 @@
         "gun": 15,
         "iz_sev": 12.94,
         "iz_tetik": false,
-        "iz_kz": 14.25,
-        "iz_tl": 1069.0
+        "iz_kz": 14.2,
+        "iz_tl": 1065.0
       },
       {
         "sembol": "BALAT",
