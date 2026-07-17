@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-16 18:10",
+  "son_guncelleme": "2026-07-17 09:55",
   "kasa": {
     "acik_sayi": 2,
     "toplam_yatirim": 12500.0,
@@ -19,7 +19,7 @@
     "los_ort_sure": 1.5,
     "ort_kazanc": 4.92,
     "ort_kayip": -2.08,
-    "ort_sure": 12.5,
+    "ort_sure": 13.5,
     "kalkan_sayi": 2,
     "tp1_sayi": 1,
     "tp2_sayi": 0,
@@ -29,7 +29,7 @@
     "gecen_hafta_islem_sayi": 10,
     "bu_hafta_pnl_tl": -811.0,
     "bu_hafta_islem_sayi": 5,
-    "toplam_gun": 52,
+    "toplam_gun": 53,
     "stop_yakin_sayi": 0,
     "bugun_acilan_sayi": 0,
     "yas_kisa": 0,
@@ -79,7 +79,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 16.86,
-      "gun": 17
+      "gun": 18
     },
     {
       "sembol": "BALAT",
@@ -100,7 +100,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.35,
-      "gun": 8
+      "gun": 9
     }
   ],
   "son_alinanlar": [
@@ -123,7 +123,7 @@
       "tp1": false,
       "tp2": false,
       "max_pnl": 12.35,
-      "gun": 8
+      "gun": 9
     },
     {
       "sembol": "AKCNS",
@@ -144,7 +144,7 @@
       "tp1": true,
       "tp2": false,
       "max_pnl": 16.86,
-      "gun": 17
+      "gun": 18
     }
   ],
   "son_kapananlar": [
@@ -650,6 +650,13 @@
     {
       "tarih": "2026-07-16",
       "gunluk_pnl": 0,
+      "kumulatif_pnl": 60240.0,
+      "islem_sayi": 0,
+      "yuzen_pnl": 40933.0
+    },
+    {
+      "tarih": "2026-07-17",
+      "gunluk_pnl": 0,
       "kumulatif_pnl": 19307.0,
       "islem_sayi": 0,
       "yuzen_pnl": 1864.0
@@ -681,7 +688,7 @@
         "tp1": true,
         "tp2": false,
         "max_pnl": 16.86,
-        "gun": 17,
+        "gun": 18,
         "iz_sev": 13.86,
         "iz_tetik": false,
         "iz_kz": 16.71,
@@ -706,7 +713,7 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 12.35,
-        "gun": 8,
+        "gun": 9,
         "iz_sev": 9.35,
         "iz_tetik": false,
         "iz_kz": 12.22,
@@ -929,7 +936,7 @@
           "tp1": false,
           "tp2": false,
           "max_pnl": 12.35,
-          "gun": 8,
+          "gun": 9,
           "iz_sev": 9.35,
           "iz_kz": 12.22,
           "iz_tl": 611.0
@@ -1282,7 +1289,7 @@
           "tp1": false,
           "tp2": false,
           "max_pnl": 12.35,
-          "gun": 8,
+          "gun": 9,
           "iz_sev": 9.35,
           "iz_kz": 12.22,
           "iz_tl": 611.0
@@ -1595,7 +1602,7 @@
           "tp1": false,
           "tp2": false,
           "max_pnl": 12.35,
-          "gun": 8,
+          "gun": 9,
           "iz_sev": 9.35,
           "iz_kz": 12.22,
           "iz_tl": 611.0
