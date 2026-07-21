@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-21 10:00",
+  "son_guncelleme": "2026-07-21 10:10",
   "kasa": {
     "acik_sayi": 27,
     "toplam_yatirim": 162500.0,
@@ -2443,10 +2443,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 125,
+        "kapanan_toplam": 127,
         "kapanan_net_tl": 18323.0,
         "win_rate": 98.4,
-        "win_sayi": 123,
+        "win_sayi": 125,
         "win_tl": 19555.0,
         "los_sayi": 2,
         "los_tl": -1233.0,
@@ -2454,8 +2454,8 @@
         "yuzen_pnl_tl": 1574.0,
         "yuzen_pnl_iz_tl": 1873.0,
         "toplam_yatirim": 65000.0,
-        "toplam_sermaye": 676250.0,
-        "getiri_yuzde": 2.99,
+        "toplam_sermaye": 686250.0,
+        "getiri_yuzde": 2.94,
         "ort_sure": 4.4
       },
       "portfoy": [
@@ -2774,6 +2774,20 @@
       ],
       "kapananlar": [
         {
+          "sembol": "EMKEL",
+          "tarih": "2026-07-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "TATGD",
+          "tarih": "2026-07-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "HATSN",
           "tarih": "2026-07-20",
           "sebep": "maliyet stopu",
@@ -2898,20 +2912,6 @@
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
-        },
-        {
-          "sembol": "AKHAN",
-          "tarih": "2026-07-17",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.29,
-          "pnl_tl": 15.0
-        },
-        {
-          "sembol": "KOTON",
-          "tarih": "2026-07-09",
-          "sebep": "Stop Loss (-%7)",
-          "pnl_yuzde": -14.56,
-          "pnl_tl": -728.0
         }
       ],
       "gecmis": [
@@ -3089,15 +3089,20 @@
           "tarih": "2026-07-20",
           "gunluk_pnl": 108.0,
           "kumulatif_pnl": 18323.0
+        },
+        {
+          "tarih": "2026-07-21",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 18323.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 70,
+        "kapanan_toplam": 72,
         "kapanan_net_tl": 8374.0,
         "win_rate": 98.6,
-        "win_sayi": 69,
+        "win_sayi": 71,
         "win_tl": 9102.0,
         "los_sayi": 1,
         "los_tl": -728.0,
@@ -3105,8 +3110,8 @@
         "yuzen_pnl_tl": 456.0,
         "yuzen_pnl_iz_tl": 755.0,
         "toplam_yatirim": 50000.0,
-        "toplam_sermaye": 393750.0,
-        "getiri_yuzde": 2.32,
+        "toplam_sermaye": 403750.0,
+        "getiri_yuzde": 2.26,
         "ort_sure": 3.8
       },
       "portfoy": [
@@ -3353,6 +3358,20 @@
       ],
       "kapananlar": [
         {
+          "sembol": "EMKEL",
+          "tarih": "2026-07-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "TATGD",
+          "tarih": "2026-07-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "TATGD",
           "tarih": "2026-07-20",
           "sebep": "Maliyet Stopu",
@@ -3477,20 +3496,6 @@
           "sebep": "AlphaTrend Kırılımı",
           "pnl_yuzde": 34.2,
           "pnl_tl": 855.0
-        },
-        {
-          "sembol": "NUGYO",
-          "tarih": "2026-06-03",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 0.72,
-          "pnl_tl": 36.0
-        },
-        {
-          "sembol": "BRMEN",
-          "tarih": "2026-06-02",
-          "sebep": "Koruma Stopu (Maliyet)",
-          "pnl_yuzde": 7.62,
-          "pnl_tl": 381.0
         }
       ],
       "gecmis": [
@@ -3623,15 +3628,20 @@
           "tarih": "2026-07-20",
           "gunluk_pnl": 15.0,
           "kumulatif_pnl": 8374.0
+        },
+        {
+          "tarih": "2026-07-21",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 8374.0
         }
       ]
     },
     "c": {
       "kasa": {
-        "kapanan_toplam": 36,
+        "kapanan_toplam": 37,
         "kapanan_net_tl": 5747.0,
         "win_rate": 100.0,
-        "win_sayi": 36,
+        "win_sayi": 37,
         "win_tl": 5747.0,
         "los_sayi": 0,
         "los_tl": 0.0,
@@ -3639,8 +3649,8 @@
         "yuzen_pnl_tl": 456.0,
         "yuzen_pnl_iz_tl": 755.0,
         "toplam_yatirim": 50000.0,
-        "toplam_sermaye": 228750.0,
-        "getiri_yuzde": 2.84,
+        "toplam_sermaye": 233750.0,
+        "getiri_yuzde": 2.78,
         "ort_sure": 3.7
       },
       "portfoy": [
@@ -3887,6 +3897,13 @@
       ],
       "kapananlar": [
         {
+          "sembol": "TATGD",
+          "tarih": "2026-07-21",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "EMKEL",
           "tarih": "2026-07-20",
           "sebep": "maliyet stopu",
@@ -4018,13 +4035,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 13.51,
           "pnl_tl": 676.0
-        },
-        {
-          "sembol": "GEREL",
-          "tarih": "2026-05-18",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
         }
       ],
       "gecmis": [
@@ -4120,6 +4130,11 @@
         },
         {
           "tarih": "2026-07-20",
+          "gunluk_pnl": 0.0,
+          "kumulatif_pnl": 5747.0
+        },
+        {
+          "tarih": "2026-07-21",
           "gunluk_pnl": 0.0,
           "kumulatif_pnl": 5747.0
         }
