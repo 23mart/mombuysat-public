@@ -1,38 +1,38 @@
 {
-  "son_guncelleme": "2026-07-22 10:00",
+  "son_guncelleme": "2026-07-22 10:10",
   "kasa": {
-    "acik_sayi": 29,
-    "toplam_yatirim": 176250.0,
-    "portfoy_degeri": 179507.0,
+    "acik_sayi": 28,
+    "toplam_yatirim": 171250.0,
+    "portfoy_degeri": 174507.0,
     "yuzen_pnl_tl": 3257.0,
-    "yuzen_pnl_yuzde": 1.85,
-    "kapanan_toplam": 932,
+    "yuzen_pnl_yuzde": 1.9,
+    "kapanan_toplam": 933,
     "kapanan_net_tl": 15954.0,
     "win_rate": 41.2,
     "win_sayi": 384,
     "win_tl": 87622.0,
     "win_yatirim": 2767500.0,
     "win_ort_sure": 3.8,
-    "los_sayi": 548,
+    "los_sayi": 549,
     "los_tl": -71668.0,
-    "los_yatirim": 4345833.0,
+    "los_yatirim": 4350833.0,
     "los_ort_sure": 1.3,
     "ort_kazanc": 4.68,
-    "ort_kayip": -1.96,
+    "ort_kayip": -1.95,
     "ort_sure": 2.1,
     "kalkan_sayi": 12,
     "tp1_sayi": 2,
     "tp2_sayi": 0,
     "bugun_pnl_tl": 15.0,
-    "bugun_islem_sayi": 4,
+    "bugun_islem_sayi": 5,
     "gecen_hafta_pnl_tl": -1405.0,
     "gecen_hafta_islem_sayi": 20,
     "bu_hafta_pnl_tl": -2760.0,
-    "bu_hafta_islem_sayi": 66,
+    "bu_hafta_islem_sayi": 67,
     "toplam_gun": 56,
     "stop_yakin_sayi": 4,
-    "bugun_acilan_sayi": 4,
-    "yas_kisa": 27,
+    "bugun_acilan_sayi": 3,
+    "yas_kisa": 26,
     "yas_orta": 1,
     "yas_uzun": 1,
     "en_iyi_sembol": "DESPC",
@@ -53,8 +53,8 @@
         "yuzen_tl": 871.0
       },
       "1": {
-        "sayi": 24,
-        "ort_pnl": 1.58,
+        "sayi": 23,
+        "ort_pnl": 1.65,
         "yuzen_tl": 2071.0
       }
     }
@@ -376,27 +376,6 @@
       "gun": 1
     },
     {
-      "sembol": "EUKYO",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-22",
-      "alis_saati": "09:55",
-      "_sort_key": [
-        "2026-07-22",
-        "09:55"
-      ],
-      "alis": 13.97,
-      "guncel": 13.97,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
-      "yatirim": 5000,
-      "stop": 12.99,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.0,
-      "gun": 0
-    },
-    {
       "sembol": "AKHAN",
       "kategori": 1,
       "alis_tarihi": "2026-07-22",
@@ -519,7 +498,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 0.24,
       "gun": 1
     },
     {
@@ -672,27 +651,6 @@
   ],
   "son_alinanlar": [
     {
-      "sembol": "EUKYO",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-22",
-      "alis_saati": "09:55",
-      "_sort_key": [
-        "2026-07-22",
-        "09:55"
-      ],
-      "alis": 13.97,
-      "guncel": 13.97,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
-      "yatirim": 5000,
-      "stop": 12.99,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.0,
-      "gun": 0
-    },
-    {
       "sembol": "AKHAN",
       "kategori": 1,
       "alis_tarihi": "2026-07-22",
@@ -773,7 +731,7 @@
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 0.24,
       "gun": 1
     },
     {
@@ -1090,9 +1048,37 @@
       "tp2": false,
       "max_pnl": 0.4,
       "gun": 2
+    },
+    {
+      "sembol": "FADE",
+      "kategori": 1,
+      "alis_tarihi": "2026-07-20",
+      "alis_saati": "14:10",
+      "_sort_key": [
+        "2026-07-20",
+        "14:10"
+      ],
+      "alis": 16.47,
+      "guncel": 15.77,
+      "pnl_yuzde": -4.25,
+      "pnl_tl": -213.0,
+      "yatirim": 5000,
+      "stop": 15.32,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.18,
+      "gun": 2
     }
   ],
   "son_kapananlar": [
+    {
+      "sembol": "EUKYO",
+      "pnl_yuzde": 0,
+      "pnl_tl": 0,
+      "sebep": "Stop Loss (-%7)",
+      "tarih": "2026-07-22"
+    },
     {
       "sembol": "PASEU",
       "pnl_yuzde": 0,
@@ -1224,13 +1210,6 @@
       "pnl_yuzde": 0.13,
       "pnl_tl": 6.0,
       "sebep": "Stop Loss (-%7)",
-      "tarih": "2026-07-21"
-    },
-    {
-      "sembol": "YEOTK",
-      "pnl_yuzde": -0.05,
-      "pnl_tl": -5.0,
-      "sebep": "Maliyet Stopu",
       "tarih": "2026-07-21"
     }
   ],
@@ -1624,16 +1603,16 @@
       "tarih": "2026-07-22",
       "gunluk_pnl": 15.0,
       "kumulatif_pnl": 15953.0,
-      "islem_sayi": 4,
+      "islem_sayi": 5,
       "yuzen_pnl": 3257.0
     }
   ],
   "iz_stop": {
-    "acik_sayi": 29,
-    "tetiklenen": 10,
+    "acik_sayi": 28,
+    "tetiklenen": 11,
     "gercek_net_tl": 3258.0,
-    "iz_net_tl": 5340.0,
-    "kazanim_tl": 2082.0,
+    "iz_net_tl": 5428.0,
+    "kazanim_tl": 2170.0,
     "portfoy": [
       {
         "sembol": "DESPC",
@@ -2011,31 +1990,6 @@
         "iz_tl": 0.0
       },
       {
-        "sembol": "EUKYO",
-        "kategori": 1,
-        "alis_tarihi": "2026-07-22",
-        "alis_saati": "09:55",
-        "_sort_key": [
-          "2026-07-22",
-          "09:55"
-        ],
-        "alis": 13.97,
-        "guncel": 13.97,
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0,
-        "yatirim": 5000,
-        "stop": 12.99,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 0.0,
-        "gun": 0,
-        "iz_sev": null,
-        "iz_tetik": false,
-        "iz_kz": 0.0,
-        "iz_tl": 0.0
-      },
-      {
         "sembol": "AKHAN",
         "kategori": 1,
         "alis_tarihi": "2026-07-22",
@@ -2129,6 +2083,31 @@
         "tp1": false,
         "tp2": false,
         "max_pnl": 0.18,
+        "gun": 1,
+        "iz_sev": 0.0,
+        "iz_tetik": true,
+        "iz_kz": 0.0,
+        "iz_tl": 0.0
+      },
+      {
+        "sembol": "ECOGR",
+        "kategori": 1,
+        "alis_tarihi": "2026-07-21",
+        "alis_saati": "18:10",
+        "_sort_key": [
+          "2026-07-21",
+          "18:10"
+        ],
+        "alis": 40.86,
+        "guncel": 40.5,
+        "pnl_yuzde": -0.88,
+        "pnl_tl": -88.0,
+        "yatirim": 10000,
+        "stop": 38.0,
+        "kalkan": false,
+        "tp1": false,
+        "tp2": false,
+        "max_pnl": 0.24,
         "gun": 1,
         "iz_sev": 0.0,
         "iz_tetik": true,
@@ -2284,31 +2263,6 @@
         "iz_tetik": false,
         "iz_kz": -0.54,
         "iz_tl": -27.0
-      },
-      {
-        "sembol": "ECOGR",
-        "kategori": 1,
-        "alis_tarihi": "2026-07-21",
-        "alis_saati": "18:10",
-        "_sort_key": [
-          "2026-07-21",
-          "18:10"
-        ],
-        "alis": 40.86,
-        "guncel": 40.5,
-        "pnl_yuzde": -0.88,
-        "pnl_tl": -88.0,
-        "yatirim": 10000,
-        "stop": 38.0,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 0.0,
-        "gun": 1,
-        "iz_sev": null,
-        "iz_tetik": false,
-        "iz_kz": -0.88,
-        "iz_tl": -88.0
       },
       {
         "sembol": "SUMAS",
@@ -2542,10 +2496,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 144,
+        "kapanan_toplam": 146,
         "kapanan_net_tl": 19620.0,
         "win_rate": 98.6,
-        "win_sayi": 142,
+        "win_sayi": 144,
         "win_tl": 20853.0,
         "los_sayi": 2,
         "los_tl": -1233.0,
@@ -2553,8 +2507,8 @@
         "yuzen_pnl_tl": 1314.0,
         "yuzen_pnl_iz_tl": 2020.0,
         "toplam_yatirim": 63750.0,
-        "toplam_sermaye": 770000.0,
-        "getiri_yuzde": 2.81,
+        "toplam_sermaye": 780000.0,
+        "getiri_yuzde": 2.77,
         "ort_sure": 4.4
       },
       "portfoy": [
@@ -2880,6 +2834,20 @@
           "pnl_tl": 15.0
         },
         {
+          "sembol": "LIDER",
+          "tarih": "2026-07-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "PASEU",
+          "tarih": "2026-07-22",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "EMKEL",
           "tarih": "2026-07-21",
           "sebep": "Maliyet Stopu",
@@ -2995,20 +2963,6 @@
           "sembol": "CRDFA",
           "tarih": "2026-07-21",
           "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "LIDER",
-          "tarih": "2026-07-21",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "HATSN",
-          "tarih": "2026-07-20",
-          "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
         }
