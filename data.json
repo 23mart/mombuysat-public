@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-23 09:55",
+  "son_guncelleme": "2026-07-23 10:00",
   "kasa": {
     "acik_sayi": 22,
     "toplam_yatirim": 136250.0,
@@ -2227,18 +2227,18 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 158,
-        "kapanan_net_tl": 20948.0,
+        "kapanan_toplam": 159,
+        "kapanan_net_tl": 21085.0,
         "win_rate": 98.7,
-        "win_sayi": 156,
-        "win_tl": 22181.0,
+        "win_sayi": 157,
+        "win_tl": 22318.0,
         "los_sayi": 2,
         "los_tl": -1233.0,
         "acik_sayi": 7,
         "yuzen_pnl_tl": 595.0,
         "yuzen_pnl_iz_tl": 1244.0,
         "toplam_yatirim": 33750.0,
-        "toplam_sermaye": 810000.0,
+        "toplam_sermaye": 815000.0,
         "getiri_yuzde": 2.74,
         "ort_sure": 4.2
       },
@@ -2414,6 +2414,13 @@
       ],
       "kapananlar": [
         {
+          "sembol": "BALSU",
+          "tarih": "2026-07-23",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 2.74,
+          "pnl_tl": 137.0
+        },
+        {
           "sembol": "RALYH",
           "tarih": "2026-07-22",
           "sebep": "Maliyet Stopu",
@@ -2545,13 +2552,6 @@
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
-        },
-        {
-          "sembol": "PINSU",
-          "tarih": "2026-07-21",
-          "sebep": "Stop Loss (-%7)",
-          "pnl_yuzde": 0.74,
-          "pnl_tl": 37.0
         }
       ],
       "gecmis": [
@@ -2739,6 +2739,11 @@
           "tarih": "2026-07-22",
           "gunluk_pnl": 1343.0,
           "kumulatif_pnl": 20948.0
+        },
+        {
+          "tarih": "2026-07-23",
+          "gunluk_pnl": 137.0,
+          "kumulatif_pnl": 21085.0
         }
       ]
     },
