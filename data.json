@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-24 10:00",
+  "son_guncelleme": "2026-07-24 10:10",
   "kasa": {
     "acik_sayi": 28,
     "toplam_yatirim": 161250.0,
@@ -2510,10 +2510,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 167,
+        "kapanan_toplam": 169,
         "kapanan_net_tl": 21516.0,
         "win_rate": 98.2,
-        "win_sayi": 164,
+        "win_sayi": 166,
         "win_tl": 23265.0,
         "los_sayi": 3,
         "los_tl": -1750.0,
@@ -2521,8 +2521,8 @@
         "yuzen_pnl_tl": 591.0,
         "yuzen_pnl_iz_tl": 1148.0,
         "toplam_yatirim": 70000.0,
-        "toplam_sermaye": 890000.0,
-        "getiri_yuzde": 2.55,
+        "toplam_sermaye": 900000.0,
+        "getiri_yuzde": 2.52,
         "ort_sure": 4.2
       },
       "portfoy": [
@@ -2865,6 +2865,20 @@
       ],
       "kapananlar": [
         {
+          "sembol": "CUSAN",
+          "tarih": "2026-07-24",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "IZMDC",
+          "tarih": "2026-07-24",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "BALSU",
           "tarih": "2026-07-23",
           "sebep": "Koruma Stopu (Maliyet)",
@@ -2989,20 +3003,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 5.04,
           "pnl_tl": 252.0
-        },
-        {
-          "sembol": "ICBCT",
-          "tarih": "2026-07-22",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "PRKAB",
-          "tarih": "2026-07-22",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
         }
       ],
       "gecmis": [
@@ -3194,6 +3194,11 @@
         {
           "tarih": "2026-07-23",
           "gunluk_pnl": 567.0,
+          "kumulatif_pnl": 21516.0
+        },
+        {
+          "tarih": "2026-07-24",
+          "gunluk_pnl": 0.0,
           "kumulatif_pnl": 21516.0
         }
       ]
