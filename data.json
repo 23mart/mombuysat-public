@@ -1,10 +1,10 @@
 {
-  "son_guncelleme": "2026-07-27 10:00",
+  "son_guncelleme": "2026-07-27 10:10",
   "kasa": {
     "acik_sayi": 19,
     "toplam_yatirim": 106250.0,
-    "portfoy_degeri": 111685.0,
-    "yuzen_pnl_tl": 5435.0,
+    "portfoy_degeri": 111690.0,
+    "yuzen_pnl_tl": 5440.0,
     "yuzen_pnl_yuzde": 5.12,
     "kapanan_toplam": 1016,
     "kapanan_net_tl": 11398.0,
@@ -54,8 +54,8 @@
       },
       "1": {
         "sayi": 14,
-        "ort_pnl": 5.62,
-        "yuzen_tl": 3912.0
+        "ort_pnl": 5.63,
+        "yuzen_tl": 3918.0
       }
     }
   },
@@ -238,9 +238,9 @@
         "09:55"
       ],
       "alis": 2361.0,
-      "guncel": 2507.5,
-      "pnl_yuzde": 6.2,
-      "pnl_tl": 310.0,
+      "guncel": 2510.0,
+      "pnl_yuzde": 6.31,
+      "pnl_tl": 316.0,
       "yatirim": 5000,
       "stop": 2372.8,
       "kalkan": true,
@@ -576,9 +576,9 @@
         "09:55"
       ],
       "alis": 2361.0,
-      "guncel": 2507.5,
-      "pnl_yuzde": 6.2,
-      "pnl_tl": 310.0,
+      "guncel": 2510.0,
+      "pnl_yuzde": 6.31,
+      "pnl_tl": 316.0,
       "yatirim": 5000,
       "stop": 2372.8,
       "kalkan": true,
@@ -1415,14 +1415,14 @@
       "gunluk_pnl": -384.0,
       "kumulatif_pnl": 11396.0,
       "islem_sayi": 5,
-      "yuzen_pnl": 5435.0
+      "yuzen_pnl": 5440.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 19,
     "tetiklenen": 7,
-    "gercek_net_tl": 5434.0,
-    "iz_net_tl": 6649.0,
+    "gercek_net_tl": 5439.0,
+    "iz_net_tl": 6655.0,
     "kazanim_tl": 1215.0,
     "portfoy": [
       {
@@ -1685,9 +1685,9 @@
           "09:55"
         ],
         "alis": 2361.0,
-        "guncel": 2507.5,
-        "pnl_yuzde": 6.2,
-        "pnl_tl": 310.0,
+        "guncel": 2510.0,
+        "pnl_yuzde": 6.31,
+        "pnl_tl": 316.0,
         "yatirim": 5000,
         "stop": 2372.8,
         "kalkan": true,
@@ -1697,8 +1697,8 @@
         "gun": 3,
         "iz_sev": 3.31,
         "iz_tetik": false,
-        "iz_kz": 6.2,
-        "iz_tl": 310.0
+        "iz_kz": 6.31,
+        "iz_tl": 315.0
       },
       {
         "sembol": "MEGMT",
@@ -2082,19 +2082,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 178,
+        "kapanan_toplam": 180,
         "kapanan_net_tl": 21808.0,
         "win_rate": 98.3,
-        "win_sayi": 175,
+        "win_sayi": 177,
         "win_tl": 23558.0,
         "los_sayi": 3,
         "los_tl": -1750.0,
         "acik_sayi": 10,
-        "yuzen_pnl_tl": 1850.0,
-        "yuzen_pnl_iz_tl": 1866.0,
+        "yuzen_pnl_tl": 1856.0,
+        "yuzen_pnl_iz_tl": 1872.0,
         "toplam_yatirim": 48750.0,
-        "toplam_sermaye": 923750.0,
-        "getiri_yuzde": 2.56,
+        "toplam_sermaye": 933750.0,
+        "getiri_yuzde": 2.54,
         "ort_sure": 4.0
       },
       "portfoy": [
@@ -2180,9 +2180,9 @@
             "09:55"
           ],
           "alis": 2361.0,
-          "guncel": 2507.5,
-          "pnl_yuzde": 6.2,
-          "pnl_tl": 310.0,
+          "guncel": 2510.0,
+          "pnl_yuzde": 6.31,
+          "pnl_tl": 316.0,
           "yatirim": 5000,
           "stop": 2372.8,
           "kalkan": true,
@@ -2191,8 +2191,8 @@
           "max_pnl": 6.31,
           "gun": 3,
           "iz_sev": 3.31,
-          "iz_kz": 6.2,
-          "iz_tl": 310.0
+          "iz_kz": 6.31,
+          "iz_tl": 315.0
         },
         {
           "sembol": "MEGMT",
@@ -2348,6 +2348,20 @@
           "pnl_tl": 0.0
         },
         {
+          "sembol": "TARKM",
+          "tarih": "2026-07-27",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
+          "sembol": "KMPUR",
+          "tarih": "2026-07-27",
+          "sebep": "Maliyet Stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "CUSAN",
           "tarih": "2026-07-24",
           "sebep": "Maliyet Stopu",
@@ -2465,20 +2479,6 @@
           "sebep": "Stop Loss (-%7)",
           "pnl_yuzde": 0.45,
           "pnl_tl": 22.0
-        },
-        {
-          "sembol": "CUSAN",
-          "tarih": "2026-07-23",
-          "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "GUNDG",
-          "tarih": "2026-07-23",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.21,
-          "pnl_tl": 11.0
         }
       ],
       "gecmis": [
