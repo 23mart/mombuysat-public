@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-28 10:00",
+  "son_guncelleme": "2026-07-28 10:10",
   "kasa": {
     "acik_sayi": 21,
     "toplam_yatirim": 107500.0,
@@ -141,7 +141,7 @@
       "kalkan": true,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 14.46,
+      "max_pnl": 14.68,
       "gun": 4
     },
     {
@@ -710,7 +710,7 @@
       "kalkan": true,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 14.46,
+      "max_pnl": 14.68,
       "gun": 4
     },
     {
@@ -1492,8 +1492,8 @@
     "acik_sayi": 21,
     "tetiklenen": 11,
     "gercek_net_tl": 4417.0,
-    "iz_net_tl": 7825.0,
-    "kazanim_tl": 3408.0,
+    "iz_net_tl": 7836.0,
+    "kazanim_tl": 3419.0,
     "portfoy": [
       {
         "sembol": "ANELE",
@@ -1663,12 +1663,12 @@
         "kalkan": true,
         "tp1": false,
         "tp2": false,
-        "max_pnl": 14.46,
+        "max_pnl": 14.68,
         "gun": 4,
-        "iz_sev": 11.46,
+        "iz_sev": 11.68,
         "iz_tetik": true,
-        "iz_kz": 11.46,
-        "iz_tl": 573.0
+        "iz_kz": 11.68,
+        "iz_tl": 584.0
       },
       {
         "sembol": "SUNTK",
@@ -2202,19 +2202,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 183,
-        "kapanan_net_tl": 21960.0,
+        "kapanan_toplam": 184,
+        "kapanan_net_tl": 21975.0,
         "win_rate": 98.4,
-        "win_sayi": 180,
-        "win_tl": 23710.0,
+        "win_sayi": 181,
+        "win_tl": 23725.0,
         "los_sayi": 3,
         "los_tl": -1750.0,
         "acik_sayi": 10,
         "yuzen_pnl_tl": 3160.0,
-        "yuzen_pnl_iz_tl": 3512.0,
+        "yuzen_pnl_iz_tl": 3523.0,
         "toplam_yatirim": 47500.0,
-        "toplam_sermaye": 947500.0,
-        "getiri_yuzde": 2.69,
+        "toplam_sermaye": 952500.0,
+        "getiri_yuzde": 2.68,
         "ort_sure": 4.0
       },
       "portfoy": [
@@ -2284,11 +2284,11 @@
           "kalkan": true,
           "tp1": false,
           "tp2": false,
-          "max_pnl": 14.46,
+          "max_pnl": 14.68,
           "gun": 4,
-          "iz_sev": 11.46,
-          "iz_kz": 11.46,
-          "iz_tl": 573.0
+          "iz_sev": 11.68,
+          "iz_kz": 11.68,
+          "iz_tl": 584.0
         },
         {
           "sembol": "OZATD",
@@ -2461,6 +2461,13 @@
       ],
       "kapananlar": [
         {
+          "sembol": "KCAER",
+          "tarih": "2026-07-28",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": 0.29,
+          "pnl_tl": 15.0
+        },
+        {
           "sembol": "TATEN",
           "tarih": "2026-07-27",
           "sebep": "maliyet stopu",
@@ -2592,13 +2599,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 2.57,
           "pnl_tl": 129.0
-        },
-        {
-          "sembol": "SUMAS",
-          "tarih": "2026-07-23",
-          "sebep": "Stop Loss (-%7)",
-          "pnl_yuzde": -10.34,
-          "pnl_tl": -517.0
         }
       ],
       "gecmis": [
@@ -2801,6 +2801,11 @@
           "tarih": "2026-07-27",
           "gunluk_pnl": 153.0,
           "kumulatif_pnl": 21960.0
+        },
+        {
+          "tarih": "2026-07-28",
+          "gunluk_pnl": 15.0,
+          "kumulatif_pnl": 21975.0
         }
       ]
     },
