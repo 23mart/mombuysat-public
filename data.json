@@ -1,11 +1,11 @@
 {
-  "son_guncelleme": "2026-07-30 13:00",
+  "son_guncelleme": "2026-07-30 13:10",
   "kasa": {
     "acik_sayi": 13,
     "toplam_yatirim": 87500.0,
-    "portfoy_degeri": 93127.0,
-    "yuzen_pnl_tl": 5627.0,
-    "yuzen_pnl_yuzde": 6.43,
+    "portfoy_degeri": 92967.0,
+    "yuzen_pnl_tl": 5467.0,
+    "yuzen_pnl_yuzde": 6.25,
     "kapanan_toplam": 1080,
     "kapanan_net_tl": 4628.0,
     "win_rate": 39.8,
@@ -30,7 +30,7 @@
     "bu_hafta_pnl_tl": -7153.0,
     "bu_hafta_islem_sayi": 69,
     "toplam_gun": 62,
-    "stop_yakin_sayi": 0,
+    "stop_yakin_sayi": 1,
     "bugun_acilan_sayi": 6,
     "yas_kisa": 10,
     "yas_orta": 2,
@@ -39,23 +39,23 @@
     "en_iyi_pnl": 26.34,
     "en_iyi_tl": 988.0,
     "en_kotu_sembol": "TRHOL",
-    "en_kotu_pnl": -3.12,
-    "en_kotu_tl": -156.0,
+    "en_kotu_pnl": -3.7,
+    "en_kotu_tl": -185.0,
     "kategoriler": {
       "3": {
         "sayi": 3,
-        "ort_pnl": 16.43,
-        "yuzen_tl": 3384.0
+        "ort_pnl": 16.8,
+        "yuzen_tl": 3439.0
       },
       "2": {
         "sayi": 1,
-        "ort_pnl": 6.39,
-        "yuzen_tl": 320.0
+        "ort_pnl": 1.47,
+        "yuzen_tl": 73.0
       },
       "1": {
         "sayi": 9,
-        "ort_pnl": 5.92,
-        "yuzen_tl": 1924.0
+        "ort_pnl": 5.97,
+        "yuzen_tl": 1955.0
       }
     }
   },
@@ -112,9 +112,9 @@
         "09:55"
       ],
       "alis": 3120.0,
-      "guncel": 3685.0,
-      "pnl_yuzde": 18.11,
-      "pnl_tl": 679.0,
+      "guncel": 3700.0,
+      "pnl_yuzde": 18.59,
+      "pnl_tl": 697.0,
       "yatirim": 3750.0,
       "stop": 3135.6,
       "kalkan": true,
@@ -154,15 +154,15 @@
         "09:55"
       ],
       "alis": 127.0,
-      "guncel": 142.9,
-      "pnl_yuzde": 12.52,
-      "pnl_tl": 626.0,
+      "guncel": 144.3,
+      "pnl_yuzde": 13.62,
+      "pnl_tl": 681.0,
       "yatirim": 5000,
       "stop": 127.63,
       "kalkan": true,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 13.7,
+      "max_pnl": 14.02,
       "gun": 1
     },
     {
@@ -175,9 +175,9 @@
         "12:30"
       ],
       "alis": 39.26,
-      "guncel": 44.12,
-      "pnl_yuzde": 12.38,
-      "pnl_tl": 619.0,
+      "guncel": 44.3,
+      "pnl_yuzde": 12.84,
+      "pnl_tl": 642.0,
       "yatirim": 5000,
       "stop": 39.46,
       "kalkan": true,
@@ -185,27 +185,6 @@
       "tp2": false,
       "max_pnl": 13.81,
       "gun": 7
-    },
-    {
-      "sembol": "RYSAS",
-      "kategori": 2,
-      "alis_tarihi": "2026-07-29",
-      "alis_saati": "14:10",
-      "_sort_key": [
-        "2026-07-29",
-        "14:10"
-      ],
-      "alis": 23.16,
-      "guncel": 24.64,
-      "pnl_yuzde": 6.39,
-      "pnl_tl": 320.0,
-      "yatirim": 5000,
-      "stop": 23.28,
-      "kalkan": true,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 9.59,
-      "gun": 1
     },
     {
       "sembol": "BIGTK",
@@ -217,15 +196,57 @@
         "09:55"
       ],
       "alis": 330.25,
-      "guncel": 340.75,
-      "pnl_yuzde": 3.18,
-      "pnl_tl": 159.0,
+      "guncel": 340.5,
+      "pnl_yuzde": 3.1,
+      "pnl_tl": 155.0,
       "yatirim": 5000,
       "stop": 331.9,
       "kalkan": true,
       "tp1": false,
       "tp2": false,
       "max_pnl": 5.68,
+      "gun": 0
+    },
+    {
+      "sembol": "RYSAS",
+      "kategori": 2,
+      "alis_tarihi": "2026-07-29",
+      "alis_saati": "14:10",
+      "_sort_key": [
+        "2026-07-29",
+        "14:10"
+      ],
+      "alis": 23.16,
+      "guncel": 23.5,
+      "pnl_yuzde": 1.47,
+      "pnl_tl": 73.0,
+      "yatirim": 5000,
+      "stop": 23.28,
+      "kalkan": true,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 9.59,
+      "gun": 1
+    },
+    {
+      "sembol": "FORTE",
+      "kategori": 1,
+      "alis_tarihi": "2026-07-30",
+      "alis_saati": "13:00",
+      "_sort_key": [
+        "2026-07-30",
+        "13:00"
+      ],
+      "alis": 106.3,
+      "guncel": 107.2,
+      "pnl_yuzde": 0.85,
+      "pnl_tl": 85.0,
+      "yatirim": 10000,
+      "stop": 98.86,
+      "kalkan": false,
+      "tp1": false,
+      "tp2": false,
+      "max_pnl": 0.94,
       "gun": 0
     },
     {
@@ -250,27 +271,6 @@
       "gun": 0
     },
     {
-      "sembol": "FORTE",
-      "kategori": 1,
-      "alis_tarihi": "2026-07-30",
-      "alis_saati": "13:00",
-      "_sort_key": [
-        "2026-07-30",
-        "13:00"
-      ],
-      "alis": 106.3,
-      "guncel": 106.3,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
-      "yatirim": 10000,
-      "stop": 98.86,
-      "kalkan": false,
-      "tp1": false,
-      "tp2": false,
-      "max_pnl": 0.0,
-      "gun": 0
-    },
-    {
       "sembol": "AKFIS",
       "kategori": 1,
       "alis_tarihi": "2026-07-30",
@@ -280,9 +280,9 @@
         "11:20"
       ],
       "alis": 93.25,
-      "guncel": 92.45,
-      "pnl_yuzde": -0.86,
-      "pnl_tl": -86.0,
+      "guncel": 91.95,
+      "pnl_yuzde": -1.39,
+      "pnl_tl": -139.0,
       "yatirim": 10000,
       "stop": 86.72,
       "kalkan": false,
@@ -301,9 +301,9 @@
         "10:30"
       ],
       "alis": 11.45,
-      "guncel": 11.13,
-      "pnl_yuzde": -2.79,
-      "pnl_tl": -279.0,
+      "guncel": 11.12,
+      "pnl_yuzde": -2.88,
+      "pnl_tl": -288.0,
       "yatirim": 10000,
       "stop": 10.65,
       "kalkan": false,
@@ -322,9 +322,9 @@
         "09:55"
       ],
       "alis": 1920.0,
-      "guncel": 1860.0,
-      "pnl_yuzde": -3.12,
-      "pnl_tl": -156.0,
+      "guncel": 1849.0,
+      "pnl_yuzde": -3.7,
+      "pnl_tl": -185.0,
       "yatirim": 5000,
       "stop": 1785.6,
       "kalkan": false,
@@ -345,15 +345,15 @@
         "13:00"
       ],
       "alis": 106.3,
-      "guncel": 106.3,
-      "pnl_yuzde": 0.0,
-      "pnl_tl": 0.0,
+      "guncel": 107.2,
+      "pnl_yuzde": 0.85,
+      "pnl_tl": 85.0,
       "yatirim": 10000,
       "stop": 98.86,
       "kalkan": false,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 0.0,
+      "max_pnl": 0.94,
       "gun": 0
     },
     {
@@ -366,9 +366,9 @@
         "11:20"
       ],
       "alis": 93.25,
-      "guncel": 92.45,
-      "pnl_yuzde": -0.86,
-      "pnl_tl": -86.0,
+      "guncel": 91.95,
+      "pnl_yuzde": -1.39,
+      "pnl_tl": -139.0,
       "yatirim": 10000,
       "stop": 86.72,
       "kalkan": false,
@@ -387,9 +387,9 @@
         "10:30"
       ],
       "alis": 11.45,
-      "guncel": 11.13,
-      "pnl_yuzde": -2.79,
-      "pnl_tl": -279.0,
+      "guncel": 11.12,
+      "pnl_yuzde": -2.88,
+      "pnl_tl": -288.0,
       "yatirim": 10000,
       "stop": 10.65,
       "kalkan": false,
@@ -429,9 +429,9 @@
         "09:55"
       ],
       "alis": 330.25,
-      "guncel": 340.75,
-      "pnl_yuzde": 3.18,
-      "pnl_tl": 159.0,
+      "guncel": 340.5,
+      "pnl_yuzde": 3.1,
+      "pnl_tl": 155.0,
       "yatirim": 5000,
       "stop": 331.9,
       "kalkan": true,
@@ -450,9 +450,9 @@
         "09:55"
       ],
       "alis": 1920.0,
-      "guncel": 1860.0,
-      "pnl_yuzde": -3.12,
-      "pnl_tl": -156.0,
+      "guncel": 1849.0,
+      "pnl_yuzde": -3.7,
+      "pnl_tl": -185.0,
       "yatirim": 5000,
       "stop": 1785.6,
       "kalkan": false,
@@ -471,9 +471,9 @@
         "14:10"
       ],
       "alis": 23.16,
-      "guncel": 24.64,
-      "pnl_yuzde": 6.39,
-      "pnl_tl": 320.0,
+      "guncel": 23.5,
+      "pnl_yuzde": 1.47,
+      "pnl_tl": 73.0,
       "yatirim": 5000,
       "stop": 23.28,
       "kalkan": true,
@@ -492,15 +492,15 @@
         "09:55"
       ],
       "alis": 127.0,
-      "guncel": 142.9,
-      "pnl_yuzde": 12.52,
-      "pnl_tl": 626.0,
+      "guncel": 144.3,
+      "pnl_yuzde": 13.62,
+      "pnl_tl": 681.0,
       "yatirim": 5000,
       "stop": 127.63,
       "kalkan": true,
       "tp1": false,
       "tp2": false,
-      "max_pnl": 13.7,
+      "max_pnl": 14.02,
       "gun": 1
     },
     {
@@ -534,9 +534,9 @@
         "09:55"
       ],
       "alis": 3120.0,
-      "guncel": 3685.0,
-      "pnl_yuzde": 18.11,
-      "pnl_tl": 679.0,
+      "guncel": 3700.0,
+      "pnl_yuzde": 18.59,
+      "pnl_tl": 697.0,
       "yatirim": 3750.0,
       "stop": 3135.6,
       "kalkan": true,
@@ -555,9 +555,9 @@
         "12:30"
       ],
       "alis": 39.26,
-      "guncel": 44.12,
-      "pnl_yuzde": 12.38,
-      "pnl_tl": 619.0,
+      "guncel": 44.3,
+      "pnl_yuzde": 12.84,
+      "pnl_tl": 642.0,
       "yatirim": 5000,
       "stop": 39.46,
       "kalkan": true,
@@ -1184,15 +1184,15 @@
       "gunluk_pnl": -1480.0,
       "kumulatif_pnl": 4627.0,
       "islem_sayi": 6,
-      "yuzen_pnl": 5627.0
+      "yuzen_pnl": 5467.0
     }
   ],
   "iz_stop": {
     "acik_sayi": 13,
     "tetiklenen": 6,
-    "gercek_net_tl": 5628.0,
-    "iz_net_tl": 6198.0,
-    "kazanim_tl": 570.0,
+    "gercek_net_tl": 5468.0,
+    "iz_net_tl": 6328.0,
+    "kazanim_tl": 860.0,
     "portfoy": [
       {
         "sembol": "HEDEF",
@@ -1254,9 +1254,9 @@
           "09:55"
         ],
         "alis": 3120.0,
-        "guncel": 3685.0,
-        "pnl_yuzde": 18.11,
-        "pnl_tl": 679.0,
+        "guncel": 3700.0,
+        "pnl_yuzde": 18.59,
+        "pnl_tl": 697.0,
         "yatirim": 3750.0,
         "stop": 3135.6,
         "kalkan": true,
@@ -1304,20 +1304,20 @@
           "09:55"
         ],
         "alis": 127.0,
-        "guncel": 142.9,
-        "pnl_yuzde": 12.52,
-        "pnl_tl": 626.0,
+        "guncel": 144.3,
+        "pnl_yuzde": 13.62,
+        "pnl_tl": 681.0,
         "yatirim": 5000,
         "stop": 127.63,
         "kalkan": true,
         "tp1": false,
         "tp2": false,
-        "max_pnl": 13.7,
+        "max_pnl": 14.02,
         "gun": 1,
-        "iz_sev": 10.7,
+        "iz_sev": 11.02,
         "iz_tetik": false,
-        "iz_kz": 12.52,
-        "iz_tl": 626.0
+        "iz_kz": 13.62,
+        "iz_tl": 681.0
       },
       {
         "sembol": "SUNTK",
@@ -1329,9 +1329,9 @@
           "12:30"
         ],
         "alis": 39.26,
-        "guncel": 44.12,
-        "pnl_yuzde": 12.38,
-        "pnl_tl": 619.0,
+        "guncel": 44.3,
+        "pnl_yuzde": 12.84,
+        "pnl_tl": 642.0,
         "yatirim": 5000,
         "stop": 39.46,
         "kalkan": true,
@@ -1341,8 +1341,8 @@
         "gun": 7,
         "iz_sev": 10.81,
         "iz_tetik": false,
-        "iz_kz": 12.38,
-        "iz_tl": 619.0
+        "iz_kz": 12.84,
+        "iz_tl": 642.0
       },
       {
         "sembol": "RYSAS",
@@ -1354,9 +1354,9 @@
           "14:10"
         ],
         "alis": 23.16,
-        "guncel": 24.64,
-        "pnl_yuzde": 6.39,
-        "pnl_tl": 320.0,
+        "guncel": 23.5,
+        "pnl_yuzde": 1.47,
+        "pnl_tl": 73.0,
         "yatirim": 5000,
         "stop": 23.28,
         "kalkan": true,
@@ -1379,9 +1379,9 @@
           "09:55"
         ],
         "alis": 330.25,
-        "guncel": 340.75,
-        "pnl_yuzde": 3.18,
-        "pnl_tl": 159.0,
+        "guncel": 340.5,
+        "pnl_yuzde": 3.1,
+        "pnl_tl": 155.0,
         "yatirim": 5000,
         "stop": 331.9,
         "kalkan": true,
@@ -1391,8 +1391,33 @@
         "gun": 0,
         "iz_sev": 2.68,
         "iz_tetik": false,
-        "iz_kz": 3.18,
-        "iz_tl": 159.0
+        "iz_kz": 3.1,
+        "iz_tl": 155.0
+      },
+      {
+        "sembol": "FORTE",
+        "kategori": 1,
+        "alis_tarihi": "2026-07-30",
+        "alis_saati": "13:00",
+        "_sort_key": [
+          "2026-07-30",
+          "13:00"
+        ],
+        "alis": 106.3,
+        "guncel": 107.2,
+        "pnl_yuzde": 0.85,
+        "pnl_tl": 85.0,
+        "yatirim": 10000,
+        "stop": 98.86,
+        "kalkan": false,
+        "tp1": false,
+        "tp2": false,
+        "max_pnl": 0.94,
+        "gun": 0,
+        "iz_sev": 0.0,
+        "iz_tetik": false,
+        "iz_kz": 0.85,
+        "iz_tl": 85.0
       },
       {
         "sembol": "INTEK",
@@ -1420,31 +1445,6 @@
         "iz_tl": 0.0
       },
       {
-        "sembol": "FORTE",
-        "kategori": 1,
-        "alis_tarihi": "2026-07-30",
-        "alis_saati": "13:00",
-        "_sort_key": [
-          "2026-07-30",
-          "13:00"
-        ],
-        "alis": 106.3,
-        "guncel": 106.3,
-        "pnl_yuzde": 0.0,
-        "pnl_tl": 0.0,
-        "yatirim": 10000,
-        "stop": 98.86,
-        "kalkan": false,
-        "tp1": false,
-        "tp2": false,
-        "max_pnl": 0.0,
-        "gun": 0,
-        "iz_sev": null,
-        "iz_tetik": false,
-        "iz_kz": 0.0,
-        "iz_tl": 0.0
-      },
-      {
         "sembol": "AKFIS",
         "kategori": 1,
         "alis_tarihi": "2026-07-30",
@@ -1454,9 +1454,9 @@
           "11:20"
         ],
         "alis": 93.25,
-        "guncel": 92.45,
-        "pnl_yuzde": -0.86,
-        "pnl_tl": -86.0,
+        "guncel": 91.95,
+        "pnl_yuzde": -1.39,
+        "pnl_tl": -139.0,
         "yatirim": 10000,
         "stop": 86.72,
         "kalkan": false,
@@ -1479,9 +1479,9 @@
           "10:30"
         ],
         "alis": 11.45,
-        "guncel": 11.13,
-        "pnl_yuzde": -2.79,
-        "pnl_tl": -279.0,
+        "guncel": 11.12,
+        "pnl_yuzde": -2.88,
+        "pnl_tl": -288.0,
         "yatirim": 10000,
         "stop": 10.65,
         "kalkan": false,
@@ -1504,9 +1504,9 @@
           "09:55"
         ],
         "alis": 1920.0,
-        "guncel": 1860.0,
-        "pnl_yuzde": -3.12,
-        "pnl_tl": -156.0,
+        "guncel": 1849.0,
+        "pnl_yuzde": -3.7,
+        "pnl_tl": -185.0,
         "yatirim": 5000,
         "stop": 1785.6,
         "kalkan": false,
@@ -1516,8 +1516,8 @@
         "gun": 0,
         "iz_sev": null,
         "iz_tetik": false,
-        "iz_kz": -3.12,
-        "iz_tl": -156.0
+        "iz_kz": -3.7,
+        "iz_tl": -185.0
       }
     ]
   },
@@ -1709,11 +1709,11 @@
         "los_sayi": 3,
         "los_tl": -1750.0,
         "acik_sayi": 4,
-        "yuzen_pnl_tl": 2612.0,
-        "yuzen_pnl_iz_tl": 2662.0,
+        "yuzen_pnl_tl": 2439.0,
+        "yuzen_pnl_iz_tl": 2717.0,
         "toplam_yatirim": 17500.0,
         "toplam_sermaye": 1010000.0,
-        "getiri_yuzde": 2.7,
+        "getiri_yuzde": 2.71,
         "ort_sure": 4.0
       },
       "portfoy": [
@@ -1751,9 +1751,9 @@
             "09:55"
           ],
           "alis": 3120.0,
-          "guncel": 3685.0,
-          "pnl_yuzde": 18.11,
-          "pnl_tl": 679.0,
+          "guncel": 3700.0,
+          "pnl_yuzde": 18.59,
+          "pnl_tl": 697.0,
           "yatirim": 3750.0,
           "stop": 3135.6,
           "kalkan": true,
@@ -1775,19 +1775,19 @@
             "09:55"
           ],
           "alis": 127.0,
-          "guncel": 142.9,
-          "pnl_yuzde": 12.52,
-          "pnl_tl": 626.0,
+          "guncel": 144.3,
+          "pnl_yuzde": 13.62,
+          "pnl_tl": 681.0,
           "yatirim": 5000,
           "stop": 127.63,
           "kalkan": true,
           "tp1": false,
           "tp2": false,
-          "max_pnl": 13.7,
+          "max_pnl": 14.02,
           "gun": 1,
-          "iz_sev": 10.7,
-          "iz_kz": 12.52,
-          "iz_tl": 626.0
+          "iz_sev": 11.02,
+          "iz_kz": 13.62,
+          "iz_tl": 681.0
         },
         {
           "sembol": "RYSAS",
@@ -1799,9 +1799,9 @@
             "14:10"
           ],
           "alis": 23.16,
-          "guncel": 24.64,
-          "pnl_yuzde": 6.39,
-          "pnl_tl": 320.0,
+          "guncel": 23.5,
+          "pnl_yuzde": 1.47,
+          "pnl_tl": 73.0,
           "yatirim": 5000,
           "stop": 23.28,
           "kalkan": true,
