@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-07-30 09:55",
+  "son_guncelleme": "2026-07-30 10:00",
   "kasa": {
     "acik_sayi": 11,
     "toplam_yatirim": 70000.0,
@@ -1567,18 +1567,18 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 200,
-        "kapanan_net_tl": 24414.0,
+        "kapanan_toplam": 201,
+        "kapanan_net_tl": 24599.0,
         "win_rate": 98.5,
-        "win_sayi": 197,
-        "win_tl": 26164.0,
+        "win_sayi": 198,
+        "win_tl": 26349.0,
         "los_sayi": 3,
         "los_tl": -1750.0,
         "acik_sayi": 4,
         "yuzen_pnl_tl": 2220.0,
         "yuzen_pnl_iz_tl": 2254.0,
         "toplam_yatirim": 17500.0,
-        "toplam_sermaye": 1000000.0,
+        "toplam_sermaye": 1005000.0,
         "getiri_yuzde": 2.67,
         "ort_sure": 4.0
       },
@@ -1681,6 +1681,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "MEGMT",
+          "tarih": "2026-07-30",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 3.71,
+          "pnl_tl": 185.0
+        },
         {
           "sembol": "BIGEN",
           "tarih": "2026-07-29",
@@ -1809,13 +1816,6 @@
         },
         {
           "sembol": "TARKM",
-          "tarih": "2026-07-27",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "KMPUR",
           "tarih": "2026-07-27",
           "sebep": "Maliyet Stopu",
           "pnl_yuzde": 0.0,
@@ -2032,6 +2032,11 @@
           "tarih": "2026-07-29",
           "gunluk_pnl": 972.0,
           "kumulatif_pnl": 24414.0
+        },
+        {
+          "tarih": "2026-07-30",
+          "gunluk_pnl": 185.0,
+          "kumulatif_pnl": 24599.0
         }
       ]
     },
