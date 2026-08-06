@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Püf · MACD Momentum + Relatif Güç</title>
+  <style>
+    :root {
+      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#ffffff;
+      --text:#ffffff; --muted:#ffffff;
+      --green:#22c55e; --green2:#16a34a; --red:#ef4444; --blue:#60a5fa;
+      --gold:#f59e0b; --orange:#fb923c;
+      --ac:#a855f7; --ac2:#7e22ce; --ac3:#d8b4fe;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; line-height:1.5; min-height:100vh; }
+
+    .header { position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); padding:0 28px; min-height:56px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:4px; }
+    .logo { display:flex; align-items:center; gap:10px; }
+    .logo-mark { width:34px; height:34px; background:linear-gradient(135deg,var(--ac),var(--ac2)); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; }
+    .logo-title { font-size:15px; font-weight:700; letter-spacing:-.3px; }
+    .logo-sub   { font-size:11px; color:var(--muted); }
+    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--muted); }
+    .nav-links { display:flex; gap:6px; flex-wrap:wrap; }
+    .nav-btn { font-size:11px; font-weight:600; padding:4px 11px; border-radius:6px; background:var(--s2); border:1px solid var(--border); color:var(--muted); text-decoration:none; transition:background .15s,color .15s; white-space:nowrap; }
+    .nav-btn:hover { background:#1e1e2a; color:var(--text); }
+    .nav-btn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
+    .upd-pill { display:flex; align-items:center; gap:6px; background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.3); padding:4px 12px; border-radius:20px; color:var(--ac3); font-size:12px; }
+    .dot { width:7px; height:7px; background:var(--ac); border-radius:50%; animation:blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    .page { max-width:1440px; margin:0 auto; padding:24px 28px; }
+
+    .banner { background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(126,34,206,.06)); border:1px solid rgba(168,85,247,.25); border-radius:12px; padding:18px 22px; margin-bottom:20px; display:flex; align-items:center; gap:18px; }
+    .banner-icon { font-size:32px; flex-shrink:0; }
+    .banner-title { font-size:16px; font-weight:700; color:var(--ac3); margin-bottom:3px; }
+    .banner-desc  { font-size:12px; color:var(--muted); line-height:1.55; }
+
+    .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+    .tab { font-size:12px; font-weight:600; padding:6px 14px; border-radius:8px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; }
+    .tab:hover { background:var(--s2); color:var(--text); }
+    .tab.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
+    .tab .count { font-size:10px; padding:1px 6px; margin-left:4px; border-radius:4px; background:var(--s2); color:var(--muted); }
+    .tab.active .count { background:rgba(168,85,247,.25); color:var(--ac3); }
+
+    .filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; align-items:center; }
+    .fbtn { font-size:11px; font-weight:600; padding:5px 12px; border-radius:6px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; }
+    .fbtn:hover { background:var(--s2); }
+    .fbtn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
+    .fbtn.s1.active { background:rgba(34,197,94,.15); border-color:rgba(34,197,94,.4); color:#86efac; }
+    .fbtn.s2.active { background:rgba(251,146,60,.15); border-color:rgba(251,146,60,.4); color:#fdba74; }
+    .fbtn.rel.active { background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.4); color:#93c5fd; }
+
+    .section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+    .section-head { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+    .section-title { font-size:13px; font-weight:600; }
+    .pill { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--s2); border:1px solid var(--border); color:var(--muted); }
+    .pill-ac { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.3); color:var(--ac3); }
+
+    .tbl-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { padding:9px 12px; font-size:10px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; }
+    thead th.active { color:var(--ac3); }
+    tbody tr { border-bottom:1px solid var(--border); }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:var(--s2); }
+    td { padding:9px 12px; white-space:nowrap; font-variant-numeric:tabular-nums; font-size:12px; }
+
+    .sym { display:flex; align-items:center; gap:7px; }
+    .sym-name { font-weight:700; font-size:13px; }
+    .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--muted); }
+    .s1-badge { font-size:9px; padding:2px 6px; border-radius:4px; background:rgba(34,197,94,.15); color:#86efac; border:1px solid rgba(34,197,94,.35); font-weight:700; }
+    .s2-badge { font-size:9px; padding:2px 6px; border-radius:4px; background:rgba(251,146,60,.15); color:#fdba74; border:1px solid rgba(251,146,60,.35); font-weight:700; }
+
+    .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:44px; color:var(--muted); }
+    .spinner { width:18px; height:18px; border:2px solid var(--border); border-top-color:var(--ac); border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+
+    .info { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
+    @media(max-width:700px){ .info { grid-template-columns:1fr; } }
+    .ik { background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
+    .ik-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+    .ik-val { font-size:16px; font-weight:700; }
+
+    .footer { text-align:center; color:var(--muted); font-size:11px; padding:20px; border-top:1px solid var(--border); }
+    @media(max-width:480px){ .page{padding:16px 14px;} }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">💜</div>
+    <div>
+      <div class="logo-title">Püf · MACD Momentum</div>
+      <div class="logo-sub">Histogram sıkışması + relatif güç taraması</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <nav class="nav-links">
+      <a class="nav-btn" href="./index.html">📈 Portföy</a>
+      <a class="nav-btn" href="./kombo1.html">🔬 Kombo 1</a>
+      <a class="nav-btn" href="./strateji.html">🎯 Strateji</a>
+      <a class="nav-btn" href="./filtre_a.html">🟢 A</a>
+      <a class="nav-btn" href="./filtre_b.html">🔵 B</a>
+      <a class="nav-btn" href="./filtre_c.html">🟡 C</a>
+      <a class="nav-btn" href="./sim_eod.html">🧪 EoD Sim</a>
+      <a class="nav-btn active" href="./puf.html">💜 Püf</a>
+    </nav>
+    <span id="ts"></span>
+    <div class="upd-pill"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
+  </div>
+</header>
+
+<main class="page">
+
+  <div class="banner">
+    <div class="banner-icon">💡</div>
+    <div>
+      <div class="banner-title">Püf Sinyalleri</div>
+      <div class="banner-desc">
+        <b style="color:#86efac">Sinyal 1 (Toparlanma)</b>: Histogram &lt; 0 ama son mumda büyüdü · MACD ≥ -1 · Close &gt; EMA50<br>
+        <b style="color:#fdba74">Sinyal 2 (Zayıflama)</b>: Histogram &gt; 0 ama son mumda küçüldü · MACD &gt; 0 · Close &gt; EMA50<br>
+        <b style="color:#93c5fd">Relatif Güç</b>: Endeksten (XU100) daha fazla getiri sağlayan hisseler
+      </div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="ik"><div class="ik-lbl">Son Intraday</div><div class="ik-val" id="upd-intraday">—</div></div>
+    <div class="ik"><div class="ik-lbl">Son Günlük</div><div class="ik-val" id="upd-daily">—</div></div>
+    <div class="ik"><div class="ik-lbl">Toplam Sinyal</div><div class="ik-val" id="upd-total">—</div></div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="filter-bar">
+    <button class="fbtn s1" data-f="s1">Sinyal 1 (Toparlanma)</button>
+    <button class="fbtn s2" data-f="s2">Sinyal 2 (Zayıflama)</button>
+    <button class="fbtn active" data-f="all">Hepsi</button>
+    <span style="flex:1"></span>
+    <span class="pill" id="filter-count">0</span>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="section-title" id="section-title">Yükleniyor</span>
+        <span class="pill pill-ac" id="section-pill">—</span>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead id="thead"><tr id="thead-row"></tr></thead>
+        <tbody id="tbody"><tr><td colspan="8"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+<footer class="footer">Veriler yaklaşık 10 dk gecikmeli · Yatırım tavsiyesi değildir</footer>
+
+<script>
+  const TABS = [
+    { key:'1h',  label:'1 Saat',   src:'intraday' },
+    { key:'2h',  label:'2 Saat',   src:'intraday' },
+    { key:'3h',  label:'3 Saat',   src:'intraday' },
+    { key:'4h',  label:'4 Saat',   src:'intraday' },
+    { key:'1d',  label:'1 Gün',    src:'daily' },
+    { key:'1wk', label:'1 Hafta',  src:'daily' },
+    { key:'1mo', label:'1 Ay',     src:'daily' },
+    { key:'3mo', label:'3 Ay',     src:'daily' },
+    { key:'rel', label:'Endeks Üstü', src:'daily' },
+  ];
+
+  const num = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d);
+  const pct = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d)+'%';
+  const cls = v => v>0?'pos':v<0?'neg':'neu';
+
+  let DATA = null, activeTab = '1h', activeFilter = 'all';
+  let rows = [], sortKey = 'sembol', sortDir = 1;
+
+  function drawTabs(){
+    const tabs = document.getElementById('tabs');
+    tabs.innerHTML = TABS.map(t => {
+      let n = 0;
+      if(!DATA) n = 0;
+      else if(t.key === 'rel') n = (DATA.rel_gucu_endeks_ustu || []).length;
+      else n = (DATA.dilimler?.[t.key] || []).length;
+      return `<div class="tab ${t.key===activeTab?'active':''}" data-k="${t.key}">${t.label}<span class="count">${n}</span></div>`;
+    }).join('');
+    tabs.querySelectorAll('.tab').forEach(el => el.onclick = () => { activeTab = el.dataset.k; drawTabs(); render(); });
+  }
+
+  function currentRows(){
+    if(!DATA) return [];
+    if(activeTab === 'rel') return DATA.rel_gucu_endeks_ustu || [];
+    return DATA.dilimler?.[activeTab] || [];
+  }
+
+  function applyFilter(list){
+    if(activeTab === 'rel') return list;
+    if(activeFilter === 's1') return list.filter(r => r.sinyal_1);
+    if(activeFilter === 's2') return list.filter(r => r.sinyal_2);
+    return list;
+  }
+
+  function renderHead(){
+    const row = document.getElementById('thead-row');
+    if(activeTab === 'rel'){
+      row.innerHTML = `
+        <th data-k="sembol" data-t="s">Sembol</th>
+        <th data-k="close" data-t="n">Fiyat</th>
+        <th data-k="rel.gunluk.sembol" data-t="n">1G Getiri</th>
+        <th data-k="rel.gunluk.endeks" data-t="n">1G XU100</th>
+        <th data-k="rel.gunluk.fark" data-t="n" class="active">1G Fark</th>
+        <th data-k="rel.haftalik.fark" data-t="n">1H Fark</th>
+        <th data-k="rel.aylik.fark" data-t="n">1A Fark</th>
+      `;
+    } else {
+      row.innerHTML = `
+        <th data-k="sembol" data-t="s">Sembol</th>
+        <th data-k="close" data-t="n">Fiyat</th>
+        <th data-k="macd" data-t="n">MACD</th>
+        <th data-k="macdh" data-t="n">Histogram</th>
+        <th data-k="hist_delta" data-t="n" class="active">Δ Histogram</th>
+        <th data-k="ema50" data-t="n">EMA50</th>
+        <th data-k="ema50_uzaklik" data-t="n">EMA50 Uzaklık</th>
+        <th data-k="sinyal" data-t="s">Sinyal</th>
+      `;
+    }
+    row.querySelectorAll('th').forEach(th => th.onclick = () => {
+      const k = th.dataset.k;
+      if(k === sortKey) sortDir *= -1;
+      else { sortKey = k; sortDir = th.dataset.t === 's' ? 1 : -1; }
+      draw();
+    });
+  }
+
+  function getVal(r, k){
+    if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
+    if(k === 'sinyal') return r.sinyal_1 ? '1' : (r.sinyal_2 ? '2' : '');
+    if(k.includes('.')){
+      const parts = k.split('.');
+      let v = r;
+      for(const p of parts){ if(v==null) return null; v = v[p]; }
+      return v;
+    }
+    return r[k];
+  }
+
+  function draw(){
+    const list = applyFilter(rows);
+    document.getElementById('filter-count').textContent = list.length + ' hisse';
+    if(!list.length){
+      document.getElementById('tbody').innerHTML = `<tr><td colspan="8"><div class="empty">Bu dilimde eşleşen hisse yok</div></td></tr>`;
+      return;
+    }
+    const sorted = [...list].sort((a,b) => {
+      const av = getVal(a, sortKey), bv = getVal(b, sortKey);
+      if(av == null && bv == null) return 0;
+      if(av == null) return 1;
+      if(bv == null) return -1;
+      if(typeof av === 'string') return sortDir * av.localeCompare(bv);
+      return sortDir * ((av || 0) - (bv || 0));
+    });
+    if(activeTab === 'rel'){
+      document.getElementById('tbody').innerHTML = sorted.map(r => {
+        const rg = r.rel?.gunluk, rh = r.rel?.haftalik, ra = r.rel?.aylik;
+        return `<tr>
+          <td><span class="sym-name">${r.sembol}</span></td>
+          <td>${r.close != null ? r.close.toFixed(2) : '—'}</td>
+          <td class="${cls(rg?.sembol)}">${pct(rg?.sembol)}</td>
+          <td class="neu">${pct(rg?.endeks)}</td>
+          <td class="${cls(rg?.fark)}"><b>${pct(rg?.fark)}</b></td>
+          <td class="${cls(rh?.fark)}">${pct(rh?.fark)}</td>
+          <td class="${cls(ra?.fark)}">${pct(ra?.fark)}</td>
+        </tr>`;
+      }).join('');
+    } else {
+      document.getElementById('tbody').innerHTML = sorted.map(r => {
+        const delta = (r.macdh || 0) - (r.macdh_prev || 0);
+        const badges = [];
+        if(r.sinyal_1) badges.push('<span class="s1-badge">S1 ↑</span>');
+        if(r.sinyal_2) badges.push('<span class="s2-badge">S2 ↓</span>');
+        return `<tr>
+          <td><div class="sym"><span class="sym-name">${r.sembol}</span></div></td>
+          <td>${r.close.toFixed(2)}</td>
+          <td class="${cls(r.macd)}">${num(r.macd,3)}</td>
+          <td class="${cls(r.macdh)}">${num(r.macdh,3)}</td>
+          <td class="${cls(delta)}"><b>${num(delta,3)}</b></td>
+          <td class="neu">${r.ema50.toFixed(2)}</td>
+          <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik)}</td>
+          <td>${badges.join(' ')}</td>
+        </tr>`;
+      }).join('');
+    }
+    document.querySelectorAll('#thead-row th').forEach(th => th.classList.toggle('active', th.dataset.k===sortKey));
+  }
+
+  function render(){
+    const tab = TABS.find(t => t.key === activeTab);
+    document.getElementById('section-title').textContent = tab.label + (activeTab==='rel' ? ' · Endeks Üstü Getiri' : ' · MACD Sinyalleri');
+    rows = currentRows();
+    document.getElementById('section-pill').textContent = rows.length + ' hisse';
+    // sort default
+    sortKey = activeTab === 'rel' ? 'rel.gunluk.fark' : 'hist_delta';
+    sortDir = -1;
+    renderHead();
+    draw();
+  }
+
+  document.querySelectorAll('.fbtn').forEach(b => b.onclick = () => {
+    activeFilter = b.dataset.f;
+    document.querySelectorAll('.fbtn').forEach(x => x.classList.toggle('active', x.dataset.f === activeFilter));
+    draw();
+  });
+
+  async function load(){
+    try {
+      const res = await fetch('./puf.json?t=' + Date.now());
+      DATA = await res.json();
+      const now = new Date();
+      document.getElementById('ts').textContent = now.toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
+      document.getElementById('upd-label').textContent = 'Canlı';
+      document.getElementById('upd-intraday').textContent = DATA.hourly_guncelleme || '—';
+      document.getElementById('upd-daily').textContent = DATA.daily_guncelleme || '—';
+      const total = Object.values(DATA.dilimler || {}).reduce((s, arr) => s + arr.length, 0)
+                    + (DATA.rel_gucu_endeks_ustu || []).length;
+      document.getElementById('upd-total').textContent = total + ' sinyal';
+      drawTabs();
+      render();
+    } catch(e){
+      document.getElementById('upd-label').textContent = 'Hata';
+      document.getElementById('tbody').innerHTML = `<tr><td colspan="8"><div class="empty">Veri yüklenemedi: ${e.message}</div></td></tr>`;
+    }
+  }
+  load();
+  setInterval(load, 60000);
+</script>
+
+</body>
+</html>
