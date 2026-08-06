@@ -119,9 +119,10 @@
     <div>
       <div class="banner-title">Püf Sinyalleri</div>
       <div class="banner-desc">
-        <b style="color:#86efac">Sinyal 1 (Toparlanma)</b>: Histogram &lt; 0 ama son mumda büyüdü · MACD ≥ -1 · Close &gt; EMA50<br>
-        <b style="color:#fdba74">Sinyal 2 (Zayıflama)</b>: Histogram &gt; 0 ama son mumda küçüldü · MACD &gt; 0 · Close &gt; EMA50<br>
-        <b style="color:#93c5fd">Relatif Güç</b>: Endeksten (XU100) daha fazla getiri sağlayan hisseler
+        <b style="color:#86efac">Sinyal 1 (Toparlanma)</b>: Histogram &lt; 0 ama son mumda büyüdü · |MACD/fiyat| ≤ %1 · Close &gt; EMA50<br>
+        <b style="color:#fdba74">Sinyal 2 (Zayıflama)</b>: Histogram &gt; 0 ama son mumda küçüldü · |MACD/fiyat| ≤ %1 · Close &gt; EMA50<br>
+        <b style="color:#93c5fd">TF Getiri</b>: Her sekmede o TF'nin son bar getirisi · XU100 aynı bar · Fark<br>
+        <b style="color:#93c5fd">Endeks Üstü sekmesi</b>: Günlük/haftalık/aylık endeksten (XU100) fazla getiri sağlayanlar
       </div>
     </div>
   </div>
@@ -220,11 +221,13 @@
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="macd" data-t="n">MACD</th>
+        <th data-k="macd_pct" data-t="n">MACD %</th>
         <th data-k="macdh" data-t="n">Histogram</th>
         <th data-k="hist_delta" data-t="n" class="active">Δ Histogram</th>
-        <th data-k="ema50" data-t="n">EMA50</th>
-        <th data-k="ema50_uzaklik" data-t="n">EMA50 Uzaklık</th>
+        <th data-k="ema50_uzaklik" data-t="n">EMA50 %</th>
+        <th data-k="tf_getiri" data-t="n">TF Getiri</th>
+        <th data-k="tf_endeks" data-t="n">XU100</th>
+        <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="sinyal" data-t="s">Sinyal</th>
       `;
     }
@@ -285,11 +288,13 @@
         return `<tr>
           <td><div class="sym"><span class="sym-name">${r.sembol}</span></div></td>
           <td>${r.close.toFixed(2)}</td>
-          <td class="${cls(r.macd)}">${num(r.macd,3)}</td>
+          <td class="${cls(r.macd_pct)}">${pct(r.macd_pct,2)}</td>
           <td class="${cls(r.macdh)}">${num(r.macdh,3)}</td>
           <td class="${cls(delta)}"><b>${num(delta,3)}</b></td>
-          <td class="neu">${r.ema50.toFixed(2)}</td>
           <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik)}</td>
+          <td class="${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
+          <td class="neu">${pct(r.tf_endeks)}</td>
+          <td class="${cls(r.tf_fark)}"><b>${pct(r.tf_fark)}</b></td>
           <td>${badges.join(' ')}</td>
         </tr>`;
       }).join('');
