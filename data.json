@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-08-06 16:10",
+  "son_guncelleme": "2026-08-06 16:20",
   "kasa": {
     "acik_sayi": 20,
     "toplam_yatirim": 111250.0,
@@ -2210,10 +2210,10 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 223,
+        "kapanan_toplam": 224,
         "kapanan_net_tl": 25195.0,
         "win_rate": 98.2,
-        "win_sayi": 219,
+        "win_sayi": 220,
         "win_tl": 27330.0,
         "los_sayi": 4,
         "los_tl": -2134.0,
@@ -2221,8 +2221,8 @@
         "yuzen_pnl_tl": 3192.0,
         "yuzen_pnl_iz_tl": 4971.0,
         "toplam_yatirim": 27500.0,
-        "toplam_sermaye": 1125000.0,
-        "getiri_yuzde": 2.68,
+        "toplam_sermaye": 1130000.0,
+        "getiri_yuzde": 2.67,
         "ort_sure": 4.0
       },
       "portfoy": [
@@ -2460,6 +2460,13 @@
           "pnl_tl": 80.0
         },
         {
+          "sembol": "VERUS",
+          "tarih": "2026-08-06",
+          "sebep": "maliyet stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "ARTMS",
           "tarih": "2026-08-05",
           "sebep": "Maliyet Stopu",
@@ -2528,13 +2535,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 5.18,
           "pnl_tl": 259.0
-        },
-        {
-          "sembol": "CELHA",
-          "tarih": "2026-08-03",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.45,
-          "pnl_tl": 22.0
         }
       ],
       "gecmis": [
@@ -2777,10 +2777,10 @@
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 109,
+        "kapanan_toplam": 110,
         "kapanan_net_tl": 10230.0,
-        "win_rate": 97.2,
-        "win_sayi": 106,
+        "win_rate": 97.3,
+        "win_sayi": 107,
         "win_tl": 11860.0,
         "los_sayi": 3,
         "los_tl": -1630.0,
@@ -2788,8 +2788,8 @@
         "yuzen_pnl_tl": 854.0,
         "yuzen_pnl_iz_tl": 2040.0,
         "toplam_yatirim": 7500.0,
-        "toplam_sermaye": 545000.0,
-        "getiri_yuzde": 2.25,
+        "toplam_sermaye": 550000.0,
+        "getiri_yuzde": 2.23,
         "ort_sure": 3.7
       },
       "portfoy": [
@@ -2907,6 +2907,13 @@
           "pnl_tl": 80.0
         },
         {
+          "sembol": "VERUS",
+          "tarih": "2026-08-06",
+          "sebep": "maliyet stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "ARTMS",
           "tarih": "2026-08-05",
           "sebep": "Maliyet Stopu",
@@ -2975,13 +2982,6 @@
           "sebep": "Koruma Stopu (Maliyet)",
           "pnl_yuzde": 3.18,
           "pnl_tl": 159.0
-        },
-        {
-          "sembol": "IZFAS",
-          "tarih": "2026-07-28",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.36,
-          "pnl_tl": 18.0
         }
       ],
       "gecmis": [
@@ -3164,10 +3164,10 @@
     },
     "c": {
       "kasa": {
-        "kapanan_toplam": 63,
+        "kapanan_toplam": 64,
         "kapanan_net_tl": 7333.0,
-        "win_rate": 96.8,
-        "win_sayi": 61,
+        "win_rate": 96.9,
+        "win_sayi": 62,
         "win_tl": 8235.0,
         "los_sayi": 2,
         "los_tl": -902.0,
@@ -3175,8 +3175,8 @@
         "yuzen_pnl_tl": 854.0,
         "yuzen_pnl_iz_tl": 2040.0,
         "toplam_yatirim": 7500.0,
-        "toplam_sermaye": 320000.0,
-        "getiri_yuzde": 2.93,
+        "toplam_sermaye": 325000.0,
+        "getiri_yuzde": 2.88,
         "ort_sure": 3.6
       },
       "portfoy": [
@@ -3280,6 +3280,13 @@
           "pnl_tl": -385.0
         },
         {
+          "sembol": "VERUS",
+          "tarih": "2026-08-06",
+          "sebep": "maliyet stopu",
+          "pnl_yuzde": 0.0,
+          "pnl_tl": 0.0
+        },
+        {
           "sembol": "ARTMS",
           "tarih": "2026-08-05",
           "sebep": "Maliyet Stopu",
@@ -3360,13 +3367,6 @@
           "sembol": "KRDMD",
           "tarih": "2026-07-22",
           "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "TATGD",
-          "tarih": "2026-07-21",
-          "sebep": "Maliyet Stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
         }
