@@ -47,6 +47,7 @@
     .fbtn.s1.active { background:var(--green-bg); border-color:rgba(34,197,94,.4); color:var(--green-fg); }
     .fbtn.s2.active { background:var(--orange-bg); border-color:rgba(251,146,60,.4); color:var(--orange-fg); }
     .fbtn.new.active { background:rgba(250,204,21,.15); border-color:rgba(250,204,21,.45); color:#fde047; }
+    .fgroup { display:flex; gap:4px; }
 
     .search { flex:1; min-width:120px; max-width:200px; }
     .search input { width:100%; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:var(--text); padding:6px 10px; font-size:12px; outline:none; }
@@ -132,10 +133,13 @@
   <div class="toolbar">
     <div class="tabs" id="tabs"></div>
     <div class="divider"></div>
-    <button class="fbtn active" data-f="all">Hepsi</button>
-    <button class="fbtn s1" data-f="s1">↑ Toparlanan</button>
-    <button class="fbtn s2" data-f="s2">↓ Zayıflayan</button>
-    <button class="fbtn new" data-f="new" title="Bu barda ilk kez sinyal veren (streak = 1)">✨ Yeni</button>
+    <div class="fgroup" data-g="sig">
+      <button class="fbtn active" data-f="all">Hepsi</button>
+      <button class="fbtn s1" data-f="s1">↑ Toparlanan</button>
+      <button class="fbtn s2" data-f="s2">↓ Zayıflayan</button>
+    </div>
+    <div class="divider"></div>
+    <button class="fbtn new" data-g="new" data-f="new" title="Bu barda ilk kez sinyal veren (streak = 1)">✨ Yalnız yeni</button>
     <div class="search"><input id="q" type="text" placeholder="Sembol ara…"></div>
     <div class="stats">
       <span>Intraday <b id="upd-intraday">—</b></span>
@@ -175,7 +179,7 @@
   const pct = (v,d=2) => v==null ? '—' : (v>=0?'+':'')+v.toFixed(d)+'%';
   const cls = v => v==null?'neu':(v>0?'pos':v<0?'neg':'neu');
 
-  let DATA = null, activeTab = '1h', activeFilter = 'all', query = '';
+  let DATA = null, activeTab = '1h', activeSignal = 'all', newOnly = false, query = '';
   let rows = [], sortKey = 'tf_getiri', sortDir = -1;
 
   function drawTabs(){
@@ -205,9 +209,9 @@
   function applyFilter(list){
     let out = list;
     if(activeTab !== 'rel'){
-      if(activeFilter === 's1') out = out.filter(r => r.sinyal_1);
-      else if(activeFilter === 's2') out = out.filter(r => r.sinyal_2);
-      else if(activeFilter === 'new') out = out.filter(r => (r.sinyal_1 || r.sinyal_2) && (r.hist_streak || 0) === 1);
+      if(activeSignal === 's1') out = out.filter(r => r.sinyal_1);
+      else if(activeSignal === 's2') out = out.filter(r => r.sinyal_2);
+      if(newOnly) out = out.filter(r => (r.sinyal_1 || r.sinyal_2) && (r.hist_streak || 0) === 1);
     }
     if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
     return out;
@@ -328,11 +332,16 @@
     draw();
   }
 
-  document.querySelectorAll('.fbtn').forEach(b => b.onclick = () => {
-    activeFilter = b.dataset.f;
-    document.querySelectorAll('.fbtn').forEach(x => x.classList.toggle('active', x.dataset.f === activeFilter));
+  document.querySelectorAll('.fgroup[data-g="sig"] .fbtn').forEach(b => b.onclick = () => {
+    activeSignal = b.dataset.f;
+    document.querySelectorAll('.fgroup[data-g="sig"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.f === activeSignal));
     draw();
   });
+  document.querySelector('.fbtn[data-g="new"]').onclick = (e) => {
+    newOnly = !newOnly;
+    e.currentTarget.classList.toggle('active', newOnly);
+    draw();
+  };
 
   document.getElementById('q').addEventListener('input', e => {
     query = e.target.value.trim().toLowerCase();
