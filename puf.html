@@ -86,6 +86,11 @@
     .mom-up { color:var(--green-fg); }
     .mom-dn { color:var(--red-fg); }
 
+    .ath { font-size:11.5px; }
+    .ath-near { color:var(--green-fg); font-weight:700; }
+    .ath-mid { color:var(--muted); }
+    .ath-far { color:var(--dim); }
+
     .pos { color:var(--green-fg); } .neg { color:var(--red-fg); } .neu { color:var(--muted); } .dimc { color:var(--dim); }
 
     .bar-wrap { position:relative; width:60px; height:5px; background:var(--s2); border-radius:3px; overflow:hidden; display:inline-block; vertical-align:middle; margin-left:6px; }
@@ -179,6 +184,15 @@
   const pct = (v,d=2) => v==null ? '—' : (v>=0?'+':'')+v.toFixed(d)+'%';
   const cls = v => v==null?'neu':(v>0?'pos':v<0?'neg':'neu');
 
+  function athCell(sym){
+    const a = DATA?.ath_map?.[sym];
+    if(!a || a.uzaklik == null) return '<span class="ath ath-far">—</span>';
+    const u = a.uzaklik;
+    const kls = u >= -3 ? 'ath-near' : u >= -15 ? 'ath' : u >= -35 ? 'ath-mid' : 'ath-far';
+    const label = u >= -0.5 ? 'ATH' : u.toFixed(1) + '%';
+    return `<span class="ath ${kls}" title="ATH: ${a.ath}">${label}</span>`;
+  }
+
   let DATA = null, activeTab = '1h', activeSignal = 'all', newOnly = false, query = '';
   let rows = [], sortKey = 'tf_getiri', sortDir = -1;
 
@@ -229,6 +243,7 @@
         <th data-k="rel.haftalik.fark" data-t="n">1H Fark</th>
         <th data-k="rel.aylik.sembol" data-t="n">1A Getiri</th>
         <th data-k="rel.aylik.fark" data-t="n">1A Fark</th>
+        <th data-k="ath_uzaklik" data-t="n" title="Fiyatın tarihi zirveye uzaklığı">ATH</th>
       `;
     } else {
       row.innerHTML = `
@@ -238,6 +253,7 @@
         <th data-k="tf_endeks" data-t="n">XU100</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ema50_uzaklik" data-t="n">EMA50↑</th>
+        <th data-k="ath_uzaklik" data-t="n" title="Fiyatın tarihi zirveye uzaklığı">ATH</th>
         <th data-k="hist_streak_signed" data-t="n" title="Histogram delta yönünün kaç bardır aynı kaldığı">Bar</th>
       `;
     }
@@ -252,6 +268,7 @@
   function getVal(r, k){
     if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
     if(k === 'hist_streak_signed') return (r.hist_streak || 0) * (r.hist_streak_yon || 0);
+    if(k === 'ath_uzaklik'){ const a = DATA?.ath_map?.[r.sembol]; return a ? a.uzaklik : null; }
     if(k.includes('.')){
       const parts = k.split('.');
       let v = r;
@@ -299,6 +316,7 @@
           <td class="ret ${cls(rh?.fark)}"><span class="diff-cell">${pct(rh?.fark)}${barCell(rh?.fark)}</span></td>
           <td class="ret ${cls(ra?.sembol)}">${pct(ra?.sembol)}</td>
           <td class="ret ${cls(ra?.fark)}"><span class="diff-cell">${pct(ra?.fark)}${barCell(ra?.fark)}</span></td>
+          <td>${athCell(r.sembol)}</td>
         </tr>`;
       }).join('');
     } else {
@@ -319,6 +337,7 @@
           <td class="dimc">${pct(r.tf_endeks)}</td>
           <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
           <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik,1)}</td>
+          <td>${athCell(r.sembol)}</td>
           <td><span class="mom-cell ${streakDir}" title="${streak} bardır ${yon>0?'artıyor':yon<0?'azalıyor':''}">${streakText}</span></td>
         </tr>`;
       }).join('');
