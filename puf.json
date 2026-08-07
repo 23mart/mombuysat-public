@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-08-07 09:31",
+  "guncelleme": "2026-08-07 09:52",
   "tolerans": 1.0,
   "endex": "XU100.IS",
   "dilimler": {
@@ -103,40 +103,6 @@
             "sembol": -4.03,
             "endeks": -4.82,
             "fark": 0.79
-          }
-        }
-      },
-      {
-        "sembol": "DUNYH",
-        "close": 109.1,
-        "macd": 0.0,
-        "macd_pct": 0.0,
-        "macdh": -0.0,
-        "macdh_prev": -0.0,
-        "ema50": 109.1,
-        "ema50_uzaklik": 0.0,
-        "hist_streak": 190,
-        "hist_streak_yon": 1,
-        "sinyal_1": true,
-        "sinyal_2": false,
-        "tf_getiri": 0.0,
-        "tf_endeks": 0.7,
-        "tf_fark": -0.7,
-        "rel": {
-          "gunluk": {
-            "sembol": 0.0,
-            "endeks": 0.7,
-            "fark": -0.7
-          },
-          "haftalik": {
-            "sembol": 0.0,
-            "endeks": 3.81,
-            "fark": -3.81
-          },
-          "aylik": {
-            "sembol": 0.0,
-            "endeks": -4.82,
-            "fark": 4.82
           }
         }
       },
@@ -453,7 +419,7 @@
         "macd_pct": 0.31,
         "macdh": -5866.159,
         "macdh_prev": -7396.371,
-        "ema50": 474036.61,
+        "ema50": 474036.34,
         "ema50_uzaklik": 3.87,
         "hist_streak": 3,
         "hist_streak_yon": 1,
@@ -4151,7 +4117,7 @@
   "rel_gucu_endeks_ustu": [
     {
       "sembol": "A1YEN",
-      "close": null,
+      "close": 2.71,
       "rel": {
         "gunluk": {
           "sembol": 1.5,
@@ -4172,7 +4138,7 @@
     },
     {
       "sembol": "AAGYO",
-      "close": null,
+      "close": 13.27,
       "rel": {
         "gunluk": {
           "sembol": 1.53,
@@ -4193,7 +4159,7 @@
     },
     {
       "sembol": "ADGYO",
-      "close": null,
+      "close": 55.05,
       "rel": {
         "gunluk": {
           "sembol": 5.26,
@@ -4214,7 +4180,7 @@
     },
     {
       "sembol": "AEFES",
-      "close": null,
+      "close": 21.32,
       "rel": {
         "gunluk": {
           "sembol": -1.02,
@@ -4235,7 +4201,7 @@
     },
     {
       "sembol": "AFYON",
-      "close": null,
+      "close": 12.55,
       "rel": {
         "gunluk": {
           "sembol": -1.49,
@@ -4256,7 +4222,7 @@
     },
     {
       "sembol": "AGESA",
-      "close": null,
+      "close": 244.6,
       "rel": {
         "gunluk": {
           "sembol": 0.82,
@@ -4277,7 +4243,7 @@
     },
     {
       "sembol": "AGHOL",
-      "close": null,
+      "close": 35.24,
       "rel": {
         "gunluk": {
           "sembol": -0.9,
@@ -4298,7 +4264,7 @@
     },
     {
       "sembol": "AKCNS",
-      "close": null,
+      "close": 234.6,
       "rel": {
         "gunluk": {
           "sembol": -1.14,
@@ -4319,7 +4285,7 @@
     },
     {
       "sembol": "AKFGY",
-      "close": null,
+      "close": 2.68,
       "rel": {
         "gunluk": {
           "sembol": -1.11,
@@ -4340,7 +4306,7 @@
     },
     {
       "sembol": "AKFIS",
-      "close": null,
+      "close": 98.3,
       "rel": {
         "gunluk": {
           "sembol": 2.45,
@@ -4361,7 +4327,7 @@
     },
     {
       "sembol": "AKFYE",
-      "close": null,
+      "close": 23.4,
       "rel": {
         "gunluk": {
           "sembol": -1.76,
@@ -4382,7 +4348,7 @@
     },
     {
       "sembol": "AKHAN",
-      "close": null,
+      "close": 40.02,
       "rel": {
         "gunluk": {
           "sembol": -3.15,
@@ -4403,7 +4369,7 @@
     },
     {
       "sembol": "AKMGY",
-      "close": null,
+      "close": 241.6,
       "rel": {
         "gunluk": {
           "sembol": -0.54,
@@ -4424,7 +4390,7 @@
     },
     {
       "sembol": "AKSA",
-      "close": null,
+      "close": 12.53,
       "rel": {
         "gunluk": {
           "sembol": -0.08,
@@ -4445,7 +4411,7 @@
     },
     {
       "sembol": "AKSEN",
-      "close": null,
+      "close": 96.15,
       "rel": {
         "gunluk": {
           "sembol": 1.37,
@@ -4466,7 +4432,7 @@
     },
     {
       "sembol": "AKSGY",
-      "close": null,
+      "close": 9.73,
       "rel": {
         "gunluk": {
           "sembol": 0.72,
@@ -4487,7 +4453,7 @@
     },
     {
       "sembol": "AKSUE",
-      "close": null,
+      "close": 46.3,
       "rel": {
         "gunluk": {
           "sembol": 1.67,
@@ -4508,7 +4474,7 @@
     },
     {
       "sembol": "ALARK",
-      "close": null,
+      "close": 101.1,
       "rel": {
         "gunluk": {
           "sembol": -2.69,
@@ -4529,7 +4495,7 @@
     },
     {
       "sembol": "ALBRK",
-      "close": null,
+      "close": 8.4,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -4550,7 +4516,7 @@
     },
     {
       "sembol": "ALCTL",
-      "close": null,
+      "close": 181.9,
       "rel": {
         "gunluk": {
           "sembol": 2.31,
@@ -4571,7 +4537,7 @@
     },
     {
       "sembol": "ALKIM",
-      "close": null,
+      "close": 16.1,
       "rel": {
         "gunluk": {
           "sembol": 2.74,
@@ -4592,7 +4558,7 @@
     },
     {
       "sembol": "ALKLC",
-      "close": null,
+      "close": 409.0,
       "rel": {
         "gunluk": {
           "sembol": 2.25,
@@ -4613,7 +4579,7 @@
     },
     {
       "sembol": "ANELE",
-      "close": null,
+      "close": 114.0,
       "rel": {
         "gunluk": {
           "sembol": -5.55,
@@ -4634,7 +4600,7 @@
     },
     {
       "sembol": "ANHYT",
-      "close": null,
+      "close": 122.5,
       "rel": {
         "gunluk": {
           "sembol": 3.2,
@@ -4655,7 +4621,7 @@
     },
     {
       "sembol": "ANSGR",
-      "close": null,
+      "close": 28.32,
       "rel": {
         "gunluk": {
           "sembol": 1.14,
@@ -4676,7 +4642,7 @@
     },
     {
       "sembol": "ARCLK",
-      "close": null,
+      "close": 98.1,
       "rel": {
         "gunluk": {
           "sembol": 0.67,
@@ -4697,7 +4663,7 @@
     },
     {
       "sembol": "ARDYZ",
-      "close": null,
+      "close": 74.9,
       "rel": {
         "gunluk": {
           "sembol": -2.47,
@@ -4718,7 +4684,7 @@
     },
     {
       "sembol": "ARFYE",
-      "close": null,
+      "close": 30.92,
       "rel": {
         "gunluk": {
           "sembol": -0.71,
@@ -4739,7 +4705,7 @@
     },
     {
       "sembol": "ARMGD",
-      "close": null,
+      "close": 198.3,
       "rel": {
         "gunluk": {
           "sembol": 5.53,
@@ -4760,7 +4726,7 @@
     },
     {
       "sembol": "ASGYO",
-      "close": null,
+      "close": 11.09,
       "rel": {
         "gunluk": {
           "sembol": 1.56,
@@ -4781,7 +4747,7 @@
     },
     {
       "sembol": "ASTOR",
-      "close": null,
+      "close": 311.0,
       "rel": {
         "gunluk": {
           "sembol": 2.73,
@@ -4802,7 +4768,7 @@
     },
     {
       "sembol": "ATAKP",
-      "close": null,
+      "close": 50.75,
       "rel": {
         "gunluk": {
           "sembol": -1.26,
@@ -4823,7 +4789,7 @@
     },
     {
       "sembol": "ATATP",
-      "close": null,
+      "close": 248.7,
       "rel": {
         "gunluk": {
           "sembol": 2.3,
@@ -4844,7 +4810,7 @@
     },
     {
       "sembol": "ATSYH",
-      "close": null,
+      "close": 115.0,
       "rel": {
         "gunluk": {
           "sembol": -3.36,
@@ -4865,7 +4831,7 @@
     },
     {
       "sembol": "AVGYO",
-      "close": null,
+      "close": 13.87,
       "rel": {
         "gunluk": {
           "sembol": 3.51,
@@ -4886,7 +4852,7 @@
     },
     {
       "sembol": "AVHOL",
-      "close": null,
+      "close": 37.58,
       "rel": {
         "gunluk": {
           "sembol": 1.84,
@@ -4907,7 +4873,7 @@
     },
     {
       "sembol": "AYDEM",
-      "close": null,
+      "close": 23.5,
       "rel": {
         "gunluk": {
           "sembol": 1.91,
@@ -4928,7 +4894,7 @@
     },
     {
       "sembol": "AYEN",
-      "close": null,
+      "close": 33.34,
       "rel": {
         "gunluk": {
           "sembol": 4.58,
@@ -4949,7 +4915,7 @@
     },
     {
       "sembol": "AYES",
-      "close": null,
+      "close": 28.32,
       "rel": {
         "gunluk": {
           "sembol": 7.6,
@@ -4970,7 +4936,7 @@
     },
     {
       "sembol": "AYGAZ",
-      "close": null,
+      "close": 267.5,
       "rel": {
         "gunluk": {
           "sembol": 4.39,
@@ -4991,7 +4957,7 @@
     },
     {
       "sembol": "BAHKM",
-      "close": null,
+      "close": 124.8,
       "rel": {
         "gunluk": {
           "sembol": 1.22,
@@ -5012,7 +4978,7 @@
     },
     {
       "sembol": "BALAT",
-      "close": null,
+      "close": 75.75,
       "rel": {
         "gunluk": {
           "sembol": 3.63,
@@ -5033,7 +4999,7 @@
     },
     {
       "sembol": "BASGZ",
-      "close": null,
+      "close": 45.02,
       "rel": {
         "gunluk": {
           "sembol": 1.17,
@@ -5054,7 +5020,7 @@
     },
     {
       "sembol": "BESTE",
-      "close": null,
+      "close": 28.38,
       "rel": {
         "gunluk": {
           "sembol": 1.5,
@@ -5075,7 +5041,7 @@
     },
     {
       "sembol": "BIGEN",
-      "close": null,
+      "close": 104.6,
       "rel": {
         "gunluk": {
           "sembol": 4.7,
@@ -5096,7 +5062,7 @@
     },
     {
       "sembol": "BIGTK",
-      "close": null,
+      "close": 375.0,
       "rel": {
         "gunluk": {
           "sembol": 2.46,
@@ -5117,7 +5083,7 @@
     },
     {
       "sembol": "BIMAS",
-      "close": null,
+      "close": 382.25,
       "rel": {
         "gunluk": {
           "sembol": -0.91,
@@ -5138,7 +5104,7 @@
     },
     {
       "sembol": "BINBN",
-      "close": null,
+      "close": 178.5,
       "rel": {
         "gunluk": {
           "sembol": 1.19,
@@ -5159,7 +5125,7 @@
     },
     {
       "sembol": "BIOEN",
-      "close": null,
+      "close": 17.98,
       "rel": {
         "gunluk": {
           "sembol": 0.45,
@@ -5180,7 +5146,7 @@
     },
     {
       "sembol": "BIZIM",
-      "close": null,
+      "close": 24.24,
       "rel": {
         "gunluk": {
           "sembol": 2.97,
@@ -5201,7 +5167,7 @@
     },
     {
       "sembol": "BJKAS",
-      "close": null,
+      "close": 1.75,
       "rel": {
         "gunluk": {
           "sembol": -1.13,
@@ -5222,7 +5188,7 @@
     },
     {
       "sembol": "BMSTL",
-      "close": null,
+      "close": 44.98,
       "rel": {
         "gunluk": {
           "sembol": 4.65,
@@ -5243,7 +5209,7 @@
     },
     {
       "sembol": "BNTAS",
-      "close": null,
+      "close": 6.21,
       "rel": {
         "gunluk": {
           "sembol": -1.11,
@@ -5264,7 +5230,7 @@
     },
     {
       "sembol": "BOSSA",
-      "close": null,
+      "close": 6.21,
       "rel": {
         "gunluk": {
           "sembol": -0.32,
@@ -5285,7 +5251,7 @@
     },
     {
       "sembol": "BRISA",
-      "close": null,
+      "close": 78.85,
       "rel": {
         "gunluk": {
           "sembol": 0.96,
@@ -5306,7 +5272,7 @@
     },
     {
       "sembol": "BRKSN",
-      "close": null,
+      "close": 8.07,
       "rel": {
         "gunluk": {
           "sembol": 1.51,
@@ -5327,7 +5293,7 @@
     },
     {
       "sembol": "BRLSM",
-      "close": null,
+      "close": 16.7,
       "rel": {
         "gunluk": {
           "sembol": 9.94,
@@ -5348,7 +5314,7 @@
     },
     {
       "sembol": "BRSAN",
-      "close": null,
+      "close": 575.5,
       "rel": {
         "gunluk": {
           "sembol": 4.16,
@@ -5369,7 +5335,7 @@
     },
     {
       "sembol": "BRYAT",
-      "close": null,
+      "close": 1771.0,
       "rel": {
         "gunluk": {
           "sembol": 2.37,
@@ -5390,7 +5356,7 @@
     },
     {
       "sembol": "BSOKE",
-      "close": null,
+      "close": 35.7,
       "rel": {
         "gunluk": {
           "sembol": 2.23,
@@ -5411,7 +5377,7 @@
     },
     {
       "sembol": "BURCE",
-      "close": null,
+      "close": 38.0,
       "rel": {
         "gunluk": {
           "sembol": 1.06,
@@ -5432,7 +5398,7 @@
     },
     {
       "sembol": "BURVA",
-      "close": null,
+      "close": 930.0,
       "rel": {
         "gunluk": {
           "sembol": 9.03,
@@ -5453,7 +5419,7 @@
     },
     {
       "sembol": "BYDNR",
-      "close": null,
+      "close": 38.28,
       "rel": {
         "gunluk": {
           "sembol": -1.19,
@@ -5474,7 +5440,7 @@
     },
     {
       "sembol": "CATES",
-      "close": null,
+      "close": 49.32,
       "rel": {
         "gunluk": {
           "sembol": 0.94,
@@ -5495,7 +5461,7 @@
     },
     {
       "sembol": "CCOLA",
-      "close": null,
+      "close": 87.95,
       "rel": {
         "gunluk": {
           "sembol": 0.86,
@@ -5516,7 +5482,7 @@
     },
     {
       "sembol": "CELHA",
-      "close": null,
+      "close": 25.6,
       "rel": {
         "gunluk": {
           "sembol": -3.76,
@@ -5537,7 +5503,7 @@
     },
     {
       "sembol": "CEOEM",
-      "close": null,
+      "close": 23.36,
       "rel": {
         "gunluk": {
           "sembol": 0.78,
@@ -5558,7 +5524,7 @@
     },
     {
       "sembol": "COSMO",
-      "close": null,
+      "close": 117.4,
       "rel": {
         "gunluk": {
           "sembol": 0.95,
@@ -5579,7 +5545,7 @@
     },
     {
       "sembol": "CRDFA",
-      "close": null,
+      "close": 37.82,
       "rel": {
         "gunluk": {
           "sembol": -10.0,
@@ -5600,7 +5566,7 @@
     },
     {
       "sembol": "CRFSA",
-      "close": null,
+      "close": 174.0,
       "rel": {
         "gunluk": {
           "sembol": -1.14,
@@ -5621,7 +5587,7 @@
     },
     {
       "sembol": "CUSAN",
-      "close": null,
+      "close": 23.64,
       "rel": {
         "gunluk": {
           "sembol": -1.5,
@@ -5642,7 +5608,7 @@
     },
     {
       "sembol": "CVKMD",
-      "close": null,
+      "close": 15.21,
       "rel": {
         "gunluk": {
           "sembol": 2.16,
@@ -5663,7 +5629,7 @@
     },
     {
       "sembol": "CWENE",
-      "close": null,
+      "close": 44.2,
       "rel": {
         "gunluk": {
           "sembol": 7.44,
@@ -5684,7 +5650,7 @@
     },
     {
       "sembol": "DAGI",
-      "close": null,
+      "close": 9.36,
       "rel": {
         "gunluk": {
           "sembol": -0.11,
@@ -5705,7 +5671,7 @@
     },
     {
       "sembol": "DESA",
-      "close": null,
+      "close": 9.62,
       "rel": {
         "gunluk": {
           "sembol": 1.48,
@@ -5726,7 +5692,7 @@
     },
     {
       "sembol": "DGATE",
-      "close": null,
+      "close": 112.3,
       "rel": {
         "gunluk": {
           "sembol": 1.54,
@@ -5747,7 +5713,7 @@
     },
     {
       "sembol": "DGNMO",
-      "close": null,
+      "close": 8.78,
       "rel": {
         "gunluk": {
           "sembol": -1.24,
@@ -5768,7 +5734,7 @@
     },
     {
       "sembol": "DIRIT",
-      "close": null,
+      "close": 22.28,
       "rel": {
         "gunluk": {
           "sembol": 1.18,
@@ -5789,7 +5755,7 @@
     },
     {
       "sembol": "DITAS",
-      "close": null,
+      "close": 25.0,
       "rel": {
         "gunluk": {
           "sembol": 2.8,
@@ -5810,7 +5776,7 @@
     },
     {
       "sembol": "DOAS",
-      "close": null,
+      "close": 191.8,
       "rel": {
         "gunluk": {
           "sembol": 2.02,
@@ -5831,7 +5797,7 @@
     },
     {
       "sembol": "DOCO",
-      "close": null,
+      "close": 11462.5,
       "rel": {
         "gunluk": {
           "sembol": 0.55,
@@ -5852,7 +5818,7 @@
     },
     {
       "sembol": "DOHOL",
-      "close": null,
+      "close": 21.08,
       "rel": {
         "gunluk": {
           "sembol": 2.23,
@@ -5873,7 +5839,7 @@
     },
     {
       "sembol": "DUNYH",
-      "close": null,
+      "close": 109.1,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -5894,7 +5860,7 @@
     },
     {
       "sembol": "DURDO",
-      "close": null,
+      "close": 5.1,
       "rel": {
         "gunluk": {
           "sembol": 2.0,
@@ -5915,7 +5881,7 @@
     },
     {
       "sembol": "DURKN",
-      "close": null,
+      "close": 19.02,
       "rel": {
         "gunluk": {
           "sembol": 8.07,
@@ -5936,7 +5902,7 @@
     },
     {
       "sembol": "EBEBK",
-      "close": null,
+      "close": 88.45,
       "rel": {
         "gunluk": {
           "sembol": -2.59,
@@ -5957,7 +5923,7 @@
     },
     {
       "sembol": "ECZYT",
-      "close": null,
+      "close": 322.0,
       "rel": {
         "gunluk": {
           "sembol": -0.92,
@@ -5978,7 +5944,7 @@
     },
     {
       "sembol": "EDATA",
-      "close": null,
+      "close": 19.15,
       "rel": {
         "gunluk": {
           "sembol": 4.64,
@@ -5999,7 +5965,7 @@
     },
     {
       "sembol": "EDIP",
-      "close": null,
+      "close": 38.88,
       "rel": {
         "gunluk": {
           "sembol": 5.31,
@@ -6020,7 +5986,7 @@
     },
     {
       "sembol": "EFOR",
-      "close": null,
+      "close": 18.35,
       "rel": {
         "gunluk": {
           "sembol": 1.94,
@@ -6041,7 +6007,7 @@
     },
     {
       "sembol": "EGEGY",
-      "close": null,
+      "close": 29.12,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -6062,7 +6028,7 @@
     },
     {
       "sembol": "EGEPO",
-      "close": null,
+      "close": 18.65,
       "rel": {
         "gunluk": {
           "sembol": 1.91,
@@ -6083,7 +6049,7 @@
     },
     {
       "sembol": "EGSER",
-      "close": null,
+      "close": 2.84,
       "rel": {
         "gunluk": {
           "sembol": 3.65,
@@ -6104,7 +6070,7 @@
     },
     {
       "sembol": "EMNIS",
-      "close": null,
+      "close": 164.9,
       "rel": {
         "gunluk": {
           "sembol": -4.13,
@@ -6125,7 +6091,7 @@
     },
     {
       "sembol": "EMPAE",
-      "close": null,
+      "close": 69.15,
       "rel": {
         "gunluk": {
           "sembol": 9.94,
@@ -6146,7 +6112,7 @@
     },
     {
       "sembol": "ENJSA",
-      "close": null,
+      "close": 113.0,
       "rel": {
         "gunluk": {
           "sembol": 3.2,
@@ -6167,7 +6133,7 @@
     },
     {
       "sembol": "ENKAI",
-      "close": null,
+      "close": 87.1,
       "rel": {
         "gunluk": {
           "sembol": 1.46,
@@ -6188,7 +6154,7 @@
     },
     {
       "sembol": "ENTRA",
-      "close": null,
+      "close": 4.93,
       "rel": {
         "gunluk": {
           "sembol": 2.07,
@@ -6209,7 +6175,7 @@
     },
     {
       "sembol": "ERCB",
-      "close": null,
+      "close": 47.8,
       "rel": {
         "gunluk": {
           "sembol": -0.87,
@@ -6230,7 +6196,7 @@
     },
     {
       "sembol": "EREGL",
-      "close": null,
+      "close": 41.98,
       "rel": {
         "gunluk": {
           "sembol": 0.57,
@@ -6251,7 +6217,7 @@
     },
     {
       "sembol": "ERSU",
-      "close": null,
+      "close": 22.96,
       "rel": {
         "gunluk": {
           "sembol": 1.15,
@@ -6272,7 +6238,7 @@
     },
     {
       "sembol": "ESCOM",
-      "close": null,
+      "close": 5.94,
       "rel": {
         "gunluk": {
           "sembol": 10.0,
@@ -6293,7 +6259,7 @@
     },
     {
       "sembol": "ETILR",
-      "close": null,
+      "close": 5.88,
       "rel": {
         "gunluk": {
           "sembol": 0.17,
@@ -6314,7 +6280,7 @@
     },
     {
       "sembol": "ETYAT",
-      "close": null,
+      "close": 13.24,
       "rel": {
         "gunluk": {
           "sembol": -1.12,
@@ -6335,7 +6301,7 @@
     },
     {
       "sembol": "EUHOL",
-      "close": null,
+      "close": 10.29,
       "rel": {
         "gunluk": {
           "sembol": 1.88,
@@ -6356,7 +6322,7 @@
     },
     {
       "sembol": "EUKYO",
-      "close": null,
+      "close": 12.95,
       "rel": {
         "gunluk": {
           "sembol": -1.52,
@@ -6377,7 +6343,7 @@
     },
     {
       "sembol": "EUPWR",
-      "close": null,
+      "close": 91.4,
       "rel": {
         "gunluk": {
           "sembol": 0.33,
@@ -6398,7 +6364,7 @@
     },
     {
       "sembol": "EYGYO",
-      "close": null,
+      "close": 2.59,
       "rel": {
         "gunluk": {
           "sembol": 7.02,
@@ -6419,7 +6385,7 @@
     },
     {
       "sembol": "FADE",
-      "close": null,
+      "close": 15.45,
       "rel": {
         "gunluk": {
           "sembol": 0.72,
@@ -6440,7 +6406,7 @@
     },
     {
       "sembol": "FENER",
-      "close": null,
+      "close": 3.02,
       "rel": {
         "gunluk": {
           "sembol": -0.33,
@@ -6461,7 +6427,7 @@
     },
     {
       "sembol": "FONET",
-      "close": null,
+      "close": 5.22,
       "rel": {
         "gunluk": {
           "sembol": 2.96,
@@ -6482,7 +6448,7 @@
     },
     {
       "sembol": "FORTE",
-      "close": null,
+      "close": 114.6,
       "rel": {
         "gunluk": {
           "sembol": 1.51,
@@ -6503,7 +6469,7 @@
     },
     {
       "sembol": "FRIGO",
-      "close": null,
+      "close": 2.19,
       "rel": {
         "gunluk": {
           "sembol": 1.39,
@@ -6524,7 +6490,7 @@
     },
     {
       "sembol": "FRMPL",
-      "close": null,
+      "close": 34.74,
       "rel": {
         "gunluk": {
           "sembol": 5.4,
@@ -6545,7 +6511,7 @@
     },
     {
       "sembol": "FROTO",
-      "close": null,
+      "close": 80.45,
       "rel": {
         "gunluk": {
           "sembol": -0.12,
@@ -6566,7 +6532,7 @@
     },
     {
       "sembol": "GARAN",
-      "close": null,
+      "close": 129.7,
       "rel": {
         "gunluk": {
           "sembol": -1.59,
@@ -6587,7 +6553,7 @@
     },
     {
       "sembol": "GENIL",
-      "close": null,
+      "close": 9.67,
       "rel": {
         "gunluk": {
           "sembol": 2.65,
@@ -6608,7 +6574,7 @@
     },
     {
       "sembol": "GEREL",
-      "close": null,
+      "close": 43.1,
       "rel": {
         "gunluk": {
           "sembol": 1.41,
@@ -6629,7 +6595,7 @@
     },
     {
       "sembol": "GESAN",
-      "close": null,
+      "close": 81.5,
       "rel": {
         "gunluk": {
           "sembol": 2.07,
@@ -6650,7 +6616,7 @@
     },
     {
       "sembol": "GIPTA",
-      "close": null,
+      "close": 63.0,
       "rel": {
         "gunluk": {
           "sembol": 7.14,
@@ -6671,7 +6637,7 @@
     },
     {
       "sembol": "GLRMK",
-      "close": null,
+      "close": 159.5,
       "rel": {
         "gunluk": {
           "sembol": 4.32,
@@ -6692,7 +6658,7 @@
     },
     {
       "sembol": "GMTAS",
-      "close": null,
+      "close": 45.88,
       "rel": {
         "gunluk": {
           "sembol": -0.65,
@@ -6713,7 +6679,7 @@
     },
     {
       "sembol": "GOKNR",
-      "close": null,
+      "close": 22.96,
       "rel": {
         "gunluk": {
           "sembol": -2.38,
@@ -6734,7 +6700,7 @@
     },
     {
       "sembol": "GOZDE",
-      "close": null,
+      "close": 25.12,
       "rel": {
         "gunluk": {
           "sembol": -2.64,
@@ -6755,7 +6721,7 @@
     },
     {
       "sembol": "GRNYO",
-      "close": null,
+      "close": 15.45,
       "rel": {
         "gunluk": {
           "sembol": 5.39,
@@ -6776,7 +6742,7 @@
     },
     {
       "sembol": "GRSEL",
-      "close": null,
+      "close": 340.75,
       "rel": {
         "gunluk": {
           "sembol": -0.29,
@@ -6797,7 +6763,7 @@
     },
     {
       "sembol": "GRTHO",
-      "close": null,
+      "close": 240.5,
       "rel": {
         "gunluk": {
           "sembol": 0.63,
@@ -6818,7 +6784,7 @@
     },
     {
       "sembol": "GSDDE",
-      "close": null,
+      "close": 13.5,
       "rel": {
         "gunluk": {
           "sembol": 2.12,
@@ -6839,7 +6805,7 @@
     },
     {
       "sembol": "GSRAY",
-      "close": null,
+      "close": 0.99,
       "rel": {
         "gunluk": {
           "sembol": 2.06,
@@ -6860,7 +6826,7 @@
     },
     {
       "sembol": "GUBRF",
-      "close": null,
+      "close": 431.0,
       "rel": {
         "gunluk": {
           "sembol": 4.23,
@@ -6881,7 +6847,7 @@
     },
     {
       "sembol": "GUNDG",
-      "close": null,
+      "close": 1540.0,
       "rel": {
         "gunluk": {
           "sembol": 10.0,
@@ -6902,7 +6868,7 @@
     },
     {
       "sembol": "HATSN",
-      "close": null,
+      "close": 55.65,
       "rel": {
         "gunluk": {
           "sembol": -3.13,
@@ -6923,7 +6889,7 @@
     },
     {
       "sembol": "HEDEF",
-      "close": null,
+      "close": 329.5,
       "rel": {
         "gunluk": {
           "sembol": -9.97,
@@ -6944,7 +6910,7 @@
     },
     {
       "sembol": "HKTM",
-      "close": null,
+      "close": 11.11,
       "rel": {
         "gunluk": {
           "sembol": -3.39,
@@ -6965,7 +6931,7 @@
     },
     {
       "sembol": "HRKET",
-      "close": null,
+      "close": 97.1,
       "rel": {
         "gunluk": {
           "sembol": 2.1,
@@ -6986,7 +6952,7 @@
     },
     {
       "sembol": "HTTBT",
-      "close": null,
+      "close": 38.88,
       "rel": {
         "gunluk": {
           "sembol": 0.41,
@@ -7007,7 +6973,7 @@
     },
     {
       "sembol": "HUBVC",
-      "close": null,
+      "close": 2.76,
       "rel": {
         "gunluk": {
           "sembol": 2.22,
@@ -7028,7 +6994,7 @@
     },
     {
       "sembol": "HURGZ",
-      "close": null,
+      "close": 7.42,
       "rel": {
         "gunluk": {
           "sembol": 1.92,
@@ -7049,7 +7015,7 @@
     },
     {
       "sembol": "ICBCT",
-      "close": null,
+      "close": 21.4,
       "rel": {
         "gunluk": {
           "sembol": -2.73,
@@ -7070,7 +7036,7 @@
     },
     {
       "sembol": "IEYHO",
-      "close": null,
+      "close": 171.0,
       "rel": {
         "gunluk": {
           "sembol": 1.54,
@@ -7091,7 +7057,7 @@
     },
     {
       "sembol": "IHEVA",
-      "close": null,
+      "close": 1.98,
       "rel": {
         "gunluk": {
           "sembol": 1.54,
@@ -7112,7 +7078,7 @@
     },
     {
       "sembol": "IHYAY",
-      "close": null,
+      "close": 1.3,
       "rel": {
         "gunluk": {
           "sembol": 6.56,
@@ -7133,7 +7099,7 @@
     },
     {
       "sembol": "INDES",
-      "close": null,
+      "close": 10.6,
       "rel": {
         "gunluk": {
           "sembol": 1.63,
@@ -7154,7 +7120,7 @@
     },
     {
       "sembol": "INFO",
-      "close": null,
+      "close": 6.89,
       "rel": {
         "gunluk": {
           "sembol": 9.89,
@@ -7175,7 +7141,7 @@
     },
     {
       "sembol": "INTEK",
-      "close": null,
+      "close": 307.0,
       "rel": {
         "gunluk": {
           "sembol": -5.9,
@@ -7196,7 +7162,7 @@
     },
     {
       "sembol": "INVES",
-      "close": null,
+      "close": 742.0,
       "rel": {
         "gunluk": {
           "sembol": 0.95,
@@ -7217,7 +7183,7 @@
     },
     {
       "sembol": "ISBIR",
-      "close": null,
+      "close": 67.0,
       "rel": {
         "gunluk": {
           "sembol": 1.67,
@@ -7238,7 +7204,7 @@
     },
     {
       "sembol": "ISDMR",
-      "close": null,
+      "close": 53.5,
       "rel": {
         "gunluk": {
           "sembol": -0.37,
@@ -7259,7 +7225,7 @@
     },
     {
       "sembol": "ISFIN",
-      "close": null,
+      "close": 20.0,
       "rel": {
         "gunluk": {
           "sembol": 0.15,
@@ -7280,7 +7246,7 @@
     },
     {
       "sembol": "ISGYO",
-      "close": null,
+      "close": 26.14,
       "rel": {
         "gunluk": {
           "sembol": -0.68,
@@ -7301,7 +7267,7 @@
     },
     {
       "sembol": "ISKPL",
-      "close": null,
+      "close": 7.28,
       "rel": {
         "gunluk": {
           "sembol": -0.95,
@@ -7343,7 +7309,7 @@
     },
     {
       "sembol": "ISMEN",
-      "close": null,
+      "close": 34.62,
       "rel": {
         "gunluk": {
           "sembol": -0.92,
@@ -7364,7 +7330,7 @@
     },
     {
       "sembol": "IZFAS",
-      "close": null,
+      "close": 66.0,
       "rel": {
         "gunluk": {
           "sembol": 1.23,
@@ -7385,7 +7351,7 @@
     },
     {
       "sembol": "IZMDC",
-      "close": null,
+      "close": 13.45,
       "rel": {
         "gunluk": {
           "sembol": 3.22,
@@ -7406,7 +7372,7 @@
     },
     {
       "sembol": "KARSN",
-      "close": null,
+      "close": 10.09,
       "rel": {
         "gunluk": {
           "sembol": 1.41,
@@ -7427,7 +7393,7 @@
     },
     {
       "sembol": "KARTN",
-      "close": null,
+      "close": 187.0,
       "rel": {
         "gunluk": {
           "sembol": -2.86,
@@ -7448,7 +7414,7 @@
     },
     {
       "sembol": "KCAER",
-      "close": null,
+      "close": 14.9,
       "rel": {
         "gunluk": {
           "sembol": 0.95,
@@ -7469,7 +7435,7 @@
     },
     {
       "sembol": "KCHOL",
-      "close": null,
+      "close": 206.0,
       "rel": {
         "gunluk": {
           "sembol": 3.57,
@@ -7490,7 +7456,7 @@
     },
     {
       "sembol": "KENT",
-      "close": null,
+      "close": 355.0,
       "rel": {
         "gunluk": {
           "sembol": 9.99,
@@ -7511,7 +7477,7 @@
     },
     {
       "sembol": "KERVN",
-      "close": null,
+      "close": 10.03,
       "rel": {
         "gunluk": {
           "sembol": 5.58,
@@ -7532,7 +7498,7 @@
     },
     {
       "sembol": "KLRHO",
-      "close": null,
+      "close": 77.85,
       "rel": {
         "gunluk": {
           "sembol": 2.23,
@@ -7553,7 +7519,7 @@
     },
     {
       "sembol": "KLSYN",
-      "close": null,
+      "close": 12.77,
       "rel": {
         "gunluk": {
           "sembol": 2.08,
@@ -7574,7 +7540,7 @@
     },
     {
       "sembol": "KLYPV",
-      "close": null,
+      "close": 58.95,
       "rel": {
         "gunluk": {
           "sembol": -0.67,
@@ -7595,7 +7561,7 @@
     },
     {
       "sembol": "KMPUR",
-      "close": null,
+      "close": 21.0,
       "rel": {
         "gunluk": {
           "sembol": 0.1,
@@ -7616,7 +7582,7 @@
     },
     {
       "sembol": "KNFRT",
-      "close": null,
+      "close": 11.84,
       "rel": {
         "gunluk": {
           "sembol": 4.59,
@@ -7637,7 +7603,7 @@
     },
     {
       "sembol": "KOCMT",
-      "close": null,
+      "close": 5.48,
       "rel": {
         "gunluk": {
           "sembol": 1.11,
@@ -7658,7 +7624,7 @@
     },
     {
       "sembol": "KONTR",
-      "close": null,
+      "close": 4.03,
       "rel": {
         "gunluk": {
           "sembol": -4.95,
@@ -7679,7 +7645,7 @@
     },
     {
       "sembol": "KORDS",
-      "close": null,
+      "close": 71.85,
       "rel": {
         "gunluk": {
           "sembol": 3.23,
@@ -7700,7 +7666,7 @@
     },
     {
       "sembol": "KRDMA",
-      "close": null,
+      "close": 42.92,
       "rel": {
         "gunluk": {
           "sembol": 2.0,
@@ -7721,7 +7687,7 @@
     },
     {
       "sembol": "KRDMB",
-      "close": null,
+      "close": 132.0,
       "rel": {
         "gunluk": {
           "sembol": -0.68,
@@ -7742,7 +7708,7 @@
     },
     {
       "sembol": "KRDMD",
-      "close": null,
+      "close": 42.6,
       "rel": {
         "gunluk": {
           "sembol": 1.96,
@@ -7763,7 +7729,7 @@
     },
     {
       "sembol": "KRGYO",
-      "close": null,
+      "close": 2.55,
       "rel": {
         "gunluk": {
           "sembol": 2.0,
@@ -7784,7 +7750,7 @@
     },
     {
       "sembol": "KRONT",
-      "close": null,
+      "close": 25.22,
       "rel": {
         "gunluk": {
           "sembol": 3.36,
@@ -7805,7 +7771,7 @@
     },
     {
       "sembol": "KRPLS",
-      "close": null,
+      "close": 9.0,
       "rel": {
         "gunluk": {
           "sembol": 0.78,
@@ -7826,7 +7792,7 @@
     },
     {
       "sembol": "KRSTL",
-      "close": null,
+      "close": 10.52,
       "rel": {
         "gunluk": {
           "sembol": -0.38,
@@ -7847,7 +7813,7 @@
     },
     {
       "sembol": "KRTEK",
-      "close": null,
+      "close": 6.36,
       "rel": {
         "gunluk": {
           "sembol": -4.36,
@@ -7868,7 +7834,7 @@
     },
     {
       "sembol": "KRVGD",
-      "close": null,
+      "close": 2.44,
       "rel": {
         "gunluk": {
           "sembol": 1.24,
@@ -7889,7 +7855,7 @@
     },
     {
       "sembol": "KTLEV",
-      "close": null,
+      "close": 43.2,
       "rel": {
         "gunluk": {
           "sembol": 4.05,
@@ -7910,7 +7876,7 @@
     },
     {
       "sembol": "KUVVA",
-      "close": null,
+      "close": 162.0,
       "rel": {
         "gunluk": {
           "sembol": -1.82,
@@ -7931,7 +7897,7 @@
     },
     {
       "sembol": "KUYAS",
-      "close": null,
+      "close": 67.8,
       "rel": {
         "gunluk": {
           "sembol": 1.27,
@@ -7973,7 +7939,7 @@
     },
     {
       "sembol": "LILAK",
-      "close": null,
+      "close": 29.22,
       "rel": {
         "gunluk": {
           "sembol": 2.6,
@@ -7994,7 +7960,7 @@
     },
     {
       "sembol": "LINK",
-      "close": null,
+      "close": 6.05,
       "rel": {
         "gunluk": {
           "sembol": 1.68,
@@ -8015,7 +7981,7 @@
     },
     {
       "sembol": "LKMNH",
-      "close": null,
+      "close": 14.1,
       "rel": {
         "gunluk": {
           "sembol": 1.59,
@@ -8036,7 +8002,7 @@
     },
     {
       "sembol": "LMKDC",
-      "close": null,
+      "close": 24.74,
       "rel": {
         "gunluk": {
           "sembol": 2.23,
@@ -8057,7 +8023,7 @@
     },
     {
       "sembol": "LOGO",
-      "close": null,
+      "close": 138.4,
       "rel": {
         "gunluk": {
           "sembol": 0.8,
@@ -8078,7 +8044,7 @@
     },
     {
       "sembol": "LRSHO",
-      "close": null,
+      "close": 2.77,
       "rel": {
         "gunluk": {
           "sembol": 1.09,
@@ -8099,7 +8065,7 @@
     },
     {
       "sembol": "LXGYO",
-      "close": null,
+      "close": 10.8,
       "rel": {
         "gunluk": {
           "sembol": 0.84,
@@ -8120,7 +8086,7 @@
     },
     {
       "sembol": "MACKO",
-      "close": null,
+      "close": 32.5,
       "rel": {
         "gunluk": {
           "sembol": 2.85,
@@ -8141,7 +8107,7 @@
     },
     {
       "sembol": "MAGEN",
-      "close": null,
+      "close": 36.2,
       "rel": {
         "gunluk": {
           "sembol": 0.84,
@@ -8162,7 +8128,7 @@
     },
     {
       "sembol": "MANAS",
-      "close": null,
+      "close": 30.0,
       "rel": {
         "gunluk": {
           "sembol": -0.79,
@@ -8183,7 +8149,7 @@
     },
     {
       "sembol": "MARKA",
-      "close": null,
+      "close": 86.0,
       "rel": {
         "gunluk": {
           "sembol": -2.38,
@@ -8204,7 +8170,7 @@
     },
     {
       "sembol": "MARMR",
-      "close": null,
+      "close": 2.29,
       "rel": {
         "gunluk": {
           "sembol": 0.44,
@@ -8225,7 +8191,7 @@
     },
     {
       "sembol": "MAVI",
-      "close": null,
+      "close": 38.5,
       "rel": {
         "gunluk": {
           "sembol": -2.43,
@@ -8246,7 +8212,7 @@
     },
     {
       "sembol": "MERCN",
-      "close": null,
+      "close": 19.28,
       "rel": {
         "gunluk": {
           "sembol": 6.17,
@@ -8267,7 +8233,7 @@
     },
     {
       "sembol": "MGROS",
-      "close": null,
+      "close": 631.0,
       "rel": {
         "gunluk": {
           "sembol": 0.32,
@@ -8288,7 +8254,7 @@
     },
     {
       "sembol": "MOBTL",
-      "close": null,
+      "close": 14.83,
       "rel": {
         "gunluk": {
           "sembol": -1.85,
@@ -8309,7 +8275,7 @@
     },
     {
       "sembol": "MOGAN",
-      "close": null,
+      "close": 20.2,
       "rel": {
         "gunluk": {
           "sembol": 7.56,
@@ -8330,7 +8296,7 @@
     },
     {
       "sembol": "MPARK",
-      "close": null,
+      "close": 406.0,
       "rel": {
         "gunluk": {
           "sembol": -1.28,
@@ -8351,7 +8317,7 @@
     },
     {
       "sembol": "MSGYO",
-      "close": null,
+      "close": 6.24,
       "rel": {
         "gunluk": {
           "sembol": -0.79,
@@ -8372,7 +8338,7 @@
     },
     {
       "sembol": "NETAS",
-      "close": null,
+      "close": 63.65,
       "rel": {
         "gunluk": {
           "sembol": -2.68,
@@ -8393,7 +8359,7 @@
     },
     {
       "sembol": "NTGAZ",
-      "close": null,
+      "close": 11.31,
       "rel": {
         "gunluk": {
           "sembol": -0.18,
@@ -8414,7 +8380,7 @@
     },
     {
       "sembol": "NTHOL",
-      "close": null,
+      "close": 45.62,
       "rel": {
         "gunluk": {
           "sembol": -1.55,
@@ -8435,7 +8401,7 @@
     },
     {
       "sembol": "NUGYO",
-      "close": null,
+      "close": 9.19,
       "rel": {
         "gunluk": {
           "sembol": -0.97,
@@ -8456,7 +8422,7 @@
     },
     {
       "sembol": "NUHCM",
-      "close": null,
+      "close": 217.9,
       "rel": {
         "gunluk": {
           "sembol": -1.4,
@@ -8477,7 +8443,7 @@
     },
     {
       "sembol": "OBASE",
-      "close": null,
+      "close": 40.62,
       "rel": {
         "gunluk": {
           "sembol": -2.64,
@@ -8498,7 +8464,7 @@
     },
     {
       "sembol": "ODINE",
-      "close": null,
+      "close": 2745.0,
       "rel": {
         "gunluk": {
           "sembol": -5.51,
@@ -8519,7 +8485,7 @@
     },
     {
       "sembol": "OFSYM",
-      "close": null,
+      "close": 51.05,
       "rel": {
         "gunluk": {
           "sembol": 1.09,
@@ -8540,7 +8506,7 @@
     },
     {
       "sembol": "ONCSM",
-      "close": null,
+      "close": 248.0,
       "rel": {
         "gunluk": {
           "sembol": -1.98,
@@ -8561,7 +8527,7 @@
     },
     {
       "sembol": "ORMA",
-      "close": null,
+      "close": 173.6,
       "rel": {
         "gunluk": {
           "sembol": 3.33,
@@ -8582,7 +8548,7 @@
     },
     {
       "sembol": "OSMEN",
-      "close": null,
+      "close": 8.0,
       "rel": {
         "gunluk": {
           "sembol": 2.04,
@@ -8603,7 +8569,7 @@
     },
     {
       "sembol": "OTTO",
-      "close": null,
+      "close": 184.7,
       "rel": {
         "gunluk": {
           "sembol": -4.3,
@@ -8624,7 +8590,7 @@
     },
     {
       "sembol": "OYAKC",
-      "close": null,
+      "close": 20.26,
       "rel": {
         "gunluk": {
           "sembol": -1.55,
@@ -8645,7 +8611,7 @@
     },
     {
       "sembol": "OYAYO",
-      "close": null,
+      "close": 47.52,
       "rel": {
         "gunluk": {
           "sembol": -6.09,
@@ -8666,7 +8632,7 @@
     },
     {
       "sembol": "OZATD",
-      "close": null,
+      "close": 4477.5,
       "rel": {
         "gunluk": {
           "sembol": 8.41,
@@ -8687,7 +8653,7 @@
     },
     {
       "sembol": "OZGYO",
-      "close": null,
+      "close": 2.34,
       "rel": {
         "gunluk": {
           "sembol": 3.54,
@@ -8708,7 +8674,7 @@
     },
     {
       "sembol": "OZRDN",
-      "close": null,
+      "close": 28.48,
       "rel": {
         "gunluk": {
           "sembol": -3.59,
@@ -8729,7 +8695,7 @@
     },
     {
       "sembol": "OZSUB",
-      "close": null,
+      "close": 39.44,
       "rel": {
         "gunluk": {
           "sembol": 4.06,
@@ -8750,7 +8716,7 @@
     },
     {
       "sembol": "PAGYO",
-      "close": null,
+      "close": 162.6,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -8771,7 +8737,7 @@
     },
     {
       "sembol": "PASEU",
-      "close": null,
+      "close": 180.9,
       "rel": {
         "gunluk": {
           "sembol": 1.63,
@@ -8792,7 +8758,7 @@
     },
     {
       "sembol": "PCILT",
-      "close": null,
+      "close": 33.04,
       "rel": {
         "gunluk": {
           "sembol": 0.79,
@@ -8813,7 +8779,7 @@
     },
     {
       "sembol": "PEKGY",
-      "close": null,
+      "close": 14.74,
       "rel": {
         "gunluk": {
           "sembol": -0.07,
@@ -8834,7 +8800,7 @@
     },
     {
       "sembol": "PENTA",
-      "close": null,
+      "close": 13.4,
       "rel": {
         "gunluk": {
           "sembol": -0.74,
@@ -8855,7 +8821,7 @@
     },
     {
       "sembol": "PETKM",
-      "close": null,
+      "close": 20.24,
       "rel": {
         "gunluk": {
           "sembol": 3.27,
@@ -8876,7 +8842,7 @@
     },
     {
       "sembol": "PINSU",
-      "close": null,
+      "close": 10.39,
       "rel": {
         "gunluk": {
           "sembol": -0.29,
@@ -8897,7 +8863,7 @@
     },
     {
       "sembol": "PNLSN",
-      "close": null,
+      "close": 47.3,
       "rel": {
         "gunluk": {
           "sembol": 0.38,
@@ -8918,7 +8884,7 @@
     },
     {
       "sembol": "POLHO",
-      "close": null,
+      "close": 21.04,
       "rel": {
         "gunluk": {
           "sembol": 0.19,
@@ -8939,7 +8905,7 @@
     },
     {
       "sembol": "PRDGS",
-      "close": null,
+      "close": 7.74,
       "rel": {
         "gunluk": {
           "sembol": -0.13,
@@ -8960,7 +8926,7 @@
     },
     {
       "sembol": "PSDTC",
-      "close": null,
+      "close": 162.2,
       "rel": {
         "gunluk": {
           "sembol": -3.91,
@@ -8981,7 +8947,7 @@
     },
     {
       "sembol": "PSGYO",
-      "close": null,
+      "close": 3.67,
       "rel": {
         "gunluk": {
           "sembol": -3.17,
@@ -9002,7 +8968,7 @@
     },
     {
       "sembol": "QNBFK",
-      "close": null,
+      "close": 44.44,
       "rel": {
         "gunluk": {
           "sembol": -3.18,
@@ -9023,7 +8989,7 @@
     },
     {
       "sembol": "RALYH",
-      "close": null,
+      "close": 235.2,
       "rel": {
         "gunluk": {
           "sembol": 0.43,
@@ -9044,7 +9010,7 @@
     },
     {
       "sembol": "REEDR",
-      "close": null,
+      "close": 6.39,
       "rel": {
         "gunluk": {
           "sembol": -10.0,
@@ -9065,7 +9031,7 @@
     },
     {
       "sembol": "RGYAS",
-      "close": null,
+      "close": 201.4,
       "rel": {
         "gunluk": {
           "sembol": 1.72,
@@ -9086,7 +9052,7 @@
     },
     {
       "sembol": "RNPOL",
-      "close": null,
+      "close": 2.3,
       "rel": {
         "gunluk": {
           "sembol": 5.02,
@@ -9107,7 +9073,7 @@
     },
     {
       "sembol": "RUBNS",
-      "close": null,
+      "close": 26.4,
       "rel": {
         "gunluk": {
           "sembol": 5.18,
@@ -9128,7 +9094,7 @@
     },
     {
       "sembol": "RYGYO",
-      "close": null,
+      "close": 40.8,
       "rel": {
         "gunluk": {
           "sembol": 1.19,
@@ -9149,7 +9115,7 @@
     },
     {
       "sembol": "RYSAS",
-      "close": null,
+      "close": 25.02,
       "rel": {
         "gunluk": {
           "sembol": 8.78,
@@ -9170,7 +9136,7 @@
     },
     {
       "sembol": "SAFKR",
-      "close": null,
+      "close": 21.46,
       "rel": {
         "gunluk": {
           "sembol": 4.68,
@@ -9191,7 +9157,7 @@
     },
     {
       "sembol": "SANEL",
-      "close": null,
+      "close": 75.05,
       "rel": {
         "gunluk": {
           "sembol": 0.07,
@@ -9212,7 +9178,7 @@
     },
     {
       "sembol": "SANFM",
-      "close": null,
+      "close": 9.09,
       "rel": {
         "gunluk": {
           "sembol": -2.99,
@@ -9233,7 +9199,7 @@
     },
     {
       "sembol": "SASA",
-      "close": null,
+      "close": 2.56,
       "rel": {
         "gunluk": {
           "sembol": 1.59,
@@ -9254,7 +9220,7 @@
     },
     {
       "sembol": "SAYAS",
-      "close": null,
+      "close": 52.4,
       "rel": {
         "gunluk": {
           "sembol": 0.29,
@@ -9275,7 +9241,7 @@
     },
     {
       "sembol": "SEKFK",
-      "close": null,
+      "close": 5.38,
       "rel": {
         "gunluk": {
           "sembol": 3.66,
@@ -9296,7 +9262,7 @@
     },
     {
       "sembol": "SEKUR",
-      "close": null,
+      "close": 11.29,
       "rel": {
         "gunluk": {
           "sembol": -3.83,
@@ -9317,7 +9283,7 @@
     },
     {
       "sembol": "SELEC",
-      "close": null,
+      "close": 212.0,
       "rel": {
         "gunluk": {
           "sembol": 1.78,
@@ -9338,7 +9304,7 @@
     },
     {
       "sembol": "SEYKM",
-      "close": null,
+      "close": 4.66,
       "rel": {
         "gunluk": {
           "sembol": 0.22,
@@ -9359,7 +9325,7 @@
     },
     {
       "sembol": "SISE",
-      "close": null,
+      "close": 42.44,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -9380,7 +9346,7 @@
     },
     {
       "sembol": "SKYLP",
-      "close": null,
+      "close": 252.75,
       "rel": {
         "gunluk": {
           "sembol": -4.53,
@@ -9401,7 +9367,7 @@
     },
     {
       "sembol": "SKYMD",
-      "close": null,
+      "close": 14.81,
       "rel": {
         "gunluk": {
           "sembol": 5.33,
@@ -9422,7 +9388,7 @@
     },
     {
       "sembol": "SNPAM",
-      "close": null,
+      "close": 20.76,
       "rel": {
         "gunluk": {
           "sembol": 9.9,
@@ -9443,7 +9409,7 @@
     },
     {
       "sembol": "SOKM",
-      "close": null,
+      "close": 51.3,
       "rel": {
         "gunluk": {
           "sembol": -0.58,
@@ -9464,7 +9430,7 @@
     },
     {
       "sembol": "SONME",
-      "close": null,
+      "close": 123.0,
       "rel": {
         "gunluk": {
           "sembol": 0.57,
@@ -9485,7 +9451,7 @@
     },
     {
       "sembol": "SUNTK",
-      "close": null,
+      "close": 46.74,
       "rel": {
         "gunluk": {
           "sembol": 9.98,
@@ -9506,7 +9472,7 @@
     },
     {
       "sembol": "SUWEN",
-      "close": null,
+      "close": 6.69,
       "rel": {
         "gunluk": {
           "sembol": 9.85,
@@ -9527,7 +9493,7 @@
     },
     {
       "sembol": "SVGYO",
-      "close": null,
+      "close": 14.48,
       "rel": {
         "gunluk": {
           "sembol": 9.95,
@@ -9548,7 +9514,7 @@
     },
     {
       "sembol": "TABGD",
-      "close": null,
+      "close": 254.5,
       "rel": {
         "gunluk": {
           "sembol": 2.25,
@@ -9569,7 +9535,7 @@
     },
     {
       "sembol": "TAVHL",
-      "close": null,
+      "close": 284.0,
       "rel": {
         "gunluk": {
           "sembol": -0.7,
@@ -9590,7 +9556,7 @@
     },
     {
       "sembol": "TBORG",
-      "close": null,
+      "close": 132.8,
       "rel": {
         "gunluk": {
           "sembol": -0.15,
@@ -9611,7 +9577,7 @@
     },
     {
       "sembol": "TCELL",
-      "close": null,
+      "close": 105.1,
       "rel": {
         "gunluk": {
           "sembol": -2.32,
@@ -9632,7 +9598,7 @@
     },
     {
       "sembol": "TCKRC",
-      "close": null,
+      "close": 141.5,
       "rel": {
         "gunluk": {
           "sembol": -2.41,
@@ -9653,7 +9619,7 @@
     },
     {
       "sembol": "TDGYO",
-      "close": null,
+      "close": 16.93,
       "rel": {
         "gunluk": {
           "sembol": 0.47,
@@ -9674,7 +9640,7 @@
     },
     {
       "sembol": "TEHOL",
-      "close": null,
+      "close": 48.66,
       "rel": {
         "gunluk": {
           "sembol": 0.12,
@@ -9695,7 +9661,7 @@
     },
     {
       "sembol": "TERA",
-      "close": null,
+      "close": 193.3,
       "rel": {
         "gunluk": {
           "sembol": 1.74,
@@ -9716,7 +9682,7 @@
     },
     {
       "sembol": "TGSAS",
-      "close": null,
+      "close": 178.6,
       "rel": {
         "gunluk": {
           "sembol": -1.6,
@@ -9737,7 +9703,7 @@
     },
     {
       "sembol": "TKFEN",
-      "close": null,
+      "close": 185.1,
       "rel": {
         "gunluk": {
           "sembol": 9.98,
@@ -9758,7 +9724,7 @@
     },
     {
       "sembol": "TMPOL",
-      "close": null,
+      "close": 460.5,
       "rel": {
         "gunluk": {
           "sembol": -1.29,
@@ -9779,7 +9745,7 @@
     },
     {
       "sembol": "TNZTP",
-      "close": null,
+      "close": 30.0,
       "rel": {
         "gunluk": {
           "sembol": 1.08,
@@ -9800,7 +9766,7 @@
     },
     {
       "sembol": "TRALT",
-      "close": null,
+      "close": 48.84,
       "rel": {
         "gunluk": {
           "sembol": 5.39,
@@ -9821,7 +9787,7 @@
     },
     {
       "sembol": "TRCAS",
-      "close": null,
+      "close": 42.66,
       "rel": {
         "gunluk": {
           "sembol": -0.09,
@@ -9842,7 +9808,7 @@
     },
     {
       "sembol": "TRENJ",
-      "close": null,
+      "close": 100.0,
       "rel": {
         "gunluk": {
           "sembol": 6.44,
@@ -9863,7 +9829,7 @@
     },
     {
       "sembol": "TRHOL",
-      "close": null,
+      "close": 1847.0,
       "rel": {
         "gunluk": {
           "sembol": 0.49,
@@ -9884,7 +9850,7 @@
     },
     {
       "sembol": "TRILC",
-      "close": null,
+      "close": 1.2,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -9905,7 +9871,7 @@
     },
     {
       "sembol": "TRMET",
-      "close": null,
+      "close": 135.3,
       "rel": {
         "gunluk": {
           "sembol": 7.21,
@@ -9926,7 +9892,7 @@
     },
     {
       "sembol": "TSKB",
-      "close": null,
+      "close": 11.27,
       "rel": {
         "gunluk": {
           "sembol": -0.18,
@@ -9947,7 +9913,7 @@
     },
     {
       "sembol": "TSPOR",
-      "close": null,
+      "close": 1.0,
       "rel": {
         "gunluk": {
           "sembol": 2.04,
@@ -9968,7 +9934,7 @@
     },
     {
       "sembol": "TTRAK",
-      "close": null,
+      "close": 411.0,
       "rel": {
         "gunluk": {
           "sembol": 0.74,
@@ -9989,7 +9955,7 @@
     },
     {
       "sembol": "TUKAS",
-      "close": null,
+      "close": 2.01,
       "rel": {
         "gunluk": {
           "sembol": 1.01,
@@ -10010,7 +9976,7 @@
     },
     {
       "sembol": "TUPRS",
-      "close": null,
+      "close": 303.75,
       "rel": {
         "gunluk": {
           "sembol": 4.65,
@@ -10031,7 +9997,7 @@
     },
     {
       "sembol": "TURSG",
-      "close": null,
+      "close": 6.21,
       "rel": {
         "gunluk": {
           "sembol": -0.64,
@@ -10052,7 +10018,7 @@
     },
     {
       "sembol": "UFUK",
-      "close": null,
+      "close": 1747.0,
       "rel": {
         "gunluk": {
           "sembol": 0.46,
@@ -10094,7 +10060,7 @@
     },
     {
       "sembol": "ULUSE",
-      "close": null,
+      "close": 292.5,
       "rel": {
         "gunluk": {
           "sembol": 4.65,
@@ -10115,7 +10081,7 @@
     },
     {
       "sembol": "VAKBN",
-      "close": null,
+      "close": 31.42,
       "rel": {
         "gunluk": {
           "sembol": 0.83,
@@ -10136,7 +10102,7 @@
     },
     {
       "sembol": "VANGD",
-      "close": null,
+      "close": 88.85,
       "rel": {
         "gunluk": {
           "sembol": 1.2,
@@ -10157,7 +10123,7 @@
     },
     {
       "sembol": "VBTYZ",
-      "close": null,
+      "close": 31.0,
       "rel": {
         "gunluk": {
           "sembol": -6.06,
@@ -10178,7 +10144,7 @@
     },
     {
       "sembol": "VERUS",
-      "close": null,
+      "close": 545.0,
       "rel": {
         "gunluk": {
           "sembol": 1.49,
@@ -10199,7 +10165,7 @@
     },
     {
       "sembol": "VKFYO",
-      "close": null,
+      "close": 25.0,
       "rel": {
         "gunluk": {
           "sembol": -0.87,
@@ -10220,7 +10186,7 @@
     },
     {
       "sembol": "YAPRK",
-      "close": null,
+      "close": 11.26,
       "rel": {
         "gunluk": {
           "sembol": 9.96,
@@ -10241,7 +10207,7 @@
     },
     {
       "sembol": "YATAS",
-      "close": null,
+      "close": 32.78,
       "rel": {
         "gunluk": {
           "sembol": 0.8,
@@ -10262,7 +10228,7 @@
     },
     {
       "sembol": "YBTAS",
-      "close": null,
+      "close": 14.09,
       "rel": {
         "gunluk": {
           "sembol": 1.37,
@@ -10283,7 +10249,7 @@
     },
     {
       "sembol": "YEOTK",
-      "close": null,
+      "close": 39.98,
       "rel": {
         "gunluk": {
           "sembol": -1.33,
@@ -10304,7 +10270,7 @@
     },
     {
       "sembol": "YGGYO",
-      "close": null,
+      "close": 229.9,
       "rel": {
         "gunluk": {
           "sembol": 3.19,
@@ -10325,7 +10291,7 @@
     },
     {
       "sembol": "YKBNK",
-      "close": null,
+      "close": 34.28,
       "rel": {
         "gunluk": {
           "sembol": -1.66,
@@ -10346,7 +10312,7 @@
     },
     {
       "sembol": "YYAPI",
-      "close": null,
+      "close": 0.88,
       "rel": {
         "gunluk": {
           "sembol": 0.0,
@@ -10367,7 +10333,7 @@
     },
     {
       "sembol": "ZRGYO",
-      "close": null,
+      "close": 17.9,
       "rel": {
         "gunluk": {
           "sembol": -0.11,
@@ -10429,7 +10395,7 @@
       "uzaklik": -9.58
     },
     "AGHOL": {
-      "ath": 77897194.66,
+      "ath": 77897185.41,
       "uzaklik": -100.0
     },
     "AGROT": {
@@ -11313,7 +11279,7 @@
       "uzaklik": -36.68
     },
     "FROTO": {
-      "ath": 83141087.32,
+      "ath": 83141096.14,
       "uzaklik": -100.0
     },
     "FZLGY": {
@@ -11961,7 +11927,7 @@
       "uzaklik": -52.93
     },
     "MGROS": {
-      "ath": 2479615.55,
+      "ath": 2479615.31,
       "uzaklik": -99.97
     },
     "MHRGY": {
@@ -12113,7 +12079,7 @@
       "uzaklik": -70.36
     },
     "OYAKC": {
-      "ath": 897995238.05,
+      "ath": 897995578.7,
       "uzaklik": -100.0
     },
     "OYAYO": {
@@ -12625,7 +12591,7 @@
       "uzaklik": -85.51
     },
     "TUPRS": {
-      "ath": 233343858.17,
+      "ath": 233343917.08,
       "uzaklik": -100.0
     },
     "TUREX": {
@@ -12809,6 +12775,6 @@
       "uzaklik": -39.56
     }
   },
-  "daily_guncelleme": "2026-08-07 09:27",
+  "daily_guncelleme": "2026-08-07 09:48",
   "hourly_guncelleme": "2026-08-07 09:16"
 }
