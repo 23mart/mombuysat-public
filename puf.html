@@ -189,8 +189,8 @@
     if(!a || a.uzaklik == null) return '<span class="ath ath-far">—</span>';
     const u = a.uzaklik;
     const kls = u >= -3 ? 'ath-near' : u >= -15 ? 'ath' : u >= -35 ? 'ath-mid' : 'ath-far';
-    const label = u >= -0.5 ? 'ATH' : u.toFixed(1) + '%';
-    return `<span class="ath ${kls}" title="ATH: ${a.ath}">${label}</span>`;
+    const label = u >= -0.5 ? 'ZİRVE' : u.toFixed(1) + '%';
+    return `<span class="ath ${kls}" title="52H zirve: ${a.ath}">${label}</span>`;
   }
 
   let DATA = null, activeTab = '1h', activeSignal = 'all', newOnly = false, query = '';
