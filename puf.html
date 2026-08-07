@@ -231,7 +231,7 @@
         <th data-k="tf_endeks" data-t="n">XU100</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ema50_uzaklik" data-t="n">EMA50↑</th>
-        <th data-k="hist_delta" data-t="n">Momentum</th>
+        <th data-k="hist_streak_signed" data-t="n" title="Histogram delta yönünün kaç bardır aynı kaldığı">Bar</th>
       `;
     }
     row.querySelectorAll('th').forEach(th => th.onclick = () => {
@@ -244,6 +244,7 @@
 
   function getVal(r, k){
     if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
+    if(k === 'hist_streak_signed') return (r.hist_streak || 0) * (r.hist_streak_yon || 0);
     if(k.includes('.')){
       const parts = k.split('.');
       let v = r;
@@ -295,9 +296,11 @@
       }).join('');
     } else {
       tbody.innerHTML = sorted.map(r => {
-        const delta = (r.macdh || 0) - (r.macdh_prev || 0);
-        const momDir = delta > 0 ? 'mom-up' : delta < 0 ? 'mom-dn' : '';
-        const momArrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '·';
+        const streak = r.hist_streak || 0;
+        const yon = r.hist_streak_yon || 0;
+        const streakDir = yon > 0 ? 'mom-up' : yon < 0 ? 'mom-dn' : '';
+        const streakArrow = yon > 0 ? '▲' : yon < 0 ? '▼' : '·';
+        const streakText = streak > 0 ? `${streakArrow} ${streak}` : '—';
         let badge = '';
         if(r.sinyal_1) badge = '<span class="sym-badge b-s1">↑ TOP</span>';
         else if(r.sinyal_2) badge = '<span class="sym-badge b-s2">↓ ZAY</span>';
@@ -308,7 +311,7 @@
           <td class="dimc">${pct(r.tf_endeks)}</td>
           <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
           <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik,1)}</td>
-          <td><span class="mom-cell ${momDir}">${momArrow} ${Math.abs(delta).toFixed(3)}</span></td>
+          <td><span class="mom-cell ${streakDir}" title="${streak} bardır ${yon>0?'artıyor':yon<0?'azalıyor':''}">${streakText}</span></td>
         </tr>`;
       }).join('');
     }
