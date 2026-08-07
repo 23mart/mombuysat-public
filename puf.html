@@ -3,87 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Püf · MACD Momentum + Relatif Güç</title>
+  <title>Püf</title>
   <style>
     :root {
-      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#ffffff;
-      --text:#ffffff; --muted:#ffffff;
-      --green:#22c55e; --green2:#16a34a; --red:#ef4444; --blue:#60a5fa;
-      --gold:#f59e0b; --orange:#fb923c;
+      --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#1f1f2a;
+      --text:#f5f5f7; --muted:#8b8b96; --dim:#5c5c68;
+      --green:#22c55e; --green-bg:rgba(34,197,94,.15); --green-fg:#86efac;
+      --red:#ef4444; --red-bg:rgba(239,68,68,.15); --red-fg:#fca5a5;
+      --orange:#fb923c; --orange-bg:rgba(251,146,60,.15); --orange-fg:#fdba74;
+      --blue:#60a5fa; --blue-fg:#93c5fd;
       --ac:#a855f7; --ac2:#7e22ce; --ac3:#d8b4fe;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; line-height:1.5; min-height:100vh; }
 
-    .header { position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); padding:0 28px; min-height:56px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; row-gap:4px; }
-    .logo { display:flex; align-items:center; gap:10px; }
-    .logo-mark { width:34px; height:34px; background:linear-gradient(135deg,var(--ac),var(--ac2)); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; }
-    .logo-title { font-size:15px; font-weight:700; letter-spacing:-.3px; }
-    .logo-sub   { font-size:11px; color:var(--muted); }
-    .header-meta { display:flex; align-items:center; gap:16px; font-size:12px; color:var(--muted); }
-    .nav-links { display:flex; gap:6px; flex-wrap:wrap; }
-    .nav-btn { font-size:11px; font-weight:600; padding:4px 11px; border-radius:6px; background:var(--s2); border:1px solid var(--border); color:var(--muted); text-decoration:none; transition:background .15s,color .15s; white-space:nowrap; }
-    .nav-btn:hover { background:#1e1e2a; color:var(--text); }
-    .nav-btn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
-    .upd-pill { display:flex; align-items:center; gap:6px; background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.3); padding:4px 12px; border-radius:20px; color:var(--ac3); font-size:12px; }
+    .header { position:sticky; top:0; z-index:50; background:var(--surface); border-bottom:1px solid var(--border); padding:10px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; }
+    .logo-mark { width:30px; height:30px; background:linear-gradient(135deg,var(--ac),var(--ac2)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; }
+    .header-right { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+    .nav-links { display:flex; gap:4px; flex-wrap:wrap; }
+    .nav-btn { font-size:11px; font-weight:600; padding:5px 10px; border-radius:6px; background:transparent; border:1px solid transparent; color:var(--muted); text-decoration:none; transition:.15s; }
+    .nav-btn:hover { background:var(--s2); color:var(--text); }
+    .nav-btn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.35); color:var(--ac3); }
+    .upd { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); }
     .dot { width:7px; height:7px; background:var(--ac); border-radius:50%; animation:blink 2s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
 
-    .page { max-width:1440px; margin:0 auto; padding:24px 28px; }
+    .page { max-width:1400px; margin:0 auto; padding:20px 24px; }
 
-    .banner { background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(126,34,206,.06)); border:1px solid rgba(168,85,247,.25); border-radius:12px; padding:18px 22px; margin-bottom:20px; display:flex; align-items:center; gap:18px; }
-    .banner-icon { font-size:32px; flex-shrink:0; }
-    .banner-title { font-size:16px; font-weight:700; color:var(--ac3); margin-bottom:3px; }
-    .banner-desc  { font-size:12px; color:var(--muted); line-height:1.55; }
-
-    .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
-    .tab { font-size:12px; font-weight:600; padding:6px 14px; border-radius:8px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; }
+    .toolbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+    .tabs { display:flex; gap:4px; flex-wrap:wrap; }
+    .tab { font-size:12px; font-weight:600; padding:6px 12px; border-radius:6px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; transition:.12s; }
     .tab:hover { background:var(--s2); color:var(--text); }
     .tab.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
-    .tab .count { font-size:10px; padding:1px 6px; margin-left:4px; border-radius:4px; background:var(--s2); color:var(--muted); }
+    .tab .count { font-size:10px; padding:1px 5px; margin-left:4px; border-radius:3px; background:var(--s2); color:var(--muted); }
     .tab.active .count { background:rgba(168,85,247,.25); color:var(--ac3); }
 
-    .filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; align-items:center; }
-    .fbtn { font-size:11px; font-weight:600; padding:5px 12px; border-radius:6px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; }
-    .fbtn:hover { background:var(--s2); }
-    .fbtn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
-    .fbtn.s1.active { background:rgba(34,197,94,.15); border-color:rgba(34,197,94,.4); color:#86efac; }
-    .fbtn.s2.active { background:rgba(251,146,60,.15); border-color:rgba(251,146,60,.4); color:#fdba74; }
-    .fbtn.rel.active { background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.4); color:#93c5fd; }
+    .divider { width:1px; height:22px; background:var(--border); }
 
-    .section { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:20px; }
-    .section-head { padding:13px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
-    .section-title { font-size:13px; font-weight:600; }
-    .pill { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--s2); border:1px solid var(--border); color:var(--muted); }
-    .pill-ac { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.3); color:var(--ac3); }
+    .fbtn { font-size:11px; font-weight:600; padding:5px 10px; border-radius:6px; background:var(--surface); border:1px solid var(--border); color:var(--muted); cursor:pointer; user-select:none; }
+    .fbtn:hover { background:var(--s2); color:var(--text); }
+    .fbtn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
+    .fbtn.s1.active { background:var(--green-bg); border-color:rgba(34,197,94,.4); color:var(--green-fg); }
+    .fbtn.s2.active { background:var(--orange-bg); border-color:rgba(251,146,60,.4); color:var(--orange-fg); }
+
+    .search { flex:1; min-width:120px; max-width:200px; }
+    .search input { width:100%; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:var(--text); padding:6px 10px; font-size:12px; outline:none; }
+    .search input:focus { border-color:var(--ac); }
+
+    .stats { display:flex; align-items:center; gap:10px; font-size:11px; color:var(--muted); margin-left:auto; }
+    .stats b { color:var(--text); font-weight:700; }
+
+    .section { background:var(--surface); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
 
     .tbl-wrap { overflow-x:auto; }
     table { width:100%; border-collapse:collapse; }
-    thead th { padding:9px 12px; font-size:10px; font-weight:700; letter-spacing:.7px; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; }
+    thead th { padding:10px 14px; font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; text-align:right; background:var(--surface); position:sticky; top:0; }
+    thead th:first-child { text-align:left; }
     thead th.active { color:var(--ac3); }
-    tbody tr { border-bottom:1px solid var(--border); }
+    thead th:hover { color:var(--text); }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
     tbody tr:last-child { border-bottom:none; }
     tbody tr:hover { background:var(--s2); }
-    td { padding:9px 12px; white-space:nowrap; font-variant-numeric:tabular-nums; font-size:12px; }
+    td { padding:10px 14px; white-space:nowrap; font-variant-numeric:tabular-nums; font-size:12.5px; text-align:right; }
+    td:first-child { text-align:left; }
 
-    .sym { display:flex; align-items:center; gap:7px; }
-    .sym-name { font-weight:700; font-size:13px; }
-    .pos { color:var(--green); } .neg { color:var(--red); } .neu { color:var(--muted); }
-    .s1-badge { font-size:9px; padding:2px 6px; border-radius:4px; background:rgba(34,197,94,.15); color:#86efac; border:1px solid rgba(34,197,94,.35); font-weight:700; }
-    .s2-badge { font-size:9px; padding:2px 6px; border-radius:4px; background:rgba(251,146,60,.15); color:#fdba74; border:1px solid rgba(251,146,60,.35); font-weight:700; }
+    .sym-cell { display:flex; align-items:center; gap:8px; }
+    .sym-name { font-weight:700; font-size:13.5px; color:var(--text); letter-spacing:-.2px; }
+    .sym-badge { font-size:9px; padding:2px 6px; border-radius:4px; font-weight:700; letter-spacing:.4px; }
+    .b-s1 { background:var(--green-bg); color:var(--green-fg); border:1px solid rgba(34,197,94,.35); }
+    .b-s2 { background:var(--orange-bg); color:var(--orange-fg); border:1px solid rgba(251,146,60,.35); }
 
-    .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:44px; color:var(--muted); }
-    .spinner { width:18px; height:18px; border:2px solid var(--border); border-top-color:var(--ac); border-radius:50%; animation:spin .7s linear infinite; }
+    .price { color:var(--muted); font-size:11.5px; }
+    .ret { font-weight:700; font-size:13px; }
+    .ret-big { font-weight:800; font-size:14px; letter-spacing:-.2px; }
+    .diff-cell { display:inline-flex; align-items:center; gap:6px; justify-content:flex-end; min-width:80px; }
+    .diff-arrow { font-size:10px; opacity:.7; }
+    .mom-cell { display:inline-flex; align-items:center; gap:5px; justify-content:flex-end; font-size:11px; color:var(--dim); }
+    .mom-up { color:var(--green-fg); }
+    .mom-dn { color:var(--red-fg); }
+
+    .pos { color:var(--green-fg); } .neg { color:var(--red-fg); } .neu { color:var(--muted); } .dimc { color:var(--dim); }
+
+    .bar-wrap { position:relative; width:60px; height:5px; background:var(--s2); border-radius:3px; overflow:hidden; display:inline-block; vertical-align:middle; margin-left:6px; }
+    .bar { position:absolute; top:0; bottom:0; }
+    .bar.pos { background:var(--green); left:50%; }
+    .bar.neg { background:var(--red); right:50%; }
+    .bar-mid { position:absolute; top:0; bottom:0; left:50%; width:1px; background:var(--border); }
+
+    .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:60px; color:var(--muted); font-size:12px; }
+    .spinner { width:16px; height:16px; border:2px solid var(--border); border-top-color:var(--ac); border-radius:50%; animation:spin .7s linear infinite; }
     @keyframes spin { to{transform:rotate(360deg)} }
 
-    .info { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
-    @media(max-width:700px){ .info { grid-template-columns:1fr; } }
-    .ik { background:var(--s2); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
-    .ik-lbl { font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
-    .ik-val { font-size:16px; font-weight:700; }
+    .footer { text-align:center; color:var(--dim); font-size:10.5px; padding:20px; margin-top:20px; }
 
-    .footer { text-align:center; color:var(--muted); font-size:11px; padding:20px; border-top:1px solid var(--border); }
-    @media(max-width:480px){ .page{padding:16px 14px;} }
+    @media(max-width:640px){
+      .page { padding:14px; }
+      .stats { width:100%; margin-left:0; }
+    }
   </style>
 </head>
 <body>
@@ -91,12 +108,9 @@
 <header class="header">
   <div class="logo">
     <div class="logo-mark">💜</div>
-    <div>
-      <div class="logo-title">Püf · MACD Momentum</div>
-      <div class="logo-sub">Histogram sıkışması + relatif güç taraması</div>
-    </div>
+    <span>Püf</span>
   </div>
-  <div class="header-meta">
+  <div class="header-right">
     <nav class="nav-links">
       <a class="nav-btn" href="./index.html">📈 Portföy</a>
       <a class="nav-btn" href="./kombo1.html">🔬 Kombo 1</a>
@@ -107,48 +121,29 @@
       <a class="nav-btn" href="./sim_eod.html">🧪 EoD Sim</a>
       <a class="nav-btn active" href="./puf.html">💜 Püf</a>
     </nav>
-    <span id="ts"></span>
-    <div class="upd-pill"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
+    <div class="upd"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
   </div>
 </header>
 
 <main class="page">
 
-  <div class="banner">
-    <div class="banner-icon">💡</div>
-    <div>
-      <div class="banner-title">Püf Sinyalleri</div>
-      <div class="banner-desc">
-        <b style="color:#86efac">Sinyal 1 (Toparlanma)</b>: Histogram &lt; 0 ama son mumda büyüdü · |MACD/fiyat| ≤ %1 · Close &gt; EMA50<br>
-        <b style="color:#fdba74">Sinyal 2 (Zayıflama)</b>: Histogram &gt; 0 ama son mumda küçüldü · |MACD/fiyat| ≤ %1 · Close &gt; EMA50<br>
-        <b style="color:#93c5fd">TF Getiri</b>: Her sekmede o TF'nin son bar getirisi · XU100 aynı bar · Fark<br>
-        <b style="color:#93c5fd">Endeks Üstü sekmesi</b>: Günlük/haftalık/aylık endeksten (XU100) fazla getiri sağlayanlar
-      </div>
-    </div>
-  </div>
-
-  <div class="info">
-    <div class="ik"><div class="ik-lbl">Son Intraday</div><div class="ik-val" id="upd-intraday">—</div></div>
-    <div class="ik"><div class="ik-lbl">Son Günlük</div><div class="ik-val" id="upd-daily">—</div></div>
-    <div class="ik"><div class="ik-lbl">Toplam Sinyal</div><div class="ik-val" id="upd-total">—</div></div>
-  </div>
-
-  <div class="tabs" id="tabs"></div>
-  <div class="filter-bar">
-    <button class="fbtn s1" data-f="s1">Sinyal 1 (Toparlanma)</button>
-    <button class="fbtn s2" data-f="s2">Sinyal 2 (Zayıflama)</button>
+  <div class="toolbar">
+    <div class="tabs" id="tabs"></div>
+    <div class="divider"></div>
     <button class="fbtn active" data-f="all">Hepsi</button>
-    <span style="flex:1"></span>
-    <span class="pill" id="filter-count">0</span>
+    <button class="fbtn s1" data-f="s1">↑ Toparlanan</button>
+    <button class="fbtn s2" data-f="s2">↓ Zayıflayan</button>
+    <div class="search"><input id="q" type="text" placeholder="Sembol ara…"></div>
+    <div class="stats">
+      <span>Intraday <b id="upd-intraday">—</b></span>
+      <span>·</span>
+      <span>Daily <b id="upd-daily">—</b></span>
+      <span>·</span>
+      <span><b id="filter-count">0</b> hisse</span>
+    </div>
   </div>
 
   <div class="section">
-    <div class="section-head">
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="section-title" id="section-title">Yükleniyor</span>
-        <span class="pill pill-ac" id="section-pill">—</span>
-      </div>
-    </div>
     <div class="tbl-wrap">
       <table>
         <thead id="thead"><tr id="thead-row"></tr></thead>
@@ -158,38 +153,45 @@
   </div>
 
 </main>
-<footer class="footer">Veriler yaklaşık 10 dk gecikmeli · Yatırım tavsiyesi değildir</footer>
+
+<footer class="footer">Veriler ~10 dk gecikmeli · Yatırım tavsiyesi değildir</footer>
 
 <script>
   const TABS = [
-    { key:'1h',  label:'1 Saat',   src:'intraday' },
-    { key:'2h',  label:'2 Saat',   src:'intraday' },
-    { key:'3h',  label:'3 Saat',   src:'intraday' },
-    { key:'4h',  label:'4 Saat',   src:'intraday' },
-    { key:'1d',  label:'1 Gün',    src:'daily' },
-    { key:'1wk', label:'1 Hafta',  src:'daily' },
-    { key:'1mo', label:'1 Ay',     src:'daily' },
-    { key:'3mo', label:'3 Ay',     src:'daily' },
+    { key:'1h',  label:'1 Saat',    src:'intraday' },
+    { key:'2h',  label:'2 Saat',    src:'intraday' },
+    { key:'3h',  label:'3 Saat',    src:'intraday' },
+    { key:'4h',  label:'4 Saat',    src:'intraday' },
+    { key:'1d',  label:'1 Gün',     src:'daily' },
+    { key:'1wk', label:'1 Hafta',   src:'daily' },
+    { key:'1mo', label:'1 Ay',      src:'daily' },
+    { key:'3mo', label:'3 Ay',      src:'daily' },
     { key:'rel', label:'Endeks Üstü', src:'daily' },
   ];
 
-  const num = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d);
-  const pct = (v,d=2) => v==null?'-':(v>=0?'+':'')+v.toFixed(d)+'%';
-  const cls = v => v>0?'pos':v<0?'neg':'neu';
+  const fmtPrice = v => v==null ? '—' : (v >= 1000 ? v.toLocaleString('tr-TR',{maximumFractionDigits:0}) : v.toFixed(2));
+  const pct = (v,d=2) => v==null ? '—' : (v>=0?'+':'')+v.toFixed(d)+'%';
+  const cls = v => v==null?'neu':(v>0?'pos':v<0?'neg':'neu');
 
-  let DATA = null, activeTab = '1h', activeFilter = 'all';
-  let rows = [], sortKey = 'sembol', sortDir = 1;
+  let DATA = null, activeTab = '1h', activeFilter = 'all', query = '';
+  let rows = [], sortKey = 'tf_getiri', sortDir = -1;
 
   function drawTabs(){
     const tabs = document.getElementById('tabs');
     tabs.innerHTML = TABS.map(t => {
       let n = 0;
-      if(!DATA) n = 0;
-      else if(t.key === 'rel') n = (DATA.rel_gucu_endeks_ustu || []).length;
-      else n = (DATA.dilimler?.[t.key] || []).length;
+      if(DATA){
+        if(t.key === 'rel') n = (DATA.rel_gucu_endeks_ustu || []).length;
+        else n = (DATA.dilimler?.[t.key] || []).length;
+      }
       return `<div class="tab ${t.key===activeTab?'active':''}" data-k="${t.key}">${t.label}<span class="count">${n}</span></div>`;
     }).join('');
-    tabs.querySelectorAll('.tab').forEach(el => el.onclick = () => { activeTab = el.dataset.k; drawTabs(); render(); });
+    tabs.querySelectorAll('.tab').forEach(el => el.onclick = () => {
+      activeTab = el.dataset.k;
+      sortKey = activeTab === 'rel' ? 'rel.gunluk.fark' : 'tf_getiri';
+      sortDir = -1;
+      drawTabs(); render();
+    });
   }
 
   function currentRows(){
@@ -199,10 +201,13 @@
   }
 
   function applyFilter(list){
-    if(activeTab === 'rel') return list;
-    if(activeFilter === 's1') return list.filter(r => r.sinyal_1);
-    if(activeFilter === 's2') return list.filter(r => r.sinyal_2);
-    return list;
+    let out = list;
+    if(activeTab !== 'rel'){
+      if(activeFilter === 's1') out = out.filter(r => r.sinyal_1);
+      else if(activeFilter === 's2') out = out.filter(r => r.sinyal_2);
+    }
+    if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
+    return out;
   }
 
   function renderHead(){
@@ -212,23 +217,21 @@
         <th data-k="sembol" data-t="s">Sembol</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="rel.gunluk.sembol" data-t="n">1G Getiri</th>
-        <th data-k="rel.gunluk.endeks" data-t="n">1G XU100</th>
         <th data-k="rel.gunluk.fark" data-t="n" class="active">1G Fark</th>
+        <th data-k="rel.haftalik.sembol" data-t="n">1H Getiri</th>
         <th data-k="rel.haftalik.fark" data-t="n">1H Fark</th>
+        <th data-k="rel.aylik.sembol" data-t="n">1A Getiri</th>
         <th data-k="rel.aylik.fark" data-t="n">1A Fark</th>
       `;
     } else {
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="macd_pct" data-t="n">MACD %</th>
-        <th data-k="macdh" data-t="n">Histogram</th>
-        <th data-k="hist_delta" data-t="n" class="active">Δ Histogram</th>
-        <th data-k="ema50_uzaklik" data-t="n">EMA50 %</th>
-        <th data-k="tf_getiri" data-t="n">TF Getiri</th>
+        <th data-k="tf_getiri" data-t="n" class="active">Getiri</th>
         <th data-k="tf_endeks" data-t="n">XU100</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
-        <th data-k="sinyal" data-t="s">Sinyal</th>
+        <th data-k="ema50_uzaklik" data-t="n">EMA50↑</th>
+        <th data-k="hist_delta" data-t="n">Momentum</th>
       `;
     }
     row.querySelectorAll('th').forEach(th => th.onclick = () => {
@@ -241,7 +244,6 @@
 
   function getVal(r, k){
     if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
-    if(k === 'sinyal') return r.sinyal_1 ? '1' : (r.sinyal_2 ? '2' : '');
     if(k.includes('.')){
       const parts = k.split('.');
       let v = r;
@@ -251,11 +253,21 @@
     return r[k];
   }
 
+  function barCell(v){
+    if(v == null) return '';
+    const cap = 5;
+    const w = Math.min(Math.abs(v), cap) / cap * 50;
+    const side = v >= 0 ? 'pos' : 'neg';
+    const style = v >= 0 ? `width:${w}%;left:50%;` : `width:${w}%;right:50%;left:auto;`;
+    return `<div class="bar-wrap"><div class="bar-mid"></div><div class="bar ${side}" style="${style}"></div></div>`;
+  }
+
   function draw(){
     const list = applyFilter(rows);
-    document.getElementById('filter-count').textContent = list.length + ' hisse';
+    document.getElementById('filter-count').textContent = list.length;
+    const tbody = document.getElementById('tbody');
     if(!list.length){
-      document.getElementById('tbody').innerHTML = `<tr><td colspan="8"><div class="empty">Bu dilimde eşleşen hisse yok</div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8"><div class="empty">Bu kriterlerde hisse yok</div></td></tr>`;
       return;
     }
     const sorted = [...list].sort((a,b) => {
@@ -266,36 +278,37 @@
       if(typeof av === 'string') return sortDir * av.localeCompare(bv);
       return sortDir * ((av || 0) - (bv || 0));
     });
+
     if(activeTab === 'rel'){
-      document.getElementById('tbody').innerHTML = sorted.map(r => {
+      tbody.innerHTML = sorted.map(r => {
         const rg = r.rel?.gunluk, rh = r.rel?.haftalik, ra = r.rel?.aylik;
         return `<tr>
-          <td><span class="sym-name">${r.sembol}</span></td>
-          <td>${r.close != null ? r.close.toFixed(2) : '—'}</td>
-          <td class="${cls(rg?.sembol)}">${pct(rg?.sembol)}</td>
-          <td class="neu">${pct(rg?.endeks)}</td>
-          <td class="${cls(rg?.fark)}"><b>${pct(rg?.fark)}</b></td>
-          <td class="${cls(rh?.fark)}">${pct(rh?.fark)}</td>
-          <td class="${cls(ra?.fark)}">${pct(ra?.fark)}</td>
+          <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span></div></td>
+          <td class="price">${fmtPrice(r.close)}</td>
+          <td class="ret ${cls(rg?.sembol)}">${pct(rg?.sembol)}</td>
+          <td class="ret ${cls(rg?.fark)}"><span class="diff-cell">${pct(rg?.fark)}${barCell(rg?.fark)}</span></td>
+          <td class="ret ${cls(rh?.sembol)}">${pct(rh?.sembol)}</td>
+          <td class="ret ${cls(rh?.fark)}"><span class="diff-cell">${pct(rh?.fark)}${barCell(rh?.fark)}</span></td>
+          <td class="ret ${cls(ra?.sembol)}">${pct(ra?.sembol)}</td>
+          <td class="ret ${cls(ra?.fark)}"><span class="diff-cell">${pct(ra?.fark)}${barCell(ra?.fark)}</span></td>
         </tr>`;
       }).join('');
     } else {
-      document.getElementById('tbody').innerHTML = sorted.map(r => {
+      tbody.innerHTML = sorted.map(r => {
         const delta = (r.macdh || 0) - (r.macdh_prev || 0);
-        const badges = [];
-        if(r.sinyal_1) badges.push('<span class="s1-badge">S1 ↑</span>');
-        if(r.sinyal_2) badges.push('<span class="s2-badge">S2 ↓</span>');
+        const momDir = delta > 0 ? 'mom-up' : delta < 0 ? 'mom-dn' : '';
+        const momArrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '·';
+        let badge = '';
+        if(r.sinyal_1) badge = '<span class="sym-badge b-s1">↑ TOP</span>';
+        else if(r.sinyal_2) badge = '<span class="sym-badge b-s2">↓ ZAY</span>';
         return `<tr>
-          <td><div class="sym"><span class="sym-name">${r.sembol}</span></div></td>
-          <td>${r.close.toFixed(2)}</td>
-          <td class="${cls(r.macd_pct)}">${pct(r.macd_pct,2)}</td>
-          <td class="${cls(r.macdh)}">${num(r.macdh,3)}</td>
-          <td class="${cls(delta)}"><b>${num(delta,3)}</b></td>
-          <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik)}</td>
-          <td class="${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
-          <td class="neu">${pct(r.tf_endeks)}</td>
-          <td class="${cls(r.tf_fark)}"><b>${pct(r.tf_fark)}</b></td>
-          <td>${badges.join(' ')}</td>
+          <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badge}</div></td>
+          <td class="price">${fmtPrice(r.close)}</td>
+          <td class="ret-big ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
+          <td class="dimc">${pct(r.tf_endeks)}</td>
+          <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
+          <td class="${cls(r.ema50_uzaklik)}">${pct(r.ema50_uzaklik,1)}</td>
+          <td><span class="mom-cell ${momDir}">${momArrow} ${Math.abs(delta).toFixed(3)}</span></td>
         </tr>`;
       }).join('');
     }
@@ -303,13 +316,7 @@
   }
 
   function render(){
-    const tab = TABS.find(t => t.key === activeTab);
-    document.getElementById('section-title').textContent = tab.label + (activeTab==='rel' ? ' · Endeks Üstü Getiri' : ' · MACD Sinyalleri');
     rows = currentRows();
-    document.getElementById('section-pill').textContent = rows.length + ' hisse';
-    // sort default
-    sortKey = activeTab === 'rel' ? 'rel.gunluk.fark' : 'hist_delta';
-    sortDir = -1;
     renderHead();
     draw();
   }
@@ -320,18 +327,18 @@
     draw();
   });
 
+  document.getElementById('q').addEventListener('input', e => {
+    query = e.target.value.trim().toLowerCase();
+    draw();
+  });
+
   async function load(){
     try {
       const res = await fetch('./puf.json?t=' + Date.now());
       DATA = await res.json();
-      const now = new Date();
-      document.getElementById('ts').textContent = now.toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
-      document.getElementById('upd-label').textContent = 'Canlı';
-      document.getElementById('upd-intraday').textContent = DATA.hourly_guncelleme || '—';
-      document.getElementById('upd-daily').textContent = DATA.daily_guncelleme || '—';
-      const total = Object.values(DATA.dilimler || {}).reduce((s, arr) => s + arr.length, 0)
-                    + (DATA.rel_gucu_endeks_ustu || []).length;
-      document.getElementById('upd-total').textContent = total + ' sinyal';
+      document.getElementById('upd-label').textContent = 'Canlı · ' + new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
+      document.getElementById('upd-intraday').textContent = (DATA.hourly_guncelleme || '—').slice(-5);
+      document.getElementById('upd-daily').textContent = (DATA.daily_guncelleme || '—').slice(-5);
       drawTabs();
       render();
     } catch(e){
