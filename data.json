@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-08-18 08:00",
+  "son_guncelleme": "2026-08-18 08:10",
   "kasa": {
     "acik_sayi": 32,
     "toplam_yatirim": 176250.0,
@@ -2843,19 +2843,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 326,
-        "kapanan_net_tl": 33682.0,
+        "kapanan_toplam": 327,
+        "kapanan_net_tl": 34027.0,
         "win_rate": 98.8,
-        "win_sayi": 322,
-        "win_tl": 35817.0,
+        "win_sayi": 323,
+        "win_tl": 36162.0,
         "los_sayi": 4,
         "los_tl": -2134.0,
         "acik_sayi": 15,
         "yuzen_pnl_tl": 5755.0,
         "yuzen_pnl_iz_tl": 7017.0,
         "toplam_yatirim": 63750.0,
-        "toplam_sermaye": 1675000.0,
-        "getiri_yuzde": 2.43,
+        "toplam_sermaye": 1680000.0,
+        "getiri_yuzde": 2.44,
         "ort_sure": 3.9
       },
       "portfoy": [
@@ -3222,6 +3222,13 @@
       ],
       "kapananlar": [
         {
+          "sembol": "TMPOL",
+          "tarih": "2026-08-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 6.9,
+          "pnl_tl": 345.0
+        },
+        {
           "sembol": "KRONT",
           "tarih": "2026-08-17",
           "sebep": "Maliyet Stopu",
@@ -3349,13 +3356,6 @@
         },
         {
           "sembol": "BESTE",
-          "tarih": "2026-08-14",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "TRHOL",
           "tarih": "2026-08-14",
           "sebep": "Maliyet Stopu",
           "pnl_yuzde": 0.0,
@@ -3632,24 +3632,29 @@
           "tarih": "2026-08-17",
           "gunluk_pnl": 121.0,
           "kumulatif_pnl": 33682.0
+        },
+        {
+          "tarih": "2026-08-18",
+          "gunluk_pnl": 345.0,
+          "kumulatif_pnl": 34027.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 192,
-        "kapanan_net_tl": 16021.0,
+        "kapanan_toplam": 193,
+        "kapanan_net_tl": 16366.0,
         "win_rate": 98.4,
-        "win_sayi": 189,
-        "win_tl": 17651.0,
+        "win_sayi": 190,
+        "win_tl": 17996.0,
         "los_sayi": 3,
         "los_tl": -1630.0,
         "acik_sayi": 9,
         "yuzen_pnl_tl": 1406.0,
         "yuzen_pnl_iz_tl": 1934.0,
         "toplam_yatirim": 42500.0,
-        "toplam_sermaye": 996250.0,
-        "getiri_yuzde": 1.8,
+        "toplam_sermaye": 1001250.0,
+        "getiri_yuzde": 1.83,
         "ort_sure": 3.5
       },
       "portfoy": [
@@ -3872,6 +3877,13 @@
       ],
       "kapananlar": [
         {
+          "sembol": "TMPOL",
+          "tarih": "2026-08-18",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 6.9,
+          "pnl_tl": 345.0
+        },
+        {
           "sembol": "KRONT",
           "tarih": "2026-08-17",
           "sebep": "Maliyet Stopu",
@@ -4003,13 +4015,6 @@
           "sebep": "maliyet stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
-        },
-        {
-          "sembol": "DYOBY",
-          "tarih": "2026-08-14",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.29,
-          "pnl_tl": 14.0
         }
       ],
       "gecmis": [
@@ -4222,6 +4227,11 @@
           "tarih": "2026-08-17",
           "gunluk_pnl": 112.0,
           "kumulatif_pnl": 16021.0
+        },
+        {
+          "tarih": "2026-08-18",
+          "gunluk_pnl": 345.0,
+          "kumulatif_pnl": 16366.0
         }
       ]
     },
