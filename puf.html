@@ -74,6 +74,7 @@
     .sym-badge { font-size:9px; padding:2px 6px; border-radius:4px; font-weight:700; letter-spacing:.4px; }
     .b-s1 { background:var(--green-bg); color:var(--green-fg); border:1px solid rgba(34,197,94,.35); }
     .b-new { background:rgba(250,204,21,.18); color:#fde047; border:1px solid rgba(250,204,21,.45); }
+    .b-ihlal { background:rgba(220,38,38,.18); color:#fca5a5; border:1px solid rgba(220,38,38,.5); }
 
     .price { color:var(--muted); font-size:11.5px; }
     .ret { font-weight:700; font-size:13px; }
@@ -325,6 +326,8 @@
         const badges = [];
         if(r.sinyal_1) badges.push('<span class="sym-badge b-s1">↑ TOP</span>');
         if(r.sinyal_1 && streak === 1) badges.push('<span class="sym-badge b-new" title="Bu barda ilk kez tetikledi">✨ YENİ</span>');
+        const kk = r.koyu_kirmizi_5bar || 0;
+        if(kk > 0) badges.push(`<span class="sym-badge b-ihlal" title="Son 5 barda ${kk} koyu kırmızı bar (dip derinleşti) — toparlanma henüz güvenli değil">⚠ İHLAL ${kk}</span>`);
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td class="price">${fmtPrice(r.close)}</td>
