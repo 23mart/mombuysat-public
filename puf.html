@@ -45,7 +45,6 @@
     .fbtn:hover { background:var(--s2); color:var(--text); }
     .fbtn.active { background:rgba(168,85,247,.15); border-color:rgba(168,85,247,.4); color:var(--ac3); }
     .fbtn.s1.active { background:var(--green-bg); border-color:rgba(34,197,94,.4); color:var(--green-fg); }
-    .fbtn.s2.active { background:var(--orange-bg); border-color:rgba(251,146,60,.4); color:var(--orange-fg); }
     .fbtn.new.active { background:rgba(250,204,21,.15); border-color:rgba(250,204,21,.45); color:#fde047; }
     .fgroup { display:flex; gap:4px; }
 
@@ -74,7 +73,6 @@
     .sym-name { font-weight:700; font-size:13.5px; color:var(--text); letter-spacing:-.2px; }
     .sym-badge { font-size:9px; padding:2px 6px; border-radius:4px; font-weight:700; letter-spacing:.4px; }
     .b-s1 { background:var(--green-bg); color:var(--green-fg); border:1px solid rgba(34,197,94,.35); }
-    .b-s2 { background:var(--orange-bg); color:var(--orange-fg); border:1px solid rgba(251,146,60,.35); }
     .b-new { background:rgba(250,204,21,.18); color:#fde047; border:1px solid rgba(250,204,21,.45); }
 
     .price { color:var(--muted); font-size:11.5px; }
@@ -141,7 +139,6 @@
     <div class="fgroup" data-g="sig">
       <button class="fbtn active" data-f="all">Hepsi</button>
       <button class="fbtn s1" data-f="s1">↑ Toparlanan</button>
-      <button class="fbtn s2" data-f="s2">↓ Zayıflayan</button>
     </div>
     <div class="divider"></div>
     <button class="fbtn new" data-g="new" data-f="new" title="Bu barda ilk kez sinyal veren (streak = 1)">✨ Yalnız yeni</button>
@@ -224,8 +221,7 @@
     let out = list;
     if(activeTab !== 'rel'){
       if(activeSignal === 's1') out = out.filter(r => r.sinyal_1);
-      else if(activeSignal === 's2') out = out.filter(r => r.sinyal_2);
-      if(newOnly) out = out.filter(r => (r.sinyal_1 || r.sinyal_2) && (r.hist_streak || 0) === 1);
+      if(newOnly) out = out.filter(r => r.sinyal_1 && (r.hist_streak || 0) === 1);
     }
     if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
     return out;
@@ -328,8 +324,7 @@
         const streakText = streak > 0 ? `${streakArrow} ${streak}` : '—';
         const badges = [];
         if(r.sinyal_1) badges.push('<span class="sym-badge b-s1">↑ TOP</span>');
-        else if(r.sinyal_2) badges.push('<span class="sym-badge b-s2">↓ ZAY</span>');
-        if((r.sinyal_1 || r.sinyal_2) && streak === 1) badges.push('<span class="sym-badge b-new" title="Bu barda ilk kez tetikledi">✨ YENİ</span>');
+        if(r.sinyal_1 && streak === 1) badges.push('<span class="sym-badge b-new" title="Bu barda ilk kez tetikledi">✨ YENİ</span>');
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td class="price">${fmtPrice(r.close)}</td>
