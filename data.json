@@ -1,5 +1,5 @@
 {
-  "son_guncelleme": "2026-08-20 08:00",
+  "son_guncelleme": "2026-08-20 08:10",
   "kasa": {
     "acik_sayi": 21,
     "toplam_yatirim": 113750.0,
@@ -2361,19 +2361,19 @@
   "filtreler": {
     "a": {
       "kasa": {
-        "kapanan_toplam": 343,
-        "kapanan_net_tl": 36007.0,
-        "win_rate": 98.8,
-        "win_sayi": 339,
-        "win_tl": 38141.0,
-        "los_sayi": 4,
-        "los_tl": -2134.0,
+        "kapanan_toplam": 346,
+        "kapanan_net_tl": 34793.0,
+        "win_rate": 98.6,
+        "win_sayi": 341,
+        "win_tl": 38786.0,
+        "los_sayi": 5,
+        "los_tl": -3993.0,
         "acik_sayi": 10,
         "yuzen_pnl_tl": 4431.0,
         "yuzen_pnl_iz_tl": 6857.0,
         "toplam_yatirim": 42500.0,
-        "toplam_sermaye": 1735000.0,
-        "getiri_yuzde": 2.47,
+        "toplam_sermaye": 1750000.0,
+        "getiri_yuzde": 2.38,
         "ort_sure": 4.0
       },
       "portfoy": [
@@ -2620,6 +2620,27 @@
       ],
       "kapananlar": [
         {
+          "sembol": "KGYO",
+          "tarih": "2026-08-20",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 9.9,
+          "pnl_tl": 495.0
+        },
+        {
+          "sembol": "EFOR",
+          "tarih": "2026-08-20",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": -37.16,
+          "pnl_tl": -1858.0
+        },
+        {
+          "sembol": "TKNSA",
+          "tarih": "2026-08-20",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": 2.99,
+          "pnl_tl": 150.0
+        },
+        {
           "sembol": "TMPOL",
           "tarih": "2026-08-18",
           "sebep": "Koruma Stopu (Maliyet)",
@@ -2735,27 +2756,6 @@
           "sembol": "DYOBY",
           "tarih": "2026-08-18",
           "sebep": "maliyet stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "KRONT",
-          "tarih": "2026-08-17",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.36,
-          "pnl_tl": 18.0
-        },
-        {
-          "sembol": "HOROZ",
-          "tarih": "2026-08-17",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "KLSYN",
-          "tarih": "2026-08-17",
-          "sebep": "Maliyet Stopu",
           "pnl_yuzde": 0.0,
           "pnl_tl": 0.0
         }
@@ -3035,24 +3035,29 @@
           "tarih": "2026-08-18",
           "gunluk_pnl": 2324.0,
           "kumulatif_pnl": 36007.0
+        },
+        {
+          "tarih": "2026-08-20",
+          "gunluk_pnl": -1214.0,
+          "kumulatif_pnl": 34793.0
         }
       ]
     },
     "b": {
       "kasa": {
-        "kapanan_toplam": 203,
-        "kapanan_net_tl": 17029.0,
-        "win_rate": 98.5,
-        "win_sayi": 200,
-        "win_tl": 18659.0,
-        "los_sayi": 3,
-        "los_tl": -1630.0,
+        "kapanan_toplam": 205,
+        "kapanan_net_tl": 15666.0,
+        "win_rate": 98.0,
+        "win_sayi": 201,
+        "win_tl": 19154.0,
+        "los_sayi": 4,
+        "los_tl": -3488.0,
         "acik_sayi": 5,
         "yuzen_pnl_tl": 1209.0,
         "yuzen_pnl_iz_tl": 2158.0,
         "toplam_yatirim": 23750.0,
-        "toplam_sermaye": 1031250.0,
-        "getiri_yuzde": 1.86,
+        "toplam_sermaye": 1041250.0,
+        "getiri_yuzde": 1.71,
         "ort_sure": 3.6
       },
       "portfoy": [
@@ -3179,6 +3184,20 @@
       ],
       "kapananlar": [
         {
+          "sembol": "KGYO",
+          "tarih": "2026-08-20",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 9.9,
+          "pnl_tl": 495.0
+        },
+        {
+          "sembol": "EFOR",
+          "tarih": "2026-08-20",
+          "sebep": "Stop Loss (-%7)",
+          "pnl_yuzde": -37.16,
+          "pnl_tl": -1858.0
+        },
+        {
           "sembol": "TMPOL",
           "tarih": "2026-08-18",
           "sebep": "Koruma Stopu (Maliyet)",
@@ -3303,20 +3322,6 @@
           "sebep": "Stop Loss (-%7)",
           "pnl_yuzde": 0.87,
           "pnl_tl": 43.0
-        },
-        {
-          "sembol": "TGSAS",
-          "tarih": "2026-08-17",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.15,
-          "pnl_tl": 8.0
-        },
-        {
-          "sembol": "BRSAN",
-          "tarih": "2026-08-17",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.23,
-          "pnl_tl": 11.0
         }
       ],
       "gecmis": [
@@ -3534,25 +3539,30 @@
           "tarih": "2026-08-18",
           "gunluk_pnl": 1008.0,
           "kumulatif_pnl": 17029.0
+        },
+        {
+          "tarih": "2026-08-20",
+          "gunluk_pnl": -1363.0,
+          "kumulatif_pnl": 15666.0
         }
       ]
     },
     "c": {
       "kasa": {
-        "kapanan_toplam": 126,
-        "kapanan_net_tl": 12440.0,
+        "kapanan_toplam": 127,
+        "kapanan_net_tl": 12935.0,
         "win_rate": 98.4,
-        "win_sayi": 124,
-        "win_tl": 13342.0,
+        "win_sayi": 125,
+        "win_tl": 13837.0,
         "los_sayi": 2,
         "los_tl": -902.0,
         "acik_sayi": 2,
         "yuzen_pnl_tl": 749.0,
         "yuzen_pnl_iz_tl": 1312.0,
         "toplam_yatirim": 10000.0,
-        "toplam_sermaye": 633750.0,
-        "getiri_yuzde": 2.17,
-        "ort_sure": 3.5
+        "toplam_sermaye": 638750.0,
+        "getiri_yuzde": 2.23,
+        "ort_sure": 3.6
       },
       "portfoy": [
         {
@@ -3605,6 +3615,13 @@
         }
       ],
       "kapananlar": [
+        {
+          "sembol": "KGYO",
+          "tarih": "2026-08-20",
+          "sebep": "Koruma Stopu (Maliyet)",
+          "pnl_yuzde": 9.9,
+          "pnl_tl": 495.0
+        },
         {
           "sembol": "HRKET",
           "tarih": "2026-08-18",
@@ -3733,13 +3750,6 @@
         },
         {
           "sembol": "OFSYM",
-          "tarih": "2026-08-14",
-          "sebep": "Maliyet Stopu",
-          "pnl_yuzde": 0.0,
-          "pnl_tl": 0.0
-        },
-        {
-          "sembol": "ADEL",
           "tarih": "2026-08-14",
           "sebep": "Maliyet Stopu",
           "pnl_yuzde": 0.0,
@@ -3921,6 +3931,11 @@
           "tarih": "2026-08-18",
           "gunluk_pnl": 663.0,
           "kumulatif_pnl": 12440.0
+        },
+        {
+          "tarih": "2026-08-20",
+          "gunluk_pnl": 495.0,
+          "kumulatif_pnl": 12935.0
         }
       ]
     }
