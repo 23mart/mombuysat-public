@@ -161,29 +161,44 @@ function renderPill(row) {
 
 // --- C: full MACD mini chart with 25 bars of fake but plausible data ---
 // Toparlanma senaryosu: MACD önce düştü, dip yaptı, şimdi signal'a yaklaşıyor
+// Deterministik seeded random (sembol adindan)
+function seedFrom(str) {
+  let h = 2166136261;
+  for (let i=0; i<str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return () => { h = Math.imul(h ^ (h >>> 15), 2246822519); h = Math.imul(h ^ (h >>> 13), 3266489917); h ^= h >>> 16; return (h >>> 0) / 4294967295; };
+}
 function fakeSeries(row) {
   const N = 25;
-  const cur = row.macdh;              // current histogram
-  const dip = Math.abs(cur) * -2.4;   // dip degeri (negatif)
+  const cur = row.macdh, prev = row.prev, streak = row.streak;
+  const rand = seedFrom(row.sembol);
+  // Sembolden turetilen varyasyonlar:
+  const dipT     = 0.35 + rand() * 0.35;              // dip nerede? (0.35-0.70)
+  const dipMult  = 1.8 + rand() * 2.0;                // dip ne kadar derin? (1.8x-3.8x cur)
+  const dipWidth = 2.0 + rand() * 2.5;                // dip ne kadar keskin/geniş
+  const preTrend = -0.4 + rand() * 1.2;               // baslangictaki trend (poz/neg)
+  const sigAlpha = 0.18 + rand() * 0.14;              // signal EMA gecikmesi (0.18-0.32)
+  const noise    = 0.08 + rand() * 0.10;              // yerel dalgalanma
+  const recoveryStart = 1 - streak/N - rand()*0.05;   // streak kadar bar geride toparlanma basladi
   const macd=[], signal=[], hist=[];
-  // MACD: cos benzeri: baslangicta 0'a yakin, ortada dip, sona toparlanma
   for (let i=0; i<N; i++) {
     const t = i / (N-1);
-    // dip @ t=0.55
-    const dipPhase = Math.exp(-Math.pow((t-0.55)*3.2, 2));
-    const m = dip * dipPhase + Math.abs(cur)*0.3 * (1-t);
-    macd.push(m);
+    const dipPhase = Math.exp(-Math.pow((t-dipT)*dipWidth, 2));
+    const trend = preTrend * Math.abs(cur) * (1-t);
+    const wobble = (rand()-0.5) * Math.abs(cur) * noise;
+    const recoveryBoost = t > recoveryStart ? Math.abs(cur) * 0.6 * (t-recoveryStart) / (1-recoveryStart) : 0;
+    macd.push(-Math.abs(cur)*dipMult*dipPhase + trend + wobble + recoveryBoost);
   }
-  // Signal = MACD'nin 9-EMA gecikmesi
   let s = macd[0];
-  for (let i=0; i<N; i++) {
-    s = s + (macd[i]-s) * 0.25;
-    signal.push(s);
-  }
+  for (let i=0; i<N; i++) { s = s + (macd[i]-s) * sigAlpha; signal.push(s); }
   for (let i=0; i<N; i++) hist.push(macd[i] - signal[i]);
-  // Son bar tam cur olsun
-  const scale = cur / hist[N-1];
-  return { macd: macd.map(x=>x*scale), signal: signal.map(x=>x*scale), hist: hist.map(x=>x*scale) };
+  // Son 2 barin gercek cur/prev ile hizalanmasi
+  const targetLast = cur, targetPrev = prev;
+  const scale = targetLast / (hist[N-1] || targetLast);
+  const M = macd.map(x=>x*scale), S = signal.map(x=>x*scale), H = hist.map(x=>x*scale);
+  // Fine tune: son 2 hist barini tam eslesir yap
+  const delta = targetPrev - H[N-2];
+  M[N-2] += delta; H[N-2] += delta;
+  return { macd: M, signal: S, hist: H };
 }
 function renderMacdChart(row) {
   const { macd, signal, hist } = fakeSeries(row);
