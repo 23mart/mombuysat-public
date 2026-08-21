@@ -116,6 +116,7 @@
     <span>Püf</span>
   </div>
   <div class="header-right">
+    <button id="notif-btn" class="fbtn" style="font-size:11px; padding:5px 10px;" title="Yeni sinyaller için tarayıcı bildirimi (sekme açık olmalı)">🔕 Bildirim kapalı</button>
     <div class="upd"><div class="dot"></div><span id="upd-label">Yükleniyor</span></div>
   </div>
 </header>
@@ -500,18 +501,102 @@
     draw();
   });
 
+  // ==== Bildirim (Notification API) ====
+  const NOTIF_KEY = 'puf_last_new';
+  const notifBtn = document.getElementById('notif-btn');
+
+  function updateNotifBtn(){
+    if(!('Notification' in window)){
+      notifBtn.textContent = '🔕 Desteklenmiyor';
+      notifBtn.disabled = true;
+      return;
+    }
+    if(Notification.permission === 'granted') notifBtn.textContent = '🔔 Bildirim açık';
+    else if(Notification.permission === 'denied') notifBtn.textContent = '🚫 Bildirim engelli';
+    else notifBtn.textContent = '🔕 Bildirim kapalı';
+  }
+  updateNotifBtn();
+
+  notifBtn.onclick = async () => {
+    if(!('Notification' in window)) return;
+    if(Notification.permission === 'default'){
+      const p = await Notification.requestPermission();
+      updateNotifBtn();
+      if(p === 'granted'){
+        new Notification('Püf bildirimleri açıldı', { body: 'Yeni sinyal geldikçe bilgilendirileceksiniz.', icon: '' });
+        // İlk state'i kaydet, spam olmasın
+        if(DATA) localStorage.setItem(NOTIF_KEY, JSON.stringify(collectYeni(DATA)));
+      }
+    } else if(Notification.permission === 'granted'){
+      alert('Bildirimler zaten açık. Kapatmak için tarayıcı ayarlarından site izinlerini değiştirin.');
+    } else {
+      alert('Bildirimler engellenmiş. Adres çubuğundaki kilit simgesinden site izinlerini kontrol edin.');
+    }
+  };
+
+  function collectYeni(data){
+    // {macd::1h: [sym...], fractal::1h: [sym...], ...}
+    const out = {};
+    const tfs = ['1h','2h','3h','4h','1d','1wk','1mo','3mo'];
+    for(const tf of tfs){
+      const macd = (data.dilimler?.[tf] || []).filter(r => r.sinyal_1 && r.hist_streak === 1).map(r => r.sembol).sort();
+      const frac = (data.dilimler_fractal?.[tf] || []).filter(r => r.fractal_yeni).map(r => r.sembol).sort();
+      if(macd.length) out['macd::' + tf] = macd;
+      if(frac.length) out['fractal::' + tf] = frac;
+    }
+    return out;
+  }
+
+  function checkAndNotify(data){
+    if(!('Notification' in window) || Notification.permission !== 'granted') return;
+    const current = collectYeni(data);
+    let prev;
+    try { prev = JSON.parse(localStorage.getItem(NOTIF_KEY) || '{}'); } catch(e){ prev = {}; }
+    const additions = {};
+    for(const key of Object.keys(current)){
+      const prevSet = new Set(prev[key] || []);
+      const yeni = current[key].filter(s => !prevSet.has(s));
+      if(yeni.length) additions[key] = yeni;
+    }
+    localStorage.setItem(NOTIF_KEY, JSON.stringify(current));
+    if(!Object.keys(additions).length) return;
+    // Mesaj
+    const macdParts = [], fracParts = [];
+    for(const [k, syms] of Object.entries(additions)){
+      const [mode, tf] = k.split('::');
+      const line = `[${tf}] ${syms.join(', ')}`;
+      if(mode === 'macd') macdParts.push(line);
+      else fracParts.push(line);
+    }
+    const body = [
+      macdParts.length ? '📊 MACD:\n' + macdParts.join('\n') : '',
+      fracParts.length ? '🔓 Fraktal:\n' + fracParts.join('\n') : ''
+    ].filter(Boolean).join('\n\n');
+    const total = Object.values(additions).reduce((a,v) => a + v.length, 0);
+    const n = new Notification(`🆕 ${total} yeni Püf sinyali`, { body, tag: 'puf-new', renotify: true });
+    n.onclick = () => { window.focus(); n.close(); };
+  }
+
   async function load(){
     try {
       const res = await fetch('./puf.json?t=' + Date.now());
-      DATA = await res.json();
+      const newData = await res.json();
+      const isFirstLoad = !DATA;
+      DATA = newData;
       document.getElementById('upd-label').textContent = 'Canlı · ' + new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
       document.getElementById('upd-intraday').textContent = (DATA.hourly_guncelleme || '—').slice(-5);
       document.getElementById('upd-daily').textContent = (DATA.daily_guncelleme || '—').slice(-5);
       drawTabs();
       render();
+      // Ilk yuklemede state'i kur, sonrakilerinde diff kontrol
+      if(isFirstLoad){
+        if(!localStorage.getItem(NOTIF_KEY)) localStorage.setItem(NOTIF_KEY, JSON.stringify(collectYeni(DATA)));
+      } else {
+        checkAndNotify(DATA);
+      }
     } catch(e){
       document.getElementById('upd-label').textContent = 'Hata';
-      document.getElementById('tbody').innerHTML = `<tr><td colspan="8"><div class="empty">Veri yüklenemedi: ${e.message}</div></td></tr>`;
+      document.getElementById('tbody').innerHTML = `<tr><td colspan="9"><div class="empty">Veri yüklenemedi: ${e.message}</div></td></tr>`;
     }
   }
   load();
