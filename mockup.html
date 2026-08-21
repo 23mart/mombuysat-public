@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>MACD Görsel Mockup — A vs B</title>
+<style>
+  :root {
+    --bg:#0a0a0f; --surface:#12121a; --s2:#1a1a24; --border:#26262f;
+    --text:#e5e5f0; --muted:#8b8b9e;
+    --ac:#a855f7; --ac2:#7e22ce; --ac3:#d8b4fe;
+    --green:#22c55e; --red:#ef4444; --amber:#f59e0b;
+  }
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; padding:24px; }
+  h1 { font-size:16px; margin-bottom:6px; }
+  .subtitle { color:var(--muted); font-size:12px; margin-bottom:24px; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px; }
+  .card h2 { font-size:14px; margin-bottom:4px; color:var(--ac3); }
+  .card .desc { font-size:11px; color:var(--muted); margin-bottom:14px; line-height:1.5; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { text-align:left; padding:8px 10px; color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border); }
+  th.num { text-align:right; }
+  td { padding:10px; border-bottom:1px solid var(--border); }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  tr:last-child td { border-bottom:none; }
+  .sym-name { font-weight:600; }
+  .pos { color:var(--green); }
+  .neg { color:var(--red); }
+
+  /* --- OPTION A: mini histogram sparkline --- */
+  .spark { display:inline-flex; align-items:flex-end; gap:1.5px; height:22px; padding:0 4px; }
+  .spark .bar { width:5px; border-radius:1px; }
+  .spark .bar.neg { background:var(--red); opacity:.85; }
+  .spark .bar.neg-recovering { background:var(--amber); }
+  .spark .bar.pos { background:var(--green); }
+
+  /* --- OPTION B: pill --- */
+  .pill { display:inline-flex; align-items:center; gap:4px; padding:2px 7px; border-radius:10px; font-size:11px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .pill.recovering { background:rgba(245,158,11,.15); color:var(--amber); border:1px solid rgba(245,158,11,.35); }
+  .pill.pos { background:rgba(34,197,94,.15); color:var(--green); border:1px solid rgba(34,197,94,.35); }
+  .pill.neg { background:rgba(239,68,68,.15); color:var(--red); border:1px solid rgba(239,68,68,.35); }
+  .streak { font-size:10px; color:var(--muted); margin-left:4px; }
+
+  .legend { margin-top:14px; padding-top:12px; border-top:1px solid var(--border); font-size:10px; color:var(--muted); line-height:1.7; }
+  .legend .kv { display:inline-block; margin-right:14px; }
+  .swatch { display:inline-block; width:10px; height:10px; border-radius:2px; vertical-align:middle; margin-right:4px; }
+</style>
+</head>
+<body>
+
+<h1>💜 Püf — MACD Görsel Mockup</h1>
+<div class="subtitle">Her iki seçenek de mevcut puf.json verisiyle üretildi (1h dilim, ilk 8 sembol). Sparkline geçmişi Option A için tahmini gösterildi.</div>
+
+<div class="cols">
+
+  <!-- ===== OPTION A ===== -->
+  <div class="card">
+    <h2>A) Mini histogram sparkline</h2>
+    <div class="desc">Son 6 MACD hist barı sembolün yanında. Kırmızı = derin negatif, amber = toparlanma, yeşil = pozitif. Trajektöri görsel olarak okunur.</div>
+    <table>
+      <thead>
+        <tr><th>Sembol</th><th>MACD (son 6)</th><th class="num">Fiyat</th><th class="num">TF Getiri</th></tr>
+      </thead>
+      <tbody id="tbody-a"></tbody>
+    </table>
+    <div class="legend">
+      <div class="kv"><span class="swatch" style="background:#ef4444;opacity:.85"></span>Derin negatif</div>
+      <div class="kv"><span class="swatch" style="background:#f59e0b"></span>Toparlanma (son bar)</div>
+      <div class="kv"><span class="swatch" style="background:#22c55e"></span>Pozitif</div>
+      <br>
+      <b>Veri maliyeti:</b> puf.json'a sembol başına ~6 float ekleme (~%80 dosya büyümesi). puf_tarama.py güncellenmesi gerekir.
+    </div>
+  </div>
+
+  <!-- ===== OPTION B ===== -->
+  <div class="card">
+    <h2>B) Kompakt pill/rozet</h2>
+    <div class="desc">Renkli rozet: hist_pct değeri + trend oku, yanında streak sayısı. Kompakt, sıralanabilir, sıfır ekstra veri.</div>
+    <table>
+      <thead>
+        <tr><th>Sembol</th><th>MACD</th><th class="num">Fiyat</th><th class="num">TF Getiri</th></tr>
+      </thead>
+      <tbody id="tbody-b"></tbody>
+    </table>
+    <div class="legend">
+      <div class="kv"><span class="swatch" style="background:rgba(245,158,11,.5);border:1px solid rgba(245,158,11,.6)"></span>Toparlanma (hist&lt;0, ↑)</div>
+      <div class="kv"><span class="swatch" style="background:rgba(34,197,94,.5);border:1px solid rgba(34,197,94,.6)"></span>Pozitif</div>
+      <br>
+      <b>Veri maliyeti:</b> Sıfır — macdh, macdh_prev, hist_streak zaten var. Sadece render değişikliği.
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Gerçek puf.json verisi (1h, 08:51 snapshot)
+const ROWS = [
+  { sembol:'ATATR', close:15.44,  macdh:-0.0370, prev:-0.0420, streak:1, tfg: 0.39 },
+  { sembol:'ATEKS', close:113.00, macdh:-0.2120, prev:-0.2230, streak:1, tfg: 0.89 },
+  { sembol:'AYDEM', close:27.02,  macdh:-0.0570, prev:-0.0680, streak:2, tfg: 0.52 },
+  { sembol:'BAGFS', close:26.88,  macdh:-0.1000, prev:-0.1110, streak:4, tfg: 0.45 },
+  { sembol:'BAHKM', close:126.00, macdh:-0.1540, prev:-0.2500, streak:1, tfg: 2.44 },
+  { sembol:'BEGYO', close:3.58,   macdh:-0.0040, prev:-0.0050, streak:2, tfg: 0.28 },
+  { sembol:'BESLR', close:13.37,  macdh:-0.0600, prev:-0.0650, streak:2, tfg: 0.00 },
+  { sembol:'BIMAS', close:409.75, macdh:-1.3650, prev:-1.4980, streak:3, tfg: 0.12 },
+];
+
+// --- Option A: fake sparkline history (toparlanma trajektörisi) ---
+// streak kadar bar amber (rising negative), önceki barlar derin kırmızı
+function sparkHistory(row) {
+  // 6 bar, sonu = macdh, streak son N barın rising olduğunu söylüyor
+  const bars = [];
+  const cur = row.macdh, streak = Math.min(row.streak, 5);
+  // rising bars: son streak barlar, doğrusal artan negatif
+  for (let i = 5; i >= 0; i--) {
+    if (i >= 6 - streak - 1) {
+      // recovering: cur değerinden geriye lineer düşürerek
+      const stepsBack = 5 - i;
+      const val = cur - Math.abs(cur) * 0.8 * (stepsBack / (streak+1));
+      bars.push(val);
+    } else {
+      // deep: bir öncekinden daha derin
+      const stepsBack = 5 - i;
+      const val = cur - Math.abs(cur) * (1.2 + stepsBack * 0.3);
+      bars.push(val);
+    }
+  }
+  return bars;
+}
+function renderSpark(row) {
+  const bars = sparkHistory(row);
+  const maxAbs = Math.max(...bars.map(Math.abs));
+  const streak = row.streak;
+  const html = bars.map((v, i) => {
+    const h = Math.max(2, Math.abs(v)/maxAbs * 22);
+    let cls = 'neg';
+    if (v > 0) cls = 'pos';
+    else if (i >= bars.length - streak) cls = 'neg-recovering';
+    return `<div class="bar ${cls}" style="height:${h}px"></div>`;
+  }).join('');
+  return `<div class="spark">${html}</div>`;
+}
+
+// --- Option B: pill ---
+function renderPill(row) {
+  const pct = (row.macdh / row.close * 100);
+  const rising = row.macdh > row.prev;
+  const cls = row.macdh > 0 ? 'pos' : (rising ? 'recovering' : 'neg');
+  const arrow = rising ? '↑' : '↓';
+  return `<span class="pill ${cls}">${pct.toFixed(2)}% ${arrow}</span><span class="streak">×${row.streak}</span>`;
+}
+
+function fmtPct(x) { const cls = x >= 0 ? 'pos' : 'neg'; const sign = x >= 0 ? '+' : ''; return `<span class="${cls}">${sign}${x.toFixed(2)}%</span>`; }
+function fmtPrice(x) { return x.toFixed(2); }
+
+document.getElementById('tbody-a').innerHTML = ROWS.map(r => `
+  <tr>
+    <td class="sym-name">${r.sembol}</td>
+    <td>${renderSpark(r)}</td>
+    <td class="num">${fmtPrice(r.close)}</td>
+    <td class="num">${fmtPct(r.tfg)}</td>
+  </tr>
+`).join('');
+
+document.getElementById('tbody-b').innerHTML = ROWS.map(r => `
+  <tr>
+    <td class="sym-name">${r.sembol}</td>
+    <td>${renderPill(r)}</td>
+    <td class="num">${fmtPrice(r.close)}</td>
+    <td class="num">${fmtPct(r.tfg)}</td>
+  </tr>
+`).join('');
+</script>
+
+</body>
+</html>
