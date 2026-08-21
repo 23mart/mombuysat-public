@@ -346,7 +346,7 @@
         if(r.sinyal_1) badges.push('<span class="sym-badge b-s1">↑ TOP</span>');
         if(r.sinyal_1 && streak === 1) badges.push('<span class="sym-badge b-new" title="Bu barda ilk kez tetikledi">✨ YENİ</span>');
         const kk = r.koyu_kirmizi_5bar || 0;
-        if(kk > 0) badges.push(`<span class="sym-badge b-ihlal" title="Son 5 barda ${kk} koyu kırmızı bar (dip derinleşti) — toparlanma henüz güvenli değil">⚠ İHLAL ${kk}</span>`);
+        if(kk > 0) badges.push(`<span class="sym-badge b-ihlal" title="Toparlanma başladıktan sonra ${kk} kez dip derinleşti (R- bar) — toparlanma kırılgan">⚠ İHLAL ${kk}</span>`);
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td>${macdChartCell(r)}</td>
