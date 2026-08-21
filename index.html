@@ -262,6 +262,7 @@
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="fractal_high" data-t="n" title="Kırılan fraktal seviyesi (üstünde direnç yok)">Fraktal</th>
         <th data-k="kirilim_pct" data-t="n" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
+        <th data-k="breakout_streak" data-t="n" title="Fraktal seviyesinin üstünde kesintisiz kaç bar (yeşil çizgi süresi)">Süre</th>
         <th data-k="fractal_bars_ago" data-t="n" title="Fraktal kaç bar önce oluştu">Yaş</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
@@ -292,6 +293,7 @@
     if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
     if(k === 'hist_streak_signed') return (r.hist_streak || 0) * (r.hist_streak_yon || 0);
     if(k === 'skor') return fractalScore(r);
+    if(k === 'breakout_streak') return breakoutStreak(r);
     if(k === 'ath_uzaklik'){ const a = DATA?.ath_map?.[r.sembol]; return a ? a.uzaklik : null; }
     if(k.includes('.')){
       const parts = k.split('.');
@@ -360,6 +362,19 @@
     const e = r.ema50_uzaklik || 0;
     if(e > 0) s += Math.min(e, 5) * 0.2;
     return Math.round(s * 10) / 10;
+  }
+
+  function breakoutStreak(r){
+    // Fraktal seviyesinin üstünde kesintisiz kaç bar (sondan geriye)
+    const closes = r.close_series || [];
+    const fh = r.fractal_high;
+    if(!closes.length || fh == null) return 0;
+    let n = 0;
+    for(let i = closes.length - 1; i >= 0; i--){
+      if(closes[i] > fh) n++;
+      else break;
+    }
+    return n;
   }
 
   function scoreBadge(s){
@@ -461,6 +476,7 @@
           <td class="price">${fmtPrice(r.close)}</td>
           <td class="dimc">${fmtPrice(r.fractal_high)}</td>
           <td class="ret ${kirilim_cls}">${pct(r.kirilim_pct)}</td>
+          <td class="dimc" style="font-size:11px;"><span style="color:#22c55e; font-weight:700;">${breakoutStreak(r)}</span> bar</td>
           <td class="dimc" style="font-size:11px;">${r.fractal_bars_ago || '—'} bar</td>
           <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
           <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
