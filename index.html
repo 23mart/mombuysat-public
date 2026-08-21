@@ -94,6 +94,8 @@
     .bar.neg { background:var(--red); right:50%; }
     .bar-mid { position:absolute; top:0; bottom:0; left:50%; width:1px; background:var(--border); }
 
+    .macd-chart { display:block; }
+
     .empty { display:flex; align-items:center; justify-content:center; gap:10px; padding:60px; color:var(--muted); font-size:12px; }
     .spinner { width:16px; height:16px; border:2px solid var(--border); border-top-color:var(--ac); border-radius:50%; animation:spin .7s linear infinite; }
     @keyframes spin { to{transform:rotate(360deg)} }
@@ -232,6 +234,7 @@
     } else {
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
+        <th title="Son 30 bar MACD/Signal/Histogram">MACD</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="tf_getiri" data-t="n" class="active">Getiri</th>
         <th data-k="tf_endeks" data-t="n">XU100</th>
@@ -262,6 +265,35 @@
     return r[k];
   }
 
+  function macdChartCell(r){
+    const macd = r.macd_series || [], signal = r.signal_series || [], hist = r.hist_series || [];
+    if(!macd.length || !signal.length || !hist.length) return '';
+    const W = 140, H = 36, PAD = 2;
+    const all = macd.concat(signal, hist, [0]);
+    const mn = Math.min(...all), mx = Math.max(...all);
+    const range = Math.max(mx - mn, 1e-9);
+    const y = v => PAD + (mx - v)/range * (H - 2*PAD);
+    const x = i => PAD + i/(macd.length - 1) * (W - 2*PAD);
+    const zeroY = y(0);
+    const barW = (W - 2*PAD) / macd.length * 0.7;
+    const bars = hist.map((v,i) => {
+      const bx = x(i) - barW/2;
+      const by = v >= 0 ? y(v) : zeroY;
+      const bh = Math.max(Math.abs(y(v) - zeroY), 0.5);
+      const p = i > 0 ? hist[i-1] : v;
+      const fill = v >= 0 ? (v >= p ? '#16a34a' : '#86efac') : (v <= p ? '#dc2626' : '#fca5a5');
+      return `<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" fill="${fill}"/>`;
+    }).join('');
+    const macdPath = 'M ' + macd.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const sigPath  = 'M ' + signal.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
+      + `<line x1="${PAD}" y1="${zeroY.toFixed(1)}" x2="${W-PAD}" y2="${zeroY.toFixed(1)}" stroke="#3a3a48" stroke-width="0.6" stroke-dasharray="2,2"/>`
+      + bars
+      + `<path d="${macdPath}" fill="none" stroke="#60a5fa" stroke-width="1.2"/>`
+      + `<path d="${sigPath}" fill="none" stroke="#f59e0b" stroke-width="1.2"/>`
+      + `</svg>`;
+  }
+
   function barCell(v){
     if(v == null) return '';
     const cap = 5;
@@ -276,7 +308,7 @@
     document.getElementById('filter-count').textContent = list.length;
     const tbody = document.getElementById('tbody');
     if(!list.length){
-      tbody.innerHTML = `<tr><td colspan="8"><div class="empty">Bu kriterlerde hisse yok</div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="9"><div class="empty">Bu kriterlerde hisse yok</div></td></tr>`;
       return;
     }
     const sorted = [...list].sort((a,b) => {
@@ -317,6 +349,7 @@
         if(kk > 0) badges.push(`<span class="sym-badge b-ihlal" title="Son 5 barda ${kk} koyu kırmızı bar (dip derinleşti) — toparlanma henüz güvenli değil">⚠ İHLAL ${kk}</span>`);
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
+          <td>${macdChartCell(r)}</td>
           <td class="price">${fmtPrice(r.close)}</td>
           <td class="ret-big ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
           <td class="dimc">${pct(r.tf_endeks)}</td>
