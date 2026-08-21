@@ -620,20 +620,50 @@
     }
     localStorage.setItem(NOTIF_KEY, JSON.stringify(current));
     if(!Object.keys(additions).length) return;
-    // Mesaj
-    const macdParts = [], fracParts = [];
-    for(const [k, syms] of Object.entries(additions)){
-      const [mode, tf] = k.split('::');
-      const line = `[${tf}] ${syms.join(', ')}`;
-      if(mode === 'macd') macdParts.push(line);
-      else fracParts.push(line);
+
+    // Metrik erisimi icin index
+    const tfs = ['1h','2h','3h','4h','1d','1wk','1mo','3mo'];
+    const macdIdx = {}, fracIdx = {};
+    for(const tf of tfs){
+      macdIdx[tf] = {}; (data.dilimler?.[tf] || []).forEach(r => macdIdx[tf][r.sembol] = r);
+      fracIdx[tf] = {}; (data.dilimler_fractal?.[tf] || []).forEach(r => fracIdx[tf][r.sembol] = r);
     }
-    const body = [
-      macdParts.length ? '📊 MACD:\n' + macdParts.join('\n') : '',
-      fracParts.length ? '🔓 Fraktal:\n' + fracParts.join('\n') : ''
-    ].filter(Boolean).join('\n\n');
+    const fmt = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+
+    const macdBlocks = [], fracBlocks = [];
+    for(const tf of tfs){
+      const macdSyms = additions['macd::' + tf] || [];
+      if(macdSyms.length){
+        const lines = macdSyms.map(s => {
+          const r = macdIdx[tf][s] || {};
+          return `  • ${s}  ${fmt(r.tf_getiri)}`;
+        }).join('\n');
+        macdBlocks.push(`【${tf.toUpperCase()}】 ${macdSyms.length} yeni\n${lines}`);
+      }
+      const fracSyms = additions['fractal::' + tf] || [];
+      if(fracSyms.length){
+        const lines = fracSyms.map(s => {
+          const r = fracIdx[tf][s] || {};
+          const sc = fractalScore(r);
+          return `  • ${s}  kırılım ${fmt(r.kirilim_pct)}  · skor ${sc}`;
+        }).join('\n');
+        fracBlocks.push(`【${tf.toUpperCase()}】 ${fracSyms.length} yeni\n${lines}`);
+      }
+    }
+
     const total = Object.values(additions).reduce((a,v) => a + v.length, 0);
-    const n = new Notification(`🆕 ${total} yeni Radar sinyali`, { body, tag: 'radar-new', renotify: true });
+    const now = new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
+    const bodyParts = [];
+    if(macdBlocks.length) bodyParts.push('📊 MACD TOPARLANMA\n' + macdBlocks.join('\n'));
+    if(fracBlocks.length) bodyParts.push('🔓 FRAKTAL KIRILIM\n' + fracBlocks.join('\n'));
+    const body = bodyParts.join('\n\n');
+
+    const n = new Notification(`🆕 ${total} yeni sinyal · ${now}`, {
+      body,
+      tag: 'radar-new',
+      renotify: true,
+      requireInteraction: total >= 5   // 5+ olunca kalici kalsin (kullanici kapatana kadar)
+    });
     n.onclick = () => { window.focus(); n.close(); };
   }
 
