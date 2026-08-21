@@ -453,7 +453,7 @@
   function renderEndexMacd(){
     const wrap = document.getElementById('endex-macd-wrap');
     const em = DATA?.endex_macd?.[activeTab];
-    if(activeTab === 'rel' || !em || !em.hist_series?.length){
+    if(activeTab === 'rel' || activeMode === 'fractal' || !em || !em.hist_series?.length){
       wrap.style.display = 'none';
       return;
     }
