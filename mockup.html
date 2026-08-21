@@ -104,8 +104,11 @@
     <div class="legend">
       <div class="kv"><span class="swline" style="background:#60a5fa"></span>MACD</div>
       <div class="kv"><span class="swline" style="background:#f59e0b"></span>Signal</div>
-      <div class="kv"><span class="swatch" style="background:#ef4444"></span>Hist −</div>
-      <div class="kv"><span class="swatch" style="background:#22c55e"></span>Hist +</div>
+      <br>
+      <div class="kv"><span class="swatch" style="background:#16a34a"></span>+ artıyor</div>
+      <div class="kv"><span class="swatch" style="background:#86efac"></span>+ azalıyor</div>
+      <div class="kv"><span class="swatch" style="background:#dc2626"></span>− derinleş.</div>
+      <div class="kv"><span class="swatch" style="background:#fca5a5"></span>− toparl.</div>
       <div class="cost"><b>Veri:</b> ~25 bar × 3 seri = 75 float/sembol (~10× dosya büyümesi, ~2-3 MB).<br><b>Backend:</b> puf_tarama.py'de son N MACD/Signal/Hist array saklama.</div>
     </div>
   </div>
@@ -196,8 +199,11 @@ function renderMacdChart(row) {
     const bx = x(i) - barW/2;
     const by = v >= 0 ? y(v) : zeroY;
     const bh = Math.abs(y(v) - zeroY);
-    const fill = v >= 0 ? '#22c55e' : '#ef4444';
-    return `<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW.toFixed(1)}" height="${Math.max(bh,0.5).toFixed(1)}" fill="${fill}" opacity="0.75"/>`;
+    const prev = i > 0 ? hist[i-1] : v;
+    let fill;
+    if (v >= 0) fill = v >= prev ? '#16a34a' : '#86efac';   // koyu / acik yesil
+    else        fill = v <= prev ? '#dc2626' : '#fca5a5';   // koyu / acik kirmizi (toparlanma)
+    return `<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW.toFixed(1)}" height="${Math.max(bh,0.5).toFixed(1)}" fill="${fill}"/>`;
   }).join('');
   const macdPath = 'M ' + macd.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
   const sigPath  = 'M ' + signal.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
