@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Püf</title>
+  <title>Radar</title>
   <style>
     :root {
       --bg:#0b0b10; --surface:#111118; --s2:#18181f; --border:#1f1f2a;
@@ -113,7 +113,7 @@
 <header class="header">
   <div class="logo">
     <div class="logo-mark">💜</div>
-    <span>Püf</span>
+    <span>Radar</span>
   </div>
   <div class="header-right">
     <button id="notif-btn" class="fbtn" style="font-size:11px; padding:5px 10px;" title="Yeni sinyaller için tarayıcı bildirimi (sekme açık olmalı)">🔕 Bildirim kapalı</button>
@@ -583,7 +583,7 @@
       const p = await Notification.requestPermission();
       updateNotifBtn();
       if(p === 'granted'){
-        new Notification('Püf bildirimleri açıldı', { body: 'Yeni sinyal geldikçe bilgilendirileceksiniz.', icon: '' });
+        new Notification('Radar bildirimleri açıldı', { body: 'Yeni sinyal geldikçe bilgilendirileceksiniz.', icon: '' });
         // İlk state'i kaydet, spam olmasın
         if(DATA) localStorage.setItem(NOTIF_KEY, JSON.stringify(collectYeni(DATA)));
       }
@@ -633,7 +633,7 @@
       fracParts.length ? '🔓 Fraktal:\n' + fracParts.join('\n') : ''
     ].filter(Boolean).join('\n\n');
     const total = Object.values(additions).reduce((a,v) => a + v.length, 0);
-    const n = new Notification(`🆕 ${total} yeni Püf sinyali`, { body, tag: 'puf-new', renotify: true });
+    const n = new Notification(`🆕 ${total} yeni Radar sinyali`, { body, tag: 'radar-new', renotify: true });
     n.onclick = () => { window.focus(); n.close(); };
   }
 
