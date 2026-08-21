@@ -257,10 +257,11 @@
     } else if(activeMode === 'fractal'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
+        <th data-k="skor" data-t="n" class="active" title="Kalite skoru: yaş 5-25 + kırılım 0.5-3% + yeni + MACD teyit + endeksten güçlü. Yeşil ≥9, sarı ≥7, turuncu ≥5.">Skor</th>
         <th title="Son 30 bar fiyat + kırılan fraktal seviyesi">Fiyat/Fraktal</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="fractal_high" data-t="n" title="Kırılan fraktal seviyesi (üstünde direnç yok)">Fraktal</th>
-        <th data-k="kirilim_pct" data-t="n" class="active" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
+        <th data-k="kirilim_pct" data-t="n" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
         <th data-k="fractal_bars_ago" data-t="n" title="Fraktal kaç bar önce oluştu">Yaş</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
@@ -290,6 +291,7 @@
   function getVal(r, k){
     if(k === 'hist_delta') return (r.macdh || 0) - (r.macdh_prev || 0);
     if(k === 'hist_streak_signed') return (r.hist_streak || 0) * (r.hist_streak_yon || 0);
+    if(k === 'skor') return fractalScore(r);
     if(k === 'ath_uzaklik'){ const a = DATA?.ath_map?.[r.sembol]; return a ? a.uzaklik : null; }
     if(k.includes('.')){
       const parts = k.split('.');
@@ -328,6 +330,37 @@
       + `<path d="${macdPath}" fill="none" stroke="#60a5fa" stroke-width="1.2"/>`
       + `<path d="${sigPath}" fill="none" stroke="#f59e0b" stroke-width="1.2"/>`
       + `</svg>`;
+  }
+
+  function fractalScore(r){
+    let s = 0;
+    const y = r.fractal_bars_ago || 0;
+    if(y >= 5 && y <= 25) s += 3;
+    else if(y >= 3 && y <= 40) s += 1.5;
+    else s += 0.5;
+    const k = r.kirilim_pct || 0;
+    if(k >= 0.5 && k <= 3) s += 3;
+    else if(k >= 0.2 && k <= 5) s += 1.5;
+    else if(k > 5) s += 0.5;
+    if(r.fractal_yeni) s += 2;
+    const f = r.tf_fark || 0;
+    if(f > 0) s += Math.min(f, 3) * 0.5;
+    const g = r.tf_getiri || 0;
+    if(g > 0) s += Math.min(g, 3) * 0.3;
+    if(r.sinyal_1) s += 2;
+    const e = r.ema50_uzaklik || 0;
+    if(e > 0) s += Math.min(e, 5) * 0.2;
+    return Math.round(s * 10) / 10;
+  }
+
+  function scoreBadge(s){
+    // Renk skalasi: 9+ yesil, 7-9 sari, 5-7 turuncu, <5 gri
+    let color;
+    if(s >= 9)      color = '#22c55e';
+    else if(s >= 7) color = '#eab308';
+    else if(s >= 5) color = '#f59e0b';
+    else            color = '#8b8b9e';
+    return `<span style="display:inline-block; padding:2px 8px; border-radius:10px; background:${color}22; color:${color}; border:1px solid ${color}55; font-weight:700; font-size:12px; font-variant-numeric:tabular-nums;">${s.toFixed(1)}</span>`;
   }
 
   function priceFractalChart(r, W, H){
@@ -411,12 +444,14 @@
         if(r.fractal_yeni) badges.push('<span class="sym-badge b-new" title="Bu barda kırıldı">🆕 YENİ</span>');
         if(r.sinyal_1) badges.push('<span class="sym-badge b-s1" title="MACD toparlanma sinyali de var">↑ TOP</span>');
         const kirilim_cls = (r.kirilim_pct || 0) >= 0 ? 'pos' : 'neg';
+        const sk = fractalScore(r);
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
+          <td>${scoreBadge(sk)}</td>
           <td>${priceFractalChart(r)}</td>
           <td class="price">${fmtPrice(r.close)}</td>
           <td class="dimc">${fmtPrice(r.fractal_high)}</td>
-          <td class="ret-big ${kirilim_cls}">${pct(r.kirilim_pct)}</td>
+          <td class="ret ${kirilim_cls}">${pct(r.kirilim_pct)}</td>
           <td class="dimc" style="font-size:11px;">${r.fractal_bars_ago || '—'} bar</td>
           <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
           <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
@@ -480,8 +515,8 @@
   document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(b => b.onclick = () => {
     activeMode = b.dataset.m;
     document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.m === activeMode));
-    // Fraktal moddayken: default siralama kirilim_pct; MACD moddayken: tf_getiri
-    sortKey = activeMode === 'fractal' ? 'kirilim_pct' : 'tf_getiri';
+    // Fraktal moddayken: default siralama skor; MACD moddayken: tf_getiri
+    sortKey = activeMode === 'fractal' ? 'skor' : 'tf_getiri';
     sortDir = -1;
     // Sinyal filtresi grubunu fraktal moddayken gizle
     document.querySelector('.fgroup[data-g="sig"]').style.display = activeMode === 'fractal' ? 'none' : '';
