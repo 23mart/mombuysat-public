@@ -257,7 +257,7 @@
     } else if(activeMode === 'fractal'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
-        <th data-k="skor" data-t="n" class="active" title="Kalite skoru: yaş 5-25 + kırılım 0.5-3% + yeni + MACD teyit + endeksten güçlü. Yeşil ≥9, sarı ≥7, turuncu ≥5.">Skor</th>
+        <th data-k="skor" data-t="n" class="active" title="Kalite skoru: yaş 5-25 + kırılım 0.5-3% + yeni + endeksten güçlü + EMA50 üstü. Yeşil ≥8, sarı ≥6, turuncu ≥4.">Skor</th>
         <th title="Son 30 bar fiyat + kırılan fraktal seviyesi">Fiyat/Fraktal</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="fractal_high" data-t="n" title="Kırılan fraktal seviyesi (üstünde direnç yok)">Fraktal</th>
@@ -347,18 +347,17 @@
     if(f > 0) s += Math.min(f, 3) * 0.5;
     const g = r.tf_getiri || 0;
     if(g > 0) s += Math.min(g, 3) * 0.3;
-    if(r.sinyal_1) s += 2;
     const e = r.ema50_uzaklik || 0;
     if(e > 0) s += Math.min(e, 5) * 0.2;
     return Math.round(s * 10) / 10;
   }
 
   function scoreBadge(s){
-    // Renk skalasi: 9+ yesil, 7-9 sari, 5-7 turuncu, <5 gri
+    // Renk skalasi (MACD puani cikartildi, max ~11.4): 8+ yesil, 6-8 sari, 4-6 turuncu, <4 gri
     let color;
-    if(s >= 9)      color = '#22c55e';
-    else if(s >= 7) color = '#eab308';
-    else if(s >= 5) color = '#f59e0b';
+    if(s >= 8)      color = '#22c55e';
+    else if(s >= 6) color = '#eab308';
+    else if(s >= 4) color = '#f59e0b';
     else            color = '#8b8b9e';
     return `<span style="display:inline-block; padding:2px 8px; border-radius:10px; background:${color}22; color:${color}; border:1px solid ${color}55; font-weight:700; font-size:12px; font-variant-numeric:tabular-nums;">${s.toFixed(1)}</span>`;
   }
