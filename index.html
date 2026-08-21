@@ -122,6 +122,13 @@
 
 <main class="page">
 
+  <div class="toolbar" style="margin-bottom:8px;">
+    <div class="fgroup" data-g="mode" style="border:1px solid var(--border); border-radius:8px; padding:2px;">
+      <button class="fbtn active" data-m="macd" style="font-size:12px; padding:6px 14px;">📊 MACD Toparlanma</button>
+      <button class="fbtn" data-m="fractal" style="font-size:12px; padding:6px 14px;">🔓 Fraktal Kırılım</button>
+    </div>
+  </div>
+
   <div class="toolbar">
     <div class="tabs" id="tabs"></div>
     <div class="divider"></div>
@@ -187,7 +194,7 @@
     return `<span class="ath ${kls}" title="52H zirve: ${a.ath}">${label}</span>`;
   }
 
-  let DATA = null, activeTab = '1h', activeSignal = 'all', newOnly = false, query = '';
+  let DATA = null, activeTab = '1h', activeSignal = 'all', newOnly = false, query = '', activeMode = 'macd';
   let rows = [], sortKey = 'tf_getiri', sortDir = -1;
 
   function drawTabs(){
@@ -196,7 +203,10 @@
       let n = 0;
       if(DATA){
         if(t.key === 'rel') n = (DATA.rel_gucu_endeks_ustu || []).length;
-        else n = (DATA.dilimler?.[t.key] || []).length;
+        else {
+          const src = activeMode === 'fractal' ? DATA.dilimler_fractal : DATA.dilimler;
+          n = (src?.[t.key] || []).length;
+        }
       }
       return `<div class="tab ${t.key===activeTab?'active':''}" data-k="${t.key}">${t.label}<span class="count">${n}</span></div>`;
     }).join('');
@@ -211,14 +221,19 @@
   function currentRows(){
     if(!DATA) return [];
     if(activeTab === 'rel') return DATA.rel_gucu_endeks_ustu || [];
-    return DATA.dilimler?.[activeTab] || [];
+    const src = activeMode === 'fractal' ? (DATA.dilimler_fractal || {}) : (DATA.dilimler || {});
+    return src[activeTab] || [];
   }
 
   function applyFilter(list){
     let out = list;
     if(activeTab !== 'rel'){
-      if(activeSignal === 's1') out = out.filter(r => r.sinyal_1);
-      if(newOnly) out = out.filter(r => r.sinyal_1 && (r.hist_streak || 0) === 1);
+      if(activeMode === 'macd'){
+        if(activeSignal === 's1') out = out.filter(r => r.sinyal_1);
+        if(newOnly) out = out.filter(r => r.sinyal_1 && (r.hist_streak || 0) === 1);
+      } else {
+        if(newOnly) out = out.filter(r => r.fractal_yeni);
+      }
     }
     if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
     return out;
@@ -236,6 +251,18 @@
         <th data-k="rel.haftalik.fark" data-t="n">1H Fark</th>
         <th data-k="rel.aylik.sembol" data-t="n">1A Getiri</th>
         <th data-k="rel.aylik.fark" data-t="n">1A Fark</th>
+        <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
+      `;
+    } else if(activeMode === 'fractal'){
+      row.innerHTML = `
+        <th data-k="sembol" data-t="s">Sembol</th>
+        <th title="Son 30 bar MACD/Signal/Histogram">MACD</th>
+        <th data-k="close" data-t="n">Fiyat</th>
+        <th data-k="fractal_high" data-t="n" title="Kırılan fraktal seviyesi (üstünde direnç yok)">Fraktal</th>
+        <th data-k="kirilim_pct" data-t="n" class="active" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
+        <th data-k="fractal_bars_ago" data-t="n" title="Fraktal kaç bar önce oluştu">Yaş</th>
+        <th data-k="tf_getiri" data-t="n">Getiri</th>
+        <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
       `;
     } else {
@@ -343,6 +370,24 @@
           <td>${athCell(r.sembol)}</td>
         </tr>`;
       }).join('');
+    } else if(activeMode === 'fractal'){
+      tbody.innerHTML = sorted.map(r => {
+        const badges = [];
+        if(r.fractal_yeni) badges.push('<span class="sym-badge b-new" title="Bu barda kırıldı">🆕 YENİ</span>');
+        if(r.sinyal_1) badges.push('<span class="sym-badge b-s1" title="MACD toparlanma sinyali de var">↑ TOP</span>');
+        const kirilim_cls = (r.kirilim_pct || 0) >= 0 ? 'pos' : 'neg';
+        return `<tr>
+          <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
+          <td>${macdChartCell(r)}</td>
+          <td class="price">${fmtPrice(r.close)}</td>
+          <td class="dimc">${fmtPrice(r.fractal_high)}</td>
+          <td class="ret-big ${kirilim_cls}">${pct(r.kirilim_pct)}</td>
+          <td class="dimc" style="font-size:11px;">${r.fractal_bars_ago || '—'} bar</td>
+          <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
+          <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
+          <td>${athCell(r.sembol)}</td>
+        </tr>`;
+      }).join('');
     } else {
       tbody.innerHTML = sorted.map(r => {
         const streak = r.hist_streak || 0;
@@ -396,6 +441,19 @@
     activeSignal = b.dataset.f;
     document.querySelectorAll('.fgroup[data-g="sig"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.f === activeSignal));
     draw();
+  });
+  document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(b => b.onclick = () => {
+    activeMode = b.dataset.m;
+    document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.m === activeMode));
+    // Fraktal moddayken: default siralama kirilim_pct; MACD moddayken: tf_getiri
+    sortKey = activeMode === 'fractal' ? 'kirilim_pct' : 'tf_getiri';
+    sortDir = -1;
+    // Sinyal filtresi grubunu fraktal moddayken gizle
+    document.querySelector('.fgroup[data-g="sig"]').style.display = activeMode === 'fractal' ? 'none' : '';
+    // "Yalniz yeni" butonunun anlami degisir
+    const newBtn = document.querySelector('.fbtn[data-g="new"]');
+    if(newBtn) newBtn.textContent = activeMode === 'fractal' ? '🆕 Yalnız yeni kırılım' : '✨ Yalnız yeni';
+    drawTabs(); render();
   });
   document.querySelector('.fbtn[data-g="new"]').onclick = (e) => {
     newOnly = !newOnly;
