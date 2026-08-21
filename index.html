@@ -361,7 +361,28 @@
     if(g > 0) s += Math.min(g, 3) * 0.3;
     const e = r.ema50_uzaklik || 0;
     if(e > 0) s += Math.min(e, 5) * 0.2;
+    // Coklu TF teyidi: 2 TF +2, 3 TF +3.5, 4+ TF +5
+    const mt = multiTfCount(r.sembol);
+    if(mt >= 4)      s += 5;
+    else if(mt === 3) s += 3.5;
+    else if(mt === 2) s += 2;
     return Math.round(s * 10) / 10;
+  }
+
+  function buildMultiTfMap(){
+    // Fraktal listesindeki sembollerin kac farkli TF'de gorundugunu say
+    const map = {};
+    if(!DATA?.dilimler_fractal) return map;
+    for(const tf of ['1h','2h','3h','4h','1d','1wk','1mo','3mo']){
+      for(const r of (DATA.dilimler_fractal[tf] || [])){
+        map[r.sembol] = (map[r.sembol] || 0) + 1;
+      }
+    }
+    return map;
+  }
+
+  function multiTfCount(sym){
+    return (DATA?._multiTf?.[sym]) || 1;
   }
 
   function breakoutStreak(r){
@@ -466,6 +487,8 @@
       tbody.innerHTML = sorted.map(r => {
         const badges = [];
         if(r.fractal_yeni) badges.push('<span class="sym-badge b-new" title="Bu barda kırıldı">🆕 YENİ</span>');
+        const mt = multiTfCount(r.sembol);
+        if(mt >= 2) badges.push(`<span class="sym-badge" style="background:rgba(59,130,246,.15); color:#60a5fa; border:1px solid rgba(59,130,246,.4);" title="${mt} farklı zaman diliminde fraktal kırılım">🔗 ${mt}TF</span>`);
         if(r.sinyal_1) badges.push('<span class="sym-badge b-s1" title="MACD toparlanma sinyali de var">↑ TOP</span>');
         const kirilim_cls = (r.kirilim_pct || 0) >= 0 ? 'pos' : 'neg';
         const sk = fractalScore(r);
@@ -672,6 +695,7 @@
       const newData = await res.json();
       const isFirstLoad = !DATA;
       DATA = newData;
+      DATA._multiTf = buildMultiTfMap();
       document.getElementById('upd-label').textContent = 'Canlı · ' + new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
       document.getElementById('upd-intraday').textContent = (DATA.hourly_guncelleme || '—').slice(-5);
       document.getElementById('upd-daily').textContent = (DATA.daily_guncelleme || '—').slice(-5);
