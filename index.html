@@ -141,11 +141,18 @@
     </div>
   </div>
 
+  <div id="endex-macd-wrap" class="section" style="display:none;">
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px 14px; display:flex; align-items:center; gap:14px;">
+      <div style="font-size:11px; color:var(--muted); font-weight:600; min-width:110px;">XU100 <span id="endex-tf-label" style="color:var(--ac3);"></span></div>
+      <div id="endex-macd-chart" style="flex:1; display:flex; justify-content:center;"></div>
+    </div>
+  </div>
+
   <div class="section">
     <div class="tbl-wrap">
       <table>
         <thead id="thead"><tr id="thead-row"></tr></thead>
-        <tbody id="tbody"><tr><td colspan="8"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
+        <tbody id="tbody"><tr><td colspan="9"><div class="empty"><div class="spinner"></div>Yükleniyor</div></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -265,10 +272,11 @@
     return r[k];
   }
 
-  function macdChartCell(r){
+  function macdChartCell(r, W, H){
     const macd = r.macd_series || [], signal = r.signal_series || [], hist = r.hist_series || [];
     if(!macd.length || !signal.length || !hist.length) return '';
-    const W = 140, H = 36, PAD = 2;
+    W = W || 140; H = H || 36;
+    const PAD = 2;
     const all = macd.concat(signal, hist, [0]);
     const mn = Math.min(...all), mx = Math.max(...all);
     const range = Math.max(mx - mn, 1e-9);
@@ -363,9 +371,24 @@
     document.querySelectorAll('#thead-row th').forEach(th => th.classList.toggle('active', th.dataset.k===sortKey));
   }
 
+  function renderEndexMacd(){
+    const wrap = document.getElementById('endex-macd-wrap');
+    const em = DATA?.endex_macd?.[activeTab];
+    if(activeTab === 'rel' || !em || !em.hist_series?.length){
+      wrap.style.display = 'none';
+      return;
+    }
+    wrap.style.display = '';
+    document.getElementById('endex-tf-label').textContent = TABS.find(t => t.key===activeTab)?.label || activeTab;
+    document.getElementById('endex-macd-chart').innerHTML = macdChartCell({
+      macd_series: em.macd_series, signal_series: em.signal_series, hist_series: em.hist_series
+    }, 520, 64);
+  }
+
   function render(){
     rows = currentRows();
     renderHead();
+    renderEndexMacd();
     draw();
   }
 
