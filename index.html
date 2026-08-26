@@ -242,7 +242,7 @@
         if(newOnly) out = out.filter(r => r.fractal_yeni);
       }
       // rema modunda newOnly: kesişim son barda oldu (bars_ago === 0)
-      if(activeMode === 'rema' && newOnly) out = out.filter(r => (r.rema_kesim_bars_ago || 0) === 0);
+      if(activeMode === 'rema' && newOnly) out = out.filter(r => (r.kesim_bars_ago || 0) === 0);
     }
     if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
     return out;
@@ -538,15 +538,16 @@
     } else if(activeMode === 'rema'){
       tbody.innerHTML = sorted.map(r => {
         const badges = [];
-        if((r.rema_kesim_bars_ago || 0) === 0) badges.push('<span class="sym-badge b-new" title="Bu barda kesti">✨ YENİ</span>');
-        else if((r.rema_kesim_bars_ago || 0) > 0) badges.push(`<span class="sym-badge" style="background:var(--s2); color:var(--muted); border:1px solid var(--border);" title="Kesişimden bu yana bar sayısı">${r.rema_kesim_bars_ago} bar</span>`);
+        if((r.kesim_bars_ago || 0) === 0) badges.push('<span class="sym-badge b-new" title="Bu barda kesti">✨ YENİ</span>');
+        else if((r.kesim_bars_ago || 0) > 0) badges.push(`<span class="sym-badge" style="background:var(--s2); color:var(--muted); border:1px solid var(--border);" title="Kesişimden bu yana bar sayısı">${r.kesim_bars_ago} bar</span>`);
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td>${remaChartCell(r)}</td>
           <td class="price">${fmtPrice(r.close)}</td>
-          <td class="dimc">${fmtPrice(r.rema)}</td>
-          <td class="dimc">${fmtPrice(r.ema50)}</td>
-          <td class="ret ${cls(r.rema_ema50_pct)}">${pct(r.rema_ema50_pct)}</td>
+          <td class="dimc">${fmtPrice(r.line_fast)}</td>
+          <td class="dimc">${fmtPrice(r.line_slow)}</td>
+          <td class="dimc">${fmtPrice(r.line_ema50)}</td>
+          <td class="ret ${cls(r.cross_pct)}">${pct(r.cross_pct)}</td>
           <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
           <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
           <td>${athCell(r.sembol)}</td>
@@ -610,14 +611,14 @@
     }
     if(activeMode === 'rema'){
       const er = DATA?.endex_rema?.[activeTab];
-      if(!er || !er.rema_series?.length){
+      if(!er || !er.slow_series?.length){
         wrap.style.display = 'none';
         return;
       }
       wrap.style.display = '';
       document.getElementById('endex-tf-label').textContent = TABS.find(t => t.key===activeTab)?.label || activeTab;
       document.getElementById('endex-macd-chart').innerHTML = remaChartCell({
-        rema_series: er.rema_series, ema50_series: er.ema50_series
+        fast_series: er.fast_series, slow_series: er.slow_series, ema50_series: er.ema50_series
       }, 520, 64);
       return;
     }
@@ -650,7 +651,7 @@
     document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.m === activeMode));
     // Default siralama: fractal→skor, rema→rema_ema50_pct, macd→tf_getiri
     sortKey = activeMode === 'fractal' ? 'skor'
-            : activeMode === 'rema'    ? 'rema_ema50_pct'
+            : activeMode === 'rema'    ? 'cross_pct'
                                        : 'tf_getiri';
     sortDir = -1;
     // Sinyal filtresi grubunu sadece MACD moddayken goster
@@ -715,7 +716,7 @@
     for(const tf of tfs){
       const macd = (data.dilimler?.[tf] || []).filter(r => r.sinyal_1 && r.hist_streak === 1).map(r => r.sembol).sort();
       const frac = (data.dilimler_fractal?.[tf] || []).filter(r => r.fractal_yeni).map(r => r.sembol).sort();
-      const rema = (data.dilimler_rema?.[tf] || []).filter(r => (r.rema_kesim_bars_ago || 0) === 0).map(r => r.sembol).sort();
+      const rema = (data.dilimler_rema?.[tf] || []).filter(r => (r.kesim_bars_ago || 0) === 0).map(r => r.sembol).sort();
       if(macd.length) out['macd::' + tf] = macd;
       if(frac.length) out['fractal::' + tf] = frac;
       if(rema.length) out['rema::' + tf] = rema;
@@ -751,7 +752,7 @@
     // Modları topla: her mod için tüm TF'lerin yenilerini birleştir
     const modes = [
       { key: 'macd',    icon: '📊', name: 'MACD',    idx: macdIdx, sortBy: r => r.tf_getiri || 0,        line: (s, r) => `${s} ${(r.tf_getiri>=0?'+':'')+(r.tf_getiri||0).toFixed(1)}%` },
-      { key: 'rema',    icon: '⚡', name: 'RMA',     idx: remaIdx, sortBy: r => r.rema_ema50_pct || 0,   line: (s, r) => `${s} ${(r.rema_ema50_pct>=0?'+':'')+(r.rema_ema50_pct||0).toFixed(1)}%` },
+      { key: 'rema',    icon: '⚡', name: 'RMA',     idx: remaIdx, sortBy: r => r.cross_pct || 0,        line: (s, r) => `${s} ${(r.cross_pct>=0?'+':'')+(r.cross_pct||0).toFixed(1)}%` },
       { key: 'fractal', icon: '🔓', name: 'Fraktal', idx: fracIdx, sortBy: r => fractalScore(r),         line: (s, r) => `${s} ${(r.kirilim_pct>=0?'+':'')+(r.kirilim_pct||0).toFixed(1)}%` },
     ];
 
