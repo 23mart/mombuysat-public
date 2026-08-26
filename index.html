@@ -279,10 +279,10 @@
     } else if(activeMode === 'rema'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
-        <th title="Yeşil: RMA(4) hızlı · Mavi: EMA(RMA,4) yavaş · Turuncu: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
+        <th title="Yeşil: ADM (hızlı) · Mavi: yavaş · Turuncu: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="line_fast" data-t="n" title="Wilder RMA(4) — hızlı çizgi">RMA</th>
-        <th data-k="line_slow" data-t="n" title="EMA(RMA,4) — yavaş çizgi (tarama için bu takip ediliyor)">Yavaş</th>
+        <th data-k="line_fast" data-t="n" title="ADM (Wilder RMA(4)) — hızlı çizgi">ADM</th>
+        <th data-k="line_slow" data-t="n" title="EMA(ADM,4) — yavaş çizgi (tarama için bu takip ediliyor)">Yavaş</th>
         <th data-k="line_ema50" data-t="n">EMA50</th>
         <th data-k="cross_pct" data-t="n" class="active" title="Yavaş çizginin EMA50 üstündeki mesafesi (%)">Yavaş↑EMA50</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
