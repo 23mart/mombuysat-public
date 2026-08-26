@@ -651,42 +651,59 @@
       fracIdx[tf] = {}; (data.dilimler_fractal?.[tf] || []).forEach(r => fracIdx[tf][r.sembol] = r);
     }
     const fmt = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+    const MAX_PER_NOTIF = 8;   // bildirim başı satır limiti — OS kırpmasın
 
-    const macdBlocks = [], fracBlocks = [];
+    const now = new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
+    const notifs = [];   // {title, body, tag, count}
+
     for(const tf of tfs){
       const macdSyms = additions['macd::' + tf] || [];
       if(macdSyms.length){
-        const lines = macdSyms.map(s => {
+        // Skora/getiriye göre sırala, top MAX_PER_NOTIF göster
+        const sorted = [...macdSyms].sort((a,b) => (macdIdx[tf][b]?.tf_getiri || 0) - (macdIdx[tf][a]?.tf_getiri || 0));
+        const shown = sorted.slice(0, MAX_PER_NOTIF);
+        const extra = sorted.length - shown.length;
+        const lines = shown.map(s => {
           const r = macdIdx[tf][s] || {};
-          return `  • ${s}  ${fmt(r.tf_getiri)}`;
-        }).join('\n');
-        macdBlocks.push(`【${tf.toUpperCase()}】 ${macdSyms.length} yeni\n${lines}`);
+          return `• ${s}  ${fmt(r.tf_getiri)}`;
+        });
+        if(extra > 0) lines.push(`… +${extra} daha`);
+        notifs.push({
+          title: `📊 ${tf.toUpperCase()} · ${macdSyms.length} MACD toparlanma · ${now}`,
+          body: lines.join('\n'),
+          tag: `radar-macd-${tf}`,
+          count: macdSyms.length,
+        });
       }
       const fracSyms = additions['fractal::' + tf] || [];
       if(fracSyms.length){
-        const lines = fracSyms.map(s => {
+        const sorted = [...fracSyms].sort((a,b) => fractalScore(fracIdx[tf][b] || {}) - fractalScore(fracIdx[tf][a] || {}));
+        const shown = sorted.slice(0, MAX_PER_NOTIF);
+        const extra = sorted.length - shown.length;
+        const lines = shown.map(s => {
           const r = fracIdx[tf][s] || {};
-          const sc = fractalScore(r);
-          return `  • ${s}  kırılım ${fmt(r.kirilim_pct)}  · skor ${sc}`;
-        }).join('\n');
-        fracBlocks.push(`【${tf.toUpperCase()}】 ${fracSyms.length} yeni\n${lines}`);
+          return `• ${s}  ${fmt(r.kirilim_pct)}  · skor ${fractalScore(r)}`;
+        });
+        if(extra > 0) lines.push(`… +${extra} daha`);
+        notifs.push({
+          title: `🔓 ${tf.toUpperCase()} · ${fracSyms.length} fraktal kırılım · ${now}`,
+          body: lines.join('\n'),
+          tag: `radar-frac-${tf}`,
+          count: fracSyms.length,
+        });
       }
     }
 
-    const total = Object.values(additions).reduce((a,v) => a + v.length, 0);
-    const now = new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
-    const bodyParts = [];
-    if(macdBlocks.length) bodyParts.push('📊 MACD TOPARLANMA\n' + macdBlocks.join('\n'));
-    if(fracBlocks.length) bodyParts.push('🔓 FRAKTAL KIRILIM\n' + fracBlocks.join('\n'));
-    const body = bodyParts.join('\n\n');
-
-    const n = new Notification(`🆕 ${total} yeni sinyal · ${now}`, {
-      body,
-      tag: 'radar-new',
-      renotify: true,
-      requireInteraction: total >= 5   // 5+ olunca kalici kalsin (kullanici kapatana kadar)
-    });
-    n.onclick = () => { window.focus(); n.close(); };
+    // Her bloğu ayrı bildirim olarak at — tag'ler farklı, üst üste binmez, hiçbiri kırpılmaz
+    for(const nf of notifs){
+      const n = new Notification(nf.title, {
+        body: nf.body,
+        tag: nf.tag,
+        renotify: true,
+        requireInteraction: nf.count >= 5,
+      });
+      n.onclick = () => { window.focus(); n.close(); };
+    }
   }
 
   async function load(){
