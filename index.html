@@ -594,8 +594,25 @@
 
   function renderEndexMacd(){
     const wrap = document.getElementById('endex-macd-wrap');
+    if(activeTab === 'rel' || activeMode === 'fractal'){
+      wrap.style.display = 'none';
+      return;
+    }
+    if(activeMode === 'rema'){
+      const er = DATA?.endex_rema?.[activeTab];
+      if(!er || !er.rema_series?.length){
+        wrap.style.display = 'none';
+        return;
+      }
+      wrap.style.display = '';
+      document.getElementById('endex-tf-label').textContent = TABS.find(t => t.key===activeTab)?.label || activeTab;
+      document.getElementById('endex-macd-chart').innerHTML = remaChartCell({
+        close_series_rema: er.close_series_rema, rema_series: er.rema_series, ema50_series: er.ema50_series
+      }, 520, 64);
+      return;
+    }
     const em = DATA?.endex_macd?.[activeTab];
-    if(activeTab === 'rel' || activeMode === 'fractal' || !em || !em.hist_series?.length){
+    if(!em || !em.hist_series?.length){
       wrap.style.display = 'none';
       return;
     }
