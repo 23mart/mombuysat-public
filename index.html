@@ -463,24 +463,32 @@
   }
 
   function remaChartCell(r, W, H){
-    const closes = r.close_series_rema || [];
     const rema = r.rema_series || [];
     const ema = r.ema50_series || [];
-    if(!closes.length || !rema.length || !ema.length) return '';
+    if(!rema.length || !ema.length) return '';
     W = W || 140; H = H || 36;
     const PAD = 2;
-    const all = closes.concat(rema, ema);
+    const all = rema.concat(ema);
     const mn = Math.min(...all), mx = Math.max(...all);
     const range = Math.max(mx - mn, 1e-9);
     const y = v => PAD + (mx - v)/range * (H - 2*PAD);
-    const x = (i, len) => PAD + i/(len - 1) * (W - 2*PAD);
-    const closePath = 'M ' + closes.map((v,i) => `${x(i, closes.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
-    const remaPath = 'M ' + rema.map((v,i) => `${x(i, rema.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
-    const emaPath = 'M ' + ema.map((v,i) => `${x(i, ema.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const len = Math.min(rema.length, ema.length);
+    const x = i => PAD + i/(len - 1) * (W - 2*PAD);
+    const remaPath = 'M ' + rema.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const emaPath = 'M ' + ema.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    // Kesişim noktalarını bul (REMA yukarı geçti)
+    let crossMarker = '';
+    for(let i = 1; i < len; i++){
+      if(rema[i-1] <= ema[i-1] && rema[i] > ema[i]){
+        const cx = x(i);
+        const cy = y(rema[i]);
+        crossMarker += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="2.2" fill="#22c55e" stroke="#0a0a0f" stroke-width="0.6"/>`;
+      }
+    }
     return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
-      + `<path d="${closePath}" fill="none" stroke="#8b8b9e" stroke-width="1.1" opacity="0.6"/>`
-      + `<path d="${emaPath}" fill="none" stroke="#f59e0b" stroke-width="1.2"/>`
+      + `<path d="${emaPath}" fill="none" stroke="#f59e0b" stroke-width="1.3"/>`
       + `<path d="${remaPath}" fill="none" stroke="#22c55e" stroke-width="1.4"/>`
+      + crossMarker
       + `</svg>`;
   }
 
