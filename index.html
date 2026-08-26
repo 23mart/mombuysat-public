@@ -279,11 +279,12 @@
     } else if(activeMode === 'rema'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
-        <th title="Son 30 bar RMA(4) [hızlı yeşil] + EMA(RMA,4) [yavaş turuncu]">Grafik</th>
+        <th title="Yeşil: RMA(4) hızlı · Turuncu: EMA(RMA,4) yavaş · Mavi: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="rema" data-t="n" title="Wilder RMA(4) — hızlı çizgi (α=1/4)">RMA(4)</th>
-        <th data-k="ema50" data-t="n" title="EMA of RMA(4,4) — yavaş çizgi">EMA(RMA)</th>
-        <th data-k="rema_ema50_pct" data-t="n" class="active" title="Hızlı çizginin yavaş çizgi üstündeki mesafesi">RMA↑EMA</th>
+        <th data-k="line_fast" data-t="n" title="Wilder RMA(4) — hızlı çizgi">RMA</th>
+        <th data-k="line_slow" data-t="n" title="EMA(RMA,4) — yavaş çizgi (tarama için bu takip ediliyor)">Yavaş</th>
+        <th data-k="line_ema50" data-t="n">EMA50</th>
+        <th data-k="cross_pct" data-t="n" class="active" title="Yavaş çizginin EMA50 üstündeki mesafesi (%)">Yavaş↑EMA50</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
@@ -463,31 +464,32 @@
   }
 
   function remaChartCell(r, W, H){
-    const rema = r.rema_series || [];
-    const ema = r.ema50_series || [];
-    if(!rema.length || !ema.length) return '';
+    const fast = r.fast_series || [];
+    const slow = r.slow_series || [];
+    const ema50 = r.ema50_series || [];
+    if(!fast.length || !slow.length || !ema50.length) return '';
     W = W || 140; H = H || 36;
     const PAD = 2;
-    const all = rema.concat(ema);
+    const all = fast.concat(slow, ema50);
     const mn = Math.min(...all), mx = Math.max(...all);
     const range = Math.max(mx - mn, 1e-9);
     const y = v => PAD + (mx - v)/range * (H - 2*PAD);
-    const len = Math.min(rema.length, ema.length);
+    const len = Math.min(fast.length, slow.length, ema50.length);
     const x = i => PAD + i/(len - 1) * (W - 2*PAD);
-    const remaPath = 'M ' + rema.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
-    const emaPath = 'M ' + ema.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
-    // Kesişim noktalarını bul (REMA yukarı geçti)
+    const fastPath  = 'M ' + fast.map((v,i)  => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const slowPath  = 'M ' + slow.map((v,i)  => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const ema50Path = 'M ' + ema50.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    // Tarama kesişimi: SLOW EMA50'yi yukarı geçti
     let crossMarker = '';
     for(let i = 1; i < len; i++){
-      if(rema[i-1] <= ema[i-1] && rema[i] > ema[i]){
-        const cx = x(i);
-        const cy = y(rema[i]);
-        crossMarker += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="2.2" fill="#22c55e" stroke="#0a0a0f" stroke-width="0.6"/>`;
+      if(slow[i-1] <= ema50[i-1] && slow[i] > ema50[i]){
+        crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#f59e0b" stroke="#0a0a0f" stroke-width="0.6"/>`;
       }
     }
     return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
-      + `<path d="${emaPath}" fill="none" stroke="#f59e0b" stroke-width="1.3"/>`
-      + `<path d="${remaPath}" fill="none" stroke="#22c55e" stroke-width="1.4"/>`
+      + `<path d="${ema50Path}" fill="none" stroke="#60a5fa" stroke-width="1.3" opacity="0.9"/>`
+      + `<path d="${slowPath}"  fill="none" stroke="#f59e0b" stroke-width="1.4"/>`
+      + `<path d="${fastPath}"  fill="none" stroke="#22c55e" stroke-width="1.2" opacity="0.85"/>`
       + crossMarker
       + `</svg>`;
   }
