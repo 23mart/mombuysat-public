@@ -127,7 +127,7 @@
     <div class="fgroup" data-g="mode" style="border:1px solid var(--border); border-radius:8px; padding:2px;">
       <button class="fbtn active" data-m="macd" style="font-size:12px; padding:6px 14px;">📊 MACD Toparlanma</button>
       <button class="fbtn" data-m="fractal" style="font-size:12px; padding:6px 14px;">🔓 Fraktal Kırılım</button>
-      <button class="fbtn" data-m="rema" style="font-size:12px; padding:6px 14px;" title="RMA(4) [hızlı] EMA(RMA,4) [yavaş] yukarı kesenler">⚡ RMA×EMA</button>
+      <button class="fbtn" data-m="rema" style="font-size:12px; padding:6px 14px;" title="Yavaş çizgi (mavi) EMA50'yi (turuncu) yukarı kesenler">⚡ Kesişim</button>
     </div>
   </div>
 
@@ -279,7 +279,7 @@
     } else if(activeMode === 'rema'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
-        <th title="Yeşil: RMA(4) hızlı · Turuncu: EMA(RMA,4) yavaş · Mavi: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
+        <th title="Yeşil: RMA(4) hızlı · Mavi: EMA(RMA,4) yavaş · Turuncu: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="line_fast" data-t="n" title="Wilder RMA(4) — hızlı çizgi">RMA</th>
         <th data-k="line_slow" data-t="n" title="EMA(RMA,4) — yavaş çizgi (tarama için bu takip ediliyor)">Yavaş</th>
@@ -483,12 +483,12 @@
     let crossMarker = '';
     for(let i = 1; i < len; i++){
       if(slow[i-1] <= ema50[i-1] && slow[i] > ema50[i]){
-        crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#f59e0b" stroke="#0a0a0f" stroke-width="0.6"/>`;
+        crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#60a5fa" stroke="#0a0a0f" stroke-width="0.6"/>`;
       }
     }
     return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
-      + `<path d="${ema50Path}" fill="none" stroke="#60a5fa" stroke-width="1.3" opacity="0.9"/>`
-      + `<path d="${slowPath}"  fill="none" stroke="#f59e0b" stroke-width="1.4"/>`
+      + `<path d="${ema50Path}" fill="none" stroke="#f59e0b" stroke-width="1.3" opacity="0.9"/>`
+      + `<path d="${slowPath}"  fill="none" stroke="#60a5fa" stroke-width="1.4"/>`
       + `<path d="${fastPath}"  fill="none" stroke="#22c55e" stroke-width="1.2" opacity="0.85"/>`
       + crossMarker
       + `</svg>`;
@@ -660,7 +660,7 @@
     const newBtn = document.querySelector('.fbtn[data-g="new"]');
     if(newBtn){
       newBtn.textContent = activeMode === 'fractal' ? '🆕 Yalnız yeni kırılım'
-                        : activeMode === 'rema'    ? '⚡ Yalnız bu bar kesenler'
+                        : activeMode === 'rema'    ? '⚡ Yalnız bu bar kesişenler'
                                                    : '✨ Yalnız yeni';
     }
     drawTabs(); render();
@@ -752,7 +752,7 @@
     // Modları topla: her mod için tüm TF'lerin yenilerini birleştir
     const modes = [
       { key: 'macd',    icon: '📊', name: 'MACD',    idx: macdIdx, sortBy: r => r.tf_getiri || 0,        line: (s, r) => `${s} ${(r.tf_getiri>=0?'+':'')+(r.tf_getiri||0).toFixed(1)}%` },
-      { key: 'rema',    icon: '⚡', name: 'RMA',     idx: remaIdx, sortBy: r => r.cross_pct || 0,        line: (s, r) => `${s} ${(r.cross_pct>=0?'+':'')+(r.cross_pct||0).toFixed(1)}%` },
+      { key: 'rema',    icon: '⚡', name: 'Kesişim', idx: remaIdx, sortBy: r => r.cross_pct || 0,        line: (s, r) => `${s} ${(r.cross_pct>=0?'+':'')+(r.cross_pct||0).toFixed(1)}%` },
       { key: 'fractal', icon: '🔓', name: 'Fraktal', idx: fracIdx, sortBy: r => fractalScore(r),         line: (s, r) => `${s} ${(r.kirilim_pct>=0?'+':'')+(r.kirilim_pct||0).toFixed(1)}%` },
     ];
 
