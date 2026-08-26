@@ -127,7 +127,7 @@
     <div class="fgroup" data-g="mode" style="border:1px solid var(--border); border-radius:8px; padding:2px;">
       <button class="fbtn active" data-m="macd" style="font-size:12px; padding:6px 14px;">📊 MACD Toparlanma</button>
       <button class="fbtn" data-m="fractal" style="font-size:12px; padding:6px 14px;">🔓 Fraktal Kırılım</button>
-      <button class="fbtn" data-m="rema" style="font-size:12px; padding:6px 14px;" title="REMA(4) EMA50'yi yukarı kesenler">⚡ REMA×EMA50</button>
+      <button class="fbtn" data-m="rema" style="font-size:12px; padding:6px 14px;" title="RMA(4) [hızlı] EMA(RMA,4) [yavaş] yukarı kesenler">⚡ RMA×EMA</button>
     </div>
   </div>
 
@@ -279,11 +279,11 @@
     } else if(activeMode === 'rema'){
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
-        <th title="Son 30 bar close + REMA(4) + EMA50">Grafik</th>
+        <th title="Son 30 bar RMA(4) [hızlı yeşil] + EMA(RMA,4) [yavaş turuncu]">Grafik</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="rema" data-t="n" title="Regularized EMA (length=4, λ=0.5)">REMA(4)</th>
-        <th data-k="ema50" data-t="n">EMA50</th>
-        <th data-k="rema_ema50_pct" data-t="n" class="active" title="REMA(4)'ün EMA50 üstündeki mesafesi">REMA↑EMA50</th>
+        <th data-k="rema" data-t="n" title="Wilder RMA(4) — hızlı çizgi (α=1/4)">RMA(4)</th>
+        <th data-k="ema50" data-t="n" title="EMA of RMA(4,4) — yavaş çizgi">EMA(RMA)</th>
+        <th data-k="rema_ema50_pct" data-t="n" class="active" title="Hızlı çizginin yavaş çizgi üstündeki mesafesi">RMA↑EMA</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
@@ -615,7 +615,7 @@
       wrap.style.display = '';
       document.getElementById('endex-tf-label').textContent = TABS.find(t => t.key===activeTab)?.label || activeTab;
       document.getElementById('endex-macd-chart').innerHTML = remaChartCell({
-        close_series_rema: er.close_series_rema, rema_series: er.rema_series, ema50_series: er.ema50_series
+        rema_series: er.rema_series, ema50_series: er.ema50_series
       }, 520, 64);
       return;
     }
@@ -749,7 +749,7 @@
     // Modları topla: her mod için tüm TF'lerin yenilerini birleştir
     const modes = [
       { key: 'macd',    icon: '📊', name: 'MACD',    idx: macdIdx, sortBy: r => r.tf_getiri || 0,        line: (s, r) => `${s} ${(r.tf_getiri>=0?'+':'')+(r.tf_getiri||0).toFixed(1)}%` },
-      { key: 'rema',    icon: '⚡', name: 'REMA',    idx: remaIdx, sortBy: r => r.rema_ema50_pct || 0,   line: (s, r) => `${s} ${(r.rema_ema50_pct>=0?'+':'')+(r.rema_ema50_pct||0).toFixed(1)}%` },
+      { key: 'rema',    icon: '⚡', name: 'RMA',     idx: remaIdx, sortBy: r => r.rema_ema50_pct || 0,   line: (s, r) => `${s} ${(r.rema_ema50_pct>=0?'+':'')+(r.rema_ema50_pct||0).toFixed(1)}%` },
       { key: 'fractal', icon: '🔓', name: 'Fraktal', idx: fracIdx, sortBy: r => fractalScore(r),         line: (s, r) => `${s} ${(r.kirilim_pct>=0?'+':'')+(r.kirilim_pct||0).toFixed(1)}%` },
     ];
 
