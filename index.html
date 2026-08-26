@@ -267,6 +267,7 @@
         <th data-k="sembol" data-t="s">Sembol</th>
         <th data-k="skor" data-t="n" class="active" title="Kalite skoru: yaş 5-25 + kırılım 0.5-3% + yeni + 52H zirveye yakın + çoklu TF teyidi + endeksten güçlü. Yeşil ≥14, sarı ≥11, turuncu ≥8.">Skor</th>
         <th title="Son 30 bar fiyat + kırılan fraktal seviyesi">Fiyat/Fraktal</th>
+        <th title="Son 30 bar MACD/Signal/Histogram">MACD</th>
         <th data-k="close" data-t="n">Fiyat</th>
         <th data-k="fractal_high" data-t="n" title="Kırılan fraktal seviyesi (üstünde direnç yok)">Fraktal</th>
         <th data-k="kirilim_pct" data-t="n" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
@@ -280,9 +281,8 @@
       row.innerHTML = `
         <th data-k="sembol" data-t="s">Sembol</th>
         <th title="Yeşil (adım): hızlı RMA(4) · Mavi: yavaş EMA(RMA,4) · Turuncu: EMA50. Tarama: yavaş EMA50'yi yukarı keser.">Grafik</th>
+        <th title="Son 30 bar MACD/Signal/Histogram">MACD</th>
         <th data-k="close" data-t="n">Fiyat</th>
-        <th data-k="line_fast" data-t="n" title="Wilder RMA(4) — hızlı çizgi (adım görünümlü)">Hızlı</th>
-        <th data-k="line_slow" data-t="n" title="EMA(RMA,4) — yavaş çizgi (tarama için bu takip ediliyor)">Yavaş</th>
         <th data-k="line_ema50" data-t="n">EMA50</th>
         <th data-k="cross_pct" data-t="n" class="active" title="Yavaş çizginin EMA50 üstündeki mesafesi (%)">Yavaş↑EMA50</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
@@ -569,9 +569,8 @@
         return `<tr>
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td>${remaChartCell(r)}</td>
+          <td>${macdChartCell(r)}</td>
           <td class="price">${fmtPrice(r.close)}</td>
-          <td class="dimc">${fmtPrice(r.line_fast)}</td>
-          <td class="dimc">${fmtPrice(r.line_slow)}</td>
           <td class="dimc">${fmtPrice(r.line_ema50)}</td>
           <td class="ret ${cls(r.cross_pct)}">${pct(r.cross_pct)}</td>
           <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
@@ -592,6 +591,7 @@
           <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
           <td>${scoreBadge(sk)}</td>
           <td>${priceFractalChart(r)}</td>
+          <td>${macdChartCell(r)}</td>
           <td class="price">${fmtPrice(r.close)}</td>
           <td class="dimc">${fmtPrice(r.fractal_high)}</td>
           <td class="ret ${kirilim_cls}">${pct(r.kirilim_pct)}</td>
