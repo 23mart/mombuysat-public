@@ -505,19 +505,43 @@
       }
     }
 
-    // Çizgi path'leri
-    let fastPath = `M ${x(0).toFixed(1)},${y(fast[0]).toFixed(1)}`;
-    for(let i = 1; i < fast.length; i++){
-      fastPath += ` L ${x(i).toFixed(1)},${y(fast[i-1]).toFixed(1)} L ${x(i).toFixed(1)},${y(fast[i]).toFixed(1)}`;
+    // Segment başına çizgi parçaları — renk durum bazlı (yeşil/kırmızı)
+    const greenFast = [], redFast = [], greenSlow = [], redSlow = [];
+    for(let i = 1; i < len; i++){
+      const x1 = x(i-1), x2 = x(i);
+      const f  = fast[i-1];
+      const s1 = slow[i-1], s2 = slow[i];
+      const yf = y(f), ys1 = y(s1), ys2 = y(s2);
+      const above1 = f > s1, above2 = f > s2;
+      const hz = (xa, xb) => `M ${xa.toFixed(1)},${yf.toFixed(1)} L ${xb.toFixed(1)},${yf.toFixed(1)}`;
+      const sl = (xa, ya, xb, yb) => `M ${xa.toFixed(1)},${ya.toFixed(1)} L ${xb.toFixed(1)},${yb.toFixed(1)}`;
+      if(above1 && above2){
+        greenFast.push(hz(x1, x2)); greenSlow.push(sl(x1, ys1, x2, ys2));
+      } else if(!above1 && !above2){
+        redFast.push(hz(x1, x2));   redSlow.push(sl(x1, ys1, x2, ys2));
+      } else {
+        const t = (f - s1) / (s2 - s1);
+        const xc = x1 + t * (x2 - x1);
+        if(above1){
+          greenFast.push(hz(x1, xc)); redFast.push(hz(xc, x2));
+          greenSlow.push(sl(x1, ys1, xc, yf)); redSlow.push(sl(xc, yf, x2, ys2));
+        } else {
+          redFast.push(hz(x1, xc));   greenFast.push(hz(xc, x2));
+          redSlow.push(sl(x1, ys1, xc, yf)); greenSlow.push(sl(xc, yf, x2, ys2));
+        }
+      }
+      // Dikey step: x[i]'de fast[i-1]'den fast[i]'ye zıplar — durum fast[i] vs slow[i]
+      const yfNext = y(fast[i]);
+      const vpath = `M ${x2.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${yfNext.toFixed(1)}`;
+      (fast[i] > slow[i] ? greenFast : redFast).push(vpath);
     }
-    const slowPath  = 'M ' + slow.map((v,i)  => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
     const ema50Path = 'M ' + ema50.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
 
     // Tarama kesişimi: SLOW EMA50'yi yukarı geçti
     let crossMarker = '';
     for(let i = 1; i < len; i++){
       if(slow[i-1] <= ema50[i-1] && slow[i] > ema50[i]){
-        crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#60a5fa" stroke="#0a0a0f" stroke-width="0.6"/>`;
+        crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#f59e0b" stroke="#0a0a0f" stroke-width="0.6"/>`;
       }
     }
 
@@ -525,8 +549,10 @@
       + `<path d="${greenPolys.join(' ')}" fill="#16a34a" fill-opacity="0.75" stroke="none"/>`
       + `<path d="${redPolys.join(' ')}" fill="#dc2626" fill-opacity="0.75" stroke="none"/>`
       + `<path d="${ema50Path}" fill="none" stroke="#f59e0b" stroke-width="1.3" opacity="0.9"/>`
-      + `<path d="${slowPath}"  fill="none" stroke="#60a5fa" stroke-width="1.4"/>`
-      + `<path d="${fastPath}"  fill="none" stroke="#22c55e" stroke-width="1.2" opacity="0.9"/>`
+      + `<path d="${greenSlow.join(' ')}" fill="none" stroke="#22c55e" stroke-width="1.7"/>`
+      + `<path d="${redSlow.join(' ')}"   fill="none" stroke="#ef4444" stroke-width="1.7"/>`
+      + `<path d="${greenFast.join(' ')}" fill="none" stroke="#22c55e" stroke-width="1.2" stroke-dasharray="2.5,1.5"/>`
+      + `<path d="${redFast.join(' ')}"   fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2.5,1.5"/>`
       + crossMarker
       + `</svg>`;
   }
