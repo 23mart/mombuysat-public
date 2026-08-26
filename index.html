@@ -718,77 +718,46 @@
       fracIdx[tf] = {}; (data.dilimler_fractal?.[tf] || []).forEach(r => fracIdx[tf][r.sembol] = r);
       remaIdx[tf] = {}; (data.dilimler_rema?.[tf] || []).forEach(r => remaIdx[tf][r.sembol] = r);
     }
-    const fmt = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-    const MAX_PER_NOTIF = 8;   // bildirim başı satır limiti — OS kırpmasın
-
     const now = new Date().toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
-    const notifs = [];   // {title, body, tag, count}
+    const TOP_PER_MODE = 3;   // mod başına gösterilecek top sembol sayısı
 
-    for(const tf of tfs){
-      const macdSyms = additions['macd::' + tf] || [];
-      if(macdSyms.length){
-        // Skora/getiriye göre sırala, top MAX_PER_NOTIF göster
-        const sorted = [...macdSyms].sort((a,b) => (macdIdx[tf][b]?.tf_getiri || 0) - (macdIdx[tf][a]?.tf_getiri || 0));
-        const shown = sorted.slice(0, MAX_PER_NOTIF);
-        const extra = sorted.length - shown.length;
-        const lines = shown.map(s => {
-          const r = macdIdx[tf][s] || {};
-          return `• ${s}  ${fmt(r.tf_getiri)}`;
-        });
-        if(extra > 0) lines.push(`… +${extra} daha`);
-        notifs.push({
-          title: `📊 ${tf.toUpperCase()} · ${macdSyms.length} MACD toparlanma · ${now}`,
-          body: lines.join('\n'),
-          tag: `radar-macd-${tf}`,
-          count: macdSyms.length,
-        });
+    // Modları topla: her mod için tüm TF'lerin yenilerini birleştir
+    const modes = [
+      { key: 'macd',    icon: '📊', name: 'MACD',    idx: macdIdx, sortBy: r => r.tf_getiri || 0,        line: (s, r) => `${s} ${(r.tf_getiri>=0?'+':'')+(r.tf_getiri||0).toFixed(1)}%` },
+      { key: 'rema',    icon: '⚡', name: 'REMA',    idx: remaIdx, sortBy: r => r.rema_ema50_pct || 0,   line: (s, r) => `${s} ${(r.rema_ema50_pct>=0?'+':'')+(r.rema_ema50_pct||0).toFixed(1)}%` },
+      { key: 'fractal', icon: '🔓', name: 'Fraktal', idx: fracIdx, sortBy: r => fractalScore(r),         line: (s, r) => `${s} ${(r.kirilim_pct>=0?'+':'')+(r.kirilim_pct||0).toFixed(1)}%` },
+    ];
+
+    const lines = [];
+    let totalNew = 0;
+    for(const m of modes){
+      // Tüm TF'lerdeki yeni sembolleri topla, TF etiketiyle
+      const items = [];
+      for(const tf of tfs){
+        const syms = additions[`${m.key}::${tf}`] || [];
+        for(const s of syms){
+          const r = m.idx[tf]?.[s];
+          if(r) items.push({ sym: s, tf, r, score: m.sortBy(r) });
+        }
       }
-      const fracSyms = additions['fractal::' + tf] || [];
-      if(fracSyms.length){
-        const sorted = [...fracSyms].sort((a,b) => fractalScore(fracIdx[tf][b] || {}) - fractalScore(fracIdx[tf][a] || {}));
-        const shown = sorted.slice(0, MAX_PER_NOTIF);
-        const extra = sorted.length - shown.length;
-        const lines = shown.map(s => {
-          const r = fracIdx[tf][s] || {};
-          return `• ${s}  ${fmt(r.kirilim_pct)}  · skor ${fractalScore(r)}`;
-        });
-        if(extra > 0) lines.push(`… +${extra} daha`);
-        notifs.push({
-          title: `🔓 ${tf.toUpperCase()} · ${fracSyms.length} fraktal kırılım · ${now}`,
-          body: lines.join('\n'),
-          tag: `radar-frac-${tf}`,
-          count: fracSyms.length,
-        });
-      }
-      const remaSyms = additions['rema::' + tf] || [];
-      if(remaSyms.length){
-        const sorted = [...remaSyms].sort((a,b) => (remaIdx[tf][b]?.rema_ema50_pct || 0) - (remaIdx[tf][a]?.rema_ema50_pct || 0));
-        const shown = sorted.slice(0, MAX_PER_NOTIF);
-        const extra = sorted.length - shown.length;
-        const lines = shown.map(s => {
-          const r = remaIdx[tf][s] || {};
-          return `• ${s}  REMA↑EMA50 ${fmt(r.rema_ema50_pct)}  · ${fmt(r.tf_getiri)}`;
-        });
-        if(extra > 0) lines.push(`… +${extra} daha`);
-        notifs.push({
-          title: `⚡ ${tf.toUpperCase()} · ${remaSyms.length} REMA×EMA50 · ${now}`,
-          body: lines.join('\n'),
-          tag: `radar-rema-${tf}`,
-          count: remaSyms.length,
-        });
-      }
+      if(!items.length) continue;
+      totalNew += items.length;
+      items.sort((a, b) => b.score - a.score);
+      const top = items.slice(0, TOP_PER_MODE).map(x => `${m.line(x.sym, x.r)}·${x.tf}`);
+      const extra = items.length - top.length;
+      const suffix = extra > 0 ? ` +${extra}` : '';
+      lines.push(`${m.icon} ${m.name} (${items.length}): ${top.join(', ')}${suffix}`);
     }
 
-    // Her bloğu ayrı bildirim olarak at — tag'ler farklı, üst üste binmez, hiçbiri kırpılmaz
-    for(const nf of notifs){
-      const n = new Notification(nf.title, {
-        body: nf.body,
-        tag: nf.tag,
-        renotify: true,
-        requireInteraction: nf.count >= 5,
-      });
-      n.onclick = () => { window.focus(); n.close(); };
-    }
+    if(!totalNew) return;
+
+    const n = new Notification(`🆕 ${totalNew} yeni sinyal · ${now}`, {
+      body: lines.join('\n'),
+      tag: 'radar-summary',
+      renotify: true,
+      requireInteraction: totalNew >= 10,
+    });
+    n.onclick = () => { window.focus(); n.close(); };
   }
 
   async function load(){
