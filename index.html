@@ -476,13 +476,43 @@
     const y = v => PAD + (mx - v)/range * (H - 2*PAD);
     const len = Math.min(fast.length, slow.length, ema50.length);
     const x = i => PAD + i/(len - 1) * (W - 2*PAD);
-    // Hızlı çizgi: step/staircase (adım) — her bar için önce yatay, sonra dikey
+
+    // Hızlı çizgi (step): [x[i-1], x[i]] aralığında sabit değer = fast[i-1]
+    // Yavaş çizgi: (x[i-1], slow[i-1]) → (x[i], slow[i]) doğrusal
+    // Segment başına: fast[i-1] > slow ise yeşil, < ise kırmızı dolgu; kesişirse iki parçaya böl
+    const greenPolys = [], redPolys = [];
+    for(let i = 1; i < len; i++){
+      const x1 = x(i-1), x2 = x(i);
+      const f  = fast[i-1];
+      const s1 = slow[i-1], s2 = slow[i];
+      const yf = y(f), ys1 = y(s1), ys2 = y(s2);
+      const above1 = f > s1;
+      const above2 = f > s2;
+      if(above1 && above2){
+        greenPolys.push(`M ${x1.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${ys2.toFixed(1)} L ${x1.toFixed(1)},${ys1.toFixed(1)} Z`);
+      } else if(!above1 && !above2){
+        redPolys.push(`M ${x1.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${ys2.toFixed(1)} L ${x1.toFixed(1)},${ys1.toFixed(1)} Z`);
+      } else {
+        const t = (f - s1) / (s2 - s1);
+        const xc = x1 + t * (x2 - x1);
+        if(above1){
+          greenPolys.push(`M ${x1.toFixed(1)},${yf.toFixed(1)} L ${xc.toFixed(1)},${yf.toFixed(1)} L ${x1.toFixed(1)},${ys1.toFixed(1)} Z`);
+          redPolys.push(`M ${xc.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${ys2.toFixed(1)} Z`);
+        } else {
+          redPolys.push(`M ${x1.toFixed(1)},${yf.toFixed(1)} L ${xc.toFixed(1)},${yf.toFixed(1)} L ${x1.toFixed(1)},${ys1.toFixed(1)} Z`);
+          greenPolys.push(`M ${xc.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${yf.toFixed(1)} L ${x2.toFixed(1)},${ys2.toFixed(1)} Z`);
+        }
+      }
+    }
+
+    // Çizgi path'leri
     let fastPath = `M ${x(0).toFixed(1)},${y(fast[0]).toFixed(1)}`;
     for(let i = 1; i < fast.length; i++){
       fastPath += ` L ${x(i).toFixed(1)},${y(fast[i-1]).toFixed(1)} L ${x(i).toFixed(1)},${y(fast[i]).toFixed(1)}`;
     }
     const slowPath  = 'M ' + slow.map((v,i)  => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
     const ema50Path = 'M ' + ema50.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+
     // Tarama kesişimi: SLOW EMA50'yi yukarı geçti
     let crossMarker = '';
     for(let i = 1; i < len; i++){
@@ -490,10 +520,13 @@
         crossMarker += `<circle cx="${x(i).toFixed(1)}" cy="${y(slow[i]).toFixed(1)}" r="2.3" fill="#60a5fa" stroke="#0a0a0f" stroke-width="0.6"/>`;
       }
     }
+
     return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
+      + `<path d="${greenPolys.join(' ')}" fill="#22c55e" fill-opacity="0.28" stroke="none"/>`
+      + `<path d="${redPolys.join(' ')}" fill="#ef4444" fill-opacity="0.28" stroke="none"/>`
       + `<path d="${ema50Path}" fill="none" stroke="#f59e0b" stroke-width="1.3" opacity="0.9"/>`
       + `<path d="${slowPath}"  fill="none" stroke="#60a5fa" stroke-width="1.4"/>`
-      + `<path d="${fastPath}"  fill="none" stroke="#22c55e" stroke-width="1.2" opacity="0.85"/>`
+      + `<path d="${fastPath}"  fill="none" stroke="#22c55e" stroke-width="1.2" opacity="0.9"/>`
       + crossMarker
       + `</svg>`;
   }
