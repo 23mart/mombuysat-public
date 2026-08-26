@@ -127,6 +127,7 @@
     <div class="fgroup" data-g="mode" style="border:1px solid var(--border); border-radius:8px; padding:2px;">
       <button class="fbtn active" data-m="macd" style="font-size:12px; padding:6px 14px;">📊 MACD Toparlanma</button>
       <button class="fbtn" data-m="fractal" style="font-size:12px; padding:6px 14px;">🔓 Fraktal Kırılım</button>
+      <button class="fbtn" data-m="rema" style="font-size:12px; padding:6px 14px;" title="REMA(4) EMA50'yi yukarı kesenler">⚡ REMA×EMA50</button>
     </div>
   </div>
 
@@ -205,7 +206,9 @@
       if(DATA){
         if(t.key === 'rel') n = (DATA.rel_gucu_endeks_ustu || []).length;
         else {
-          const src = activeMode === 'fractal' ? DATA.dilimler_fractal : DATA.dilimler;
+          const src = activeMode === 'fractal' ? DATA.dilimler_fractal
+                    : activeMode === 'rema'    ? DATA.dilimler_rema
+                                               : DATA.dilimler;
           n = (src?.[t.key] || []).length;
         }
       }
@@ -222,7 +225,10 @@
   function currentRows(){
     if(!DATA) return [];
     if(activeTab === 'rel') return DATA.rel_gucu_endeks_ustu || [];
-    const src = activeMode === 'fractal' ? (DATA.dilimler_fractal || {}) : (DATA.dilimler || {});
+    let src;
+    if(activeMode === 'fractal') src = DATA.dilimler_fractal || {};
+    else if(activeMode === 'rema') src = DATA.dilimler_rema || {};
+    else src = DATA.dilimler || {};
     return src[activeTab] || [];
   }
 
@@ -232,9 +238,11 @@
       if(activeMode === 'macd'){
         if(activeSignal === 's1') out = out.filter(r => r.sinyal_1);
         if(newOnly) out = out.filter(r => r.sinyal_1 && (r.hist_streak || 0) === 1);
-      } else {
+      } else if(activeMode === 'fractal') {
         if(newOnly) out = out.filter(r => r.fractal_yeni);
       }
+      // rema modunda newOnly: kesişim son barda oldu (bars_ago === 0)
+      if(activeMode === 'rema' && newOnly) out = out.filter(r => (r.rema_kesim_bars_ago || 0) === 0);
     }
     if(query) out = out.filter(r => r.sembol.toLowerCase().includes(query));
     return out;
@@ -264,6 +272,18 @@
         <th data-k="kirilim_pct" data-t="n" title="Fiyat fraktal seviyesinin ne kadar üstünde">Kırılım</th>
         <th data-k="breakout_streak" data-t="n" title="Fraktal seviyesinin üstünde kesintisiz kaç bar (yeşil çizgi süresi)">Süre</th>
         <th data-k="fractal_bars_ago" data-t="n" title="Fraktal kaç bar önce oluştu">Yaş</th>
+        <th data-k="tf_getiri" data-t="n">Getiri</th>
+        <th data-k="tf_fark" data-t="n">Fark</th>
+        <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
+      `;
+    } else if(activeMode === 'rema'){
+      row.innerHTML = `
+        <th data-k="sembol" data-t="s">Sembol</th>
+        <th title="Son 30 bar close + REMA(4) + EMA50">Grafik</th>
+        <th data-k="close" data-t="n">Fiyat</th>
+        <th data-k="rema" data-t="n" title="Regularized EMA (length=4, λ=0.5)">REMA(4)</th>
+        <th data-k="ema50" data-t="n">EMA50</th>
+        <th data-k="rema_ema50_pct" data-t="n" class="active" title="REMA(4)'ün EMA50 üstündeki mesafesi">REMA↑EMA50</th>
         <th data-k="tf_getiri" data-t="n">Getiri</th>
         <th data-k="tf_fark" data-t="n">Fark</th>
         <th data-k="ath_uzaklik" data-t="n" title="Fiyatın son 1 yıl (52 hafta) zirvesine uzaklığı">52H</th>
@@ -442,6 +462,28 @@
       + `</svg>`;
   }
 
+  function remaChartCell(r, W, H){
+    const closes = r.close_series_rema || [];
+    const rema = r.rema_series || [];
+    const ema = r.ema50_series || [];
+    if(!closes.length || !rema.length || !ema.length) return '';
+    W = W || 140; H = H || 36;
+    const PAD = 2;
+    const all = closes.concat(rema, ema);
+    const mn = Math.min(...all), mx = Math.max(...all);
+    const range = Math.max(mx - mn, 1e-9);
+    const y = v => PAD + (mx - v)/range * (H - 2*PAD);
+    const x = (i, len) => PAD + i/(len - 1) * (W - 2*PAD);
+    const closePath = 'M ' + closes.map((v,i) => `${x(i, closes.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const remaPath = 'M ' + rema.map((v,i) => `${x(i, rema.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    const emaPath = 'M ' + ema.map((v,i) => `${x(i, ema.length).toFixed(1)},${y(v).toFixed(1)}`).join(' L ');
+    return `<svg class="macd-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">`
+      + `<path d="${closePath}" fill="none" stroke="#8b8b9e" stroke-width="1.1" opacity="0.6"/>`
+      + `<path d="${emaPath}" fill="none" stroke="#f59e0b" stroke-width="1.2"/>`
+      + `<path d="${remaPath}" fill="none" stroke="#22c55e" stroke-width="1.4"/>`
+      + `</svg>`;
+  }
+
   function barCell(v){
     if(v == null) return '';
     const cap = 5;
@@ -480,6 +522,23 @@
           <td class="ret ${cls(rh?.fark)}"><span class="diff-cell">${pct(rh?.fark)}${barCell(rh?.fark)}</span></td>
           <td class="ret ${cls(ra?.sembol)}">${pct(ra?.sembol)}</td>
           <td class="ret ${cls(ra?.fark)}"><span class="diff-cell">${pct(ra?.fark)}${barCell(ra?.fark)}</span></td>
+          <td>${athCell(r.sembol)}</td>
+        </tr>`;
+      }).join('');
+    } else if(activeMode === 'rema'){
+      tbody.innerHTML = sorted.map(r => {
+        const badges = [];
+        if((r.rema_kesim_bars_ago || 0) === 0) badges.push('<span class="sym-badge b-new" title="Bu barda kesti">✨ YENİ</span>');
+        else if((r.rema_kesim_bars_ago || 0) > 0) badges.push(`<span class="sym-badge" style="background:var(--s2); color:var(--muted); border:1px solid var(--border);" title="Kesişimden bu yana bar sayısı">${r.rema_kesim_bars_ago} bar</span>`);
+        return `<tr>
+          <td><div class="sym-cell"><span class="sym-name">${r.sembol}</span>${badges.join('')}</div></td>
+          <td>${remaChartCell(r)}</td>
+          <td class="price">${fmtPrice(r.close)}</td>
+          <td class="dimc">${fmtPrice(r.rema)}</td>
+          <td class="dimc">${fmtPrice(r.ema50)}</td>
+          <td class="ret ${cls(r.rema_ema50_pct)}">${pct(r.rema_ema50_pct)}</td>
+          <td class="ret ${cls(r.tf_getiri)}">${pct(r.tf_getiri)}</td>
+          <td class="ret ${cls(r.tf_fark)}"><span class="diff-cell">${pct(r.tf_fark)}${barCell(r.tf_fark)}</span></td>
           <td>${athCell(r.sembol)}</td>
         </tr>`;
       }).join('');
@@ -562,14 +621,20 @@
   document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(b => b.onclick = () => {
     activeMode = b.dataset.m;
     document.querySelectorAll('.fgroup[data-g="mode"] .fbtn').forEach(x => x.classList.toggle('active', x.dataset.m === activeMode));
-    // Fraktal moddayken: default siralama skor; MACD moddayken: tf_getiri
-    sortKey = activeMode === 'fractal' ? 'skor' : 'tf_getiri';
+    // Default siralama: fractal→skor, rema→rema_ema50_pct, macd→tf_getiri
+    sortKey = activeMode === 'fractal' ? 'skor'
+            : activeMode === 'rema'    ? 'rema_ema50_pct'
+                                       : 'tf_getiri';
     sortDir = -1;
-    // Sinyal filtresi grubunu fraktal moddayken gizle
-    document.querySelector('.fgroup[data-g="sig"]').style.display = activeMode === 'fractal' ? 'none' : '';
+    // Sinyal filtresi grubunu sadece MACD moddayken goster
+    document.querySelector('.fgroup[data-g="sig"]').style.display = activeMode === 'macd' ? '' : 'none';
     // "Yalniz yeni" butonunun anlami degisir
     const newBtn = document.querySelector('.fbtn[data-g="new"]');
-    if(newBtn) newBtn.textContent = activeMode === 'fractal' ? '🆕 Yalnız yeni kırılım' : '✨ Yalnız yeni';
+    if(newBtn){
+      newBtn.textContent = activeMode === 'fractal' ? '🆕 Yalnız yeni kırılım'
+                        : activeMode === 'rema'    ? '⚡ Yalnız bu bar kesenler'
+                                                   : '✨ Yalnız yeni';
+    }
     drawTabs(); render();
   });
   document.querySelector('.fbtn[data-g="new"]').onclick = (e) => {
@@ -617,14 +682,16 @@
   };
 
   function collectYeni(data){
-    // {macd::1h: [sym...], fractal::1h: [sym...], ...}
+    // {macd::1h: [sym...], fractal::1h: [sym...], rema::1h: [sym...], ...}
     const out = {};
     const tfs = ['1h','2h','3h','4h','1d','1wk','1mo','3mo'];
     for(const tf of tfs){
       const macd = (data.dilimler?.[tf] || []).filter(r => r.sinyal_1 && r.hist_streak === 1).map(r => r.sembol).sort();
       const frac = (data.dilimler_fractal?.[tf] || []).filter(r => r.fractal_yeni).map(r => r.sembol).sort();
+      const rema = (data.dilimler_rema?.[tf] || []).filter(r => (r.rema_kesim_bars_ago || 0) === 0).map(r => r.sembol).sort();
       if(macd.length) out['macd::' + tf] = macd;
       if(frac.length) out['fractal::' + tf] = frac;
+      if(rema.length) out['rema::' + tf] = rema;
     }
     return out;
   }
@@ -645,10 +712,11 @@
 
     // Metrik erisimi icin index
     const tfs = ['1h','2h','3h','4h','1d','1wk','1mo','3mo'];
-    const macdIdx = {}, fracIdx = {};
+    const macdIdx = {}, fracIdx = {}, remaIdx = {};
     for(const tf of tfs){
       macdIdx[tf] = {}; (data.dilimler?.[tf] || []).forEach(r => macdIdx[tf][r.sembol] = r);
       fracIdx[tf] = {}; (data.dilimler_fractal?.[tf] || []).forEach(r => fracIdx[tf][r.sembol] = r);
+      remaIdx[tf] = {}; (data.dilimler_rema?.[tf] || []).forEach(r => remaIdx[tf][r.sembol] = r);
     }
     const fmt = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
     const MAX_PER_NOTIF = 8;   // bildirim başı satır limiti — OS kırpmasın
@@ -690,6 +758,23 @@
           body: lines.join('\n'),
           tag: `radar-frac-${tf}`,
           count: fracSyms.length,
+        });
+      }
+      const remaSyms = additions['rema::' + tf] || [];
+      if(remaSyms.length){
+        const sorted = [...remaSyms].sort((a,b) => (remaIdx[tf][b]?.rema_ema50_pct || 0) - (remaIdx[tf][a]?.rema_ema50_pct || 0));
+        const shown = sorted.slice(0, MAX_PER_NOTIF);
+        const extra = sorted.length - shown.length;
+        const lines = shown.map(s => {
+          const r = remaIdx[tf][s] || {};
+          return `• ${s}  REMA↑EMA50 ${fmt(r.rema_ema50_pct)}  · ${fmt(r.tf_getiri)}`;
+        });
+        if(extra > 0) lines.push(`… +${extra} daha`);
+        notifs.push({
+          title: `⚡ ${tf.toUpperCase()} · ${remaSyms.length} REMA×EMA50 · ${now}`,
+          body: lines.join('\n'),
+          tag: `radar-rema-${tf}`,
+          count: remaSyms.length,
         });
       }
     }
