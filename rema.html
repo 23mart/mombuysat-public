@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar</title>
+<style>
+  body { background:#0b0b10; color:#f5f5f7; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .box { max-width:340px; width:90%; padding:32px 28px; background:#111118; border:1px solid #1f1f2a; border-radius:12px; }
+  .logo { display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; font-size:16px; margin-bottom:22px; }
+  .logo-mark { width:32px; height:32px; background:linear-gradient(135deg,#a855f7,#7e22ce); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; }
+  input { width:100%; padding:11px 12px; background:#18181f; border:1px solid #1f1f2a; border-radius:6px; color:#f5f5f7; font-size:14px; margin-bottom:10px; box-sizing:border-box; outline:none; }
+  input:focus { border-color:#a855f7; }
+  button { width:100%; padding:11px; background:#a855f7; border:none; border-radius:6px; color:#fff; font-weight:700; cursor:pointer; font-size:13px; }
+  button:hover { background:#9333ea; }
+  button:disabled { opacity:0.5; cursor:default; }
+  .err { color:#ef4444; margin-top:12px; font-size:12px; text-align:center; min-height:14px; }
+</style>
+</head><body>
+<div class="box" id="lock">
+  <div class="logo"><div class="logo-mark">💜</div><span>Radar</span></div>
+  <input type="password" id="pw" placeholder="Parola" autofocus autocomplete="current-password">
+  <button id="btn" onclick="attempt()">Aç</button>
+  <div class="err" id="err"></div>
+</div>
+<script>
+const CIPHERTEXT = "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";
+async function decrypt(pw){
+  const bytes = Uint8Array.from(atob(CIPHERTEXT), c => c.charCodeAt(0));
+  const salt = bytes.slice(0,16), nonce = bytes.slice(16,28), ct = bytes.slice(28);
+  const passKey = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name:'PBKDF2', salt, iterations:600000, hash:'SHA-256' },
+    passKey, { name:'AES-GCM', length:256 }, false, ['decrypt']
+  );
+  const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:nonce }, key, ct);
+  // Gzip aç
+  const stream = new Response(pt).body.pipeThrough(new DecompressionStream('gzip'));
+  const buf = await new Response(stream).arrayBuffer();
+  return new TextDecoder().decode(buf);
+}
+async function unlock(pw){
+  try {
+    const html = await decrypt(pw);
+    sessionStorage.setItem('puf_pw', pw);
+    document.open(); document.write(html); document.close();
+  } catch(e){
+    sessionStorage.removeItem('puf_pw');
+    document.getElementById('err').textContent = 'Yanlış parola';
+    document.getElementById('btn').disabled = false;
+  }
+}
+async function attempt(){
+  const pw = document.getElementById('pw').value;
+  if(!pw) return;
+  document.getElementById('btn').disabled = true;
+  document.getElementById('err').textContent = 'Açılıyor...';
+  await unlock(pw);
+}
+document.getElementById('pw').addEventListener('keydown', e => { if(e.key==='Enter') attempt(); });
+const saved = sessionStorage.getItem('puf_pw');
+if(saved) unlock(saved);
+</script></body></html>
